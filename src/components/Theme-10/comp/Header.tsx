@@ -63,7 +63,7 @@ const Header = async ({ company_id, domain, mer_slug, slug_type, cat_slug, logo,
     );
 
     return (
-        <header className="sticky top-0 z-[100] bg-white/80 backdrop-blur-md border-b border-slate-100">
+        <header className="fixed top-0 left-0 w-full z-[100] bg-white backdrop-blur-md border-b border-slate-100 shadow-sm">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex h-20 items-center justify-between gap-4">
                     
