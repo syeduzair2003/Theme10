@@ -1,0 +1,111 @@
+html {
+    direction: rtl
+}
+
+.header-section .main-navbar .custom-nav .menu-item button::after {
+    left: 0px;
+    right: auto
+}
+
+.swiper-initialized {
+    direction: ltr
+}
+
+.swiper-initialized .swiper-slide>div {
+    direction: rtl
+}
+
+.breadcrumb-area .breadcrumb .breadcrumb-item::before {
+    right: initial;
+    left: -18px;
+    transform: rotate(180deg)
+}
+
+.faq-section .header-area button::after {
+    left: inherit;
+    right: 0
+}
+
+.select2-container.w-auto .select2-dropdown {
+    left: 0 !important;
+    right: initial !important
+}
+
+.banner-section.inner-banner {
+    background-position: left 200px bottom
+}
+
+@media(max-width: 1399px) {
+    .banner-section.inner-banner {
+        background-position: left 0px bottom
+    }
+}
+
+.single-range .range-slider {
+    background-size: calc((var(--max) - var(--value))*100%/(var(--max) - var(--min))) 100%
+}
+
+.faq-section.second .header-area button::after {
+    left: 0;
+    right: initial
+}
+
+.header-section .main-navbar .custom-nav.fourth>.menu-item>button::after {
+    right: initial;
+    left: 24px
+}
+
+.header-section .main-navbar .custom-nav.fourth .sub-menus a::before {
+    left: initial;
+    right: 2px
+}
+
+@media(min-width: 1200px) {
+    .collapse-section.body-collapse {
+        margin-right: 360px
+    }
+}
+
+.header-section .sidebar-wrapper {
+    transform: translateX(380px)
+}
+
+.header-section .header-area {
+    margin-left: 0
+}
+
+@media(min-width: 1200px) {
+    .header-section.body-collapse {
+        margin-right: 380px
+    }
+}
+
+.header-section.body-collapse .sidebar-wrapper {
+    transform: translateX(380px)
+}
+
+@media(max-width: 1199px) {
+    .header-section.body-collapse .sidebar-wrapper {
+        transform: translateX(20px)
+    }
+}
+
+.single-checkbox-toggle input:checked~.checkmark {
+    transform: translateX(-26px)
+}
+
+.footer-section .footer-links a::before {
+    left: initial;
+    right: -20px
+}
+
+.footer-section .footer-links a:hover {
+    padding-right: 12px
+}
+
+.footer-section .footer-links a:hover::before {
+    left: initial;
+    right: 0
+}
+
+/*# sourceMappingURL=style-rtl.min.css.map */

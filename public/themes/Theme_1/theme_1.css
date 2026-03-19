@@ -1,0 +1,13 @@
+@import "./allProduct.css";
+@import "./bootstrap.min.css";
+@import './F_custom.css';
+@import "./fontawesome.min.css";
+@import "./line-awesome.min.css";
+@import "./magnific-popup.css";
+@import "./main.css";
+@import "./main.css.map";
+@import "./slick.css";
+/* @import '@fortawesome/fontawesome-svg-core/styles.css';
+@import '../../../node_modules/@fortawesome/fontawesome-svg-core/styles.css'; */
+@import './myCustom.css';
+@import "../custom-Mybootstrap.css"

@@ -1,0 +1,2905 @@
+/* =========================================
+   HEADER & NAVIGATION STYLES
+   ========================================= */
+
+/* 1. Promo Bar (Top Strip) - Now Royal Purple */
+.promo-bar {
+  background: var(--brand-primary) !important; /* Deep Royal Purple */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 8px 0;
+}
+
+.promo-link {
+  color: #ffffff !important;
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0.9;
+  transition: all 0.2s ease;
+  letter-spacing: 0.3px;
+}
+
+.promo-link:hover {
+  opacity: 1;
+  text-decoration: none;
+  color: #fff !important;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+/* 2. Main Navigation Bar */
+.nav-main {
+  background: #ffffff !important; /* Clean White */
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05) !important; /* Soft shadow */
+}
+
+/* Nav Links */
+.nav-links a {
+  color: var(--text-dark) !important; /* Dark Slate, not harsh black */
+  font-weight: 600;
+  font-size: 15px;
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--brand-primary) !important; /* Purple Hover */
+}
+
+/* 3. Dropdown Menus */
+.dropdown {
+  border-top: 4px solid var(--brand-primary) !important; /* Purple Accent Line */
+  background: #ffffff !important;
+  box-shadow: var(--shadow-hover) !important;
+  border-radius: 0 0 8px 8px;
+  padding: 10px 0;
+}
+
+.dropdown li {
+  border-bottom: 1px solid #f4f6f8 !important; /* Very subtle separator */
+}
+
+.dropdown li a {
+  color: var(--text-body) !important;
+  font-weight: 500;
+  padding: 12px 20px;
+}
+
+/* Dropdown Hover Effect */
+.dropdown li:hover {
+  background-color: #f9f9f9 !important;
+}
+
+.dropdown li:hover a {
+  color: var(--brand-primary) !important;
+  transform: translateX(5px); /* Slight movement for modern feel */
+}
+
+/* Merchant Logo in Dropdown */
+.mer-nav-img-wrapper {
+  border: 1px solid var(--border-color);
+  background: #fff;
+  border-radius: 8px; /* Soft square looks more modern than circle for logos */
+  padding: 5px;
+  transition: border-color 0.3s ease;
+}
+
+.dropdown li:hover .mer-nav-img-wrapper {
+  border-color: var(--brand-primary);
+}
+
+/* =========================================
+   SEARCH TAGS & SIDEBAR STYLES
+   ========================================= */
+
+/* Sidebar Title */
+.navsearch-section-title {
+  color: var(--text-dark) !important;
+  font-weight: 700;
+  border-left: 4px solid var(--brand-primary); /* Purple accent on left */
+  padding-left: 12px;
+  margin-bottom: 16px;
+}
+
+/* Tag Pills */
+.navsearch-tag-item a {
+  display: inline-block;
+  background: #f3f4f6 !important; /* Neutral Light Gray */
+  color: var(--text-dark) !important;
+  padding: 8px 16px !important;
+  border-radius: 50px !important; /* Full Pill Shape */
+  font-size: 13px;
+  font-weight: 600;
+  border: 1px solid transparent;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Tag Hover - Turns Brand Purple */
+.navsearch-tag-item a:hover {
+  background: var(--brand-primary) !important;
+  color: #ffffff !important;
+  border-color: var(--brand-primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(111, 44, 145, 0.25);
+}
+
+/* =========================================
+   HORIZONTAL DROPDOWN STYLES (STORES)
+   ========================================= */
+
+/* 1. The Dropdown Container - Flexible Row */
+.nav-links .has-dropdown .dropdown {
+  display: none; /* Hidden by default */
+  flex-direction: row; /* Horizontal Layout */
+  flex-wrap: nowrap; /* Single Row (No wrapping) */
+  width: max-content; /* Width adjusts to fit all items */
+  max-width: 90vw; /* Prevents it from exceeding screen width */
+  overflow-x: auto; /* Adds scroll if screen is too small */
+
+  padding: 15px;
+  gap: 15px; /* Space between store items */
+  background: #ffffff !important;
+  border-top: 4px solid var(--brand-primary) !important;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+
+  /* Optional: Center it relative to parent link */
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* 2. Individual Store Items */
+.nav-links .has-dropdown .dropdown li {
+  border: 1px solid transparent; /* Clean start */
+  border-bottom: none !important; /* Remove old dividers */
+  border-radius: 12px;
+  padding: 15px;
+  min-width: 110px; /* Consistent width for cards */
+  text-align: center;
+  transition: all 0.3s ease;
+  background: transparent;
+}
+
+/* Item Hover State - Lift Card & Light BG */
+.nav-links .has-dropdown .dropdown li:hover {
+  background-color: #f9f9f9 !important;
+  border-color: #eee;
+  transform: translateY(-5px); /* Lift effect */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* 3. Link & Text Styling */
+.nav-links .has-dropdown .dropdown li a {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+  justify-content: start;
+  padding: 0 !important;
+  color: var(--text-dark) !important;
+  font-weight: 600;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+/* FIX: Text Hover Color -> Purple (Not White) */
+.nav-links .has-dropdown .dropdown li:hover a,
+.nav-links .has-dropdown .dropdown li:hover p {
+  color: var(--brand-primary) !important;
+  text-decoration: none;
+  background: transparent !important; /* Ensures no white bg overlay */
+}
+
+/* 4. Merchant Image Wrapper */
+.mer-nav-img-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%; /* Circular Logo */
+  background: #ffffff;
+  border: 1px solid #e1e4e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 10px;
+  padding: 8px;
+  transition: border-color 0.3s ease;
+}
+
+.mer-nav-img-wrapper img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+/* Border turns purple on hover */
+.nav-links .has-dropdown .dropdown li:hover .mer-nav-img-wrapper {
+  border-color: var(--brand-primary);
+  box-shadow: 0 0 0 2px rgba(111, 44, 145, 0.1);
+}
+
+/* =========================================
+   SIDEBAR NAVIGATION STYLES
+   ========================================= */
+
+/* 1. Sidebar Container */
+.sidebar-box {
+  background: #ffffff !important;
+  border: 1px solid var(--border-color) !important;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04) !important;
+  transition: transform 0.3s ease;
+}
+
+/* 2. Sidebar Heading */
+.sidebar-heading {
+  color: #000000 !important; /* Prominent Black */
+  font-weight: 800 !important; /* Bold for visibility */
+  border-bottom: 2px solid var(--brand-primary); /* Brand accent underline */
+  padding-bottom: 12px;
+  margin-bottom: 18px !important;
+  letter-spacing: -0.5px;
+  font-size: 1.4rem;
+}
+
+/* 3. Sidebar Links (The Categories) */
+.sidebar-link {
+  color: #1a1a1a !important;
+  background-color: transparent;
+  font-weight: 600;
+  font-size: 15px;
+  padding: 10px 16px !important;
+  border-radius: 6px;
+  border-left: 3px solid transparent;
+  transition:
+    color 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    border-left-color 0.25s ease;
+
+  will-change: transform;
+}
+
+/* 4. Hover State - Turns Purple & Slides Right */
+.sidebar-link:hover {
+  color: var(--brand-primary) !important;
+  background-color: #f9f9f9 !important;
+  transform: translateX(4px); /* Smooth slide instead of padding */
+  border-left-color: var(--brand-primary);
+  text-decoration: none !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+/* 5. Badge (Offer Count) Styling */
+.sidebar-offer-count {
+  background-color: #f1f1f1 !important;
+  color: #444 !important;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+/* Badge turns purple on hover */
+.sidebar-link .sidebar-offer-count {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.sidebar-link:hover .sidebar-offer-count {
+  background-color: var(--brand-primary) !important;
+  color: #ffffff !important;
+  transform: scale(1.05);
+}
+
+/* 6. "See All" Bottom Link */
+.btn-area a {
+  color: #000000 !important;
+  font-weight: 700;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: gap 0.3s ease, color 0.3s ease;
+}
+
+.btn-area a span {
+  color: #000000 !important;
+  transition: color 0.3s ease;
+}
+
+/* Hover Effect for "See All" */
+.btn-area a:hover span,
+.btn-area a:hover {
+  color: var(--brand-primary) !important;
+  gap: 12px; /* Arrow moves away slightly */
+}
+
+/* Force the FontAwesome arrow to change color using !important to override inline styles */
+.btn-area a:hover svg,
+.btn-area a:hover path {
+  color: var(--brand-primary) !important;
+  fill: var(--brand-primary) !important;
+}
+
+/* =========================================
+   POPULAR STORES SECTION REDESIGN
+   ========================================= */
+
+/* 1. Section Container */
+.popular-stores {
+  background-color: #ffffff !important; /* Clean white background */
+  /* border-top: 1px solid var(--border-color); */
+  padding-top: 40px !important;
+  padding-bottom: 40px !important;
+}
+
+/* 2. Header Area (Title & View All) */
+.popular-stores .section-box {
+  background: #fff !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-bottom: 2px solid #f0f0f0 !important;
+  border-radius: 5px !important;
+  margin: 0 !important;
+}
+
+/* Title Typography */
+.popular-stores h1 {
+  color: var(--text-dark) !important;
+  font-weight: 800 !important;
+  font-size: 1.5rem !important;
+  opacity: 1 !important; /* Remove transparency */
+  letter-spacing: -0.5px;
+}
+
+/* 3. "View All" Link Styling */
+.symbol h5 {
+  color: #000000 !important; /* Start Black */
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.symbol i {
+  color: #000000 !important;
+  transition: all 0.3s ease;
+}
+
+/* Hover Effect: Turns Purple & Moves Right */
+.symbol:hover h5 {
+  color: var(--brand-primary) !important; /* Brand Purple */
+}
+
+.symbol:hover i {
+  color: var(--brand-primary) !important;
+  transform: translateX(4px); /* Subtle slide animation */
+}
+
+/* 4. Merchant Logo Cards */
+.merchant-logo-card {
+  background: #ffffff !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: 8px !important; /* Rectangular with slight soft edge */
+  height: 100px; /* Fixed height for consistency */
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02); /* Very subtle initial shadow */
+}
+
+/* Merchant Image */
+.merchant-logo {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain;
+  background: transparent;
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+/* 5. Card Hover Effects - The "Pop" */
+.merchant-logo-card:hover {
+  border-color: var(--brand-primary) !important; /* Purple Border */
+  transform: translateY(-6px); /* Lift Up */
+  box-shadow: 0 12px 24px rgba(111, 44, 145, 0.15) !important; /* Purple Glow Shadow */
+  z-index: 2;
+}
+
+.merchant-logo-card:hover .merchant-logo {
+  filter: grayscale(0%); /* Restore Colors */
+  opacity: 1;
+  transform: scale(1.08); /* Slight Zoom */
+}
+
+/* 6. Widget Text (Description below header) */
+.popular-stores p {
+  color: #666;
+  font-size: 0.95rem;
+  margin-top: 5px;
+}
+/* =========================================
+   MODERN VERTICAL OFFER CARD
+   ========================================= */
+
+/* 1. Card Container */
+.offer-vertical-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 12px; /* Smooth corners */
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Hover State: Lift & Glow */
+.offer-vertical-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(111, 44, 145, 0.12); /* Purple-tinted shadow */
+  border-color: var(--brand-secondary);
+}
+
+/* 2. Image Section */
+.offer-image-container {
+  position: relative;
+  width: 100%;
+  height: 160px; /* Fixed height for consistency */
+  background: #f8f9fa; /* Light grey fallback */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Main Image Styling */
+.main-offer-img {
+  transition: transform 0.5s ease;
+}
+
+.offer-vertical-card:hover .main-offer-img {
+  transform: scale(1.05); /* Subtle zoom on hover */
+}
+
+/* Type: Product (Cover fill) */
+.cover-product {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Type: Merchant (Contain logo centered) */
+.contain-logo {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+  padding: 10px;
+}
+
+/* 3. The "RetailMeNot" Style Overlapping Logo Badge */
+.merchant-badge-overlay {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  width: 45px;
+  height: 45px;
+  background: #ffffff;
+  border-radius: 50%;
+  padding: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  border: 1px solid #eee;
+}
+
+.merchant-badge-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+/* Exclusive Tag (Top Left) */
+.tag-exclusive {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: var(--brand-primary);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+  z-index: 2;
+}
+
+/* 4. Content Body */
+.offer-card-body {
+  padding: 16px;
+  flex-grow: 1;
+  background: #fff;
+  z-index: 2; /* Sit above background */
+  position: relative;
+  padding-bottom: 40px; /* Make room for hidden footer to slide up */
+}
+
+/* Typography */
+.offer-merchant-name {
+  color: var(--brand-primary) !important; /* Purple */
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+}
+
+.offer-title-text {
+  color: #1a1a1a; /* Strong Black */
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.4;
+  margin-bottom: 8px;
+
+  /* Line Clamp for consistency */
+  /* display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; */
+  overflow: hidden;
+}
+
+.offer-title-text a {
+  color: inherit !important;
+}
+
+.offer-promo-line {
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+}
+
+.brand-color {
+  color: var(--brand-primary) !important;
+}
+
+.text-small {
+  font-size: 0.8rem;
+}
+
+/* 5. HOVER REVEAL FOOTER (Animation Magic) */
+.offer-hover-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.95); /* Slight transparency */
+  backdrop-filter: blur(5px); /* Modern blur effect */
+  border-top: 1px solid #f0f0f0;
+
+  /* Initial State: Hidden (Pushed down) */
+  transform: translateY(100%);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 10;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Reveal on Card Hover */
+.offer-vertical-card:hover .offer-hover-footer {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Duration Text */
+.offer-duration {
+  font-size: 0.75rem;
+  color: #666;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+/* The "Get Deal" Button */
+.btn-reveal-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--brand-primary) !important;
+  color: #ffffff !important;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  padding: 10px;
+  border-radius: 50px; /* Pill shape */
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(111, 44, 145, 0.3);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-reveal-action:hover {
+  background: var(--brand-secondary) !important;
+  transform: scale(1.02);
+  color: #fff !important;
+}
+
+/* =========================================
+   HORIZONTAL OFFER CARD (List View)
+   ========================================= */
+
+/* 1. Card Container */
+.offer-horizontal-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 12px;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  height: 100%;
+}
+
+.offer-horizontal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
+  border-color: var(--brand-primary);
+}
+
+/* 2. Left Side: Image */
+.horizontal-img-container {
+  flex: 0 0 140px; /* Fixed width for image area */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding-right: 15px;
+}
+
+.horizontal-main-img {
+  width: 100%;
+  height: auto;
+  max-height: 140px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.offer-horizontal-card:hover .horizontal-main-img {
+  transform: scale(1.05);
+}
+
+/* 3. Right Side: Content */
+.horizontal-content-body {
+  flex: 1;
+  padding-left: 5px;
+}
+
+/* 4. The "Fire" Badge */
+.fire-badge {
+  display: inline-flex;
+  align-items: center;
+  background: #ffffff;
+  border: 1px solid #e5e7eb; /* Light grey border */
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.8rem;
+  color: #1a1a1a;
+  letter-spacing: 0.5px;
+}
+
+.fire-icon {
+  color: #f59e0b; /* Amber/Orange Fire Color */
+}
+
+/* 5. Title */
+.horizontal-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* Limit to 2 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* 6. "Check Price" Button */
+.btn-check-price {
+  display: block;
+  width: 100%;
+  background-color: var(--brand-secondary);
+  color: #fff !important;
+  font-weight: 700;
+  text-align: center;
+  padding: 10px 0;
+  border-radius: 50px; /* Pill Shape */
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.btn-check-price:hover {
+  background-color: var(--brand-primary); /* Light Blue on Hover */
+  color: #fff !important;
+  text-decoration: none;
+}
+
+.faq-stores-section .section-box,
+.faq-stores-section .updated-stores-section {
+  background: #ffffff !important;
+  border: 1px solid var(--border-color);
+  border-radius: 12px !important;
+  padding: 25px !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important; /* Subtle lift */
+  height: 100%;
+}
+
+/* 2. Premium Section Titles (Vertical Bar Style) */
+.faq-stores-section .section-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+
+  /* The Vertical Blue/Purple Bar */
+  border-left: 5px solid var(--brand-primary);
+  padding-left: 15px;
+  margin-bottom: 20px;
+  line-height: 1.2;
+}
+
+/* =========================================
+   REDESIGNED STORE HORIZONTAL CARD
+   ========================================= */
+
+/* Card Container */
+.store-horizontal-card {
+  background: #ffffff;
+  border: 1px solid #f0f0f0;
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin-bottom: 12px;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+}
+
+/* Hover Effect: Lift & Purple Border */
+.store-horizontal-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+  border-color: var(--brand-secondary);
+  background-color: #fff; /* Ensure it stays white */
+}
+
+/* Logo Wrapper */
+.store-horizontal-logo-wrapper {
+  width: 100px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.store-horizontal-logo {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  transition: filter 0.3s ease;
+}
+
+.store-horizontal-card:hover .store-horizontal-logo {
+  filter: grayscale(0%); /* Color on hover */
+}
+
+/* Text Styling */
+.store-horizontal-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #222;
+  margin: 0;
+}
+
+.store-horizontal-meta {
+  font-size: 0.85rem;
+  color: var(--brand-primary) !important; /* Purple text for "Cash Back" */
+  font-weight: 600;
+}
+
+/* The "Get Code/Shop" Button */
+.btn-store-action {
+  background: #f3f4f6; /* Light grey bg */
+  color: var(--brand-primary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  width: 115px;
+  padding: 8px 20px;
+  border-radius: 50px; /* Pill shape */
+  transition: all 0.2s ease;
+  display: inline-block;
+  border: 1px solid transparent;
+}
+
+.store-horizontal-card:hover .btn-store-action {
+  background: var(--brand-primary);
+  color: #ffffff;
+  box-shadow: 0 4px 10px rgba(111, 44, 145, 0.3);
+}
+
+/* =========================================
+   FAQ ACCORDION STYLING
+   ========================================= */
+
+.faq-wrapper .accordion-item {
+  border: none;
+  border-bottom: 1px solid #f0f0f0;
+  background: transparent;
+}
+
+.faq-wrapper .accordion-item:last-child {
+  border-bottom: none;
+}
+
+/* Accordion Button (Question) */
+.faq-wrapper .accordion-button {
+  background: transparent !important;
+  color: #333 !important;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 18px 0 !important;
+  box-shadow: none !important; /* Remove default blue glow */
+}
+
+.faq-wrapper .accordion-button:not(.collapsed) {
+  color: var(--brand-primary) !important; /* Purple when open */
+}
+
+/* Accordion Icon */
+.faq-wrapper .accordion-button::after {
+  background-size: 1rem;
+  filter: grayscale(100%);
+  transition: transform 0.3s ease;
+}
+
+.faq-wrapper .accordion-button:not(.collapsed)::after {
+  filter: none; /* Use default color or SVG manipulation for purple if needed */
+  transform: rotate(90deg);
+}
+
+/* Accordion Body (Answer) */
+.faq-wrapper .accordion-body {
+  padding: 0 0 20px 0;
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* =========================================
+   NEWSLETTER SECTION REDESIGN
+   ========================================= */
+
+/* 1. Section Container */
+.newsletter-section {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+  overflow: hidden;
+  padding-top: 30px !important;
+  padding-bottom: 30px !important;
+}
+
+/* Optional: Add a subtle Brand accent line at the top */
+.newsletter-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: var(--brand-primary);
+}
+
+/* 2. Typography */
+.newsletter-title {
+  color: #1a1a1a !important; /* Strong Black */
+  font-weight: 800 !important;
+  font-size: 2.5rem !important;
+  margin-bottom: 15px !important;
+  letter-spacing: -1px;
+}
+
+.newsletter-subtitle {
+  color: #555 !important; /* Dark Grey */
+  font-size: 1.1rem !important;
+  font-weight: 500;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+/* 3. Form Container */
+.newsletter-form {
+  max-width: 800px;
+  margin: 30px auto 0;
+}
+
+/* 4. Input Field */
+.newsletter-input {
+  background: #ffffff !important;
+  border: 2px solid #e1e4e8 !important;
+  border-radius: 50px !important; /* Pill Shape */
+  padding: 15px 25px !important;
+  font-size: 1rem !important;
+  color: #333 !important;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02) !important;
+  transition: all 0.3s ease;
+  height: auto !important; /* Override any fixed heights */
+}
+
+.newsletter-input::placeholder {
+  color: #999;
+}
+
+/* Focus State: Brand Purple Glow */
+.newsletter-input:focus {
+  border-color: var(--brand-primary) !important;
+  box-shadow: 0 0 0 4px rgba(111, 44, 145, 0.15) !important;
+  outline: none;
+}
+
+/* 5. Subscribe Button */
+.newsletter-btn {
+  background: var(--brand-primary) !important; /* Royal Purple */
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  font-size: 1rem !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none !important;
+  border-radius: 50px !important; /* Pill Shape */
+  padding: 15px 30px !important;
+  cursor: pointer;
+  box-shadow: 0 6px 12px rgba(111, 44, 145, 0.3) !important;
+  transition: all 0.3s ease;
+  height: 100%; /* Match input height */
+}
+
+/* Hover State: Lighter Purple + Lift */
+.newsletter-btn:hover {
+  background: var(--brand-secondary) !important;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(111, 44, 145, 0.4) !important;
+}
+
+/* Active/Click State */
+.newsletter-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 4px rgba(111, 44, 145, 0.2) !important;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 768px) {
+  .newsletter-title {
+    font-size: 2rem !important;
+  }
+
+  .newsletter-form {
+    flex-direction: column;
+  }
+
+  .newsletter-btn {
+    width: 100%;
+    margin-top: 10px;
+  }
+}
+
+.cat-page-cards {
+  background: #ffffff !important;
+  padding: 24px !important;
+  border-radius: 12px !important;
+  border: 1px solid var(--border-color) !important; /* Clean subtle border */
+  box-shadow: none !important; /* REMOVED heavy blue shadows as requested */
+  transition: all 0.3s ease-in-out !important;
+}
+
+/* Card Hover: Lift + Purple Border */
+.cat-page-cards:hover {
+  transform: translateY(-5px) !important;
+  border-color: var(--brand-primary) !important; /* Purple Border */
+  box-shadow: 0 10px 25px rgba(111, 44, 145, 0.08) !important; /* Very soft purple glow */
+}
+
+/* 3. Category Title (Headings) */
+.t2-category-title {
+  font-size: 1.15rem;
+  font-weight: 800 !important;
+  color: #1a1a1a !important; /* Strong Black */
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f4f6f8; /* Divider line */
+  display: block;
+  transition: color 0.3s ease;
+}
+
+/* Title turns purple on card hover */
+.cat-page-cards:hover .t2-category-title {
+  color: var(--brand-primary) !important;
+  border-bottom-color: rgba(111, 44, 145, 0.2);
+}
+
+/* 4. List Items & Links */
+.t2-category-sub-list {
+  padding-left: 0 !important;
+  list-style: none !important;
+}
+
+.t2-category-item {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.t2-category-link {
+  color: #444 !important;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: all 0.2s ease;
+}
+
+/* Link Hover: Slide Right + Purple */
+.t2-category-link:hover {
+  color: var(--brand-primary) !important;
+  transform: translateX(5px); /* Slide animation */
+}
+
+/* 5. Offer Badge (Count) */
+.t2-offer-badge {
+  background-color: #f3f4f6; /* Light Grey */
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #666;
+  transition: all 0.2s ease;
+}
+
+/* Badge turns purple when link is hovered */
+.t2-category-link:hover .t2-offer-badge {
+  background-color: var(--brand-primary);
+  color: #ffffff;
+}
+
+/* Page Heading Utility */
+.page-heading {
+  color: var(--brand-primary) !important;
+}
+.t2-category-link:hover .t2-offer-count {
+  color: #ffffff !important;
+}
+.coupon-row-card {
+  background: #ffffff !important;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  margin-bottom: 16px;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  overflow: hidden; /* Contains content */
+}
+
+.coupon-row-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  border-color: #d1d5db;
+}
+
+/* 2. Main Body Layout (Flex Row) */
+.coupon-row-body {
+  display: flex;
+  align-items: center;
+  padding: 24px;
+  gap: 24px;
+}
+
+/* 3. Left Side: Discount Block */
+.coupon-left-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 90px; /* Fixed width for alignment */
+  text-align: center;
+  line-height: 1;
+}
+
+.coupon-value {
+  font-size: 1.6rem;
+  font-weight: 900;
+  color: var(--brand-primary); /* Royal Purple */
+  display: block;
+  letter-spacing: -0.5px;
+}
+
+.coupon-label {
+  font-size: 0.9rem;
+  font-weight: 800;
+  color: var(--brand-primary);
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+/* 4. Middle Side: Title & Meta */
+.coupon-mid-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Grey "Code" Badge */
+.badge-gray {
+  background-color: #f3f4f6;
+  color: #4b5563;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 8px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-block;
+}
+
+/* Title */
+.coupon-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1a1a1a !important;
+  margin: 0;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.coupon-title a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.coupon-title a:hover {
+  color: var(--brand-primary);
+}
+
+/* "Interested Users" Pill */
+.user-interest-pill {
+  background-color: #f3e8ff; /* Very Light Purple */
+  color: var(--brand-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+/* 5. Right Side: The Action Button */
+.coupon-right-section {
+  min-width: 160px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-peel-action {
+  position: relative;
+  background: var(--brand-primary) !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 12px 28px;
+  border-radius: 50px; /* Pill Shape */
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(111, 44, 145, 0.25);
+  overflow: hidden; /* Ensures peel stays inside */
+}
+
+.btn-peel-action:hover {
+  transform: scale(1.03);
+  background-color: var(--brand-secondary) !important;
+  color: #fff !important;
+}
+
+/* THE PEEL EFFECT (Corner Overlay) */
+.peel-effect {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.2); /* Semi-transparent white */
+  transform: rotate(45deg);
+  pointer-events: none;
+}
+
+/* 6. Footer: Details Toggle */
+.coupon-row-footer {
+  border-top: 1px solid #f0f0f0;
+  background-color: #fafafa; /* Light grey bg */
+  padding: 10px 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.coupon-details-content {
+  padding: 10px 0 15px 0;
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.6;
+  border-bottom: 1px dashed #ddd;
+  margin-bottom: 10px;
+}
+
+.btn-toggle-details {
+  background: transparent !important;
+  border: none !important;
+  font-size: 0.85rem;
+  font-weight: 700 !important;
+  color: #1a1a1a !important;
+  cursor: pointer !important;
+  padding: 0 !important;
+  transition: color 0.2s ease !important;
+  box-shadow: none;
+}
+
+.btn-toggle-details:hover {
+  color: var(--brand-primary) !important;
+  background: none !important;
+  box-shadow: none !important;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .coupon-row-body {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .coupon-left-section {
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .coupon-value {
+    font-size: 1.2rem;
+  }
+
+  .coupon-right-section {
+    width: 100%;
+  }
+
+  .btn-peel-action {
+    width: 100%;
+  }
+}
+
+.coupon-product-img-wrapper {
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 6px;
+}
+
+.coupon-product-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.offer-expiry-text {
+  font-size: 0.75rem;
+  color: #6b7280; /* muted grey */
+}
+
+.offer-details-anchor {
+  color: #666;
+  text-decoration: underline;
+  transition: color 0.2s ease;
+  position: relative;
+  z-index: 5; /* Ensure it sits above the parent Link overlay */
+}
+
+.offer-details-anchor:hover,
+.text-primary-hover:hover {
+  color: var(--brand-primary) !important;
+}
+
+/* Button Style (Card View - optional) */
+.offer-details-btn {
+  background: none;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #888;
+  text-decoration: underline;
+  padding: 0;
+  margin-bottom: 8px;
+  transition: color 0.2s ease;
+  position: relative;
+  z-index: 5;
+}
+
+.offer-details-btn:hover,
+.hover-purple:hover {
+  color: var(--brand-primary) !important;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+/* =========================================
+   SIMPLE OFFER MODAL STYLES (Scrollable & Fixed)
+   ========================================= */
+
+/* Overlay */
+.offer-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* Modal Container - Fixed Height/Width Layout */
+.offer-modal-container {
+  background: #ffffff;
+  width: 90%;
+  max-width: 550px; /* Fixed Max Width */
+  max-height: 85vh; /* Fixed Max Height (85% of viewport) */
+  border-radius: 16px;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  overflow: hidden; /* Hide overflow from rounded corners */
+  display: flex; /* Enable Flexbox for Header/Body/Footer structure */
+  flex-direction: column;
+  position: relative;
+  animation: slideUpFade 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Header - Fixed at Top */
+/* .offer-modal-header {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  border-bottom: 1px solid #f0f0f0;
+  background: #ffffff;
+  z-index: 10;
+} */
+
+/* Body - Scrollable Area */
+.offer-modal-body {
+  flex: 1 1 auto; /* Grow and shrink to fill space */
+  overflow-y: auto; /* Enable vertical scroll */
+  padding: 30px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  /* Custom Scrollbar for the modal body */
+  scrollbar-width: thin;
+  scrollbar-color: var(--brand-primary) #f0f0f0;
+}
+
+.offer-modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+.offer-modal-body::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 3px;
+}
+
+/* Footer - Fixed at Bottom */
+.offer-modal-footer {
+  flex: 0 0 auto; /* Don't grow or shrink */
+  padding: 12px 24px;
+  background: #fafafa;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* --- HTML CONTENT STYLING (DangerouslySetInnerHTML) --- */
+.modal-html-content {
+  width: 100%;
+  font-size: 0.95rem;
+  color: #444;
+  line-height: 1.6;
+  text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+
+/* Paragraphs */
+.modal-html-content p {
+  margin: 0 0 12px;
+}
+
+/* Headings */
+.modal-html-content h1,
+.modal-html-content h2,
+.modal-html-content h3,
+.modal-html-content h4,
+.modal-html-content h5,
+.modal-html-content h6 {
+  font-weight: 700;
+  margin: 16px 0 10px;
+  color: #1a1a1a;
+  line-height: 1.35;
+}
+
+.modal-html-content h1 { font-size: 1.25rem; }
+.modal-html-content h2 { font-size: 1.15rem; }
+.modal-html-content h3 { font-size: 1.05rem; }
+.modal-html-content h4,
+.modal-html-content h5,
+.modal-html-content h6 { font-size: 1rem; }
+
+.modal-html-content ul {
+  list-style-type: disc;
+  list-style-position: outside;
+}
+
+.modal-html-content ol {
+  list-style-type: decimal;
+  list-style-position: outside;
+}
+
+.modal-html-content li {
+  display: list-item;
+}
+
+/* Inline text formatting */
+.modal-html-content strong,
+.modal-html-content b {
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.modal-html-content em,
+.modal-html-content i {
+  font-style: italic;
+}
+
+/* Links */
+.modal-html-content a {
+  color: var(--brand-primary);
+  text-decoration: underline;
+  word-break: break-word;
+}
+
+.modal-html-content a:hover {
+  text-decoration: none;
+}
+
+/* Images */
+.modal-html-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 12px 0;
+  border-radius: 6px;
+}
+
+/* Tables */
+.modal-html-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.9rem;
+}
+
+.modal-html-content th,
+.modal-html-content td {
+  border: 1px solid #e0e0e0;
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.modal-html-content th {
+  background-color: #f8f8f8;
+  font-weight: 600;
+  color: #222;
+}
+
+.modal-html-content tr:nth-child(even) td {
+  background-color: #fafafa;
+}
+
+/* Blockquotes */
+.modal-html-content blockquote {
+  margin: 16px 0;
+  padding: 10px 16px;
+  border-left: 4px solid var(--brand-primary);
+  background: #f9f9f9;
+  color: #555;
+  font-style: italic;
+}
+
+/* Code blocks */
+.modal-html-content pre {
+  background: #f4f4f4;
+  padding: 12px;
+  border-radius: 6px;
+  overflow-x: auto;
+  font-size: 0.85rem;
+  margin: 12px 0;
+}
+
+.modal-html-content code {
+  background: #f4f4f4;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+/* Horizontal rules */
+.modal-html-content hr {
+  border: none;
+  border-top: 1px solid #e0e0e0;
+  margin: 20px 0;
+}
+
+/* Line breaks */
+.modal-html-content br {
+  display: block;
+  margin-bottom: 6px;
+  content: "";
+}
+
+/* Embedded content safety */
+.modal-html-content iframe,
+.modal-html-content video {
+  max-width: 100%;
+  height: auto;
+  margin: 12px 0;
+}
+
+/* Prevent oversized content */
+.modal-html-content * {
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Image */
+.modal-img-wrapper {
+  width: 175px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.modal-offer-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Typography */
+.modal-offer-title {
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  line-height: 1.3;
+}
+
+/* Action Area */
+.modal-action-area {
+  width: 100%;
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px dashed #e1e4e8;
+  margin-top: auto; /* Push to bottom of scrollable area if content is short */
+}
+
+/* Rest of existing styles (Buttons, Code Box, etc.) remain the same... */
+.coupon-code-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  border: 2px dashed var(--brand-primary);
+  padding: 10px 15px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.code-text {
+  font-family: "Courier New", monospace;
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #1a1a1a;
+  letter-spacing: 1px;
+}
+
+.btn-modal-cta {
+  background: var(--brand-primary) !important;
+  color: #fff !important;
+  border: none;
+  padding: 12px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-align: center;
+  display: block;
+  text-decoration: none !important;
+  transition: background 0.2s !important;
+  width: fit-content !important;
+}
+
+.btn-modal-cta:hover {
+  background: var(--brand-secondary) !important;
+  color: #fff !important;
+}
+
+.btn-close-modal {
+  background: transparent;
+  border: none;
+  color: #999;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.1rem 0.5rem !important;
+}
+.btn-close-modal:hover {
+  color: #333;
+}
+
+.unique-merchant-card-circle {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  transition: transform 0.3s ease;
+}
+
+.unique-merchant-card-circle:hover {
+  transform: translateY(-5px);
+}
+
+/* The Circular Container */
+.store-circle-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.store-circle-img-box {
+  max-width: 140px; /* Fixed Size for Circle */
+  height: 100px;
+  width: 100px;
+  border-radius: 50%; /* Make it a circle */
+  background: #ffffff;
+  border: 1px solid #e1e4e8; /* Subtle border */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 20px; /* Padding to ensure logo doesn't touch edges */
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Image Styling */
+.store-circle-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Ensures logo fits inside without cropping */
+  transition: transform 0.3s ease;
+  filter: grayscale(
+    0%
+  ); /* Optional: Start grayscale? Reference image has color. */
+}
+
+/* Hover Effect: Border Color & Shadow */
+.unique-merchant-card-circle:hover .store-circle-img-box {
+  border-color: var(--brand-primary); /* Brand Purple Border */
+  box-shadow: 0 8px 20px rgba(111, 44, 145, 0.15); /* Purple Glow */
+}
+
+.unique-merchant-card-circle:hover .store-circle-img {
+  transform: scale(1.1); /* Gentle Zoom */
+}
+
+/* Text Below (Optional - matches the name, not the logo text) */
+.store-circle-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+  margin-top: 12px;
+  max-width: 140px; /* Match circle width */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.2s ease;
+}
+
+.unique-merchant-card-circle:hover .store-circle-name {
+  color: var(--brand-primary);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .store-circle-img-box {
+    width: 100px;
+    height: 100px;
+    padding: 15px;
+  }
+
+  .store-circle-name {
+    font-size: 0.8rem;
+    max-width: 100px;
+  }
+}
+
+.seo-alpha-dropdown {
+  position: relative;
+  display: inline-block;
+  z-index: 50;
+}
+
+/* 2. The Main Toggle Button */
+.seo-alpha-toggle {
+  background-color: var(--brand-primary) !important; /* Brand Purple */
+  color: #ffffff !important;
+  border: 1px solid var(--brand-primary) !important;
+  border-radius: 6px;
+  padding: 8px 24px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(111, 44, 145, 0.2); /* Soft Purple Shadow */
+  min-width: 140px;
+  text-align: center;
+}
+
+/* Toggle Hover */
+.seo-alpha-toggle:hover {
+  background-color: var(--brand-secondary) !important; /* Lighter Purple */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(111, 44, 145, 0.3);
+}
+
+/* 3. The Dropdown Menu */
+.seo-alpha-menu {
+  position: absolute;
+  top: 110%; /* Slight gap below button */
+  right: 0; /* Align to right edge */
+  background-color: #ffffff;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  width: 100%; /* Match button width */
+  min-width: 140px;
+  max-height: 300px;
+  overflow-y: auto;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 5px;
+}
+
+/* Show Menu on Parent Hover */
+.seo-alpha-dropdown:hover .seo-alpha-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* 4. List Items (Links) */
+.seo-alpha-link {
+  display: block;
+  padding: 8px 12px;
+  color: var(--text-body) !important;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  margin-bottom: 2px;
+}
+
+/* Link Hover: Light Purple Background */
+.seo-alpha-link:hover {
+  background: #f3e8ff !important; /* Very light purple */
+  color: var(--brand-primary) !important;
+  box-shadow: none;
+}
+
+/* 5. ACTIVE/SELECTED State (The Update you needed) */
+/* Changed from Blue to Brand Purple */
+.seo-alpha-link.active {
+  background: var(--brand-primary) !important;
+  color: #ffffff !important;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(111, 44, 145, 0.3);
+}
+
+/* 6. Custom Scrollbar for the list */
+.seo-alpha-menu::-webkit-scrollbar {
+  width: 4px;
+}
+.seo-alpha-menu::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+.seo-alpha-menu::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 4px;
+}
+.seo-alpha-menu::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-primary);
+}
+
+.alphabet-toggle-outer {
+  display: inline-block;
+  background: #ffffff;
+  border-radius: 50px; /* Large pill shape for container */
+  padding: 6px 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Soft shadow lift */
+  border: 1px solid #f0f0f0;
+}
+
+/* 2. Inner Flex Wrapper */
+.alphabet-toggle-inner {
+  display: flex;
+  align-items: center;
+  gap: 8px !important; /* Space between circles */
+}
+
+/* 3. Pagination Circle Button */
+.alpha-btn-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px; /* Fixed Size */
+  height: 40px;
+  border-radius: 50%; /* Perfect Circle */
+  background-color: #ffffff;
+  border: 1px solid #e1e4e8; /* Light Border */
+  color: #555;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+/* Hover State */
+.alpha-btn-circle:hover {
+  background-color: #f3e8ff; /* Light Purple */
+  color: var(--brand-primary);
+  border-color: var(--brand-primary);
+  transform: translateY(-2px);
+}
+
+/* 4. Active State (Current Page) */
+.alpha-btn-circle.active {
+  background-color: var(--brand-primary) !important; /* Royal Purple */
+  color: #ffffff !important;
+  border-color: var(--brand-primary) !important;
+  box-shadow: 0 4px 10px rgba(111, 44, 145, 0.3);
+}
+
+/* 5. Disabled State (Ellipsis ...) */
+.alpha-btn-circle.disabled {
+  border: none;
+  background: transparent;
+  color: #999;
+  cursor: default;
+  pointer-events: none;
+  font-size: 1.2rem;
+  line-height: 0.5;
+  padding-bottom: 10px; /* Adjust alignment for dots */
+}
+
+/* Arrows (Specifically style the arrows if needed) */
+.alpha-btn-circle span {
+  line-height: 1;
+  font-size: 1.1rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 576px) {
+  .alpha-btn-circle {
+    width: 32px;
+    height: 32px;
+    font-size: 0.85rem;
+  }
+
+  .alphabet-toggle-inner {
+    gap: 4px !important;
+  }
+}
+
+.mobile-nav-overlay-custom {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  z-index: 9998; /* Just below drawer */
+  animation: fadeIn 0.3s ease;
+}
+
+/* 2. Drawer Panel */
+.mobile-nav-drawer-custom {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 85%;
+  max-width: 320px;
+  height: 100%;
+  background: #ffffff;
+  z-index: 9999;
+  padding: 20px;
+  box-shadow: 4px 0 15px rgba(0, 0, 0, 0.1);
+  transform: translateX(-100%);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.mobile-nav-drawer-custom.slide-in {
+  transform: translateX(0);
+}
+
+/* 3. Hamburger Button */
+.navbar-toggle-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 30px;
+  height: 24px;
+  position: relative;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.navbar-toggle-btn span {
+  display: block;
+  width: 18px;
+  height: 3px; /* Thickness */
+  background-color: #fff !important; /* Royal Purple */
+  border-radius: 10px; /* Soft edges */
+  transition: all 0.3s ease-in-out;
+  opacity: 1 !important; /* Force visibility */
+}
+
+/* 4. Header & Close Button */
+.mobile-nav-logo {
+  object-fit: contain;
+}
+
+.btn-close-drawer {
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  color: #999;
+  cursor: pointer;
+}
+
+/* 5. Promo Pills (Featured Tags) */
+.mobile-promo-pill {
+  display: inline-block;
+  padding: 6px 12px;
+  background-color: #f3e8ff; /* Light Purple */
+  color: var(--brand-primary);
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.mobile-promo-pill:hover {
+  background-color: var(--brand-primary);
+  color: #fff;
+}
+
+/* 6. Menu Items */
+.mobile-menu-list {
+  margin: 0;
+  padding: 0;
+  flex-grow: 1;
+}
+
+.mobile-menu-item {
+  border-bottom: 1px solid #f4f6f8;
+}
+
+.mobile-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 16px 0;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.mobile-link:hover,
+.mobile-link.active {
+  color: var(--brand-primary);
+}
+
+/* 7. Dropdown & Submenu */
+.dropdown-arrow {
+  width: 12px;
+  transition: transform 0.3s ease;
+  color: #999;
+}
+
+.dropdown-arrow.rotate {
+  transform: rotate(180deg);
+  color: var(--brand-primary);
+}
+
+.mobile-sub-menu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+  background-color: #fafafa; /* Slight distinction */
+  border-radius: 8px;
+}
+
+.mobile-sub-menu.open {
+  max-height: 500px; /* Arbitrary large number for transition */
+  margin-bottom: 10px;
+}
+
+.sub-link {
+  display: block;
+  padding: 10px 15px;
+  font-size: 0.9rem;
+  color: #555;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.sub-link:hover {
+  color: var(--brand-primary);
+  padding-left: 20px; /* Slide effect */
+}
+
+.sub-link.view-all {
+  color: var(--brand-primary);
+  font-weight: 700;
+  border-top: 1px dashed #e1e4e8;
+  margin-top: 5px;
+}
+
+.search-mobile-toggle {
+  color: #fff !important;
+  font-size: 1.2rem;
+  transition: color 0.2s ease;
+}
+.search-mobile-toggle:hover {
+  color: var(--brand-secondary) !important;
+}
+
+@media (max-width: 991px) {
+  .navsearch-container {
+    /* This ensures the desktop search component is hidden */
+    display: block !important;
+  }
+
+  .navsearch-dropdown {
+    position: fixed !important; /* Fixed to viewport */
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important; /* Full width */
+    height: 100vh !important; /* Full height */
+    margin: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    background: #ffffff !important; /* Solid white background */
+    overflow-y: auto; /* Allow scrolling of the entire modal */
+    z-index: 9999;
+  }
+
+  /* Ensure internal container fills space */
+  .navsearch-dropdown-container {
+    padding: 15px !important;
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    overflow: visible;
+  }
+
+  /* Search Input Bar layout fix */
+  .searchbox-bar {
+    padding: 8px !important;
+    border-radius: 8px !important;
+  }
+
+  /* Close button for mobile search bar */
+  .btn-close-search {
+    background: none;
+    border: none;
+    color: var(--brand-primary);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0 5px;
+    line-height: 1;
+  }
+
+  /* Stack Tags and Results vertically */
+  .navsearch-tags {
+    width: 100% !important;
+    max-height: 200px; /* Constraint tag height */
+    margin-bottom: 20px;
+    padding-right: 10px;
+  }
+
+  .navsearch-results {
+    width: 100% !important;
+    padding-left: 0 !important;
+  }
+
+  /* Tabs (Buttons) for Mobile - forced to wrap */
+  .navsearch-result-options {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  /* Result Cards (Merchant/Category) should take full width */
+  .navsearch-result-list .col-12,
+  .navsearch-result-list .col-lg-6 {
+    width: 100% !important;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+.mobile-search-bar {
+  display: flex;
+  width: 100%;
+  border: 2px solid var(--brand-primary);
+  border-radius: 50px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(111, 44, 145, 0.15);
+}
+
+.mobile-search-input {
+  flex-grow: 1;
+  padding: 10px 15px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  color: #333;
+  background-color: #ffffff;
+}
+
+.mobile-search-input::placeholder {
+  color: #999;
+}
+
+.mobile-search-btn {
+  background: var(--brand-primary);
+  color: #ffffff;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background 0.2s ease;
+}
+
+.mobile-search-btn:hover {
+  background: var(--brand-secondary);
+}
+
+/* .offer-modal .modal-header.offer-modal-header {
+  background: linear-gradient(180deg, #ffffff 0%, #f7faff 100%) !important;
+  border-bottom: 2px solid var(--border-color);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  position: relative;
+} */
+
+.offer-modal-title {
+  flex-grow: 1;
+  margin-right: 20px;
+}
+
+.offer-modal-main-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Close Button (Absolute position for better control) */
+.offer-modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: #999;
+  cursor: pointer;
+  line-height: 0.5;
+}
+
+.offer-modal-close:hover {
+  color: var(--urgency-red);
+}
+
+/* Tags in Header */
+.offer-tags {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.offer-tags .tag {
+  font-size: 0.75rem;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Custom Tag Colors */
+.tag.verified {
+  background: #e6f7ef;
+  color: #27ae60;
+}
+.tag.expiry {
+  background: #fdf3e8;
+  color: #f57f25;
+}
+
+/* Coupon Box (Input + Buttons) */
+.coupon-box-code {
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 50px;
+  padding: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.coupon-box-code input.coupon-code-input {
+  flex-grow: 1;
+  border: none;
+  background: none;
+  outline: none;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 8px 12px;
+  text-align: center;
+  color: var(--brand-primary);
+  min-width: 80px;
+}
+
+.coupon-box-code .btn-modal-cta-main {
+  background: var(--brand-primary) !important;
+  color: #fff !important;
+  font-weight: 700;
+  padding: 10px 15px;
+  border-radius: 50px;
+  transition: all 0.2s;
+  font-size: 0.9rem;
+  text-align: center;
+  min-width: 80px;
+}
+
+.coupon-box-code .btn-copy-in-header {
+  background: none;
+  border: none;
+  color: var(--brand-primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0 10px;
+  transition: color 0.2s;
+}
+
+/* 2. Modal Body (Two-Column Layout) */
+.offer-modal .modal-body.offer-modal-body {
+  padding: 30px 24px;
+  /* This ensures the body is scrollable if needed */
+}
+
+.offer-body-left {
+  padding-right: 20px;
+  border-right: 1px solid #f0f0f0;
+}
+
+.offer-body-right {
+  padding-left: 20px;
+  border: none;
+}
+
+@media (max-width: 767px) {
+  .offer-body-left {
+    border-right: none;
+    padding-right: 0;
+  }
+  .offer-body-right {
+    padding-left: 0;
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f0;
+  }
+}
+
+/* Main Image */
+.modal-image-container {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.modal-main-image {
+  object-fit: contain;
+  padding: 15px;
+}
+
+/* --- Details Content (HTML/Paragraphs) --- */
+.offer-details-content h5 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.offer-html-content p {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 15px;
+}
+.offer-html-content h1,
+h2,
+h3,
+h4,
+h5 {
+  font-size: 1.15rem;
+  color: #000;
+  opacity: 80%;
+}
+
+.offer-html-content ul,
+.offer-html-content ol {
+  padding-left: 20px;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+}
+
+/* 3. Right Column Modules */
+.rating-component-box,
+.feedback-box,
+.social-share-box {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 15px;
+}
+
+.feedback-title,
+.share-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 12px;
+}
+
+/* Feedback Buttons */
+.feedback-buttons button {
+  background: none;
+  border: 1px solid #ddd;
+  border-radius: 50px;
+  padding: 8px 18px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  color: #444;
+}
+
+.feedback-buttons button:hover:not(:disabled) {
+  transform: translateY(-2px);
+}
+
+.btn-get:hover,
+.btn-deal:hover {
+  background: var(--brand-secondary) !important;
+  color: #fff !important;
+}
+.offer-modal-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.promotion-filter-bar {
+  background: #fff;
+  padding: 0.75rem 1rem; /* Adjust as needed */
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  overflow: visible !important; /* CRITICAL: Allows dropdown to spill out */
+  z-index: 5; /* Ensure bar is above content below */
+}
+
+/* Left side: Type Filters (Pills) */
+.filter-pills {
+  display: flex;
+  gap: 0.5rem;
+  background: #f8f9fa;
+  padding: 5px;
+  border-radius: 50px; /* Full rounded */
+}
+
+.filter-pill {
+  padding: 8px 20px;
+  border-radius: 40px;
+  text-decoration: none;
+  color: #6c757d;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.filter-pill:hover {
+  color: #000;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.filter-pill.active {
+  background: #fff;
+  color: #0d6efd; /* Your Primary Color */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border-color: #e9ecef;
+}
+
+/* Right side: Sort Dropdown */
+.custom-sort-dropdown .btn {
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 500;
+  border: 1px solid #dee2e6;
+  background: #fff;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.custom-sort-dropdown .btn:hover {
+  background: #f8f9fa;
+  border-color: #c1c9d0;
+}
+
+.custom-sort-dropdown .dropdown-menu {
+  border: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 8px;
+  margin-top: 8px;
+}
+
+.custom-sort-dropdown .dropdown-item {
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 0.95rem;
+}
+
+.custom-sort-dropdown .dropdown-item:hover,
+.custom-sort-dropdown .dropdown-item.active {
+  background-color: #f0f4ff;
+  color: #0d6efd;
+}
+
+/* --- 1. Custom Dropdown Styles (Isolated from Global Overrides) --- */
+.promo-sort-group {
+  position: relative;
+  display: inline-block;
+}
+
+.promo-sort-btn {
+  display: flex;
+  align-items: center;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  padding: 8px 16px;
+  border-radius: 50px;
+  color: #333;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.promo-sort-btn:hover, .promo-sort-btn.show {
+  background: #fff;
+  border-color: #6a11cb; /* Purple accent */
+  color: #6a11cb;
+  box-shadow: 0 4px 12px rgba(106, 17, 203, 0.1);
+}
+
+/* Custom Menu Styling */
+.promo-sort-menu {
+  position: absolute; /* CRITICAL: takes it out of flow */
+  top: calc(100% + 10px); /* 10px gap from button */
+  right: 0;
+  width: 220px; /* specific width prevents squashing */
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.08);
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.15); /* Strong shadow for depth */
+  z-index: 9999; /* Highest priority */
+  animation: fadeIn 0.2s ease-out;
+}
+
+.promo-sort-menu.show {
+  display: block;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+.promo-sort-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  color: #495057;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background 0.2s;
+}
+
+.promo-sort-item:hover {
+  background: #f3f0ff; /* Light purple hover */
+  color: #6a11cb;
+}
+.promo-sort-item.active {
+  background: #6a11cb;
+  color: #fff !important;
+}
+/* --- 2. Professional Details Card (RGB Gradient Effect) --- */
+.promotion-details-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.08); /* Soft, deep shadow */
+  border: 1px solid #f0f0f0;
+  margin-bottom: 1.5rem;
+}
+
+/* The RGB/Gradient Top Border */
+.promotion-details-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  /* Attractive gradient: Purple -> Pink -> Blue */
+  background: linear-gradient(90deg, #6a11cb 45%, #2575fc 100%);
+}
+
+/* --- 3. Sidebar Sticky Fix --- */
+/* Ensure the parent row aligns items to stretch so columns are equal height */
+.promotion-row {
+  align-items: flex-start; /* Important: Prevents sidebar from stretching, allows sticky to work */
+}
+
+.promotion-sidebar-sticky {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 100px; /* Offset from top of viewport */
+  z-index: 10;
+  height: fit-content; /* Crucial: Sidebar must not be 100% height of parent */
+}
+
+/* Key Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.rotate-180 {
+  transform: rotate(180deg) !important;
+}
+
+.code-text {
+  font-family: 'Courier New', monospace;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #333;
+  letter-spacing: 1px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 10px;
+}
+
+/* Button inside the box */
+.btn-copy-purple {
+  background-color: #6f2c91;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.btn-copy-purple:hover {
+  background-color: #582375;
+}
+
+/* Animation State */
+.btn-copy-purple.copied-anim {
+  background-color: #27ae60; /* Green */
+  transform: scale(1.05);
+}
+
+/* Feedback Message */
+.copy-feedback {
+  font-size: 0.85rem;
+  color: #27ae60;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: all 0.3s ease;
+  height: 20px; 
+  margin-top: 5px;
+}
+.copy-feedback.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.slider-wrapper {
+  position: relative;
+  padding: 0 10px; /* Safety padding for edges */
+}
+
+/* Ensure slides have equal height for the cards */
+.keen-slider__slide {
+  height: auto;
+  display: flex; /* Helps children (cards) fill height */
+  padding-bottom: 20px; /* Space for shadow/hover lift */
+  padding-top: 10px;    /* Space for hover lift */
+}
+
+/* --- Custom Arrow Styles --- */
+.custom-keen-arrow {
+  width: 45px;
+  height: 45px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* Soft shadow */
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  border: 1px solid #eee;
+  color: #333;
+  transition: all 0.2s ease;
+}
+
+/* Left Arrow Position */
+.arrow--left {
+  left: -20px; /* Pull slightly outside container */
+}
+
+/* Right Arrow Position */
+.arrow--right {
+  right: -20px; /* Pull slightly outside container */
+}
+
+/* Hover State - Theme Purple */
+.custom-keen-arrow:not(.arrow--disabled):hover {
+  background-color: #6f2c91; 
+  color: #fff;
+  border-color: #6f2c91;
+  box-shadow: 0 6px 16px rgba(111, 44, 145, 0.3);
+}
+
+/* Disabled State */
+.arrow--disabled {
+  opacity: 0.5;
+  cursor: default;
+  background-color: #f9f9f9;
+  box-shadow: none;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+  .custom-keen-arrow {
+      display: none; /* Hide arrows on mobile, swipe is better */
+  }
+  
+  .slider-wrapper {
+      padding: 0; /* Remove padding for full-width feel on mobile */
+  }
+}
+
+/* --- Section Spacing --- */
+.t2-slider-section {
+  padding: 40px 0;
+  background-color: #fff; /* Clean white bg */
+}
+
+/* --- The Card Design (Reference Image 2) --- */
+.t2-product-card {
+  border: 1px solid var(--t2-purple); /* The specific purple border */
+  border-radius: 20px; /* High border radius like image */
+  background: #fff;
+  padding: 15px;
+  height: 100%;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+}
+
+.t2-product-card:hover {
+  box-shadow: 0 10px 25px rgba(111, 44, 145, 0.15);
+  transform: translateY(-5px);
+}
+
+.t2-card-img-wrapper {
+  height: 180px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.t2-card-img {
+  object-fit: contain;
+  max-height: 100%;
+  max-width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.t2-product-card:hover .t2-card-img {
+  transform: scale(1.05);
+}
+
+.t2-card-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--t2-gray-text); /* Slate grey color */
+  line-height: 1.5;
+  margin-bottom: 15px;
+  
+  /* Truncate to 3 lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* --- The "Check Price" Button --- */
+.t2-check-price-btn {
+  margin-top: auto; /* Pushes button to bottom */
+  width: 100%;
+  background-color: var(--t2-gray-btn-bg);
+  color: var(--t2-gray-text);
+  font-weight: 700;
+  border-radius: 50px; /* Pill shape */
+  padding: 10px 0;
+  text-align: center;
+  font-size: 0.9rem;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.t2-product-card:hover .t2-check-price-btn {
+  background-color: var(--t2-purple);
+  color: #fff;
+}
+
+.dots {
+  display: flex;
+  padding: 10px 0;
+  justify-content: center;
+  margin-top: 20px; /* Space between slider and dots */
+}
+
+.dot {
+  border: none;
+  width: 5px;
+  height: 5px;
+  background: #e1e4e8; /* Light grey for inactive */
+  border-radius: 50%;
+  margin: 0 5px;
+  padding: 4px 12px !important;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.dot:focus {
+  outline: none;
+}
+
+.dot.active {
+  background: #6f2c91; /* Theme Purple for Active */
+  transform: scale(1.2); /* Slightly larger active dot */
+}
+
+/* Ensure wrapper has space for dots */
+.slider-wrapper {
+  position: relative;
+  padding: 0 10px 40px 10px; /* Bottom padding increased for dots */
+}

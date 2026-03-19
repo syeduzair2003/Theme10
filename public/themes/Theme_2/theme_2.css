@@ -1,0 +1,8 @@
+@import "./style.css";
+@import "./bootstrap.min.css";
+@import "./color.css";
+@import "./responsive.css";
+@import "./MyCustom.css";
+@import "../custom-Mybootstrap.css";
+@import "./new.css";
+/* @import "bootstrap/dist/css/bootstrap.min.css"; */

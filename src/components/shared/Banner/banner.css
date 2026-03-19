@@ -1,0 +1,38 @@
+.custom-banner {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .custom-banner:last-of-type {
+    margin-bottom: 0px;
+  }
+  .latest-blog__thumb {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    overflow: hidden;
+    border-radius: 5px;
+  }
+  .latest-blog__thumb a {
+    display: block;
+    height: 100%;
+    width: 100%;
+}
+
+.latest-blog__content {
+    width: calc(100% - 80px);
+    padding-left: 16px;
+}
+  @media screen and (max-width: 424px) {
+    .latest-blog__thumb {
+        width: 60px;
+    }
+  }
+  @media screen and (max-width: 424px) {
+    .latest-blog__content {
+        width: calc(100% - 60px);
+    }
+}

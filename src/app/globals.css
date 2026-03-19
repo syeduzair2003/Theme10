@@ -1,0 +1,70 @@
+/* @import "./variables.css"; */
+/* @import "tailwindcss";
+@import "swiper/css";
+@import "swiper/css/navigation";
+
+@tailwind utilities; */
+/* @import "tailwindcss/preflight"; */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Optional plugin CSS */
+/* @import "swiper/css";
+@import "swiper/css/navigation"; */
+
+
+html,
+body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.oswald {
+  font-family: var(--font-oswald);
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: white;
+  border: 1px solid #e4e4e7;
+  border-radius: 9999px;
+  width: 3rem !important;
+  height: 3rem !important;
+  display: flex;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.2s ease;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 16px !important;
+  font-weight: bold;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  @apply hover:text-white hover:bg-gradient-to-r 
+         hover:from-[#f73a17] hover:via-[#fb4717] hover:to-[#e71c17] 
+         hover:border-white focus:ring-[var(--primary-color)];
+}
+
+.btn-hover-gradient {
+  @apply hover:text-white hover:bg-gradient-to-r 
+         hover:from-[#f73a17] hover:via-[#fb4717] hover:to-[#e71c17] 
+         hover:border-white focus:ring-[var(--primary-color)];
+}

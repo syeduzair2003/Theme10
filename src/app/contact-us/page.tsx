@@ -1,0 +1,85 @@
+import { apiGetMetaData, apiTemplate } from '@/apis/user';
+import cookieService from '@/services/CookiesService';
+import React from 'react'
+import P3 from '@theme3/Pages/Contact-Us/page';
+import P1 from '@theme1/Pages/Contact-Us/page';
+import P2 from '@theme2/Pages/Contact-Us/page';
+import P4 from '@theme4/Pages/Contact-Us/page';
+import P5 from '@theme5/Pages/Contact-Us/page';
+import P6 from '@theme6/Pages/Contact-Us/page';
+import P8 from '@theme8/Pages/Contact-Us/page';
+import P10 from '@theme10/Pages/Contact-Us/page';
+import { Metadata } from 'next';
+import { getBaseImageUrl } from '@/constants/hooks';
+export async function generateMetadata(): Promise<Metadata> {
+  const companyDomain = await cookieService.get("domain");
+  const formattedData = JSON.stringify(["contact-us"]);
+  const meta = (
+    await apiGetMetaData(formattedData, companyDomain.domain)
+  ).data;
+  const twitterHandle = `@${meta?.company_data?.company_name.replace(/\s+/g, "")}`;
+
+  const companyIcon = getBaseImageUrl(companyDomain.domain, meta?.company_data?.site_icon, "/themes/Theme_3/images/logo.png");
+  const companyLogo = getBaseImageUrl(companyDomain.domain, meta?.company_data?.company_logo, "/themes/Theme_3/images/logo.png");
+
+  return {
+    title: meta?.meta_title,
+    description: meta?.meta_description,
+    keywords: meta?.meta_keywords,
+    icons: [
+      {rel: 'icon', url: companyIcon, sizes:'48x48', type:'image/png'}
+    ],
+    alternates: {
+      canonical: `https://${companyDomain.domain}/contact-us`,
+    },
+    openGraph: {
+      title: meta?.og_title ?? meta?.meta_title,
+      description: meta?.meta_description,
+      images: companyLogo
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: meta?.twitter_title || meta?.meta_title,
+      description: meta?.twitter_description || meta?.meta_description,
+      site: twitterHandle,
+      creator: twitterHandle,
+      images: companyLogo
+    },
+  };
+}
+
+const page = async () => {
+  const companyDomain = await cookieService.get("domain");
+  const template = (await apiTemplate(companyDomain.domain)).data
+  const selector = (theme: string): any => {
+    switch (theme?.trim()?.toLowerCase()) {
+      case 'theme 1':
+        return P1;
+      case 'theme 2':
+        return P2;
+      case 'theme 3':
+        return P3;
+      case 'theme 4':
+        return P4;
+      case 'theme 5':
+        return P5;
+      case 'theme 6':
+        return P6;
+      case 'theme 8':
+        return P8;  
+      case 'theme 10':
+        return P10;  
+      default:
+        return P3;
+    }
+  }
+  const SelectedPage = selector("theme 10");
+  return (
+    <>
+      <SelectedPage />
+    </>
+
+  );
+}
+
+export default page

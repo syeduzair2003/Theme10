@@ -1,0 +1,4873 @@
+/* navbar css */
+.navBar-header-wrapper {
+  background-color: #066168;
+  width: 100%;
+  position: relative;
+  z-index: 1000;
+  padding: 20px 0 10px 0;
+}
+
+.navBar-capsule-nav {
+  background-color: #ffffff;
+  border-radius: 50px;
+  padding: 10px 35px;
+  margin: 0;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+
+.navBar-btn-primary {
+  background-color: #72e22a;
+  color: #ffffff !important;
+  text-decoration: none;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(114, 226, 42, 0.4);
+  transition: all 0.3s ease;
+}
+
+.navBar-btn-primary:hover {
+  transform: translateY(-2px);
+  background-color: #63c822;
+}
+
+/* Promotional merchant css  */
+.merchant-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  margin: 4px 6px;
+  background-color: rgba(0, 128, 128, 0.05);
+  /* color: #008080; */
+  border: 1.5px solid transparent;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.merchant-tag:hover {
+  background-color: #ffffff;
+  color: #71d42a;
+  border-color: #71d42a;
+  box-shadow: 0 2px 10px rgba(230, 33, 23, 0.15);
+  transform: scale(1.05);
+}
+
+.merchant-tag.featured {
+  background-color: #71d42a;
+  color: #ffffff;
+  border-color: #71d42a;
+}
+
+.navBar-nav-item a {
+  color: #066168;
+  font-weight: 600;
+  margin: 0 10px;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.navBar-icon-btn i {
+  color: #066168;
+  font-size: 1.2rem;
+}
+
+.navBar-side-drawer {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 280px;
+  height: 100%;
+  background: #fff;
+  z-index: 2000;
+  transition: 0.4s ease-in-out;
+  padding: 40px 20px;
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+}
+
+.navBar-drawer-active {
+  right: 0;
+}
+
+/* Unique & Modern Dropdown Toggle for mobile navbar  */
+.mnav-dropdown-toggle {
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: #666;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.mnav-submenu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 0;
+}
+
+
+/* Parent li must have position relative */
+.navBar-nav-item.has-child {
+  position: relative;
+}
+
+/* Hide dropdown by default */
+.nav-submenu.stores-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 250px;
+  border: 1px solid #F0F0F0;
+  border-radius: 8px;
+  background-color: #EFFFFF;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 0;
+  width: max-content;
+}
+
+/* ============drop down hover for stores============ */
+/* Show dropdown on hover */
+.navBar-nav-item.has-child:hover>.nav-submenu.stores-dropdown {
+  display: block;
+}
+
+/* Dropdown items styling */
+.nav-submenu-item {
+  border-bottom: 1px solid #f0f0f0;
+  padding: 5px 10px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+/* ============drop down hover for Events ============ */
+
+/* Hide dropdown by default */
+.navBar-nav-item.has-child>.nav-submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background-color: #EFFFFF;
+  border: 1px solid #F0F0F0;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000 !important;
+  padding: 0;
+  width: max-content;
+}
+
+/* Show dropdown on hover */
+.navBar-nav-item.has-child:hover>.nav-submenu {
+  display: block;
+}
+
+/* Dropdown items */
+.nav-submenu-item {
+  padding: 10px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+/* ============ Search Bar ==================== */
+
+/* The main wrapper that looks like the search bar */
+.modern-search-bar {
+  background: white;
+  border-radius: 50px;
+  /* Full pill shape */
+  padding: 4px;
+  /* Space between the outer edge and the inner elements */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  /* Soft shadow */
+  display: flex;
+  align-items: center;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+/* Add a subtle highlight when the user types */
+.modern-search-bar:focus-within {
+  box-shadow: 0 6px 16px rgba(6, 97, 104, 0.15);
+  /* Tinted shadow matching your brand */
+  border-color: rgba(6, 97, 104, 0.2);
+}
+
+/* The Magnifying Glass Icon */
+.search-icon {
+  color: #6c757d;
+  margin-left: 16px;
+  font-size: 1.1rem;
+}
+
+/* Clean Input Field */
+.modern-input {
+  border: none;
+  background: transparent;
+  box-shadow: none !important;
+  /* Remove Bootstrap blue glow */
+  padding-left: 12px;
+  font-size: 1rem;
+}
+
+.modern-input::placeholder {
+  color: #999;
+  font-weight: 300;
+}
+
+.modern-input:focus {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+/* The Button - Floating inside the right side */
+.modern-search-btn {
+  border-radius: 50px !important;
+  background-color: #066168;
+  color: white;
+  padding: 8px 24px;
+  font-weight: 500;
+  border: none;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.modern-search-btn:hover {
+  background-color: #054d53;
+  /* Slightly darker on hover */
+}
+
+.modern-search-btn:active {
+  transform: scale(0.96);
+  /* Subtle click effect */
+}
+
+.searchbar-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.btn-search-icon {
+  background: transparent;
+  border: none;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+.btn-search-icon svg {
+  font-size: 18px;
+}
+
+.btn-search-icon.active svg {
+  opacity: 0.85;
+}
+
+.search-popup-box {
+  position: absolute;
+  top: 62px;
+  /* places the dropdown under the navbar search area; adjust if needed */
+  right: 0;
+  width: 80vw;
+  min-width: 80vw;
+  max-width: calc(100vw - 40px);
+  z-index: 50;
+  animation: popFade 0.18s ease;
+  background-color: #EFFFFF !important;
+}
+
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.search-input {
+  border: 1px solid #ddd;
+  padding-left: 20px;
+  height: 43px;
+}
+
+/* 
+.search-input:focus {
+  box-shadow: none;
+  border-color: #0d6efd;
+}
+
+.search-submit-btn {
+  background: #0d6efd;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+}
+
+.search-submit-btn:hover {
+  background: #0b5ed7;
+}
+.custom-search-body {
+  margin-top: 20px;
+  max-height: 380px;
+  overflow-y: auto;
+  padding-right: 5px;
+} */
+.custom-search-body::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-search-body::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 6px;
+}
+
+.cus-tags {
+  display: inline-block;
+  padding: 6px 14px;
+  background: #EFFFFF;
+  border-radius: 20px;
+  font-size: 13px;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.cus-tags:hover {
+  background: #066168;
+  color: #fff;
+}
+
+.custom-search-heading {
+  font-size: 15px;
+  color: #222;
+}
+
+.custom-search-result {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 15px;
+}
+
+.custom-search-item-card {
+  /* Fixes the "Row" issue by setting a specific width for each tile */
+  width: 150px;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  border-radius: 12px;
+  border: 1px solid #eef2f6;
+  background: #fff;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  /* Prevents text from pushing the card wider than 150px */
+  overflow: hidden;
+}
+
+.merchant-logo-box {
+  width: 100%;
+  height: 60px;
+  /* Uniform height for all logos */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.merchant-name-box {
+  width: 100%;
+  text-align: center;
+  color: #222;
+  font-size: 13px;
+  line-height: 1.2;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.custom-search-item-card:hover {
+  border-color: #008080;
+  /* Teal brand color */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-3px);
+}
+
+/* Right-side navbar container */
+.navBar-extra-nav {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+/* Search container wrapper */
+.search-custom-new {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.search-custom-new .btn-search-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-custom-new .search-popup-box {
+  right: 0;
+  top: calc(100% + 12px);
+}
+
+/* mobile navbar search css  */
+
+/* Container for the whole dropdown */
+.mnav-search-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(10px);
+  border: 1px solid #eee;
+  border-radius: 0 0 16px 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  padding: 16px;
+  z-index: 1000;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+/* Section Titles */
+.mnav-s-title {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #888;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+  padding-left: 4px;
+}
+
+/* The Store Grid - Fixes the overlapping */
+.mnav-s-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  /* One column for mobile clarity */
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+/* Individual Store Card */
+.mnav-s-card {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.mnav-s-card:active {
+  background: #fff;
+  border-color: #0070f3;
+  transform: scale(0.98);
+}
+
+.mnav-s-card span {
+  margin-left: 12px;
+  font-size: 0.95rem;
+  color: #333;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* Prevents long text from breaking layout */
+}
+
+/* Categories Pill Layout */
+.mnav-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mnav-tag {
+  padding: 6px 14px;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: #555;
+  text-decoration: none;
+  transition: 0.2s;
+}
+
+.mnav-tag:active {
+  background: #333;
+  color: #fff;
+}
+
+.mt-2 {
+  margin-top: 16px;
+}
+
+/* search paeg css  */
+/* cartegory card design  */
+
+/* Container Link */
+.category-pill-link {
+  text-decoration: none !important;
+  display: block;
+  height: 100%;
+}
+
+/* The Pill/Card */
+.category-pill-item {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.category-pill-text {
+  color: #334155;
+  font-weight: 500;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Hover State */
+.category-pill-item:hover {
+  border-color: #008080;
+  /* Match your brand teal */
+  background-color: #f0fdfa;
+  /* Very light teal tint */
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.category-pill-item:hover .category-pill-text {
+  color: #ff9f00;
+}
+
+/* Banner Section */
+.trvHp5BnrWrap {
+  position: relative;
+  overflow: hidden;
+  background-color: #fff;
+  width: 100%;
+}
+
+.trvHp5BnrSec {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+.trvHp5BnrSecContent {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* The "brush stroke" shape usually covers about half the screen */
+  height: 100%;
+  z-index: 20;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: left center;
+  display: flex;
+  align-items: center;
+  padding-left: 8%;
+  pointer-events: none;
+  /* Allows slider interaction through the transparent parts */
+}
+
+.trvBanner5Text {
+  max-width: 550px;
+  pointer-events: auto;
+}
+
+.trvBanner5TextSmall {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2.5rem;
+  color: #066168;
+  display: block;
+}
+
+.trvBanner5TextLarge {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 800;
+  color: #066168;
+  line-height: 1.1;
+  margin: 10px 0;
+}
+
+.highlight {
+  color: #ffb600;
+}
+
+.trvBannerTextDetail {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 35px;
+  line-height: 1.6;
+}
+
+/* Buttons */
+.trvBannerBtnWrap {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+}
+
+.siteButton {
+  background-color: #71d42a;
+  color: white;
+  padding: 16px 32px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(113, 212, 42, 0.3);
+}
+
+.trvWspMorInfo {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: #066168;
+  font-weight: bold;
+}
+
+.trvWspMorInfo span {
+  display: block;
+  font-size: 1.3rem;
+  color: #ffb600;
+}
+
+/* Slider Media */
+.trvDSliderMedia img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Floating Decorations */
+.trvHp5BnrBaloonTop,
+.trvHp5BnrBaloonBottom {
+  position: absolute;
+  z-index: 25;
+  animation: float 6s ease-in-out infinite;
+}
+
+.trvHp5BnrBaloonTop {
+  top: 15%;
+  left: 38%;
+}
+
+.trvHp5BnrBaloonBottom {
+  bottom: 10%;
+  left: 45%;
+  animation-duration: 8s;
+}
+
+.trvHp5BnrLeafTop {
+  position: absolute;
+  top: 0;
+  right: 40%;
+  z-index: 25;
+  width: 150px;
+}
+
+.trvHp5BnrLeafBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 25;
+  width: 120px;
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-25px);
+  }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 991px) {
+  .trvHp5BnrSecContent {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.85);
+    padding: 40px 20px;
+  }
+}
+
+/* ==============================
+   POPULAR MERCHANT CARD 
+   ============================== */
+
+.popular-card {
+  background: #EFFFFF;
+  border-radius: 26px;
+  padding: 18px 18px 26px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.popular-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.15);
+}
+
+.popular-card-media {
+  border-radius: 22px;
+  overflow: hidden;
+}
+
+.popular-card-img {
+  width: 90%;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 22px;
+  transition: transform 0.6s ease;
+}
+
+.popular-card:hover .popular-card-img {
+  transform: scale(1.03);
+}
+
+.popular-card-info {
+  margin-top: 18px;
+}
+
+.popular-card-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.popular-card-title a {
+  color: #0b5c5c;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.popular-card:hover .popular-card-title a {
+  color: #f9a602;
+}
+
+.popular-card.active {
+  background: #0b5c5c;
+}
+
+.popular-card.active .popular-card-title a {
+  color: #ffffff;
+}
+
+.popular-card.active:hover .popular-card-title a {
+  color: #ffd56b;
+}
+
+@media (max-width: 991px) {
+  .popular-card-img {
+    height: 220px;
+  }
+}
+
+@media (max-width: 575px) {
+  .popular-card {
+    padding: 16px;
+  }
+
+  .popular-card-img {
+    height: 200px;
+  }
+
+  .popular-card-title {
+    font-size: 16px;
+  }
+}
+
+/* Event Card css */
+.event-card {
+  background: #ffffff;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.12);
+}
+
+/* Ribbon */
+.event-card__ribbon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #FFAA0D;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  /* Round the inner corner significantly, and match the outer corner */
+  border-radius: 0 8px 0 16px;
+  /* The 8px (top-right) matches your main card's corner radius */
+  /* The 16px (bottom-left) creates that smooth swoop */
+  z-index: 10;
+}
+
+/* Image */
+.event-card__image {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+}
+
+.event-card__img {
+  object-fit: contain;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+}
+
+/* Body */
+.event-card__body {
+  padding: 20px;
+}
+
+.event-card__title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 12px;
+}
+
+/* Meta */
+.event-card__meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.event-card__rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.rating-number {
+  color: #0f766e;
+  font-weight: 600;
+}
+
+.stars {
+  color: #f59e0b;
+  font-size: 14px;
+}
+
+.event-card__days {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: #475569;
+}
+
+.event-card__days i {
+  color: #0f766e;
+}
+
+/* Footer */
+.event-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Button */
+.event-card__btn {
+  border: 2px solid #22c55e;
+  color: #0f766e;
+  background: transparent;
+  padding: 8px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  transition: all 0.25s ease;
+  text-align: center;
+}
+
+.event-card__btn:hover {
+  background: #22c55e;
+  color: #ffffff;
+}
+
+/* Price */
+.event-card__price {
+  text-align: right;
+}
+
+.event-card__price .price {
+  font-size: 22px;
+  font-weight: 700;
+  color: #f59e0b;
+}
+
+.event-card__price .per-day {
+  display: block;
+  font-size: 12px;
+  color: #64748b;
+}
+
+/* Days left style css */
+.product-item__prevPrice {
+  animation: premiumBlinkGreen 1.4s ease-in-out infinite;
+  font-weight: 600;
+  font-size: 0.85rem;
+  padding: 3px 10px;
+  border-radius: 6px;
+  background: linear-gradient(135deg,
+      rgba(16, 185, 129, 0.15),
+      rgba(13, 148, 136, 0.18));
+  border: 1px solid rgba(13, 148, 136, 0.45);
+  display: inline-block;
+  color: #0f766e;
+  /* deep teal */
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+@keyframes premiumBlinkGreen {
+  0% {
+    box-shadow: 0 0 0 rgba(16, 185, 129, 0);
+  }
+
+  50% {
+    box-shadow: 0 0 12px rgba(16, 185, 129, 0.45);
+  }
+
+  100% {
+    box-shadow: 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+.price-text {
+  color: #FFAA0D;
+  /* currency color */
+  font-size: 1rem;
+}
+
+.original-price {
+  font-size: 0.875rem;
+  color: #888888;
+  /* muted gray for original price */
+}
+
+/* .badge-discount {
+  display: inline-block;
+  background-color: #C7F9C7;
+  color: #000;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 4px 8px;
+  border-radius: 6px;
+  text-align: center;
+} */
+
+/* Popular Coupon Card css */
+.travel-card {
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.travel-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+/* Image Section */
+.travel-card__img-container {
+  position: relative;
+  width: 100%;
+  height: 100px;
+  overflow: hidden;
+}
+
+.travel-card__compare {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #004d40;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Body Section */
+.travel-card__body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.travel-card__meta {
+  font-size: 12px;
+  color: #6c757d;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.travel-card__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #004d40;
+  margin-bottom: 8px;
+  line-height: 1.3;
+  text-decoration: none;
+}
+
+.travel-card__subtitle {
+  font-size: 13px;
+  color: #6c757d;
+  margin-bottom: 15px;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Icons Row */
+.travel-card__icons {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  color: #004d40;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 15px;
+}
+
+.travel-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+}
+
+/* Price Section */
+.travel-card__price-block {
+  margin-bottom: 15px;
+}
+
+.travel-card__label {
+  font-size: 12px;
+  color: #6c757d;
+  display: block;
+}
+
+.travel-card__prices {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.price-original {
+  text-decoration: line-through;
+  color: #ff9800;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.price-sale {
+  font-size: 24px;
+  font-weight: 800;
+  color: #004d40;
+}
+
+.price-suffix {
+  font-size: 12px;
+  color: #6c757d;
+}
+
+/* Highlights */
+.travel-card__highlights {
+  font-size: 12px;
+  color: #004d40;
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: 48%;
+  /* 2 columns */
+}
+
+.check-icon {
+  color: #ff9800;
+  font-weight: bold;
+}
+
+/* Footer Action */
+.travel-card__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.btn-book-now {
+  border: 1px solid #28a745;
+  background: #ffffff;
+  color: #28a745;
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.btn-book-now:hover {
+  background: #28a745;
+  color: #ffffff;
+}
+
+.travel-card__rating {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.rating-stars {
+  color: #ff9800;
+  font-size: 14px;
+}
+
+.rating-text {
+  font-size: 11px;
+  color: #6c757d;
+}
+
+.truncate-3-lines {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Browse deal card  */
+.browse-deal-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  background-color: #ffffff;
+  transition: box-shadow 0.3s ease;
+  min-height: 180px;
+}
+
+.browse-card__title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #004d40;
+  margin-bottom: 8px;
+  line-height: 1.3;
+  text-decoration: none;
+}
+
+/* Recommendation section css */
+.recom-media-wrapper {
+  position: relative;
+  height: 650px;
+  display: flex;
+  align-items: center;
+}
+
+.recom-img-main-container {
+  position: relative;
+  background: #fff8f0;
+  border-radius: 50%;
+  padding: 20px;
+  z-index: 1;
+}
+
+.recom-circle-overlay {
+  position: absolute;
+  border-radius: 50%;
+  border: 12px solid #fff;
+  overflow: hidden;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+}
+
+.sm-top {
+  top: 6%;
+  left: 45%;
+  z-index: 2;
+  width: 180px;
+  height: 180px;
+}
+
+.lg-mid {
+  top: 35%;
+  left: 45%;
+  z-index: 3;
+  width: 320px;
+  height: 320px;
+}
+
+.recom-vertical-experience {
+  position: absolute;
+  right: -50px;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.exp-label {
+  font-size: 18px;
+  color: #066168;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.exp-number {
+  font-size: 110px !important;
+  line-height: 1;
+  margin-left: 20px;
+  font-family: sans-serif;
+}
+
+.ms-n2 {
+  margin-left: -12px !important;
+}
+
+.recom-title {
+  font-size: 42px;
+  color: #066168;
+}
+
+.btn-success {
+  background-color: #6cc000 !important;
+  border-color: #6cc000 !important;
+}
+
+@media (max-width: 991px) {
+  .recom-media-wrapper {
+    height: auto;
+    margin-bottom: 50px;
+  }
+
+  .recom-circle-overlay {
+    position: relative;
+    left: 0;
+    top: 0;
+    display: inline-block;
+    margin: 10px;
+    border: 5px solid #fff;
+  }
+
+  .lg-mid,
+  .sm-top {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+/* Bannaer slider */
+
+.ban-slider {
+  background-color: #e0f2f1;
+  padding: 40px 0;
+}
+
+.ban-slider-inner {
+  background-color: #ffffff;
+  border: 2px dashed #cfd8dc;
+  border-radius: 8px;
+  padding: 30px;
+}
+
+.text-orange {
+  color: #ff9800 !important;
+  font-weight: 700;
+  font-size: 70px;
+}
+
+.text-dark-teal {
+  color: #066168;
+}
+
+.scene-img {
+  border-radius: 15px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.scene-img:hover {
+  transform: scale(1.05);
+}
+
+.gallery-slick .slick-list {
+  margin: 0 -10px;
+}
+
+.gallery-slick .slick-prev:before,
+.gallery-slick .slick-next:before {
+  color: #066168;
+}
+
+/* Explore Section heading  */
+.exp-tour-section {
+  background-color: #ffffff;
+}
+
+.exp-head-title {
+  color: #333;
+  text-transform: uppercase;
+}
+
+.exp-yellow-text {
+  color: #ffc107;
+}
+
+.exp-head-description {
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+}
+
+.exp-head-title-image {
+  margin-top: 10px;
+}
+
+/* Travel Card Component */
+/* Card Container */
+.travel-card {
+  background: #ffffff;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Media/Image Area */
+.travel-card-media {
+  position: relative;
+  height: 200px;
+}
+
+.travel-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.travel-card-compare {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Body Content */
+.travel-card-body {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.travel-card-duration {
+  font-size: 12px;
+  color: #6c757d;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.travel-card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.travel-card-title a {
+  color: #066168;
+  /* Teal */
+  text-decoration: none;
+}
+
+.travel-card-route {
+  font-size: 11px;
+  color: #6c757d;
+  line-height: 1.4;
+  margin-bottom: 15px;
+}
+
+/* Icons Section */
+.travel-card-icons {
+  list-style: none;
+  padding: 0 0 10px 0;
+  margin: 0 0 15px 0;
+  display: flex;
+  gap: 12px;
+  border-bottom: 1px solid #eee;
+}
+
+/* Pricing Section */
+.price-label {
+  display: block;
+  font-size: 11px;
+  color: #6c757d;
+}
+
+.price-box {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.old-price {
+  color: #ffb400;
+  /* Yellow-Orange */
+  text-decoration: line-through;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.new-price {
+  color: #066168;
+  font-weight: 800;
+  font-size: 1.8rem;
+}
+
+.price-sub {
+  font-size: 10px;
+  color: #6c757d;
+  display: block;
+  margin-top: -5px;
+  margin-bottom: 15px;
+}
+
+/* Feature Grid */
+.travel-card-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px 10px;
+}
+
+.travel-card-features li {
+  font-size: 10px;
+  color: #444;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.travel-card-features li i {
+  color: #ffb400;
+}
+
+/* Footer Section */
+.travel-card-footer {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-book {
+  border: 2px solid #066168;
+  color: #066168;
+  background: white;
+  padding: 6px 20px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 13px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn-book:hover {
+  background: #066168;
+  color: white;
+}
+
+.rating-text {
+  font-size: 10px;
+  color: #6c757d;
+  display: block;
+  text-align: right;
+}
+
+.stars i {
+  color: #ffb400;
+  font-size: 10px;
+}
+
+/* Top Destination Section  */
+.dest-main-wrapper {
+  background-color: #066168;
+  border-radius: 40px;
+  /* margin: 20px; */
+  padding: 60px 40px 80px 40px !important;
+  position: relative;
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+.dest-bg-text-container {
+  position: absolute;
+  top: 20%;
+  right: 5%;
+  text-align: right;
+  z-index: 1;
+  pointer-events: none;
+  line-height: 0.85;
+}
+
+.dest-bg-ghost-text {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.ghost-top {
+  color: #ffb703;
+  display: block;
+}
+
+.ghost-dest {
+  color: #ffffff;
+  display: block;
+}
+
+.dest-climber-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.dest-climber-img {
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+}
+
+.dest-content-z {
+  position: relative;
+  z-index: 5;
+  margin-bottom: 50px;
+}
+
+.dest-description {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  max-width: 450px;
+}
+
+.dest-btn-action {
+  background-color: #76e031 !important;
+  color: #066168 !important;
+  border: none !important;
+  padding: 12px 30px;
+  font-weight: 600;
+  margin-top: 20px;
+}
+
+.dest-slider-container {
+  position: relative;
+  z-index: 10;
+  margin-top: 20px;
+}
+
+.dest-card-item {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 24px;
+  padding: 15px;
+  transition: all 0.3s ease;
+}
+
+.dest-image-holder {
+  overflow: hidden;
+  border-radius: 16px;
+  position: relative;
+  aspect-ratio: 3/4;
+}
+
+.card-main-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.dest-card-item:hover {
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+.dest-card-item:hover .card-main-img {
+  transform: scale(1.1);
+}
+
+.card-info h4 {
+  font-size: 1.1rem;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.nav-arrow-btn {
+  position: absolute;
+  top: 45%;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: #ff9f00;
+  color: white;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 20;
+  transition: transform 0.2s;
+}
+
+.nav-arrow-btn:hover {
+  transform: scale(1.1);
+  background-color: #ffb703;
+}
+
+.prev-btn {
+  left: -10px;
+}
+
+.next-btn {
+  right: -10px;
+}
+
+@media (max-width: 991px) {
+  .dest-main-wrapper {
+    padding: 30px 20px;
+  }
+
+  .dest-bg-text-container {
+    opacity: 0.3;
+    top: 10%;
+  }
+
+  .dest-climber-overlay {
+    opacity: 0.2;
+  }
+
+  .dest-content-z {
+    margin-bottom: 30px;
+  }
+
+  .nav-arrow-btn {
+    width: 35px;
+    height: 35px;
+    top: 40%;
+  }
+}
+
+/* Trending Product card css */
+.trend-prod-card {
+  background: #EFFFFF;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 16px;
+}
+
+
+/* Ribbon - The "Red/Green" fold on the corner */
+.prod-ribbon {
+  position: absolute;
+  left: -8px;
+  top: 15px;
+  z-index: 10;
+}
+
+.prod-ribbon span {
+  font-size: 11px;
+  font-weight: 800;
+  color: #FFF;
+  text-transform: uppercase;
+  padding: 5px 15px;
+  background: linear-gradient(90deg, #28a745 0%, #1e7e34 100%);
+  /* Green theme */
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 0 4px 4px 0;
+  position: relative;
+}
+
+/* The small fold behind the ribbon */
+.prod-ribbon span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 100%;
+  border-left: 8px solid transparent;
+  border-top: 8px solid #0a4d1c;
+  /* Darker green for shadow */
+  z-index: -1;
+}
+
+/* Image Section */
+.trend-prod-image {
+  background: #ffffff;
+  /* White bg for product visibility */
+  border-radius: 12px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 130px;
+  /* Fixed width for horizontal card */
+  height: 130px;
+}
+
+/* Body & Typography */
+.trend-prod-body {
+  padding-left: 15px;
+}
+
+.trend-prod-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff !important;
+  /* White text */
+  line-height: 1.4;
+  margin-bottom: 8px;
+  text-decoration: none;
+}
+
+
+.price-info .text-decoration-line-through {
+  color: rgba(255, 255, 255, 0.5) !important;
+  font-size: 14px;
+}
+
+/* Container wrapper */
+.offer-slider-container {
+  position: relative;
+  width: 100%;
+  padding: 0 60px;
+  box-sizing: border-box;
+}
+
+/* The slider track */
+.Trend-keen-slider {
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  user-select: none;
+  touch-action: pan-y;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Individual slides */
+.Trend-keen-slider__slide {
+  position: relative;
+  /* flex: none is critical for Keen Slider to calculate widths */
+  flex: none;
+  width: 100%;
+  min-height: 1px;
+}
+
+/* Navigation Arrows */
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+}
+
+.slider-arrow.left {
+  left: 0;
+}
+
+.slider-arrow.right {
+  right: 0;
+}
+
+/* Pagination */
+.slider-pagination {
+  display: flex;
+  padding: 20px 0;
+  justify-content: center;
+  gap: 10px;
+}
+
+.pagination-bar {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  cursor: pointer;
+}
+
+.pagination-bar.active {
+  background: #ffb600;
+  transform: scale(1.3);
+}
+
+/* Faq section */
+/* Section Background */
+.faqSection {
+  background-color: #f0fbfc;
+  padding: 100px 0;
+}
+
+.faqHeading {
+  font-weight: 700;
+  font-size: 44px;
+  color: #066168;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.faqTextYellow {
+  color: #ffb600;
+}
+
+.faqDesc {
+  color: #555555;
+  font-size: 15px;
+  max-width: 420px;
+  margin-bottom: 45px;
+  line-height: 1.7;
+}
+
+.faqAccordionBox {
+  background: #ffffff;
+  border: 2px solid #c7eaea;
+  border-radius: 35px;
+  padding: 25px 45px;
+}
+
+.faqItem {
+  border-bottom: 1px solid #f2f2f2;
+}
+
+.faqItem:last-child {
+  border-bottom: none;
+}
+
+.faqHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 0;
+  background: none;
+  border: none;
+  text-align: left;
+  color: #066168;
+  font-weight: 600;
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.faqHeader:hover .faqQuestionText {
+  color: #ffb600;
+}
+
+.faqIndicator {
+  color: #ffb600;
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.faqCollapse {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faqShow {
+  max-height: 500px;
+}
+
+.section-heading__inner {
+  display: flex;
+  align-items: center;
+  min-height: 50px;
+}
+
+.section-heading__title {
+  line-height: 1.2;
+  margin: 0;
+}
+
+/* Recently Updated Stores Section */
+
+.product-item-custom {
+  background: #fff;
+  border: 1px solid #e0f2f1;
+  border-radius: 20px;
+  padding: 12px 20px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  display: flex;
+  align-items: center;
+}
+
+.product-item-custom:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(27, 162, 212, 0.15);
+
+  border: 1px solid #066168;
+}
+
+.cashback-logo-wrapper {
+  width: 90px;
+  height: 90px;
+  min-width: 90px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #ffffff;
+  border: 2px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+.cashback-logo {
+  object-fit: contain;
+  width: 100%;
+  height: auto;
+}
+
+.cashback-label {
+  margin: 0;
+  font-size: 18px;
+  color: #066168;
+  font-weight: 700 !important;
+  line-height: 1.2;
+}
+
+/* Remove default link decorations */
+.contributor-item__content a {
+  text-decoration: none !important;
+  color: inherit;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991px) {
+  .faqSection {
+    padding: 60px 0;
+  }
+
+  .faqHeading {
+    font-size: 34px;
+  }
+
+  .faqAccordionBox {
+    padding: 20px 25px;
+    margin-top: 50px;
+  }
+
+  .faqQuotePill {
+    left: 10px;
+    padding: 10px 20px;
+  }
+}
+
+/* Home Category section  */
+
+.custom-col {
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 8px;
+  background: rgb(255, 255, 255);
+  border-radius: 8px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #c7eaea;
+  border-image: initial;
+}
+
+.custom-col {
+  will-change: transform;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.custom-card {
+  background-color: var(--primary-bg);
+  display: flex;
+  justify-content: flex-start;
+  height: 110px !important;
+  border: 1px solid var(--border-color);
+  transition: 0.3s ease-in-out;
+}
+
+.custom-col:hover {
+  transform: translateY(-5px);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 15px;
+}
+
+.custom-col:hover {
+  will-change: transform;
+  transition: transform 0.1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.category-main-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 0%;
+}
+
+/* Blog card css  */
+/* Card Container */
+.blog-card {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0 !important;
+  /* Forces removal of any Bootstrap/parent padding */
+}
+
+
+/* Thumbnail Area */
+.blog-card__thumb {
+  position: relative;
+  width: 100%;
+  background-color: #f8fafc;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.blog-card__img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover;
+  display: block;
+}
+
+/* Content Area */
+.blog-card__content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Meta Data (Date) */
+.blog-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  /* Fixed: Changed from white to a visible gray */
+  color: #64748b;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.blog-card__icon {
+  color: #22c55e;
+  /* Matching icon to your button theme */
+}
+
+/* Title */
+.blog-card__title {
+  margin-bottom: 16px;
+  line-height: 1.5;
+}
+
+.blog-card__title a {
+  color: #066168;
+  /* Your teal brand color */
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.2s ease;
+  /* Standard 2-line clamp */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.blog-card__title a:hover {
+  color: #22c55e;
+  /* Turns green on hover */
+}
+
+/* Action Area */
+.blog-card__action {
+  margin-top: auto;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* Read More Button */
+.blog-card__btn {
+  display: inline-block;
+  background: transparent;
+  color: #22c55e;
+  border: 2px solid #22c55e;
+  padding: 10px 24px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.blog-card__btn:hover {
+  background: #22c55e;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
+}
+
+/* Service Section */
+.trv-service-st2 {
+  background-color: #fffcf5;
+  /* Creamy background from image */
+  padding: 80px 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header Styling */
+.trv-head-title {
+  font-weight: 700;
+  color: #066168;
+  /* Dark Teal */
+  font-size: 2.5rem;
+}
+
+.site-text-yellow {
+  color: #ffaa00;
+  /* Orange/Yellow highlight */
+  margin-right: 10px;
+}
+
+.trv-head-discription {
+  color: #777;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+/* Card Styling */
+.trv-service-bx2 {
+  background: transparent;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+.trv-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  /* Rounded corners for images */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.service-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 20px;
+  transition: transform 0.3s ease;
+}
+
+/* Hover Effect */
+.trv-service-bx2:hover .service-img {
+  transform: scale(1.05);
+}
+
+.trv-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #066168;
+}
+
+.trv-title a {
+  color: #066168;
+  transition: color 0.3s;
+}
+
+.trv-title a:hover {
+  color: #ffaa00;
+}
+
+/* Bottom Section */
+.trv-btm-title-section2 {
+  margin-top: 40px;
+}
+
+.trv-btm-title-section2 span {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #5d6e6e;
+}
+
+.trv-btm-title-large {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #ffaa00;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1;
+}
+
+/* Simple separator line since we removed the image */
+.separator-line {
+  display: inline-block;
+  width: 50px;
+  height: 3px;
+  background-color: #eaeaea;
+  margin-top: 15px;
+}
+
+/* Price Section  */
+/* Container and Section */
+.price-section-full {
+  position: relative;
+  padding: 100px 0;
+  background-color: #f1fdfb;
+  /* Light tint match */
+  overflow: hidden;
+}
+
+.price-text-yellow {
+  color: #ff9800;
+}
+
+.price-head-title-wrap {
+  margin-bottom: 60px;
+}
+
+.price-head-title {
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+
+/* Card Styling */
+.price-card-box {
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  height: 100%;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.price-card-box:hover {
+  transform: translateY(-10px);
+}
+
+/* Light Card */
+.price-card-standard {
+  background-color: #d8f3ee;
+  color: #004d40;
+}
+
+/* Dark Card (Featured) */
+.price-card-featured {
+  background-color: #066168;
+  color: #ffffff;
+}
+
+.price-media {
+  width: 100%;
+  overflow: hidden;
+}
+
+.price-info {
+  padding: 30px;
+}
+
+/* Header Area Inside Card */
+.price-header {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 15px;
+  margin-bottom: 20px;
+}
+
+.price-card-featured .price-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* FIX: Text color for Budget Travel title */
+.price-card-featured .price-title {
+  color: #ffffff !important;
+  font-weight: 700;
+}
+
+.price-title {
+  font-size: 1.25rem;
+  max-width: 60%;
+}
+
+.price-amount-wrap {
+  text-align: right;
+  line-height: 1.2;
+}
+
+.price-value {
+  font-size: 1.8rem;
+  font-weight: 800;
+  display: block;
+}
+
+.price-duration {
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+/* List Styling */
+.price-list {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.price-list li {
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+}
+
+.price-list i {
+  margin-right: 10px;
+  color: #ff9800;
+  /* Arrow icon color */
+}
+
+/* Button */
+.price-btn {
+  background-color: #76c92d;
+  color: #fff !important;
+  padding: 12px 25px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  transition: background 0.3s ease;
+}
+
+.price-btn:hover {
+  background-color: #5da81e;
+}
+
+/* FIX: Balloon Positioning */
+.price-left-balloon {
+  position: absolute;
+  bottom: -20px;
+  left: -40px;
+  z-index: 0;
+  /* Ensures it stays behind the card content */
+  pointer-events: none;
+  /* Allows users to click buttons through the balloon image */
+  opacity: 0.9;
+}
+
+/* Mobile responsive fixes */
+@media (max-width: 768px) {
+  .price-left-balloon {
+    display: none;
+    /* Hide on small screens if it crowds the layout */
+  }
+}
+
+/* Blog Section */
+/* Container Background */
+.trv-blog-style3-section {
+  background-color: #066168;
+  /* Dark teal background from image */
+  background-size: auto;
+  background-repeat: repeat;
+  padding: 80px 0;
+}
+
+.site-text-yellow {
+  color: #ffb400;
+}
+
+/* Card Styling */
+.trv-blog-st3 {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.trv-blog-st3:hover {
+  transform: translateY(-10px);
+}
+
+.trv-post-media img {
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Floating Date */
+.post-date {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #ffffff;
+  padding: 10px;
+  text-align: center;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 12px;
+  color: #333;
+  line-height: 1.2;
+  z-index: 2;
+}
+
+.post-date span {
+  display: block;
+  font-size: 24px;
+  color: #066168;
+}
+
+/* Bottom Text Overlay */
+.trv-post-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 20px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 100%);
+  z-index: 2;
+}
+
+.post-category {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #ffb400;
+}
+
+.post-title {
+  font-size: 18px;
+  line-height: 1.4;
+  font-weight: 600;
+}
+
+/* Button Styling */
+.site-button {
+  background-color: #72d62e;
+  /* Lime green from image */
+  color: #000;
+  padding: 12px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+}
+
+/***** Breadcrunm Green *******/
+
+.breadcrumb-green {
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: #006267;
+}
+
+.breadcrumb-green h1 {
+  color: white;
+  text-transform: capitalize;
+}
+
+.flx-align {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin-bottom: 8px;
+}
+
+.text-body,
+.text-body a {
+  color: #fff !important;
+  text-decoration: none;
+  font-weight: 400;
+  transition: 0.3s;
+}
+
+.text-body a:hover {
+  color: #ffb400 !important;
+}
+
+.font-10 {
+  font-size: 10px;
+  color: #999;
+  display: flex;
+  align-items: center;
+  margin-top: 1px;
+}
+
+h1.text-capitalize {
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 42px;
+  letter-spacing: -0.5px;
+}
+
+ul.flx-align li {
+  display: flex;
+  align-items: center;
+}
+
+/* store card css  */
+
+/* Card Container */
+.store-card {
+  border: 1px solid #006267;
+  /* Teal border */
+  border-radius: 8px;
+  background-color: #fff;
+  transition: all 0.3s ease-in-out;
+  overflow: hidden;
+  min-height: 160px;
+  text-decoration: none;
+}
+
+.store-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+
+.store-card-img-wrapper {
+  background-color: #fff;
+  padding: 15px;
+  min-height: 100px;
+}
+
+.store-card-footer {
+  background-color: rgb(224, 242, 241);
+  border-top: 1px solid #eaeaea;
+  padding: 12px 10px;
+  min-height: 50px;
+}
+
+/* Text Styling */
+.store-card-text {
+  color: #212529;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.2;
+  display: block;
+}
+
+.store-card-text.f-13 {
+  font-size: 13px;
+}
+
+/* Container styling */
+.mer-heading h3 {
+  color: #006267;
+  font-weight: 600;
+  margin-bottom: 20px;
+  font-size: 35px;
+}
+
+.mer-heading p {
+  font-size: 15px;
+  font-weight: 400;
+}
+
+/* Horizontal scroll container */
+.horizontal-scroll-merchant {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.horizontal-scroll-merchant::-webkit-scrollbar {
+  display: none;
+}
+
+.horizontal-scroll-merchant .col-lg-3 {
+  padding: 10px;
+}
+
+/* Container must be relative so the buttons can be absolute inside it */
+.scroll-section-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* The actual scrollable area */
+.horizontal-scroll-container {
+  /* Replace with your dynamic class */
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  /* Hides scrollbar in Firefox */
+  -ms-overflow-style: none;
+  /* Hides scrollbar in IE/Edge */
+  gap: 16px;
+  padding: 10px 0;
+}
+
+.horizontal-scroll-container::-webkit-scrollbar {
+  display: none;
+  /* Hides scrollbar in Chrome/Safari */
+}
+
+/* Base Button Styling */
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 40px;
+  height: 40px;
+  background-color: #006267;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.scroll-btn:hover {
+  background-color: #ffaa0d
+}
+
+.scroll-btn.left {
+  left: -20px;
+}
+
+
+.scroll-btn.right {
+  right: -20px;
+}
+
+/* Category sidebar css  */
+
+/* Container Card */
+.cat-sidebar-card {
+  background: #ffffff;
+  border: 1px solid #f0f0f0;
+  border-radius: 12px;
+  padding: 24px 0;
+  /* Padding on top/bottom, inside scroll handles sides */
+  max-width: 350px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.cat-sidebar-title {
+  color: #006267;
+  /* Adjust to match your exact dark blue */
+  font-size: 1.25rem;
+  font-weight: 700;
+  padding: 0 24px;
+  margin-bottom: 15px;
+}
+
+/* Dashed Separator */
+.cat-sidebar-divider {
+  border-top: 1px dashed #d1d1d1;
+  margin: 15px 0;
+  width: 100%;
+}
+
+/* Scroll Area */
+.cat-sidebar-scroll-area {
+  max-height: 400px;
+  /* Adjust height as needed */
+  overflow-y: auto;
+  padding: 0 10px 0 24px;
+  /* Room for the scrollbar on the right */
+}
+
+/* Custom Scrollbar Styling */
+.cat-sidebar-scroll-area::-webkit-scrollbar {
+  width: 6px;
+}
+
+.cat-sidebar-scroll-area::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.cat-sidebar-scroll-area::-webkit-scrollbar-thumb {
+  background: #006267;
+  /* The bright blue from your image */
+  border-radius: 10px;
+}
+
+/* List Styling */
+.cat-sidebar-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cat-sidebar-item {
+  margin-bottom: 16px;
+}
+
+.cat-sidebar-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  /* transition on the parent helps manage children states */
+  transition: all 0.2s ease-in-out;
+}
+
+.cat-sidebar-name {
+  display: flex;
+  align-items: center;
+  color: #475569;
+  font-size: 1rem;
+  font-weight: 400;
+  transition: color 0.2s ease-in-out;
+}
+
+/* This creates the bullet inside the name span */
+.cat-sidebar-name::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background-color: #006267;
+  border-radius: 50%;
+  margin-right: 12px;
+  flex-shrink: 0;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.cat-sidebar-link:hover .cat-sidebar-name {
+  color: #ffb400;
+}
+
+.cat-sidebar-link:hover .cat-sidebar-name::before {
+  background-color: #ffb400;
+}
+
+/* merchant Sidebar css */
+
+/* --- The Grid Container (Apply this to the parent div mapping the list) --- */
+.mer-sidebar-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* 2 columns exactly like the image */
+  gap: 24px 16px;
+  /* Row gap, Column gap */
+  margin-bottom: 24px;
+}
+
+/* --- The Individual Item --- */
+.mer-sidebar-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  width: 100%;
+  transition: transform 0.2s ease;
+}
+
+/* Hover Effect: Slight lift */
+.mer-sidebar-item:hover {
+  transform: translateY(-3px);
+}
+
+/* --- The Circle --- */
+.mer-sidebar-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #ffffff;
+
+  /* The specific thin border from the image */
+  border: 1px solid #e2e8f0;
+
+  /* Centering the logo image */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 12px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.mer-sidebar-item:hover .mer-sidebar-circle {
+  border-color: #ffb400;
+  /* Highlight color on hover */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* --- The Text Content --- */
+.mer-sidebar-content {
+  text-align: center;
+  line-height: 1.3;
+  padding: 0 5px;
+}
+
+.mer-sidebar-title {
+  display: block;
+  color: #002d5b;
+  /* Dark Blue from your palette */
+  font-size: 0.9rem;
+  font-weight: 700;
+  /* Bold as seen in the image */
+  margin-bottom: 4px;
+}
+
+.mer-sidebar-tag {
+  display: block;
+  color: #475569;
+  /* Slate color */
+  font-size: 0.75rem;
+}
+
+/* --- "See All Store" Link (If you need to style the footer link) --- */
+.mer-sidebar-footer-link {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 700;
+  color: #006267;
+  /* Your custom teal/blue */
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+.mer-sidebar-footer-link:hover {
+  text-decoration: underline;
+}
+
+/* All product card css  */
+
+.prod-card {
+  border: 1px solid #d9e8f5;
+  border-radius: 12px;
+  background: #f7fbff;
+  padding: 14px;
+  transition: all 0.25s ease;
+}
+
+.prod-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* top left days badge */
+.prod-card__days {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #fff;
+  border: 1px solid #ffd8b2;
+  color: #ff7a00;
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* top right discount */
+.prod-card__discount {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #FFAA0D;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 8px;
+  border-bottom-left-radius: 10px;
+}
+
+/* image */
+.prod-card__img {
+  height: 90px;
+  /* adjust if you want taller/shorter */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.prod-card__img img {
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* merchant name */
+.prod-card__merchant {
+  font-size: 13px;
+  color: #6c757d;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* title */
+.prod-card__title {
+  font-size: 15px;
+  font-weight: 700;
+  color: #066168;
+  margin-top: 6px;
+  min-height: 42px;
+}
+
+/* details link */
+.prod-card__details {
+  font-size: 13px;
+  color: #066168;
+  text-decoration: underline;
+}
+
+/* price */
+.prod-card__price .sale {
+  color: #0f9d58;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.prod-card__price .original {
+  color: #999;
+  font-size: 14px;
+  text-decoration: line-through;
+}
+
+/* pagination css  */
+
+/* Container styling */
+.alphabet-toggle-outer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.alphabet-toggle-inner {
+  background: #ffffff;
+  border-radius: 50px;
+  /* Pill shape */
+  padding: 8px 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e0f2f1;
+  /* Soft mint border */
+}
+
+/* Base button style */
+.alpha-btn-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-decoration: none;
+  color: #444;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid transparent;
+}
+
+/* Hover state */
+.alpha-btn-circle:hover:not(.disabled) {
+  background-color: #f0fdfa;
+  /* Very light mint */
+  color: #22c55e !important;
+  /* Your brand green */
+  border-color: #22c55e;
+  transform: translateY(-2px);
+}
+
+/* Active Page state */
+.alpha-btn-circle.active {
+  background-color: #22c55e;
+  /* Same as "Get Deal" button */
+  color: #ffffff !important;
+  box-shadow: 0 4px 10px rgba(0, 168, 120, 0.3);
+}
+
+/* Ellipsis (...) styling */
+.alpha-btn-circle.disabled {
+  color: #999;
+  cursor: default;
+  letter-spacing: 1px;
+}
+
+/* Arrows styling */
+.alpha-btn-circle span {
+  font-size: 18px;
+  line-height: 1;
+}
+
+/* Responsive adjustment for mobile */
+@media (max-width: 576px) {
+  .alpha-btn-circle {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+  }
+
+  .alphabet-toggle-inner {
+    gap: 4px !important;
+  }
+}
+
+/* Category page css   */
+.cat-col {
+  column-count: 3;
+  column-gap: 24px;
+  width: 100%;
+}
+
+
+@media (max-width: 992px) {
+  .cat-col {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 576px) {
+  .cat-col {
+    column-count: 1;
+  }
+}
+
+.break-inside-avoid {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  margin-bottom: 24px;
+}
+
+.category-card {
+  /* background-color: #ffffff; */
+  /* border: 1px solid #eeeeee; */
+  /* Very subtle border */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  /* Soft drop shadow */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+  background: rgb(255, 255, 255) !important;
+  border: 1px solid #dfefef !important;
+}
+
+.category-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+/* --- Card Header --- */
+.category-card-header {
+  background-color: rgb(224, 242, 241) !important;
+  padding: 15px 20px;
+  border-bottom: 1px solid #eeeeee;
+  text-align: center;
+}
+
+.category-card-title {
+  color: #066168 !important;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  background: transparent !important;
+  /* Override bootstrap btn */
+  border: none !important;
+  /* Override bootstrap btn */
+  padding: 0;
+  text-transform: capitalize;
+}
+
+/* --- Card Body & List --- */
+.category-card-body {
+  padding: 20px 24px;
+}
+
+.category-sub-list {
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.category-item {
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #555555;
+}
+
+/* Remove margin from the last item */
+.category-item:last-child {
+  margin-bottom: 0;
+}
+
+/* --- Links inside List --- */
+.category-item a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #066168 !important;
+  text-decoration: none;
+  transition: color 0.2s;
+  width: 100%;
+}
+
+.category-item a:hover {
+  color: #ffb400 !important;
+}
+
+/* --- The Count/Badge (e.g. 449) --- */
+.category-item a span.rounded-2 {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(13, 148, 136, 0.18)) !important;
+  border: 1px solid rgba(13, 148, 136, 0.45) !important;
+  border-radius: 4px !important;
+  color: #066168 !important;
+  font-size: 12px !important;
+  padding: 2px 8px !important;
+  min-width: 30px;
+  text-align: center;
+  margin-left: auto;
+}
+
+.category-sub-list .category-sub-list {
+  margin-top: 10px;
+  padding-left: 15px;
+  border-left: 2px solid #f0f0f0;
+}
+
+/* Category offer card css  */
+
+.Category-offer-card {
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid #80808042;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  min-height: 170px;
+}
+
+.Catoffer-card-inner {
+  display: grid;
+  grid-template-columns: 120px 1fr auto;
+  gap: 16px;
+  align-items: center;
+}
+
+.Catoffer-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.Catoffer-center {
+  min-width: 0;
+}
+
+.Catoffer-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #066168;
+  margin: 4px 0;
+  overflow: hidden;
+  text-decoration: none;
+}
+
+.Catoffer-right {
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+/* category page side bar css  */
+/* Header Text */
+.cat-title {
+  color: #066168;
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 0;
+}
+
+
+.cat-divider {
+  width: 100%;
+  height: 1px;
+  border-top: 1px dashed #bcccdc;
+}
+
+/* Scroll Container */
+.category-scroll-container {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 10px;
+
+}
+
+.category-scroll-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.category-scroll-container::-webkit-scrollbar-track {
+  background: #e0f2f1;
+  border-radius: 10px;
+}
+
+.category-scroll-container::-webkit-scrollbar-thumb {
+  background: #066168;
+  border-radius: 10px;
+}
+
+.category-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #066168;
+}
+
+.category-name {
+  color: #066168;
+  font-size: 1rem;
+  font-weight: 400;
+  transition: color 0.3s ease;
+}
+
+.suggested-category:hover .category-name {
+  color: #ffb400;
+}
+
+.custom-bullet {
+  height: 6px;
+  width: 6px;
+  background-color: #066168;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* Events main page card css  */
+.events-card-simple {
+  background-color: rgb(224, 242, 241);
+  border: 1px solid #066168 !important;
+  transition: all 0.25s ease-in-out;
+}
+
+.events-card__title-simple {
+  color: #066168;
+  line-height: 1.4;
+}
+
+/* Events inner page css */
+.merchant-details-wrapper {
+  background-color: rgb(224, 242, 241);
+  border: 1px solid #066168 !important;
+  border-radius: 6px;
+  padding: 16px;
+  margin: 10px 0;
+  box-sizing: border-box;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.text-content {
+  color: #444;
+  font-size: 15px;
+  line-height: 1.5;
+  font-family: sans-serif;
+}
+
+
+.toggle-button a {
+  color: #22c55e;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  border-bottom: 1px dotted #22c55e;
+  display: inline-block;
+  width: max-content;
+  transition: all 0.2s ease;
+}
+
+.toggle-button a:hover {
+  border-bottom-style: solid;
+  color: #066168;
+}
+
+.text-content.custom-mer-det-css {
+  color: #444;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.text-content.custom-mer-det-css p {
+  margin-bottom: 16px;
+}
+
+.text-content.custom-mer-det-css ul,
+.text-content.custom-mer-det-css ol {
+  padding-left: 20px;
+  margin-bottom: 16px;
+}
+
+.text-content.custom-mer-det-css li {
+  margin-bottom: 8px;
+}
+
+
+.text-content.custom-mer-det-css strong {
+  color: #066168;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  #fullDetails.merchant-details-wrapper {
+    padding: 16px;
+    font-size: 14px;
+  }
+}
+
+/* events cat side bar  */
+.ts-container {
+  background-color: #f5fdfd;
+  /* Very light teal background */
+  border: 1px solid #e0f2f2;
+  border-radius: 20px;
+  padding: 24px;
+  max-width: 450px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Header styling */
+.ts-header {
+  color: #066168;
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  padding-bottom: 15px;
+  border-bottom: 1px dashed #d1dada;
+}
+
+
+.ts-columns {
+  max-height: 500px;
+  overflow-y: auto;
+  padding-right: 15px;
+}
+
+
+.ts-columns::-webkit-scrollbar {
+  width: 8px;
+}
+
+.ts-columns::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.ts-columns::-webkit-scrollbar-thumb {
+  background: #066168;
+  border-radius: 10px;
+}
+
+.ts-category-card {
+  margin-bottom: 18px;
+}
+
+.ts-category-link {
+  text-decoration: none;
+  display: block;
+  transition: color 0.3s ease;
+}
+
+.ts-category-title {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: #4a6a6a;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-left: 25px;
+}
+
+.ts-category-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background-color: #007a7a;
+  border-radius: 50%;
+}
+
+.ts-category-link:hover .ts-category-title,
+.ts-category-card.active .ts-category-title {
+  color: #ffb400;
+  /* The orange/yellow color from image */
+}
+
+.ts-category-link:hover .ts-category-title::before,
+.ts-category-card.active .ts-category-title::before {
+  background-color: #ffb400;
+}
+
+/* Hide the submenu by default or style it if needed */
+.ts-submenu {
+  padding-left: 25px;
+  margin-top: 5px;
+}
+
+/* suggested events  */
+/* Header & Divider */
+.n17-color {
+  color: #066168;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.v-line {
+  display: block;
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px dashed #d1dada;
+  margin: 15px 0;
+}
+
+/* Tag style replacement */
+.cat-sug {
+  display: inline-block;
+  padding: 6px 14px;
+  background: #EFFFFF;
+  /* Light cyan background */
+  border: 1px solid #d0f0f0;
+  /* Subtle border to define the shape */
+  border-radius: 20px;
+  font-size: 13px;
+  color: #333;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.cat-sug:hover {
+  background: #007a7a;
+  color: #fff;
+  border-color: #007a7a;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure the list allows tags to sit side-by-side */
+.tags-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  /* Space between tags */
+  padding: 10px 0;
+  list-style: none;
+  margin: 0;
+}
+
+/* Alphabet Navbar for stores  */
+
+.alpha-nav-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+/* The light-colored box from your image */
+.alpha-nav-wrapper {
+  background-color: #f0fdfa;
+  padding: 25px 40px;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+  display: inline-flex;
+}
+
+/* Individual Buttons */
+.alpha-nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background: #ffffff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  color: #066168;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Active State (Green) */
+.alpha-nav-btn.active {
+  background-color: #066168;
+  /* The emerald green from your image */
+  color: white;
+  border-color: #00a854;
+}
+
+/* Inactive Hover */
+.alpha-nav-btn:not(.active):hover {
+  border-color: #00a854;
+  color: #00a854;
+  transform: translateY(-2px);
+}
+
+/* Arrow Buttons (Gray) */
+.alpha-nav-btn.arrow-btn {
+  background-color: #e9ecef;
+  border: none;
+  color: #555;
+}
+
+/* Dots/Ellipsis */
+.alpha-nav-dots {
+  color: #999;
+  font-weight: bold;
+  padding: 0 5px;
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+  .alpha-nav-wrapper {
+    padding: 15px;
+    gap: 8px;
+    border-radius: 12px;
+  }
+
+  .alpha-nav-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 13px;
+  }
+}
+
+/* stores page card css  */
+/* The main card container */
+.merchant-card {
+  /* border: 1px solid #22c55e;  */
+  background-color: rgb(224, 242, 241);
+  border-radius: 8px;
+  padding: 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Hover effect for better UX */
+.merchant-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border-color: #066168;
+}
+
+/* The logo container to ensure consistent height */
+.merchant-logo-container {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  width: 100%;
+}
+
+/* The bottom button/link style */
+.merchant-link-btn {
+  background-color: #f9fafb;
+  /* Off-white/Beige background */
+  border: 1px solid #e5e7eb;
+  /* Light gray border */
+  border-radius: 6px;
+  width: 100%;
+  padding: 10px 8px;
+  text-align: center;
+  color: #066168;
+  font-weight: 700;
+  /* Bold text */
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.merchant-link-btn:hover {
+  background-color: #f3f4f6;
+  border-color: #066168;
+  color: #ffaa00;
+}
+
+/* similar merchant inner stores css  */
+/* The Container Grid */
+.similar-stores-grid {
+  display: grid;
+  /* Forces exactly 3 columns so items have breathing room */
+  grid-template-columns: repeat(3, 1fr);
+  /* Increased gap for a more "airy" feel */
+  gap: 24px 12px;
+  justify-items: center;
+  align-items: start;
+  padding: 10px 0 20px 0;
+}
+
+/* The Wrapper for each item (Circle + Name) */
+.merchant-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* The Round Card */
+.merchant-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  /* Makes it perfectly round */
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  padding: 10px;
+  /* Internal padding so logo doesn't touch edges */
+}
+
+/* Hover Effect */
+.merchant-circle:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #ffaa00;
+  /* Optional: Change border on hover */
+}
+
+/* The Logo Image */
+.merchant-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* Ensures the logo fits without stretching */
+}
+
+/* The Text Name */
+.merchant-name {
+  font-size: 13px;
+  text-align: center;
+  margin-top: 8px;
+  line-height: 1.2;
+  color: #066168;
+  font-weight: 600;
+}
+
+/* Offer modal css  */
+/* Container styles */
+.main-mod .modal-content {
+  border: none;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Custom Close Button */
+.btn-close-custom {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: #f1f3f5;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  z-index: 10;
+}
+
+.btn-close-custom:hover {
+  background: #e9ecef;
+  transform: rotate(90deg);
+}
+
+/* Header Section */
+.modal-header-section {
+  background: linear-gradient(to bottom, #ffffff, #fcfcfc);
+}
+
+.btn-modern-primary {
+  display: inline-block;
+  background: #000;
+  /* Or your brand color */
+  color: #fff;
+  padding: 12px 32px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.btn-modern-primary:hover {
+  background: #222;
+  transform: translateY(-2px);
+  color: #fff;
+}
+
+/* Badge Pills */
+.badge-pill-modern {
+  padding: 6px 14px;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge-pill-modern.verified {
+  background: #e6fcf5;
+  color: #087f5b;
+}
+
+.badge-pill-modern.duration {
+  background: #fff4e6;
+  color: #d9480f;
+}
+
+/* Enhanced Prominent Logo Container */
+.logo-container-prominent {
+  width: 110px;
+  height: 110px;
+  background: #ffffff;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* This shadow makes the logo "float" */
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.08),
+    0 4px 10px rgba(0, 0, 0, 0.03);
+  border: 1px solid #f0f0f0;
+  flex-shrink: 0;
+  /* Prevents logo from shrinking on smaller screens */
+  transition: transform 0.3s ease;
+}
+
+.logo-container-prominent:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+.logo-container-prominent img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Adjusting the text column slightly for better balance */
+.leading-relaxed {
+  line-height: 1.6;
+  color: #555;
+}
+
+/* Modal title refinement */
+.main-mod h4.fw-bold {
+  font-size: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+/* Feedback Buttons */
+.feedback-toggle {
+  display: flex;
+  gap: 8px;
+  background: #f1f3f5;
+  padding: 4px;
+  border-radius: 10px;
+}
+
+.btn-feedback {
+  border: none;
+  background: transparent;
+  padding: 6px 16px;
+  border-radius: 8px;
+  transition: all 0.2s;
+  color: #495057;
+}
+
+.btn-feedback.yes:hover,
+.btn-feedback.yes.active {
+  background: #fff;
+  color: #087f5b;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.btn-feedback.no:hover,
+.btn-feedback.no.active {
+  background: #fff;
+  color: #fa5252;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Typography refinement */
+.leading-relaxed {
+  line-height: 1.6;
+}
+
+.tracking-wider {
+  letter-spacing: 0.05em;
+}
+
+/* rate us comp css  */
+
+/* Rate Us Component Container */
+.rate-us-wrapper {
+  background: transparent;
+}
+
+/* Headers Refinement */
+.rate-us-wrapper h4 {
+  font-size: 1.1rem;
+  margin-bottom: 0.75rem;
+  color: #1a1a1a;
+  letter-spacing: -0.01em;
+}
+
+/* Star Rating Section */
+.rating-container {
+  background: #ffffff;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid #edf2f7;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rating-stars-row {
+  display: flex;
+  gap: 6px;
+}
+
+.rating-stars-row svg {
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.rating-stars-row svg:hover {
+  transform: scale(1.2);
+}
+
+.rating-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #718096;
+}
+
+/* Modern Textarea Styling */
+.comment-textarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  background-color: #ffffff;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  resize: none;
+  outline: none;
+}
+
+.comment-textarea:focus {
+  border-color: #38a169;
+  /* Matches your brand green */
+  box-shadow: 0 0 0 4px rgba(56, 161, 105, 0.1);
+}
+
+.comment-textarea::placeholder {
+  color: #a0aec0;
+}
+
+/* Submit Button Override */
+.btn-area .btn-get-deal {
+  background: #32d951;
+  /* Match the green from your screenshot */
+  color: white;
+  padding: 10px 24px;
+  border-radius: 50px;
+  /* Pill shape for modern look */
+  border: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(50, 217, 81, 0.25);
+}
+
+.btn-area .btn-get-deal:hover {
+  background: #28b843;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(50, 217, 81, 0.35);
+}
+
+.btn-area .btn-get-deal:active {
+  transform: translateY(0);
+}
+
+/* simple modal css  */
+/* Modal Container */
+.simp-mod-content {
+  border: none !important;
+  border-radius: 28px !important;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* Backdrop Blur */
+.simp-mod-overlay {
+  background-color: rgba(15, 23, 42, 0.7) !important;
+  backdrop-filter: blur(4px);
+}
+
+/* Close Button */
+.simp-mod-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: #f1f5f9;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.simp-mod-close:hover {
+  background: #e2e8f0;
+  color: #0f172a;
+  transform: rotate(90deg);
+}
+
+/* Image/Logo Area */
+.simp-mod-img-area {
+  padding-top: 40px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.simp-mod-img-card {
+  background: white;
+  padding: 12px;
+  border-radius: 20px;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #f1f5f9;
+}
+
+.simp-mod-img {
+  object-fit: contain;
+}
+
+/* Title */
+.simp-mod-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0f172a;
+  line-height: 1.3;
+}
+
+/* Coupon Section */
+.simp-mod-coupon-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f8fafc;
+  border: 2px dashed #cbd5e1;
+  border-radius: 16px;
+  padding: 8px 8px 8px 24px;
+  margin-top: 10px;
+}
+
+.simp-mod-code {
+  font-family: 'Monaco', 'Consolas', monospace;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #0f172a;
+  letter-spacing: 1px;
+}
+
+.simp-mod-copy-btn {
+  background: #71d42a;
+  /* Success Green */
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  font-weight: 700;
+  transition: all 0.2s ease;
+}
+
+.simp-mod-copy-btn:hover {
+  background: #71d42a;
+  transform: translateY(-1px);
+}
+
+.simp-mod-copy-btn.copied {
+  background: #066168;
+}
+
+
+/* Badges */
+.simp-mod-badge {
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.badge-verified {
+  background: #ecfdf5;
+  color: #066168;
+}
+
+.badge-duration {
+  background: #fff7ed;
+  color: #9a3412;
+}
+
+/* Typography */
+.simp-mod-text {
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.6;
+}
+
+.simp-mod-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.simp-mod-link {
+  color: #10b981;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.simp-mod-link:hover {
+  text-decoration: underline;
+}
+
+/* parent promo page slider css  */
+/* --- Slider Container --- */
+.trend-slider {
+  position: relative;
+  width: 100%;
+  /* Creates a safe context for arrows */
+  z-index: 1;
+}
+
+.trend-slider-viewport {
+  overflow: hidden;
+  width: 100%;
+  padding: 10px 0;
+  /* Space for shadow hover effect */
+}
+
+.trend-slide {
+  width: 100%;
+  flex-shrink: 0;
+  padding: 0 5px;
+}
+
+.sub-promo-card {
+  position: relative;
+  height: 180px;
+  border-radius: 16px;
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+  background-color: #f0f0f0;
+}
+
+.sub-promo-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* --- Image Styling --- */
+.sub-promo-image {
+  object-fit: cover;
+  z-index: -1;
+  transition: transform 0.6s ease;
+}
+
+.sub-promo-card:hover .sub-promo-image {
+  transform: scale(1.08);
+}
+
+/* --- Overlay Gradient --- */
+.sub-promo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top,
+      rgba(0, 0, 0, 0.85) 0%,
+      rgba(0, 0, 0, 0.4) 40%,
+      rgba(0, 0, 0, 0) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* --- Content & Text --- */
+.sub-promo-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.sub-promo-title {
+  color: white;
+  text-align: center;
+  font-weight: 700;
+  margin: 0;
+  font-size: 1.1rem;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.3;
+}
+
+.sub-promo-title:hover {
+  color: #ffb400;
+}
+
+/* --- Navigation Arrows --- */
+.trend-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #006267;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.trend-arrow:hover {
+  background: #ffaa0d;
+  color: #fff;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.trend-arrow.prev {
+  left: 10px;
+}
+
+.trend-arrow.next {
+  right: 10px;
+}
+
+@media (max-width: 768px) {
+  .trend-arrow {
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.9);
+  }
+}
+
+/* products page css  */
+/* Container */
+.prod-mer-card {
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border: 1px solid #edf2f7;
+  border-radius: 12px;
+  padding: 20px;
+  text-decoration: none;
+  height: 100%;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.prod-mer-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.05);
+  border-color: #cbd5e0;
+}
+
+/* Image Fix */
+.prod-mer-card__img-box {
+  width: 100%;
+  height: 100px;
+  /* Forces consistent height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+
+.prod-mer-card__img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Badge Fix */
+.prod-mer-card__badge-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.prod-mer-card__badge {
+  background-color: #e6fffa;
+  /* Soft mint green */
+  color: #2c7a7b;
+  /* Deep teal text */
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 50px;
+  letter-spacing: 0.5px;
+  border: 1px solid #b2f5ea;
+}
+
+/* Typography */
+.prod-mer-card__name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #066168;
+  text-align: center;
+  margin-bottom: 20px;
+  flex-grow: 1;
+  /* Pushes the footer to the bottom */
+}
+
+/* Footer & CTA */
+.prod-mer-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 15px;
+  border-top: 1px solid #f7fafc;
+  color: #22c55e;
+}
+
+.prod-mer-card__cta {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.prod-mer-card__icon {
+  margin-left: 8px;
+  font-size: 12px;
+  transition: transform 0.2s ease;
+}
+
+.prod-mer-card:hover .prod-mer-card__icon {
+  transform: translateX(4px);
+}
+
+/* Breadcrumb truncate  */
+.truncate-breadcrumb {
+  display: inline-block;
+  max-width: 200px;
+  /* Adjust this width as needed */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+
+/* product detail page css  */
+
+.prodoff-price-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.prodoff-sale-price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #71d42a;
+  line-height: 1;
+}
+
+
+.prodoff-original-price {
+  font-size: 1rem;
+  color: #6c757d;
+  text-decoration: line-through;
+  font-weight: 400;
+}
+
+/* custom text format css  */
+
+/* --- Wrapper Class --- */
+.custom-text-format {
+  font-family: inherit;
+  color: #333;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+/* --- Headings --- */
+.custom-text-format h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #007680;
+  /* Teal accent to match your design */
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 8px;
+}
+
+.custom-text-format h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-top: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+/* --- Lists (Bullets) --- */
+.custom-text-format ul {
+  padding-left: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.custom-text-format li {
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+/* --- Table Base --- */
+.custom-text-format table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  border: 1px solid #e0e0e0;
+  font-family: sans-serif;
+  border-radius: 8px;
+  /* Slight rounded corners */
+  overflow: hidden;
+}
+
+/* --- Row Styling --- */
+.custom-text-format tr {
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.2s ease;
+}
+
+.custom-text-format tr:last-child {
+  border-bottom: none;
+}
+
+/* --- The First Column (Labels/Keys) --- */
+.custom-text-format td:first-child {
+  background-color: #f9f9f9;
+  font-weight: 600;
+  width: 35%;
+  color: #333;
+  padding: 12px 20px;
+  vertical-align: middle;
+}
+
+/* --- The Second Column (Values) --- */
+.custom-text-format td:last-child {
+  background-color: #fff;
+  color: #666;
+  padding: 12px 20px;
+  vertical-align: middle;
+}
+
+/* --- Hover Effect --- */
+.custom-text-format tr:hover td:first-child {
+  background-color: #f1f1f1;
+}
+
+.custom-text-format tr:hover td:last-child {
+  color: #000;
+  background-color: #fafafa;
+}
+
+/* general css for content pages  */
+
+/* General Content Formatting for SEO & Readability */
+.general-content-format {
+  line-height: 1.7;
+  color: #333;
+  font-size: 1.1rem;
+  /* Slightly larger for better readability */
+}
+
+/* Heading Hierarchy */
+.general-content-format h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #005f54;
+  /* Match your brand teal */
+}
+
+.general-content-format h2 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: #005f54;
+  border-left: 4px solid #005f54;
+  /* Decorative accent for SEO sections */
+  padding-left: 15px;
+}
+
+.general-content-format h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+/* Text Elements */
+.general-content-format p {
+  margin-bottom: 1.5rem;
+}
+
+.general-content-format strong {
+  font-weight: 600;
+  color: #000;
+}
+
+/* Lists */
+.general-content-format ul,
+.general-content-format ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+
+.general-content-format li {
+  margin-bottom: 0.5rem;
+}
+
+/* Links */
+.general-content-format a {
+  color: #ffb400;
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.general-content-format a:hover {
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .general-content-format {
+    font-size: 1rem;
+  }
+
+  .general-content-format h1 {
+    font-size: 2rem;
+  }
+
+  .general-content-format h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* contact us form css  */
+
+/* Contact Page Container */
+.page-content {
+  background-color: #ffffff;
+  padding: 60px 0;
+}
+
+/* Info Cards Styling */
+.single-item {
+  background: #f0f9f7;
+  /* Light Mint */
+  border: 1px solid #e0eee9 !important;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+}
+
+.single-item:hover {
+  transform: translateY(-5px);
+  background: #ffffff;
+  box-shadow: 0 10px 20px rgba(0, 95, 84, 0.08);
+  border-color: #005f54 !important;
+}
+
+/* Icon Area Styles */
+.icon-area {
+  width: 50px;
+  height: 50px;
+  flex-shrink: 0;
+  background-color: #005f54 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Typography for Cards */
+.n17-color {
+  color: #2d3436;
+}
+
+.fw-mid {
+  font-weight: 600;
+}
+
+.fs-seven {
+  font-size: 0.95rem;
+  color: #555555;
+}
+
+/* Remove bullets and reset list */
+.social-area {
+  list-style: none !important;
+  padding-left: 0 !important;
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.social-item-list {
+  list-style-type: none !important;
+  margin: 0 !important;
+}
+
+/* Style the individual circular links */
+.social-link {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  border: 1px solid #e0eee9;
+  background-color: #ffffff;
+  color: #005f54 !important;
+  /* Brand Teal */
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-link:hover {
+  background-color: #005f54;
+  color: #ffffff !important;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 95, 84, 0.2);
+}
+
+.social-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Ensure the icon container is a perfect circle */
+.icon-area {
+  width: 45px;
+  height: 45px;
+  background-color: #005f54 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Container styling */
+.contact-form-wrapper {
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 24px;
+  border: 1px solid #e0eee9;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.form-title {
+  color: #005f54;
+  /* Brand Teal */
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.form-subtitle {
+  color: #636e72;
+  font-size: 0.95rem;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+/* Form Layout */
+.modern-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Custom Input Groups */
+.input-group-custom {
+  position: relative;
+  width: 100%;
+}
+
+.input-label {
+  position: absolute;
+  top: -10px;
+  left: 15px;
+  background: #ffffff;
+  padding: 0 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #005f54;
+  z-index: 1;
+}
+
+.input-group-custom input,
+.input-group-custom textarea {
+  width: 100%;
+  padding: 14px 20px;
+  border-radius: 12px;
+  border: 1px solid #e0eee9;
+  background: #ffffff;
+  font-size: 1rem;
+  color: #2d3436;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+/* Focus States */
+.input-group-custom input:focus,
+.input-group-custom textarea:focus {
+  border-color: #005f54;
+  box-shadow: 0 0 0 4px rgba(0, 95, 84, 0.05);
+}
+
+/* Placeholder Styling */
+.input-group-custom input::placeholder,
+.input-group-custom textarea::placeholder {
+  color: #b2bec3;
+  font-size: 0.9rem;
+}
+
+/* Submit Button */
+.submit-btn {
+  background-color: #005f54;
+  color: #ffffff;
+  padding: 16px 32px;
+  border-radius: 50px;
+  border: none;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.submit-btn:hover {
+  background-color: #00443c;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 95, 84, 0.2);
+}
+
+.submit-btn:disabled {
+  background-color: #bdc3c7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Responsive adjustments */
+
+@media (max-width: 991px) {
+  .Catoffer-center .price-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .similar-stores-grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .contact-form-wrapper {
+    padding: 25px 20px;
+  }
+
+  .trend-prod-image {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width:460px) {
+  .offer-slider-container {
+    padding: 0 25px;
+  }
+}
+
+@media (max-width:414px) {
+  .dest-main-wrapper {
+    padding: 60px 10px 80px 10px !important;
+  }
+
+}

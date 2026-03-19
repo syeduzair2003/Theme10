@@ -1,0 +1,275 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&display=swap");
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --primary-color: #e41717;
+  --gray-dark: #484848;
+  --gray-medium: #969696;
+  --gray-light: #a0a0a0;
+  --background-light: #f7f7fa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.oswald {
+  font-family: "Oswald", sans-serif !important;
+}
+
+.gray-light {
+  color: var(--gray-light);
+}
+
+.gray-dark {
+  color: var(--gray-dark);
+}
+
+.primary-color {
+  color: var(--primary-color);
+}
+
+.gray-medium {
+  color: var(--gray-medium);
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+} */
+.p1-2nd-bg-color {
+    background: #f9fafb;
+}
+.nav-links {
+  font-size: 14px;
+  letter-spacing: 1px;
+  font-weight: 400;
+  line-height: 66px;
+  text-transform: uppercase;
+
+}
+
+.nav-links1{
+  font-size: 14px;
+  letter-spacing: 0px;
+  font-weight: 400;
+  line-height: 7px;
+  text-transform: uppercase;
+}
+
+.gray-dark:hover {
+  color: var(--primary-color);
+}
+
+.nav-active:active {
+  color: var(--primary-color);
+}
+
+.bg-image {
+  background-image: url("https://subsolardesigns.com/couponseek/wp-content/uploads/2018/10/hb1.jpeg");
+  height: 100vh;
+}
+
+.hero-heading {
+  font-size: 80px;
+  line-height: 1.3em;
+  text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.cus-heading-text {
+  color: var(--yellow-accent);
+  font-size: 80px;
+  line-height: 1.3em;
+  text-shadow: none;
+}
+
+.title-1 {
+  font-size: 28px;
+  color: var(--gray-light);
+}
+
+.title-2 {
+  font-size: 54px;
+  color: var(--primary-color);
+  line-height: 1.3em;
+  margin-bottom: 3px;
+}
+
+.title-3 {
+  font-size: 22px;
+  color: var(--gray-medium);
+}
+
+.ellipsis-icon {
+  opacity: 0.1;
+  width: 15%;
+  left: 70%;
+}
+
+.categories-main {
+  background-color: var(--background-light);
+  padding: 0 50px;
+}
+
+.categories-title {
+  padding-top: 60px;
+}
+
+.search {
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 2px solid var(--gray-light);
+  border-right: none;
+  padding: 5px 10px;
+  height: 40px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  background: var(--background-light);
+  color: var(--gray-dark);
+  font-size: 14px;
+}
+
+.searchTerm::placeholder {
+  color: var(--gray-medium);
+}
+
+.searchTerm:focus {
+  border-color: #ef4518;
+  background: #fff;
+}
+
+.searchButton {
+  width: 48px;
+  height: 40px;
+  border: none;
+  background: #ef4518;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.searchButton:hover {
+  background: #f57a55;
+}
+
+.wrap {
+  width: 30%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+article h1 {
+  font-size: 2rem !important;
+  font-weight: 700 !important;
+  /* margin-top: 1.5rem !important; */
+  margin-bottom: 1rem !important;
+}
+
+article h2 {
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  margin-top: 1.25rem !important;
+  margin-bottom: 0.75rem !important;
+}
+
+article p {
+  margin: 1rem 0 !important;
+  line-height: 1.7 !important;
+  color: #374151 !important;
+}
+
+article a {
+  color: var(--primary-color) !important;
+  text-decoration: underline !important;
+}
+
+.img-height {
+  height: 35px;
+  width: 50px;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+/* Gradient Scrollbar for Stores Dropdown */
+.gradient-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+
+.gradient-scroll::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.gradient-scroll::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: linear-gradient(to right, var(--primary-color), #f97316);
+}
+
+.gradient-scroll::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to right, #f97316, var(--primary-color));
+}
+
+/* Firefox */
+.gradient-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(246 60 23) #ffffff;
+}
+
+/* Chrome, Edge, Safari */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(246, 60, 23);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e5391c;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgb(246, 60, 23) #ffffff;
+}
+.custom-slider-prev-shared{
+  background: linear-gradient(to right, var(--primary-color), #f97316);
+}
+
+.custom-slider-next-shared{
+  background: linear-gradient(to right, var(--primary-color), #f97316);
+}

@@ -1,0 +1,44 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+    "forceConsistentCasingInFileNames": true,
+    "typeRoots": ["./node_modules/@types", "./src/types"],
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "baseUrl": "./",  // Root directory
+    "paths": {
+     "@/*": ["src/*"],  // Directly mapping @ to src
+      "@components/*": ["src/components/*"],
+      "@theme1/*": ["src/components/Theme-1/*"],
+      "@theme2/*": ["src/components/Theme-2/*"],
+      "@theme3/*": ["src/components/Theme-3/*"],
+      "@theme4/*": ["src/components/Theme-4/*"],
+      "@theme5/*": ["src/components/Theme-5/*"],
+      "@theme6/*": ["src/components/Theme-6/*"],
+      "@theme8/*": ["src/components/Theme-8/*"],
+      "@theme10/*": ["src/components/Theme-10/*"],
+      "@customBuilder/*": ["src/app/(builder)/custom-builder/*"],
+      "@services/*": ["src/services/*"],
+      "@apis/*": ["src/apis/*"],
+      "@constants/*": ["src/constants/*"],
+      "@pages/*": ["src/app/*"]
+    }
+  },
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/(builder)/custom-builder/components/blockManager.jsx", "src/app/(builder)/custom-builder/page.tsx", "src/app/(builder)/custom-builder/components/MerchantCard.jsx", "src/app/(builder)/custom-builder/components/TopMerchants.jsx", "src/app/(builder)/custom-builder/utils/styleInput.jsx"],
+  "exclude": ["node_modules"]
+}
