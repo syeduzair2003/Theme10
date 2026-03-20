@@ -25,47 +25,54 @@ const PopularCoupons = async ({ companyId, mer_slug_type, mer_slug }: Props) => 
     if (!couponData || couponData.length === 0) return null;
 
     return (
-        <section className="bg-[#0F172A] py-20 px-6 lg:px-12 relative overflow-hidden">
-            {/* Background Decorative Element - Isko b animate kr skte ho */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/10 blur-[120px] rounded-full -mr-48 -mt-48 animate-pulse"></div>
-            
-            <div className="max-w-[1400px] mx-auto relative z-10">
-                <div className="mb-16">
-                    {/* Header: Reveal from Left */}
-                    <Reveal x={-30} y={0}>
-                        <div className="flex items-center gap-3 mb-4">
-                            <span className="h-[2px] w-12 bg-blue-500"></span>
-                            <span className="text-blue-400 font-bold uppercase tracking-[0.3em] text-xs">Verified Savings</span>
-                        </div>
-                        <h2 className="text-4xl md:text-6xl font-black text-white leading-tight mb-6">
-                            {firstHalf || "Today's"} <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">{secondHalf || "Deals"}</span>
-                        </h2>
-                    </Reveal>
-
-                    {/* Content: Reveal with Delay */}
-                    <Reveal delay={0.2}>
-                        <p className="text-slate-400 max-w-full text-lg font-medium leading-relaxed">
-                            {content || "Hand-picked premium discounts from world-class brands, updated every hour."}
-                        </p>
-                    </Reveal>
+        <section className="bg-[#1A1A1A] py-20 px-6 lg:px-12 relative overflow-hidden">
+    {/* Background Decorative Element - Maroon Glow */}
+    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#800000]/10 blur-[120px] rounded-full -mr-48 -mt-48 animate-pulse"></div>
+    
+    <div className="max-w-[1400px] mx-auto relative z-10">
+        <div className="mb-16">
+            {/* Header: Reveal from Left */}
+            <Reveal x={-30} y={0}>
+                <div className="flex items-center gap-3 mb-4">
+                    {/* Line changed to Maroon */}
+                    <span className="h-[2px] w-12 bg-[#800000]"></span>
+                    {/* Text changed to Cream for visibility on black */}
+                    <span className="text-[#FFFDF5] font-bold uppercase tracking-[0.3em] text-xs">Verified Savings</span>
                 </div>
+                <h2 className="text-4xl md:text-6xl font-black text-[#FFFDF5] leading-tight mb-6">
+                    {firstHalf || "Today's"}{" "}
+                    {/* Gradient changed to Maroon and Light Maroon */}
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#800000] to-[#A52A2A]">
+                        {secondHalf || "Deals"}
+                    </span>
+                </h2>
+            </Reveal>
 
-                {/* Grid: 3D Flip Reveal for Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {couponData.slice(0, count).map((item: OffersOffer, i: number) => (
-                        <FlipReveal key={i} delay={i * 0.15}>
-                            <CouponCard
-                                product={item?.offer}
-                                merchantHref={getMerchantHref(item?.merchant, mer_slug, mer_slug_type)}
-                                domain={companyDomain}
-                                merchant_logo={item?.merchant?.merchant_logo}
-                                merchant_name={item?.merchant?.merchant_name}
-                            />
-                        </FlipReveal>
-                    ))}
-                </div>
-            </div>
-        </section>
+            {/* Content: Reveal with Delay */}
+            <Reveal delay={0.2}>
+                {/* Paragraph text changed to a softer Cream/Grey for readability */}
+                <p className="text-[#FFFDF5]/70 max-w-full text-lg font-medium leading-relaxed">
+                    {content || "Hand-picked premium discounts from world-class brands, updated every hour."}
+                </p>
+            </Reveal>
+        </div>
+
+        {/* Grid: 3D Flip Reveal for Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {couponData.slice(0, count).map((item: OffersOffer, i: number) => (
+                <FlipReveal key={i} delay={i * 0.15}>
+                    <CouponCard
+                        product={item?.offer}
+                        merchantHref={getMerchantHref(item?.merchant, mer_slug, mer_slug_type)}
+                        domain={companyDomain}
+                        merchant_logo={item?.merchant?.merchant_logo}
+                        merchant_name={item?.merchant?.merchant_name}
+                    />
+                </FlipReveal>
+            ))}
+        </div>
+    </div>
+</section>
     );
 }
 

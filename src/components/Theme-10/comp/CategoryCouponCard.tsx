@@ -21,10 +21,10 @@ const CouponCard = async ({ product, merchantHref, domain, merchant_name, mercha
             
             {/* Discount Badge */}
             {finalDiscountTag && (
-                <div className="absolute -top-3 -right-3 bg-gradient-to-br from-blue-500 to-indigo-600 text-white text-[11px] font-black px-5 py-2 rounded-2xl shadow-xl shadow-blue-900/20 z-20 flex items-center gap-2">
-                    <Zap size={12} className="fill-white" />
-                    {finalDiscountTag}
-                </div>
+                <div className="absolute -top-3 -right-3 bg-gradient-to-br from-[#800000] to-[#520000] text-[#FFFDF5] text-[11px] font-black px-5 py-2 rounded-2xl shadow-xl shadow-[#800000]/20 z-20 flex items-center gap-2 border border-[#A52A2A]/20">
+    <Zap size={12} className="fill-[#FFFDF5]" />
+    {finalDiscountTag}
+</div>
             )}
 
             <div className="flex-grow">

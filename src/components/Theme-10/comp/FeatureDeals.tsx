@@ -22,18 +22,18 @@ const FeaturedDeals = async ({ companyId, mer_slug_type, mer_slug }: Props) => {
     const count = 6;
 
     return (
-        <section className="bg-white py-20 px-6 overflow-hidden">
+        <section className="bg-[#FFFDF5] py-20 px-6 overflow-hidden">
             <div className="max-w-7xl mx-auto">
                 
                 {/* Header Animation */}
                 <Reveal>
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
                         <div>
-                            <p className="text-blue-500 font-semibold text-sm mb-2 uppercase tracking-wide">
+                            <p className="text-[#A52A2A] font-semibold text-sm mb-2 uppercase tracking-wide">
                                 Handpicked for you
                             </p>
                             <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-4 tracking-tight">
-                                {firstHalf ? firstHalf : `Featured`} <span className="text-blue-600">{secondHalf ? secondHalf : `Deals`}</span>
+                                {firstHalf ? firstHalf : `Featured`} <span className="text-[#800000]">{secondHalf ? secondHalf : `Deals`}</span>
                             </h2>
                             <p className="text-gray-500 text-lg max-w-2xl">
                                 {content}

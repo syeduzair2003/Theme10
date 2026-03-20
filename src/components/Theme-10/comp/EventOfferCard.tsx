@@ -19,19 +19,19 @@ const EventOfferCard = ({ product, merchantHref, domain, merchant_name, merchant
     const finalDiscountTag = getFinalDiscountTag(product?.offer_title || product?.offer_detail, discountPercent);
 
     return (
-        <div className="group relative bg-white rounded-[2.5rem] border border-slate-100 flex flex-col h-full transition-all duration-500 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.12)] hover:-translate-y-2 overflow-hidden">
+        <div className="group relative bg-[#F5F5DC] rounded-[2.5rem] border border-[#EADDCA] flex flex-col h-full transition-all duration-500 hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.12)] hover:-translate-y-2 overflow-hidden">
             
             {/* --- Top Floating Badges --- */}
             <div className="absolute top-4 left-4 right-4 z-20 flex justify-between items-start pointer-events-none">
                 {finalDiscountTag && (
-                    <div className="bg-[#2563eb] text-white text-[10px] font-black px-3.5 py-1.5 rounded-full shadow-lg shadow-rose-200 uppercase tracking-widest flex items-center gap-1.5 animate-pulse-slow">
+                    <div className="bg-[#A52A2A] text-white text-[10px] font-black px-3.5 py-1.5 rounded-full shadow-lg shadow-rose-200 uppercase tracking-widest flex items-center gap-1.5 animate-pulse-slow">
                         <Sparkles size={12} fill="white" />
                         {finalDiscountTag}
                     </div>
                 )}
                 
                 {product?.coupon_code && (
-                    <div className="bg-indigo-600 text-white p-2 rounded-xl shadow-lg shadow-indigo-100">
+                    <div className="bg-[#A52A2A] text-white p-2 rounded-xl shadow-lg shadow-indigo-100">
                         <Tag size={14} />
                     </div>
                 )}
@@ -50,7 +50,7 @@ const EventOfferCard = ({ product, merchantHref, domain, merchant_name, merchant
                 </div>
                 
                 {/* Decorative Blur Effect on Hover */}
-                <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-blue-400/10 blur-[50px] rounded-full group-hover:bg-blue-400/20 transition-all duration-700" />
+                <div className="absolute -bottom-10 -right-10 w-32 h-32 bg-[#A52A2A]/10 blur-[50px] rounded-full group-hover:bg-[#800000]/20 transition-all duration-700" />
             </div>
 
             {/* --- Content Body --- */}
@@ -61,7 +61,7 @@ const EventOfferCard = ({ product, merchantHref, domain, merchant_name, merchant
                     <div className="w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center overflow-hidden">
                         <Image src={getBaseImageUrl(domain, merchant_logo, "")} alt="logo" width={14} height={14} className="object-contain" />
                     </div>
-                    <Link href={merchantHref} className="text-[11px] font-bold text-slate-400 hover:text-indigo-600 uppercase tracking-widest transition-colors">
+                    <Link href={merchantHref} className="text-[11px] font-bold text-slate-400 hover:text-[#A52A2A] uppercase tracking-widest transition-colors">
                         {merchant_name}
                     </Link>
                 </div>
@@ -111,7 +111,7 @@ const EventOfferCard = ({ product, merchantHref, domain, merchant_name, merchant
             merchantHref={merchantHref}
             domain={domain}
             // Add !text-white here
-            customClass="no-underline w-full bg-slate-900 !text-white py-4 rounded-[1.25rem] font-bold text-[11px] uppercase tracking-[0.15em] flex items-center justify-center gap-2 hover:bg-indigo-600 transition-all duration-300 shadow-xl shadow-slate-200"
+            customClass="no-underline w-full bg-[#1A1A1A] !text-[#FFFDF5] py-4 rounded-[1.25rem] font-bold text-[11px] uppercase tracking-[0.15em] flex items-center justify-center gap-2 hover:bg-[#800000] transition-all duration-300 shadow-xl shadow-[#1A1A1A]/10 active:scale-[0.98]"
         >
             {/* Span par important text white lagaya taake Link ka default color override ho jaye */}
             <span className="!text-white">Copy Code</span>
@@ -123,7 +123,7 @@ const EventOfferCard = ({ product, merchantHref, domain, merchant_name, merchant
             outUrl={product?.url}
             merchantHref={merchantHref}
             domain={domain}
-            customClass="no-underline w-full bg-indigo-600 !text-white py-4 rounded-[1.25rem] font-bold text-[11px] uppercase tracking-[0.15em] flex items-center justify-center gap-2 hover:bg-slate-900 transition-all duration-300 shadow-xl shadow-indigo-100"
+            customClass="no-underline w-full bg-[#800000] !text-[#FFFDF5] py-4 rounded-[1.25rem] font-bold text-[11px] uppercase tracking-[0.15em] flex items-center justify-center gap-2 hover:bg-[#1A1A1A] transition-all duration-300 shadow-xl shadow-[#800000]/10 active:scale-[0.98]"
         >
             <span className="!text-white">{type === "product" ? "Buy Product" : "Get Deal"}</span>
             <ExternalLink size={14} className="!text-white group-hover/btn:scale-110 transition-transform" />
@@ -133,7 +133,7 @@ const EventOfferCard = ({ product, merchantHref, domain, merchant_name, merchant
             </div>
             
             {/* Bottom Accent Line */}
-            <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-indigo-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+            <div className="absolute bottom-0 left-0 right-0 h-1.5 bg-[#A52A2A] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
         </div>
     );
 }

@@ -37,22 +37,22 @@ const Header = async ({ company_id, domain, mer_slug, slug_type, cat_slug, logo,
     // Updated 'getHref' parameter type from Function to GetHrefFn
     const renderDropdown = (name: string, items: any[], getHref: GetHrefFn, iconKey?: string) => (
         <div className="relative group flex items-center" key={name}>
-            <Link href={navPaths[name]} className="text-slate-600 hover:text-blue-600 text-[15px] font-semibold transition-colors flex items-center gap-1 no-underline py-5">
+            <Link href={navPaths[name]} className="text-slate-600 hover:text-[#800000] text-[15px] font-semibold transition-colors flex items-center gap-1 no-underline py-5">
                 {name} <FaChevronDown className="w-2.5 h-2.5 opacity-50 group-hover:rotate-180 transition-transform" />
             </Link>
             
             {/* Dropdown Menu with improved shadow and animation classes */}
-            <div className="absolute top-[100%] left-1/2 -translate-x-1/2 w-72 bg-white rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-slate-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-300 z-50 p-3 overflow-hidden">
+            <div className="absolute top-[100%] left-1/2 -translate-x-1/2 w-72 bg-[#FEF9E7] rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.1)] border border-[#FEF9E7] opacity-0 invisible group-hover:opacity-100 group-hover:visible translate-y-2 group-hover:translate-y-0 transition-all duration-300 z-50 p-3 overflow-hidden">
                 <div className="max-h-[400px] overflow-y-auto custom-scrollbar">
                     {items?.map((item: any) => (
-                        <Link key={item.id} href={getHref(item)} className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 transition-colors no-underline group/item">
+                        <Link key={item.id} href={getHref(item)} className="flex items-center gap-3 p-3 rounded-xl hover:bg-[#FEF9E7] transition-colors no-underline group/item">
                             {iconKey && (
-                                <div className="w-10 h-10 rounded-lg bg-slate-50 flex items-center justify-center border border-slate-100 shrink-0 group-hover/item:scale-110 transition-transform">
+                                <div className="w-10 h-10 rounded-lg bg-[#FEF9E7] flex items-center justify-center border border-[#FEF9E7] shrink-0 group-hover/item:scale-110 transition-transform">
                                     <Image src={item[iconKey]?.startsWith('http') ? item[iconKey] : `/${item[iconKey]}`} 
                                            alt={item.name || "logo"} width={28} height={28} className="object-contain" />
                                 </div>
                             )}
-                            <span className="text-sm font-medium text-slate-700 group-hover/item:text-blue-600">
+                            <span className="text-sm font-medium text-slate-700 group-hover/item:text-[#800000]">
                                 {item.name || item.merchant_name}
                             </span>
                         </Link>
@@ -63,7 +63,7 @@ const Header = async ({ company_id, domain, mer_slug, slug_type, cat_slug, logo,
     );
 
     return (
-        <header className="fixed top-0 left-0 w-full z-[100] bg-white backdrop-blur-md border-b border-slate-100 shadow-sm">
+        <header className="fixed top-0 left-0 w-full z-[100] bg-[#F5F5DC] backdrop-blur-md border-b border-[#FEF9E7] shadow-sm">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex h-20 items-center justify-between gap-4">
                     
@@ -88,10 +88,10 @@ const Header = async ({ company_id, domain, mer_slug, slug_type, cat_slug, logo,
                             const isActive = currentPath === navPaths[name];
                             return (
                                 <Link key={name} href={navPaths[name]} 
-                                    className={`text-[15px] font-semibold no-underline transition-all relative group ${isActive ? "text-blue-600" : "text-slate-600 hover:text-blue-600"}`}>
+                                    className={`text-[15px] font-semibold no-underline transition-all relative group ${isActive ? "text-[#800000]" : "text-slate-600 hover:text-[#800000]"}`}>
                                     {name}
                                     {/* Underline animation */}
-                                    <span className={`absolute -bottom-1 left-0 h-0.5 bg-blue-600 transition-all duration-300 ${isActive ? "w-full" : "w-0 group-hover:w-full"}`} />
+                                    <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#800000] transition-all duration-300 ${isActive ? "w-full" : "w-0 group-hover:w-full"}`} />
                                 </Link>
                             );
                         })}

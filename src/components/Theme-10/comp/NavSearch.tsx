@@ -79,8 +79,8 @@ const NavSearch = ({ companyId, mer_slug, slug_type, cat_slug }: Props) => {
   return (
     <div className="relative w-full max-w-lg">
       {/* SEARCH BAR */}
-      <div className="group flex items-center bg-slate-50 rounded-2xl border border-slate-200 focus-within:bg-white focus-within:border-blue-500 focus-within:ring-4 focus-within:ring-blue-500/10 transition-all duration-300 px-4 py-3">
-        <FaSearch className="text-slate-400 group-focus-within:text-blue-500 transition-colors mr-3" />
+      <div className="group flex items-center bg-slate-50 rounded-2xl border border-slate-200 focus-within:bg-white focus-within:border-[#800000] focus-within:ring-4 focus-within:ring-[#800000]/10 transition-all duration-300 px-4 py-3">
+        <FaSearch className="text-slate-400 group-focus-within:text-[#800000] transition-colors mr-3" />
 
         <input
           ref={inputRef}
@@ -102,7 +102,7 @@ const NavSearch = ({ companyId, mer_slug, slug_type, cat_slug }: Props) => {
         <button
           onClick={() => search && router.push(`/search?query=${search}`)}
           // 1. Inline style hamesha kaam karega chahe Tailwind config kuch bhi ho
-          style={{ backgroundColor: '#7992f8' }} 
+          style={{ backgroundColor: '#A52A2A' }} 
           className="text-white px-5 py-2 rounded-xl text-sm font-bold shadow-lg shadow-blue-200 transition-all active:scale-95 hover:opacity-90"
         >
           Search
@@ -120,9 +120,9 @@ const NavSearch = ({ companyId, mer_slug, slug_type, cat_slug }: Props) => {
               <div className="animate-in fade-in slide-in-from-left-2 duration-500 delay-75">
                 <div className="flex items-center justify-between mb-3 px-2">
                    <h3 className="flex items-center gap-2 text-sm font-bold text-slate-400 uppercase tracking-widest">
-                    <FaStore className="text-blue-500" /> Stores
+                    <FaStore className="text-[#800000]" /> Stores
                   </h3>
-                  <span className="text-[10px] bg-blue-50 text-blue-600 px-2 py-0.5 rounded-full font-bold">MATCHES</span>
+                  <span className="text-[10px] bg-blue-50 text-[#800000] px-2 py-0.5 rounded-full font-bold">MATCHES</span>
                 </div>
 
                 <div className="grid grid-cols-2 gap-2">
@@ -130,7 +130,7 @@ const NavSearch = ({ companyId, mer_slug, slug_type, cat_slug }: Props) => {
                     <Link
                       key={i}
                       href={getMerchantHref(merchant, mer_slug, slug_type)}
-                      className="no-underline flex items-center gap-3 p-3 rounded-2xl bg-slate-50 hover:bg-blue-600 transition-all group border border-transparent hover:shadow-lg hover:shadow-blue-200"
+                      className="no-underline flex items-center gap-3 p-3 rounded-2xl bg-slate-50 hover:bg-[#800000] transition-all group border border-transparent hover:shadow-lg hover:shadow-blue-200"
                     >
                       <div className="w-12 h-10 relative bg-white rounded-lg p-1 border border-slate-100 group-hover:border-white/20 transition-colors">
                         <Image src={merchant.merchant_logo} alt={merchant.merchant_name} fill className="object-contain p-1" />
