@@ -24,17 +24,17 @@ const ExploreCategory = async ({ companyId, cat_slug, slug_type }: Props) => {
     }
 
     return (
-        <section className="bg-white py-24 px-6">
+        <section className="bg-[#fffde0] py-24 px-6">
             <div className="max-w-7xl mx-auto">
                 
                 {/* Header Area */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
                     <div className="max-w-full">
-                        <p className="text-[#3b82f6] font-bold text-sm mb-3 uppercase tracking-tight">
+                        <p className="text-[#800000] font-bold text-sm mb-3 uppercase tracking-tight">
                             Explore Categories
                         </p>
-                        <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-4 tracking-tight">
-                            {firstHalf ? firstHalf : `Browse by`} <span className="text-[#3b82f6]">{secondHalf ? secondHalf : `Category`}</span>
+                        <h2 className="text-5xl md:text-6xl font-black text-[#1A1A1A] mb-4 tracking-tight">
+                            {firstHalf ? firstHalf : `Browse by`} <span className="text-[#800000]">{secondHalf ? secondHalf : `Category`}</span>
                         </h2>
                         <p className="text-gray-500 text-lg">
                             {content}
@@ -43,14 +43,14 @@ const ExploreCategory = async ({ companyId, cat_slug, slug_type }: Props) => {
                     
                     <Link 
                         href={`/${cat_slug}`} 
-                        className="group relative flex items-center gap-3 w-fit text-slate-400 font-black text-[12px] uppercase tracking-[0.2em] no-underline transition-all duration-300 hover:text-blue-600"
+                        className="group relative flex items-center gap-3 w-fit text-[#1A1A1A]/70 font-black text-[12px] uppercase tracking-[0.2em] no-underline transition-all duration-300 hover:text-[#800000]"
                     >
                         {/* Main Text */}
                         <span className="relative">
                              All Categories 
                             
                             {/* Animated Underline */}
-                            <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-blue-600 transition-all duration-300 group-hover:w-full" />
+                            <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-[#800000] transition-all duration-300 group-hover:w-full" />
                         </span>
 
                         {/* Dynamic Arrow Icon */}
@@ -60,7 +60,7 @@ const ExploreCategory = async ({ companyId, cat_slug, slug_type }: Props) => {
                             
                             <ArrowRight 
                                 size={18} 
-                                className="relative z-10 transition-all duration-300 group-hover:translate-x-1.5 group-hover:text-blue-600" 
+                                className="relative z-10 transition-all duration-300 group-hover:translate-x-1.5 group-hover:text-[#800000]" 
                             />
                         </div>
                     </Link>

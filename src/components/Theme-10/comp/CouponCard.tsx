@@ -123,10 +123,10 @@ const CouponCard = async ({
           merchantHref={merchantHref}
           domain={domain}
           customClass={`w-full relative h-14 flex items-center justify-center rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all duration-300 active:scale-95 overflow-hidden ${
-            product?.coupon_code
-              ? "bg-transparent border-2 border-dashed border-blue-500 text-blue-400 hover:bg-blue-500/10"
-              : "bg-white text-slate-900 hover:bg-blue-500 hover:text-Black no-underline"
-          }`}
+    product?.coupon_code
+      ? "bg-transparent border-2 border-dashed border-[#800000] text-[#A52A2A] hover:bg-[#800000]/10"
+      : "bg-[#FFFDF5] text-[#1A1A1A] hover:bg-[#800000] hover:text-[#FFFDF5] no-underline"
+  }`}
         >
           {product?.coupon_code ? (
             <div className="flex items-center gap-3">

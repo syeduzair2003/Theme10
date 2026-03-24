@@ -37,7 +37,7 @@ const Header = async ({ company_id, domain, mer_slug, slug_type, cat_slug, logo,
     // Updated 'getHref' parameter type from Function to GetHrefFn
     const renderDropdown = (name: string, items: any[], getHref: GetHrefFn, iconKey?: string) => (
         <div className="relative group flex items-center" key={name}>
-            <Link href={navPaths[name]} className="text-slate-600 hover:text-[#800000] text-[15px] font-semibold transition-colors flex items-center gap-1 no-underline py-5">
+            <Link href={navPaths[name]} className="text-slate-800 hover:text-[#800000] text-[15px] font-semibold transition-colors flex items-center gap-1 no-underline py-5">
                 {name} <FaChevronDown className="w-2.5 h-2.5 opacity-50 group-hover:rotate-180 transition-transform" />
             </Link>
             
@@ -63,7 +63,7 @@ const Header = async ({ company_id, domain, mer_slug, slug_type, cat_slug, logo,
     );
 
     return (
-        <header className="fixed top-0 left-0 w-full z-[100] bg-[#F5F5DC] backdrop-blur-md border-b border-[#FEF9E7] shadow-sm">
+        <header className="fixed top-0 left-0 w-full z-[100] bg-[#F5F5DC]/70 backdrop-blur-md border-b border-[#FEF9E7]/70 shadow-sm">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex h-20 items-center justify-between gap-4">
                     
@@ -88,7 +88,7 @@ const Header = async ({ company_id, domain, mer_slug, slug_type, cat_slug, logo,
                             const isActive = currentPath === navPaths[name];
                             return (
                                 <Link key={name} href={navPaths[name]} 
-                                    className={`text-[15px] font-semibold no-underline transition-all relative group ${isActive ? "text-[#800000]" : "text-slate-600 hover:text-[#800000]"}`}>
+                                    className={`text-[15px] font-semibold no-underline transition-all relative group ${isActive ? "text-[#800000]" : "text-slate-800 hover:text-[#800000]"}`}>
                                     {name}
                                     {/* Underline animation */}
                                     <span className={`absolute -bottom-1 left-0 h-0.5 bg-[#800000] transition-all duration-300 ${isActive ? "w-full" : "w-0 group-hover:w-full"}`} />

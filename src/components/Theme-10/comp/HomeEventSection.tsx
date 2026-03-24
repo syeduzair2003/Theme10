@@ -47,7 +47,7 @@ const HomeEventSection = async ({
   if (allOffers?.length === 0) return null;
 
   return (
-    <section className="bg-[#FFFDF5] py-24 px-6 overflow-hidden">
+    <section className="bg-[#fffde0] py-24 px-6 overflow-hidden">
       <div className="max-w-7xl mx-auto">
         {/* Header Section with Scale Effect */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
