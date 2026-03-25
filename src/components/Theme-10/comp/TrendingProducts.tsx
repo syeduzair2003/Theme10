@@ -27,8 +27,8 @@ const TrendingProducts = async ({
   const count = 8;
   if (couponData?.length > 0) {
     return (
-      <section className="bg-[#0B0F1A] py-16 px-6 lg:px-20 overflow-hidden">
-        <div className="max-w-7xl mx-auto">
+      <section className="bg-[#1A1A1A] py-20 px-6 lg:px-20 overflow-hidden">
+            <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
             <div className="space-y-2">
               <h2 className="text-3xl md:text-4xl font-black text-[#FFFDF5] tracking-tight">

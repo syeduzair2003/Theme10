@@ -24,7 +24,7 @@ const PopularStores = async ({ companyId, mer_slug, slug_type }: PopularStoresPr
   const [first, second] = splitHeading(response?.top_merchants_widget?.widget_heading || "GetTopDiscounts: Verified Coupon Codes & Deals for Thousands of Brands")
 
   return (
-    <section className="py-12 md:py-20 bg-[#fafafa] relative overflow-hidden">
+    <section className="py-12 md:py-20 bg-[#fffde0] relative overflow-hidden">
       {/* Decorative background element */}
       <div className="absolute top-0 left-0 w-full h-full opacity-40 pointer-events-none">
         <div className="absolute -top-24 -left-24 w-96 h-96 bg-blue-100 rounded-full blur-3xl"></div>

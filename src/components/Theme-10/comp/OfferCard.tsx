@@ -52,7 +52,7 @@ const OfferCard = async ({ offer, mer_slug_type, mer_slug, type }: Props) => {
 
   return (
     <div className="group relative h-full">
-      <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] p-8 flex flex-col justify-between shadow-2xl h-full border border-white/5 transition-all duration-500 group-hover:shadow-blue-500/20 group-hover:border-blue-500/30">
+      <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] p-8 flex flex-col justify-between shadow-2xl h-full border border-[#FFFDF5]/5 transition-all duration-700 group-hover:shadow-[0_20px_50px_rgba(128,0,0,0.15)] group-hover:border-[#800000]/40 group-hover:bg-[#1E1E1E]/50">
         {/* Background Optimized with Next.js Image */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           {imageSrc && (
@@ -64,8 +64,8 @@ const OfferCard = async ({ offer, mer_slug_type, mer_slug, type }: Props) => {
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
           )}
-          <div className="absolute inset-0 bg-[#1e293b] opacity-95" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent transition-opacity group-hover:opacity-80" />
+          <div className="absolute inset-0 bg-[#0D0D0D] opacity-95" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-[#800000]/10 to-transparent transition-opacity duration-700 group-hover:via-[#800000]/20 group-hover:opacity-90" />
         </div>
 
         {/* Top Section */}
