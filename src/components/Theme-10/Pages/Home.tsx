@@ -48,11 +48,12 @@ const Home = async () => {
             <TrendingProducts companyId={c_data?.unique_id} mer_slug_type={c_data?.slug_type} mer_slug={c_data?.store_slug} />
             <PremimumBrand companyId={c_data?.unique_id} mer_slug_type={c_data?.slug_type} mer_slug={c_data?.store_slug} />
             
-            <Subscribe/>
-            <HomepageFAQs slug_type={c_data?.slug_type} store_slug={c_data?.store_slug}/>
+            <Subscribe slug_type={c_data?.slug_type} store_slug={c_data?.store_slug}/> 
             {(c_data?.blog_title || c_data?.blog_url) &&
                 <HomeBlogSection companyId={c_data?.unique_id} blog_url={c_data?.blog_url} />
             }
+            <HomepageFAQs slug_type={c_data?.slug_type} store_slug={c_data?.store_slug}/>
+            
             {/* <Footer/> */}
         </div>
         // </Suspense>

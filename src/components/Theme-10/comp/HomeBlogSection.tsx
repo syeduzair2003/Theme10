@@ -15,7 +15,7 @@ const HomeBlogSection = async ({
 
   if (blog.status && blog?.data?.length > 0) {
     return (
-      <section className="bg-[#1A1A1A] py-20 px-6">
+      <section className="bg-[#fffde0] py-20 px-6">
         <div className="max-w-7xl mx-auto">
           {/* Header Area */}
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">

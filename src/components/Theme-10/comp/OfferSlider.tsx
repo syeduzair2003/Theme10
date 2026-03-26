@@ -38,7 +38,7 @@ export default function OfferSlider({ children }: { children: React.ReactNode })
       {/* LEFT FLOATING ARROW - Always Visible Now */}
       <button
         onClick={() => scroll("left")}
-        className="absolute left-[-30px] top-1/2 -translate-y-1/2 z-40 p-4 rounded-full bg-[#151b28] border border-white/10 text-[#2ECC71] hover:bg-[#2ECC71] hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(46,204,113,0.15)] hidden md:flex items-center justify-center active:scale-90"
+        className="absolute left-[-30px] top-1/2 -translate-y-1/2 z-40 p-4 rounded-full bg-[#0D0D0D] border border-[#FFFDF5]/10 text-[#FFFDF5] hover:bg-[#800000] hover:text-[#FFFDF5] hover:border-[#800000] transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.4)] hover:shadow-[0_0_25px_rgba(128,0,0,0.3)] hidden md:flex items-center justify-center active:scale-90 group"
         aria-label="Scroll Left"
       >
         <ArrowLeft size={24} strokeWidth={3} />
@@ -47,7 +47,7 @@ export default function OfferSlider({ children }: { children: React.ReactNode })
       {/* RIGHT FLOATING ARROW - Always Visible Now */}
       <button
         onClick={() => scroll("right")}
-        className="absolute right-[-30px] top-1/2 -translate-y-1/2 z-40 p-4 rounded-full bg-[#151b28] border border-white/10 text-[#2ECC71] hover:bg-[#2ECC71] hover:text-white transition-all duration-300 shadow-[0_0_20px_rgba(46,204,113,0.15)] hidden md:flex items-center justify-center active:scale-90"
+        className="absolute right-[-30px] top-1/2 -translate-y-1/2 z-40 p-4 rounded-full bg-[#0D0D0D] border border-[#FFFDF5]/10 text-[#FFFDF5] hover:bg-[#800000] hover:text-[#FFFDF5] hover:border-[#800000] transition-all duration-300 shadow-[0_0_20px_rgba(0,0,0,0.4)] hover:shadow-[0_0_25px_rgba(128,0,0,0.3)] hidden md:flex items-center justify-center active:scale-90 group"
         aria-label="Scroll Right"
       >
         <ArrowRight size={24} strokeWidth={3} />

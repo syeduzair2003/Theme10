@@ -35,11 +35,11 @@ const PopularCoupons = async ({ companyId, mer_slug_type, mer_slug }: Props) => 
             <Reveal x={-30} y={0}>
                 <div className="flex items-center gap-3 mb-4">
                     {/* Line changed to Maroon */}
-                    <span className="h-[2px] w-12 bg-[#e7cfaa]"></span>
+                    <span className="h-[2px] w-12 bg-[#800000]"></span>
                     {/* Text changed to Cream for visibility on black */}
                     <span className="text-[#FFFDF5] font-bold uppercase tracking-[0.3em] text-xs">Verified Savings</span>
                 </div>
-                <h2 className="text-4xl md:text-6xl font-black text-[#FFFDF5] leading-tight mb-6">
+                <h2 className="text-4xl md:text-6xl font-black text-[#800000] drop-shadow-[0_0_10px_rgba(128,0,0,0.3)] leading-tight mb-6">
                     {firstHalf || "Today's"}{" "}
                     {/* Gradient changed to Maroon and Light Maroon */}
                     <span className="text-transparent bg-clip-text text-[#e7cfaa]">
