@@ -28,7 +28,7 @@ const StoreCardHorizontal = async ({
       href={getMerchantHref(merchant, mer_slug, mer_slug_type)}
       className="no-underline block group"
     >
-      <div className="flex flex-col gap-4 p-5 rounded-[2.5rem] bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all border border-white/10 hover:border-[#800000]/40 group shadow-none hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] min-w-[220px] w-[220px] flex-shrink-0 relative overflow-hidden">
+      <div className="flex flex-col gap-4 p-4 rounded-[2.5rem] bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all border border-white/10 hover:border-[#800000]/40 group shadow-none hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] min-w-[260px] w-[260px] h-full flex-shrink-0 relative overflow-hidden">
         {/* Logo Box - Isko bada aur center kar diya portrait look ke liye */}
         <div className="relative w-full aspect-square bg-white/[0.03] backdrop-blur-sm border border-white/10 rounded-[2rem] flex-shrink-0 p-4 shadow-sm group-hover:bg-white/[0.07] group-hover:border-[#800000]/30 transition-all duration-500 overflow-hidden flex items-center justify-center">
           <Image

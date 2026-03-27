@@ -78,7 +78,7 @@ export default function FreshDealsSlider({
         </div>
 
         {/* View All Stores Button - Centered and Smaller */}
-        <div className="flex justify-center mt-12 pb-3">
+        <div className="flex justify-center mt-10 pb-3">
           <button className="px-12 py-4 bg-white/5 backdrop-blur-md border border-white/10 text-white/60 rounded-2xl font-black text-[10px] uppercase tracking-[0.3em] hover:bg-[#800000] hover:text-[#FFFDF5] hover:border-[#800000] hover:shadow-[0_0_30px_rgba(128,0,0,0.4)] transition-all duration-500 active:scale-95 group flex items-center gap-3">
             <span>View All Deals</span>
             <div className="w-1.5 h-1.5 rounded-full bg-[#800000] group-hover:bg-white animate-pulse" />
