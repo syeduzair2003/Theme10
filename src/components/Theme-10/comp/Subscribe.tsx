@@ -15,7 +15,7 @@ const Subscribe = async ({ store_slug, slug_type }: Props) => {
   const promoMerchants = (await apiRecentlyUpdatedStores(companyDomain)).data;
 
   return (
-    <section className="relative w-full py-24 overflow-hidden bg-[#0a0a0c]">
+    <section className="relative w-full py-12 overflow-hidden bg-[#0a0a0c]">
       {/* Background Glows */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[#D1C7A7]/15 blur-[120px] rounded-full z-0" />
   <div className="absolute top-1/2 left-[40%] -translate-x-1/2 -translate-y-1/2 w-[400px] h-[300px] bg-[#800000]/10 blur-[100px] rounded-full z-0" />
