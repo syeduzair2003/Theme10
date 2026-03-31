@@ -25,9 +25,12 @@ const PopularCoupons = async ({ companyId, mer_slug_type, mer_slug }: Props) => 
     if (!couponData || couponData.length === 0) return null;
 
     return (
-        <section className="bg-[#1A1A1A] py-20 px-6 lg:px-12 relative overflow-hidden">
+        <section className="bg-[#fffde0] py-20 px-6 lg:px-12 relative overflow-hidden">
+    {/* Section Top Divider - Maroon Gradient for Cream BG */}
+    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-[#800000]/10 via-[#800000]/60 via-[#800000]/10 to-transparent opacity-100 shadow-[0_1px_2px_rgba(0,0,0,0.05)]" />
+
     {/* Background Decorative Element - Maroon Glow */}
-    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#800000]/10 blur-[120px] rounded-full -mr-48 -mt-48 animate-pulse"></div>
+    <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#EADDCA]/30 blur-[150px] rounded-full -mr-48 -mt-48 animate-pulse pointer-events-none"></div>
     
     <div className="max-w-[1400px] mx-auto relative z-10">
         <div className="mb-16">
@@ -37,12 +40,12 @@ const PopularCoupons = async ({ companyId, mer_slug_type, mer_slug }: Props) => 
                     {/* Line changed to Maroon */}
                     <span className="h-[2px] w-12 bg-[#800000]"></span>
                     {/* Text changed to Cream for visibility on black */}
-                    <span className="text-[#FFFDF5] font-bold uppercase tracking-[0.3em] text-xs">Verified Savings</span>
+                    <span className="text-[#1A1A1A] font-bold uppercase tracking-[0.3em] text-xs">Verified Savings</span>
                 </div>
                 <h2 className="text-4xl md:text-6xl font-black text-[#800000] drop-shadow-[0_0_10px_rgba(128,0,0,0.3)] leading-tight mb-6">
                     {firstHalf || "Today's"}{" "}
                     {/* Gradient changed to Maroon and Light Maroon */}
-                    <span className="text-transparent bg-clip-text text-[#e7cfaa]">
+                    <span className="text-[#1A1A1A]">
                         {secondHalf || "Deals"}
                     </span>
                 </h2>
@@ -51,7 +54,7 @@ const PopularCoupons = async ({ companyId, mer_slug_type, mer_slug }: Props) => 
             {/* Content: Reveal with Delay */}
             <Reveal delay={0.2}>
                 {/* Paragraph text changed to a softer Cream/Grey for readability */}
-                <p className="text-[#FFFDF5]/70 max-w-full text-lg font-medium leading-relaxed">
+                <p className="text-[#1A1A1A]/60 max-w-full text-lg font-medium leading-relaxed">
                     {content || "Hand-picked premium discounts from world-class brands, updated every hour."}
                 </p>
             </Reveal>

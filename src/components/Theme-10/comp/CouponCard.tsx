@@ -39,7 +39,7 @@ const CouponCard = async ({
   );
 
   return (
-    <div className="group relative bg-[#1A1A1A]/80 backdrop-blur-sm border border-[#EADDCA]/10 rounded-[2.5rem] p-8 flex flex-col h-full transition-all duration-500 hover:border-[#800000]/50 hover:shadow-[0_20px_50px_rgba(128,0,0,0.15)] hover:-translate-y-2">
+    <div className="group relative  bg-[#F5F5DC] border border-[#EADDCA] rounded-[3rem] p-8 flex flex-col h-full transition-all duration-700 shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:border-[#800000]/30 hover:shadow-[0_30px_60px_rgba(128,0,0,0.12)] hover:-translate-y-3">
       {/* Discount Badge */}
       {finalDiscountTag && (
         <div className="absolute -top-3 -right-3 bg-gradient-to-br from-[#800000] to-[#520000] text-[#FFFDF5] text-[11px] font-black px-5 py-2 rounded-2xl shadow-xl shadow-[#800000]/20 z-20 flex items-center gap-2 border border-[#A52A2A]/20">
@@ -75,9 +75,9 @@ const CouponCard = async ({
 
         {/* Title Section */}
         <div className="space-y-3">
-          <h4 className="text-xl font-bold text-[#FFFDF5] leading-tight group-hover:text-[#800000] transition-colors duration-500 line-clamp-2 min-h-[56px] tracking-tight">
-    {splitOfferTitle(product?.offer_title).join(" / ")}
-</h4>
+          <h4 className="text-xl font-black text-[#1A1A1A]/80 leading-tight group-hover:text-[#800000] transition-colors duration-500 line-clamp-2 min-h-[56px] tracking-tight">
+            {splitOfferTitle(product?.offer_title).join(" / ")}
+          </h4>
 
           <div className="flex items-center gap-4">
             <div className="flex items-center scale-90 origin-left">
@@ -122,10 +122,10 @@ const CouponCard = async ({
           outUrl={product?.url}
           merchantHref={merchantHref}
           domain={domain}
-          customClass={`w-full relative h-14 flex items-center justify-center rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all duration-300 active:scale-95 overflow-hidden ${
+          customClass={`w-full relative h-14 flex items-center justify-center rounded-2xl font-black text-xs uppercase tracking-[0.3em] transition-all duration-500 active:scale-95 overflow-hidden group/btn ${
             product?.coupon_code
-              ? "bg-transparent border-2 border-dashed border-[#800000] text-[#A52A2A] hover:bg-[#800000]/10"
-              : "bg-[#FFFDF5] text-[#1A1A1A] hover:bg-[#800000] hover:text-[#FFFDF5] no-underline"
+              ? "bg-transparent border-2 border-dashed border-[#800000]/30 text-[#800000] hover:bg-gradient-to-r hover:from-[#800000] hover:to-[#5D0E0E] hover:text-white hover:border-solid hover:shadow-[0_15px_35px_rgba(128,0,0,0.3)]"
+              : "bg-transparent border border-[#800000]/40 text-[#800000] hover:bg-gradient-to-br hover:from-[#800000] hover:to-[#4A0000] hover:text-white hover:border-transparent hover:shadow-[0_15px_35px_rgba(128,0,0,0.35)] no-underline"
           }`}
         >
           {product?.coupon_code ? (
@@ -155,14 +155,14 @@ const CouponCard = async ({
             href={merchantHref}
             className="no-underline block text-center group/link py-2"
           >
-            <span className="text-[11px] font-black text-[#FFFDF5]/40 uppercase tracking-[0.25em] group-hover/link:text-[#FFFDF5] transition-all duration-500 relative inline-block">
+            <span className="text-[11px] font-black text-[#1A1A1A]/40 uppercase tracking-[0.25em] group-hover/link:text-[#1A1A1A] transition-all duration-500 relative inline-block">
               Visit{" "}
-              <span className="text-[#800000] group-hover/link:text-[#FFFDF5] transition-colors">
+              <span className="text-[#800000] group-hover/link:text-[#800000] transition-colors">
                 {merchant_name}
               </span>{" "}
               Store
-              {/* Animated Underline Effect */}
-              <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-[#800000] group-hover/link:w-full transition-all duration-500 opacity-0 group-hover/link:opacity-100"></span>
+              {/* Animated Underline Effect - Maroon for Cream BG */}
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#800000] group-hover/link:w-full transition-all duration-500 opacity-0 group-hover/link:opacity-100"></span>
             </span>
           </Link>
         )}

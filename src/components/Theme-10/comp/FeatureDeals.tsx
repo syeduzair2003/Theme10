@@ -24,44 +24,47 @@ const FeaturedDeals = async ({ companyId, mer_slug_type, mer_slug }: Props) => {
   const count = 6;
 
   return (
-    <section className="bg-[#1A1A1A] py-20 px-6 overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        {/* Header Animation */}
-        <Reveal>
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
-            <div>
-              <p className="text-[#800000] font-black text-xs mb-3 uppercase tracking-[0.3em] opacity-90">
-                Handpicked for you
-              </p>
-              <h2 className="text-5xl md:text-6xl font-black text-[#FFFDF5] mb-4 tracking-tighter">
-                {firstHalf ? firstHalf : `Featured`}{" "}
-                <span className="text-[#800000] drop-shadow-[0_0_15px_rgba(128,0,0,0.3)]">
-                  {secondHalf ? secondHalf : `Deals`}
-                </span>
-              </h2>
-              <p className="text-[#FFFDF5]/60 text-lg max-w-2xl leading-relaxed font-medium">
-                {content}
-              </p>
-            </div>
-          </div>
-        </Reveal>
+    <section className="relative bg-[#fffde0] py-20 px-6 overflow-hidden">
+  {/* Section Divider Line (Maroon Gradient) */}
+  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-[#800000]/10 via-[#800000]/60 via-[#800000]/10 to-transparent opacity-100 shadow-[0_1px_2px_rgba(0,0,0,0.05)]" />
 
-        {/* Grid with Individual Reveal for each card */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {bestOffers?.offers?.slice(0, count)?.map((item: any, i: number) => (
-            <Reveal key={i} delay={i * 0.1}>
-              {" "}
-              {/* Har card thoda late aayega */}
-              <OfferCard
-                offer={item}
-                mer_slug_type={mer_slug_type}
-                mer_slug={mer_slug}
-              />
-            </Reveal>
-          ))}
+  <div className="max-w-7xl mx-auto">
+    {/* Header Animation */}
+    <Reveal>
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-4">
+        <div>
+          <p className="text-[#800000] font-black text-xs mb-3 uppercase tracking-[0.3em] opacity-90">
+            Handpicked for you
+          </p>
+          <h2 className="text-5xl md:text-6xl font-black text-[#1A1A1A] mb-4 tracking-tighter">
+            {firstHalf ? firstHalf : `Featured`}{" "}
+            <span className="text-[#800000] drop-shadow-[0_0_15px_rgba(128,0,0,0.3)]">
+              {secondHalf ? secondHalf : `Deals`}
+            </span>
+          </h2>
+          <p className="text-gray-500 text-lg max-w-2xl leading-relaxed font-medium">
+            {content}
+          </p>
         </div>
       </div>
-    </section>
+    </Reveal>
+
+    {/* Grid with Individual Reveal for each card */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {bestOffers?.offers?.slice(0, count)?.map((item: any, i: number) => (
+        <Reveal key={i} delay={i * 0.1}>
+          {" "}
+          {/* Har card thoda late aayega */}
+          <OfferCard
+            offer={item}
+            mer_slug_type={mer_slug_type}
+            mer_slug={mer_slug}
+          />
+        </Reveal>
+      ))}
+    </div>
+  </div>
+</section>
   );
 };
 

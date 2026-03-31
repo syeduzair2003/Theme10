@@ -24,7 +24,10 @@ const ExploreCategory = async ({ companyId, cat_slug, slug_type }: Props) => {
     }
 
     return (
-        <section className="bg-[#fffde0] py-24 px-6">
+        <section className="relative bg-[#fffde0] py-24 px-6 overflow-hidden">
+            {/* Section Top Divider Line */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-[#800000]/10 via-[#800000]/60 via-[#800000]/10 to-transparent opacity-100 shadow-[0_1px_2px_rgba(0,0,0,0.05)]" />
+
             <div className="max-w-7xl mx-auto">
                 
                 {/* Header Area */}
@@ -55,8 +58,8 @@ const ExploreCategory = async ({ companyId, cat_slug, slug_type }: Props) => {
 
                         {/* Dynamic Arrow Icon */}
                         <div className="relative flex items-center justify-center">
-                            {/* Arrow Background Circle on Hover */}
-                            <div className="absolute h-8 w-8 scale-0 rounded-full bg-blue-50 transition-transform duration-300 group-hover:scale-100" />
+                            {/* Arrow Background Circle on Hover - Updated to Maroon tint for theme consistency */}
+                            <div className="absolute h-8 w-8 scale-0 rounded-full bg-[#800000]/5 transition-transform duration-300 group-hover:scale-100" />
                             
                             <ArrowRight 
                                 size={18} 
