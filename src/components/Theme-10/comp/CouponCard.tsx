@@ -75,9 +75,9 @@ const CouponCard = async ({
 
         {/* Title Section */}
         <div className="space-y-3">
-          <h4 className="text-xl font-bold text-white leading-tight group-hover:text-blue-400 transition-colors line-clamp-2 min-h-[56px]">
-            {splitOfferTitle(product?.offer_title).join(" / ")}
-          </h4>
+          <h4 className="text-xl font-bold text-[#FFFDF5] leading-tight group-hover:text-[#800000] transition-colors duration-500 line-clamp-2 min-h-[56px] tracking-tight">
+    {splitOfferTitle(product?.offer_title).join(" / ")}
+</h4>
 
           <div className="flex items-center gap-4">
             <div className="flex items-center scale-90 origin-left">
@@ -123,10 +123,10 @@ const CouponCard = async ({
           merchantHref={merchantHref}
           domain={domain}
           customClass={`w-full relative h-14 flex items-center justify-center rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all duration-300 active:scale-95 overflow-hidden ${
-    product?.coupon_code
-      ? "bg-transparent border-2 border-dashed border-[#800000] text-[#A52A2A] hover:bg-[#800000]/10"
-      : "bg-[#FFFDF5] text-[#1A1A1A] hover:bg-[#800000] hover:text-[#FFFDF5] no-underline"
-  }`}
+            product?.coupon_code
+              ? "bg-transparent border-2 border-dashed border-[#800000] text-[#A52A2A] hover:bg-[#800000]/10"
+              : "bg-[#FFFDF5] text-[#1A1A1A] hover:bg-[#800000] hover:text-[#FFFDF5] no-underline"
+          }`}
         >
           {product?.coupon_code ? (
             <div className="flex items-center gap-3">
@@ -153,10 +153,16 @@ const CouponCard = async ({
         {pageType !== "events" && (
           <Link
             href={merchantHref}
-            className="no-underline text-white block text-center group/link"
+            className="no-underline block text-center group/link py-2"
           >
-            <span className="text-[12px] font-bold text-slate-400 uppercase tracking-widest group-hover/link:text-blue-400 transition-colors">
-              Visit {merchant_name} Store
+            <span className="text-[11px] font-black text-[#FFFDF5]/40 uppercase tracking-[0.25em] group-hover/link:text-[#FFFDF5] transition-all duration-500 relative inline-block">
+              Visit{" "}
+              <span className="text-[#800000] group-hover/link:text-[#FFFDF5] transition-colors">
+                {merchant_name}
+              </span>{" "}
+              Store
+              {/* Animated Underline Effect */}
+              <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-0 h-[1px] bg-[#800000] group-hover/link:w-full transition-all duration-500 opacity-0 group-hover/link:opacity-100"></span>
             </span>
           </Link>
         )}

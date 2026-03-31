@@ -66,7 +66,7 @@ const HomepageFAQs = async ({ store_slug, slug_type }: Props) => {
 
         {/* Button Section */}
         <div className="flex justify-center mt-12">
-          <button className="w-80 py-5 bg-transparent text-[#FFFDF5] rounded-2xl font-black text-xs uppercase tracking-[0.25em] border border-[#800000]/60 hover:bg-[#800000] hover:text-[#FFFDF5] hover:shadow-[0_0_25px_rgba(128,0,0,0.4)] transition-all duration-500 shadow-[0_0_15px_rgba(128,0,0,0.15)] active:scale-95 flex items-center justify-center gap-3 group">
+          <button className="w-80 py-5 bg-[#800000] text-[#FFFDF5] rounded-2xl font-black text-xs uppercase tracking-[0.25em] border border-[#800000]/60 hover:bg-transparent hover:text-[#FFFDF5] hover:shadow-[0_0_25px_rgba(128,0,0,0.4)] transition-all duration-500 shadow-[0_0_15px_rgba(128,0,0,0.15)] active:scale-95 flex items-center justify-center gap-3 group">
             Show More Questions
           </button>
         </div>
