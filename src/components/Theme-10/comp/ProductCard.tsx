@@ -31,17 +31,18 @@ const ProductCard = async ({ offer, mer_slug, mer_slug_type, type }: any) => {
 
   const finalDiscountTag = getFinalDiscountTag(
     product?.offer_title || product?.offer_detail,
-    discountPercent
+    discountPercent,
   );
 
   return (
-    <div className="group relative w-[274px] min-h-[420px] flex-shrink-0 
-      rounded-3xl bg-[#1A1A1A] border border-[#FFFDF5]/10 
+    <div
+      className="group relative w-[274px] min-h-[420px] flex-shrink-0 
+      rounded-3xl bg-[#F5F5DC] border border-[#EADDCA] 
       p-5 flex flex-col transition-all duration-500 
-      hover:-translate-y-2 hover:border-[#800000]/40">
-
+      hover:-translate-y-2 hover:border-[#800000]/40"
+    >
       {/* IMAGE */}
-      <div className="relative h-44 rounded-2xl bg-white overflow-hidden flex items-center justify-center">
+      <div className="relative h-44 rounded-2xl bg-white border border-[#EADDCA] overflow-hidden flex items-center justify-center">
         <Image
           src={imageSrc}
           alt="Product"
@@ -50,11 +51,15 @@ const ProductCard = async ({ offer, mer_slug, mer_slug_type, type }: any) => {
         />
 
         {finalDiscountTag && (
-          <div className="absolute top-3 right-3 flex items-center gap-1 
-            rounded-full bg-black/80 px-3 py-1 text-[10px] 
-            font-black text-[#ffffff] border border-[#800000]/30">
-            <Flame size={12} className="fill-[#ff5e00]" />
-            {finalDiscountTag}
+          <div
+            className="absolute top-3 right-3 flex items-center gap-1.5 
+            rounded-full bg-gradient-to-r from-[#800000] to-[#5D0E0E] px-3.5 py-1.5 text-[10px] 
+            font-black text-[#FFFDF5] border border-white/10 shadow-[0_8px_20px_rgba(128,0,0,0.25)] z-20 tracking-widest uppercase animate-in fade-in zoom-in duration-300"
+          >
+            <Flame size={12} className="fill-[#FFFDF5] animate-pulse" />
+            <span className="drop-shadow-sm">
+                {finalDiscountTag}
+            </span>
           </div>
         )}
       </div>
@@ -63,12 +68,12 @@ const ProductCard = async ({ offer, mer_slug, mer_slug_type, type }: any) => {
       <div className="mt-4 space-y-3">
         <div className="flex items-center gap-1 text-yellow-400/80">
           <Star size={10} fill="currentColor" />
-          <span className="text-[10px] uppercase tracking-widest text-white/60 font-bold">
+          <span className="text-[10px] uppercase tracking-widest text-[#1A1A1A]/50 font-bold">
             Top Rated
           </span>
         </div>
 
-        <h3 className="text-sm font-bold text-white leading-snug line-clamp-2 min-h-[40px] group-hover:text-blue-400 transition">
+        <h3 className="text-sm font-black text-gray-500 leading-snug line-clamp-2 min-h-[40px] group-hover:text-[#800000] transition-colors duration-500 tracking-tight">
           {type === "product"
             ? product?.offer_title
             : discardHTMLTags(product?.offer_title)}
@@ -81,11 +86,11 @@ const ProductCard = async ({ offer, mer_slug, mer_slug_type, type }: any) => {
             merchantHref={merchantHref}
             offer={product}
             type="anchor"
-            buttonClass="text-slate-400 font-semibold hover:text-white transition"
+            buttonClass="text-slate-400 font-semibold hover:text-[#800000] transition"
           />
 
           {salePrice > 0 && (
-            <span className="text-blue-400 font-black text-sm">
+            <span className="text-[#1A1A1A] font-black text-sm">
               ${salePrice}
             </span>
           )}

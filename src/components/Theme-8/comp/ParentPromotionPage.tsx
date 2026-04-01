@@ -12,6 +12,10 @@ import OfferCardThree from './OfferCardThree';
 import SidebarRoundMerchantCard from './SidebarRoundMerchantCard';
 import Image from 'next/image';
 
+type MerchantOfferItem = {
+    offer: Offer;
+    merchant: MerchantWithOffers;
+};
 const ParentPromotionPage = async ({ params }: { params: string }) => {
     const slug = params;
     const companyDomain = await cookieService.get("domain");
@@ -23,9 +27,13 @@ const ParentPromotionPage = async ({ params }: { params: string }) => {
         apiGetSubPromotion(companyData?.unique_id, slug).then(res => res.data),
     ]);
 
-    const allOffers = promotion?.merchants?.flatMap((merchant) =>
-        (merchant?.offers || []).map((offer) => ({ offer, merchant }))
-    ) || [];
+    const allOffers: MerchantOfferItem[] =
+        promotion?.merchants?.flatMap((merchant) =>
+            (merchant?.offers || []).map((offer) => ({
+                offer,
+                merchant,
+            }))
+        ) || [];
 
     const cleanDesc = cleanHtmlContent(promotion?.promotion?.description || '');
     const plainDesc = stripHtml(cleanDesc).result;
@@ -41,10 +49,10 @@ const ParentPromotionPage = async ({ params }: { params: string }) => {
                     
                     <div className="relative z-10 p-8 md:p-16 lg:p-20">
                         <nav className="inline-flex items-center bg-white/5 backdrop-blur-md px-5 py-2 rounded-full mb-10 border border-white/10">
-                            <ol className="flex items-center gap-3 text-[10px] font-black tracking-[0.2em] uppercase text-slate-300 list-none m-0 p-0">
-                                <li><Link href="/" className="no-underline hover:text-white transition-colors">Home</Link></li>
+                            <ol className="flex items-center gap-3 text-[10px] font-black tracking-[0.2em] uppercase !text-slate-300 list-none m-0 p-0">
+                                <li><Link href="/" className="no-underline hover:!text-white transition-colors">Home</Link></li>
                                 <li className="opacity-40">/</li>
-                                <li><Link href={`/${companyData?.promotion_slug}`} className="no-underline hover:text-white transition-colors">Promotions</Link></li>
+                                <li><Link href={`/${companyData?.promotion_slug}`} className="no-underline hover:!text-white transition-colors">Promotions</Link></li>
                                 <li className="opacity-40">/</li>
                                 <li className="text-blue-400">{promotion?.promotion?.name}</li>
                             </ol>

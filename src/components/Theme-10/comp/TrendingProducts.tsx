@@ -7,6 +7,7 @@ import Link from "next/link";
 import { faArrowRight, FontAwesomeIcon } from "@/constants/icons";
 import ProductCard from "./ProductCard";
 import OfferSlider from "./OfferSlider";
+import { ArrowRight } from 'lucide-react';
 
 interface Props {
   companyId: string;
@@ -27,42 +28,37 @@ const TrendingProducts = async ({
   const count = 8;
   if (couponData?.length > 0) {
     return (
-      <section className="bg-[#1A1A1A] py-20 px-6 lg:px-20 overflow-hidden">
-            <div className="max-w-7xl mx-auto">
+      <section className="bg-[#fffde0] py-20 px-6 lg:px-20 overflow-hidden relative">
+            {/* Section Top Divider Line - Premium Maroon Gradient */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-[#800000]/10 via-[#800000]/60 via-[#800000]/10 to-transparent opacity-100" />
+
+            <div className="max-w-7xl mx-auto relative z-10">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
             <div className="space-y-2">
-              <h2 className="text-3xl md:text-4xl font-black text-[#FFFDF5] tracking-tight">
+              {/* Text changed to Matte Black (#1A1A1A) for Cream BG visibility */}
+              <h2 className="text-3xl md:text-4xl font-black text-[#1A1A1A] tracking-tight">
                 {firstHalf || "Trending"}{" "}
-                <span className="text-[#800000] drop-shadow-[0_0_15px_rgba(128,0,0,0.3)]">
+                <span className="text-[#800000] drop-shadow-[0_0_15px_rgba(128,0,0,0.2)]">
                   {secondHalf || "Products"}
                 </span>
               </h2>
-              <p className="text-slate-400 max-w-2xl text-sm leading-relaxed">
+              {/* Softer Black/Grey for paragraph readability */}
+              <p className="text-[#1A1A1A]/50 max-w-2xl text-sm leading-relaxed">
                 {content}
               </p>
             </div>
             <Link
-              href="/all-products"
-              className="group flex items-center gap-2 text-[#A52A2A] font-bold text-sm hover:text-[#FFFDF5] transition-all"
-            >
-              View More Deals
-              <span className="group-hover:translate-x-1 transition-transform">
-                →
-              </span>
-            </Link>
+  href="/all-products"
+  className="group flex items-center gap-3 px-8 py-3.5 border border-[#800000]/40 rounded-full text-[#800000] font-black text-[11px] uppercase tracking-[0.2em] transition-all duration-500 hover:bg-[#800000] hover:text-white hover:border-transparent hover:shadow-[0_15px_30px_rgba(128,0,0,0.2)] no-underline"
+>
+  View More Deals
+  <ArrowRight 
+    size={16} 
+    className="transition-transform duration-500 group-hover:translate-x-1.5" 
+  />
+</Link>
           </div>
 
-          {/* <OfferSlider>
-                    {couponData.slice(0, 8).map((item: any, i: number) => (
-                        <ProductCard 
-                            key={i} 
-                            offer={item} 
-                            mer_slug_type={mer_slug_type} 
-                            mer_slug={mer_slug} 
-                            type={item?.offer?.offer_type?.name} 
-                        />
-                    ))}
-                </OfferSlider> */}
           <div className="max-w-7xl mx-auto">
             <OfferSlider>
               {couponData.slice(0, 8).map((item: any, i: number) => (

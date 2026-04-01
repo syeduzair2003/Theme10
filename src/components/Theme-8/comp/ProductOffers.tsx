@@ -4,6 +4,7 @@ import { OffersOffer } from '@/services/dataTypes';
 import React from 'react'
 import Pagination from './Pagination';
 import EventOfferCard from './EventOfferCard';
+import { getProductDetailHref } from '@/constants/hooks';
 
 interface Props {
     page?: string;
@@ -32,31 +33,32 @@ const ProductOffers = async ({ page, company_id, mer_slug, mer_slug_type, catego
 
     return (
         <div className="w-full">
-            <div className="row g-4 mb-10">
+            {/* Grid System: Mobile 1, Tablet 2, Desktop 3 (Adjusted for sidebar space) */}
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-3 gap-6 mb-10">
                 {offersData && offersData?.offers?.length > 0 ? (
                     offersData?.offers?.map((item: OffersOffer, i: number) => (
-                        <div key={i} className="col-md-6 col-xl-6 col-xxl-4 flex flex-col">
+                        <div key={i} className="flex flex-col h-full">
                             <EventOfferCard
                                 product={item?.offer}
                                 merchantHref={`/store/${item.merchant?.slug}`}
                                 domain={domain}
                                 merchant_name={item.merchant?.merchant_name}
                                 merchant_logo={item.merchant?.merchant_logo}
+                                productDetailUrl={item?.offer?.slug ? getProductDetailHref(item.merchant, mer_slug_type, item?.offer?.slug) : null}
                             />
                         </div>
                     ))
                 ) : (
-                    <div className="col-12 text-center py-20 bg-white rounded-[2rem] border-2 border-dashed border-slate-100">
+                    <div className="col-span-full text-center py-20 bg-white rounded-[2.5rem] border-2 border-dashed border-slate-100">
                         <div className="text-5xl mb-4">🔍</div>
                         <h3 className="text-2xl font-bold text-slate-900 mb-2">No Offers Found</h3>
-                        {/* Fixed: couldn't -> couldn&apos;t */}
                         <p className="text-slate-500">We couldn&apos;t find any deals in this category right now.</p>
                     </div>
                 )}
             </div>
 
             {totalPages > 1 && (
-                <div className="mt-12 d-flex justify-content-center">
+                <div className="mt-12 flex justify-center">
                     <Pagination
                         currentPage={currentPage}
                         totalPages={totalPages}

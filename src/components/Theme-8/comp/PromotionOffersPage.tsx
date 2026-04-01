@@ -17,6 +17,12 @@ import OfferCardThree from './OfferCardThree';
 import { stripHtml } from 'string-strip-html';
 import { apiGetPromoOfferBanners, apiGetPromotionOffers, apiGetSubPromoBanners, apiGetSubPromoSuggestedMerchant } from '@/apis/page_optimization';
 import {faGreaterThan} from '@/constants/icons';
+
+type MerchantOfferItem = {
+    offer: Offer;
+    merchant: MerchantWithOffers;
+};
+
 const PromotionOffersPage = async ({ params }: { params: string }) => {
     const slug = params;
     const companyDomain = await cookieService.get("domain");
@@ -40,9 +46,13 @@ const PromotionOffersPage = async ({ params }: { params: string }) => {
     const filteredVerticalBanners = filterOfferBanners(offerBanners || [], 50, 2000, 65, 2000);
     const filteredOfferBanners = filterOfferBanners(offerBanners || [], 250, 600, 100, 200);
 
-    const allOffers: { offer: Offer; merchant: MerchantWithOffers }[] = promotion?.merchants?.flatMap((merchant) =>
-            (merchant?.offers || []).map((offer) => ({ offer, merchant }))
-    ) || [];
+    const allOffers: MerchantOfferItem[] =
+        promotion?.merchants?.flatMap((merchant) =>
+            (merchant?.offers || []).map((offer) => ({
+                offer,
+                merchant,
+            }))
+        ) || [];
 
     const cleanDesc = cleanHtmlContent(promotion?.promotion?.description || '');
     const plainDesc = stripHtml(cleanDesc).result;
@@ -62,9 +72,9 @@ const PromotionOffersPage = async ({ params }: { params: string }) => {
                 
                 <div className="container mx-auto px-6 relative z-10 pt-20 pb-16">
                     <nav className="mb-8">
-                        <ol className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">
+                        <ol className="flex items-center gap-3 text-[10px] font-black uppercase tracking-[0.2em] !text-slate-400">
                             <li>
-                                <Link href="/" className="no-underline hover:text-indigo-400 transition-colors duration-300">
+                                <Link href="/" className="no-underline hover:!text-indigo-400 transition-colors duration-300">
                                     Home
                                 </Link>
                             </li>

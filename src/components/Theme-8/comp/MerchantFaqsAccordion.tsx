@@ -1,8 +1,13 @@
 "use client";
 import { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
+import { Faqs } from '@/services/dataTypes';
 
-const MerchantFaqsAccordion = ({ faq, index }: { faq: any; index: number }) => {
+interface Props {
+    faq: Faqs;
+    index: number;
+}
+const MerchantFaqsAccordion = ({ faq, index }: Props) => {
     const [isOpen, setIsOpen] = useState(index === 0);
 
     return (

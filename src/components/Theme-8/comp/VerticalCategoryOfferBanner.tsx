@@ -3,7 +3,7 @@
 import { OffersOffer } from '@/services/dataTypes';
 import React, { useEffect, useState } from 'react';
 import { filterOfferBanners, getBannerDimensions } from '@/constants/hooks';
-import Spinner from 'react-bootstrap/Spinner';
+import Spinner from 'react-bootstrap/Spinner'; 
 import Banner from './Banner';
 import { apiCategoryOfferBanners } from '@/apis/user';
 
@@ -60,32 +60,44 @@ const VerticalCategoryOfferBanner = ({ bannerResponse, domain, mer_slug, slug_ty
     if (banners?.length === 0) return null;
 
     return (
-        <div className="side-bar sidebar-review-box text-center" style={{ borderRadius: "8px" }}>
-            <div className="banner-slider-container p-3">
+        <div className="w-full bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden text-center">
+            {/* Banners List */}
+            <div className="flex flex-col gap-4 p-4">
                 {banners?.map((offer_data, i) => {
                     const dimension = getBannerDimensions(offer_data);
                     return (
-                        <Banner
-                            key={i}
-                            data={offer_data}
-                            height={dimension?.height}
-                            mer_slug={mer_slug}
-                            slug_type={slug_type}
-                            domain={domain}
-                            width={dimension?.width}
-                        />
+                        <div key={i} className="w-full flex justify-center transition-transform duration-300 hover:scale-[1.02]">
+                            <Banner
+                                data={offer_data}
+                                height={dimension?.height}
+                                mer_slug={mer_slug}
+                                slug_type={slug_type}
+                                domain={domain}
+                                width={dimension?.width}
+                            />
+                        </div>
                     );
                 })}
             </div>
-            <div className={`d-flex align-items-center ${isExpanded? 'justify-content-between': 'justify-content-center'}`}>
+
+            {/* Buttons Section */}
+            <div className={`flex items-center p-4 pt-0 gap-3 ${isExpanded ? 'justify-between' : 'justify-center'}`}>
                 {hasMore && (
-                    <button onClick={loadMore} className="box-style box-second gap-2 gap-md-3 rounded-pill py-2 py-md-3 px-5 px-md-7 d-center d-inline-flex">
+                    <button 
+                        onClick={loadMore} 
+                        disabled={loading}
+                        className="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-slate-900 text-white text-sm font-bold rounded-full transition-all hover:bg-slate-800 active:scale-95 disabled:opacity-70"
+                    >
                         {loading ? <Spinner size="sm" animation="border" /> : "Show More"}
                     </button>
                 )}
+
                 {isExpanded && (
-                    <button onClick={showLess} className="box-style box-second gap-2 gap-md-3 second-alt rounded-pill py-2 py-md-3 px-5 px-md-7 d-center d-inline-flex">
-                        {loading ? <Spinner size="sm" animation="border" /> : "Show Less"}
+                    <button 
+                        onClick={showLess} 
+                        className="inline-flex items-center justify-center gap-2 px-6 py-2.5 bg-gray-100 text-gray-700 text-sm font-bold rounded-full transition-all hover:bg-gray-200 active:scale-95"
+                    >
+                        Show Less
                     </button>
                 )}
             </div>
@@ -93,4 +105,4 @@ const VerticalCategoryOfferBanner = ({ bannerResponse, domain, mer_slug, slug_ty
     );
 };
 
-export default VerticalCategoryOfferBanner
+export default VerticalCategoryOfferBanner;

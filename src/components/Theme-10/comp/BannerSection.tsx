@@ -27,7 +27,7 @@ export default function BannerSection({ merchants }: { merchants: any[] }) {
   }, [merchants]);
 
   return (
-    <section className="relative min-h-[90vh] flex flex-col items-center justify-center bg-[#fffde0]/80 text-white overflow-hidden pt-10 pb-10">
+    <section className="relative min-h-screen lg:min-h-[90vh] flex flex-col items-center justify-center bg-[#fffde0]/80 text-white overflow-hidden pt-28 pb-10">
       {/* Background Spotlights */}
       <div className="absolute inset-0 z-0">
         <div className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-[#D1C7A7]/40 rounded-full blur-[120px]" />
@@ -35,43 +35,34 @@ export default function BannerSection({ merchants }: { merchants: any[] }) {
       </div>
 
       {/* 🔹 Main Content Wrapper */}
-      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[0.9fr,1.4fr] gap-8 items-center px-6 max-w-7xl mx-auto w-full text-left">
-        {/* Left Side: Extra Compact Text Content */}
-        <div className="flex flex-col items-start lg:pr-4">
-          <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl font-black mb-4 leading-[1.1] tracking-tighter" // Mazeed chota kiya (4xl to 6xl)
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-          >
-            <span className="text-[#1A1A1A]">The future of</span> <br />
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-[0.9fr,1.4fr] gap-10 items-center px-6 max-w-7xl mx-auto w-full text-center lg:text-left">
+        {/* Left Side: Text Content */}
+        <div className="flex flex-col items-center lg:items-start lg:pr-4 order-2 lg:order-1">
+          <motion.h1 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4 leading-tight tracking-tighter text-[#1A1A1A]">
+            The future of <br />
             <span className="text-[#800000]">smart savings.</span>
           </motion.h1>
 
-          <motion.p
-            className="text-sm md:text-base text-[#0D0D0D]/60 mb-8 max-w-md leading-snug font-medium italic" // Size chota aur line-height kam ki
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-          >
+          <motion.p className="text-base text-[#0D0D0D]/60 mb-8 max-w-md leading-relaxed font-medium italic">
             Discover elite coupon codes and deals from 15,000+ brands. Verified
             daily. Saved instantly.
           </motion.p>
-
-          {/* Buttons - Same as before */}
-          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
-            <button className="px-7 py-3.5 bg-[#800000] text-[#FFFDF5] rounded-full font-black text-[10px] uppercase tracking-[0.2em] hover:scale-105 transition-all shadow-lg active:scale-95">
-              Get Started
-            </button>
-            <button className="px-7 py-3.5 bg-[#0D0D0D] text-[#FFFDF5] rounded-full font-black text-[10px] uppercase tracking-[0.2em] hover:bg-transparent hover:text-[#0D0D0D] border border-[#0D0D0D] transition-all active:scale-95">
-              Categories
-            </button>
-          </div>
-        </div>
+          {/* Buttons: Full width on mobile */}
+    <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4 sm:px-0">
+      <button className="w-full sm:w-auto px-8 py-4 bg-[#800000] text-[#FFFDF5] rounded-full font-black text-[10px] uppercase tracking-[0.2em] hover:scale-105 transition-all shadow-lg active:scale-95">
+        Get Started
+      </button>
+      <button className="w-full sm:w-auto px-8 py-4 bg-[#0D0D0D] text-[#FFFDF5] rounded-full font-black text-[10px] uppercase tracking-[0.2em] hover:bg-transparent hover:text-[#0D0D0D] border border-[#0D0D0D] transition-all active:scale-95">
+        Categories
+      </button>
+    </div>
+  </div>
 
         {/* Right Side: Image Carousel - Size Locked */}
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="relative w-full aspect-[16/10] md:aspect-[16/9] max-h-[450px] lg:max-h-[500px] z-10 overflow-hidden"
+          className="relative w-full aspect-video lg:aspect-[16/9] z-10 order-1 lg:order-2"
         >
           {/* Decorative Shadow/Background */}
           <div className="absolute inset-0 bg-[#800000]/5 rounded-[2.5rem] -rotate-2 translate-x-3 translate-y-2"></div>

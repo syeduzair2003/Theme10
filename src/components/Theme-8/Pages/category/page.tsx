@@ -34,7 +34,7 @@ const page = async () => {
                         <div className="w-full lg:w-3/5 flex flex-col items-center lg:items-start text-center lg:text-left">
                             
                             <nav className="flex items-center space-x-2 text-[12px] md:text-sm font-semibold tracking-wide mb-6">
-                                <Link href="/" className="text-slate-500 hover:text-blue-500 transition-colors no-underline uppercase">
+                                <Link href="/" className="!text-slate-500 hover:!text-blue-500 transition-colors no-underline uppercase">
                                     Home
                                 </Link>
                                 <FontAwesomeIcon icon={faGreaterThan} className="w-2 h-2 text-slate-700" />

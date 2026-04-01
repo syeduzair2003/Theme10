@@ -38,9 +38,20 @@ const CategorySidebar = async ({ categories, cat_slug, slug_type, parentCategory
                 ))}
             </div>
 
-            <Link href={`/${cat_slug}`} className="flex items-center justify-center gap-2 w-full py-4 bg-slate-50 text-blue-600 font-bold rounded-2xl hover:bg-blue-600 hover:text-white transition-all group">
-                <span>View All Categories</span>
-                <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            <Link 
+                href={`/${cat_slug}`} 
+                className="flex items-center justify-center gap-2 w-full py-4 bg-slate-50 font-bold rounded-2xl transition-all group hover:bg-blue-600"
+                >
+                {/* Text color ko group-hover ke zariye white kiya */}
+                <span className="text-blue-600 group-hover:text-white transition-colors">
+                    View All Categories
+                </span>
+
+                {/* Icon color ko bhi group-hover ke zariye white kiya */}
+                <FontAwesomeIcon 
+                    icon={faArrowRight} 
+                    className="w-4 h-4 text-blue-600 group-hover:text-white group-hover:translate-x-1 transition-all" 
+                />
             </Link>
         </div>
     )

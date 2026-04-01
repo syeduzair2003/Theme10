@@ -82,13 +82,13 @@ const OffersPage = async ({ merchant_id, product_id, slug, company_id, store_slu
     <nav className="inline-flex items-center bg-white backdrop-blur-md border border-gray-100 px-3 py-3 rounded-2xl shadow-[0_2px_15px_-3px_rgba(0,0,0,0.04)] mb-10 transition-all hover:shadow-md">
       <ol className="flex items-center gap-3 text-[10px] sm:text-[11px] font-black tracking-[0.15em] uppercase p-0 m-0">
         <li>
-          <Link href="/" className="text-gray-400 hover:text-blue-600 transition-colors no-underline">Home</Link>
+          <Link href="/" className="!text-gray-400 hover:!text-blue-600 transition-colors no-underline">Home</Link>
         </li>
         <li className="text-gray-300">
              <FontAwesomeIcon icon={faGreaterThan} className="w-2 h-2" />
         </li>
         <li>
-          <Link href="/all-stores/A" className="text-gray-400 hover:text-blue-600 transition-colors no-underline capitalize">{store_slug}</Link>
+          <Link href="/all-stores/A" className="!text-gray-400 hover:!text-blue-600 transition-colors no-underline capitalize">{store_slug}</Link>
         </li>
         <li className="text-gray-300">
              <FontAwesomeIcon icon={faGreaterThan} className="w-2 h-2" />

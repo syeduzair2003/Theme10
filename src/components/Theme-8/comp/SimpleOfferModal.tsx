@@ -3,33 +3,34 @@
 import React, { useEffect, useState } from "react";
 import ReactDOM from "react-dom";
 import Image from "next/image";
-import { Offer } from "@/services/dataTypes";
+import { Offer,ProductData } from "@/services/dataTypes";
 import OfferDuration from "./OfferDuration";
 import { getBaseImageUrl } from "@/constants/hooks";
 import Link from "next/link";
 import { faCheck, faCopy, faTimes, FontAwesomeIcon } from "@/constants/icons";
 
 interface Props {
-    data: Offer;
+    data: Offer | ProductData;
     onClose: () => void;
     domain: string;
     merchantHref: string;
     finalDiscountTag?: string | null;
+    merchantImg?: string | null;
+    productImg?: string | null;
 }
 
-const SimpleOfferModal = ({ data, onClose, domain, merchantHref, finalDiscountTag }: Props) => {
+const SimpleOfferModal = ({ data, onClose,merchantImg,productImg, domain, merchantHref, finalDiscountTag }: Props) => {
     const [mounted, setMounted] = useState(false);
-    // 1. Implementation of Copy-to-Clipboard logic
     const [copied, setCopied] = useState(false);
     const [imageSrc, setImageSrc] = useState<string>('');
 
     useEffect(() => {
-        if (data?.offer_type?.name === "product") {
-            setImageSrc(getBaseImageUrl(domain, data?.product_image, ""));
-        }else {
-            setImageSrc(getBaseImageUrl(domain, data?.merchant?.merchant_logo, ""));
-        }
-    }, [data]);
+            if (productImg !== null && productImg !== undefined) {
+                setImageSrc(getBaseImageUrl(domain, productImg, ""));
+            } else {
+                setImageSrc(getBaseImageUrl(domain, merchantImg, ""));
+            }
+        }, [data]);
 
     useEffect(() => {
         setMounted(true);
@@ -37,137 +38,125 @@ const SimpleOfferModal = ({ data, onClose, domain, merchantHref, finalDiscountTa
             if (e.key === 'Escape') onClose();
         };
         window.addEventListener('keydown', handleEsc);
-        // Prevent background scrolling when modal is open (Portal usage)
         document.body.style.overflow = 'hidden';
 
         return () => {
             window.removeEventListener('keydown', handleEsc);
             document.body.style.overflow = 'unset';
-            setMounted(false);
         };
     }, [onClose]);
 
     const handleCopy = () => {
         if (data?.coupon_code) {
-            // Check if navigator.clipboard is available (modern browsers)
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(data.coupon_code);
-            } else {
-                // Fallback for older browsers
-                const textarea = document.createElement('textarea');
-                textarea.value = data.coupon_code;
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textarea);
-            }
-
+            navigator.clipboard.writeText(data.coupon_code);
             setCopied(true);
             setTimeout(() => setCopied(false), 2000);
         }
     };
 
-
     if (!mounted) return null;
 
-    // Hook text to encourage exploring (point 3)
     const hookText = "🔥 Don't Miss Out! Exclusive Discount Available!";
     const finalUrl = data?.url?.startsWith('/') ? data?.url.replace(/^\/+/, '') : data?.url;
     const absoluteOutUrl = `/${finalUrl}`;
 
     return ReactDOM.createPortal(
-        <div className="offer-modal-overlay-two" onClick={onClose}>
-            <div className="offer-modal-container-two" onClick={(e) => e.stopPropagation()}>
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+            {/* Overlay */}
+            <div 
+                className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm transition-opacity" 
+                onClick={onClose} 
+            />
 
-                {/* Header (Contains Close Button) */}
-                <div className="offer-modal-header-two">
-                    <button className="btn-close-modal-two" onClick={onClose}>
+            {/* Modal Container */}
+            <div className="relative w-full max-w-lg bg-white rounded-[2.5rem] shadow-2xl overflow-hidden flex flex-col animate-in fade-in zoom-in duration-300">
+                
+                {/* Header */}
+                <div className="flex items-center justify-between p-6 border-b border-slate-50">
+                    <div className="flex-1 flex justify-center">
+                         <OfferDuration endDate={data?.end_date} className="scale-90" />
+                    </div>
+                    <button 
+                        onClick={onClose}
+                        className="absolute right-6 top-6 w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 text-slate-500 hover:bg-red-50 hover:text-red-500 transition-all active:scale-90"
+                    >
                         <FontAwesomeIcon icon={faTimes} />
                     </button>
-                    <OfferDuration endDate={data?.end_date} className="justify-content-center" />
                 </div>
 
-                {/* Body (Scrollable) */}
-                <div className="offer-modal-body-two">
-
-                    {/* 2. Professional Horizontal Image Section */}
-                    <div className={`modal-img-wrapper-two cus-border ${data?.product_image? 'horizontal-image-wrapper' : 'merchant-img-wrapper-modal'} border b-eighth rounded-4  position-relative`}>
+                {/* Body */}
+                <div className="p-8 overflow-y-auto max-h-[70vh] custom-scrollbar">
+                    
+                    {/* Image Section */}
+                    <div className="relative w-full aspect-[2/1] bg-slate-50 rounded-3xl border border-slate-100 flex items-center justify-center p-6 mb-6 group">
                         {finalDiscountTag && (
-                            <div className="ribbon">
-                                <span>
-                                    {finalDiscountTag}
-                                </span>
+                            <div className="absolute top-4 left-4 z-10 bg-red-600 text-white text-[10px] font-black px-3 py-1.5 rounded-lg uppercase tracking-widest shadow-lg shadow-red-200">
+                                {finalDiscountTag}
                             </div>
                         )}
-                        <Image
-                            src={imageSrc}
-                            alt={data?.offer_title}
-                            width={300} // New dimensions for horizontal banner look
-                            height={100}
-                            className="modal-offer-img-two horizontal-offer-img"
-                        />
+                        <div className="relative w-full h-full transition-transform duration-500 group-hover:scale-105">
+                            <Image
+                                src={imageSrc}
+                                alt={data?.offer_title || "Offer"}
+                                fill
+                                className="object-contain"
+                            />
+                        </div>
                     </div>
 
-                    {/* Title */}
-                    <h3 className="modal-offer-title-two text-center mb-2">
-                        {data.offer_title}
-                    </h3>
+                    {/* Content */}
+                    <div className="text-center space-y-4">
+                        <h3 className="text-xl md:text-2xl font-black text-slate-900 leading-tight tracking-tight uppercase italic">
+                            {data.offer_title}
+                        </h3>
 
-                    <Link
-                        href={absoluteOutUrl}
-                        className="btn-modal-cta-two footer-cta-two blink-offer"
-                        target="_blank"
-                    >
-                        {data?.coupon_code ? "Shop Now" : "Grab Deal"}
-                    </Link>
-
-                    {/* Code / Deal Section */}
-                    <div className="modal-action-area-two d-center flex-column">
-                        {data.coupon_code ? (
-                            <div className="coupon-code-group-two">
-                                <div className="coupon-code-display-two">
-                                    <span className="code-text-two">{data.coupon_code}</span>
+                        {/* Coupon Section */}
+                        <div className="pt-4 flex flex-col items-center gap-4">
+                            {data.coupon_code ? (
+                                <div className="w-full bg-white border-2 border-dashed border-blue-200 rounded-2xl p-2 flex items-center justify-between group hover:border-blue-400 transition-all">
+                                    <span className="flex-1 text-lg font-black text-blue-600 tracking-widest uppercase truncate px-4">
+                                        {data.coupon_code}
+                                    </span>
+                                    <button
+                                        onClick={handleCopy}
+                                        className={`px-6 py-3 rounded-xl font-black text-[10px] uppercase tracking-widest transition-all ${
+                                            copied ? 'bg-emerald-500 text-white' : 'bg-slate-900 text-white hover:bg-blue-600'
+                                        }`}
+                                    >
+                                        {copied ? <><FontAwesomeIcon icon={faCheck} className="mr-2"/> Copied</> : <><FontAwesomeIcon icon={faCopy} className="mr-2"/> Copy</>}
+                                    </button>
                                 </div>
-                                <button
-                                    className={`btn-copy-two ${copied ? 'copied' : ''}`}
-                                    onClick={handleCopy}
-                                >
-                                    {copied ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faCopy} />}
-                                    {copied ? " Copied!" : " Copy Code"}
-                                </button>
-                            </div>
-                        ) : (
-                            <div className="deal-activated-text-two text-center mb-3">
-                                <p className="mt-2 text-muted small">
+                            ) : (
+                                <div className="bg-emerald-50 text-emerald-700 px-6 py-3 rounded-2xl text-xs font-bold border border-emerald-100">
                                     No code required. Discount applied at checkout.
-                                </p>
-                            </div>
+                                </div>
+                            )}
+
+                            <Link
+                                href={absoluteOutUrl}
+                                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all shadow-xl shadow-blue-100 flex items-center justify-center gap-2 group active:scale-[0.98]"
+                                target="_blank"
+                            >
+                                {data?.coupon_code ? "Shop Now" : "Grab Deal"}
+                                <span className="group-hover:translate-x-1 transition-transform">→</span>
+                            </Link>
+                        </div>
+
+                        {/* HTML Description */}
+                        {data?.offer_detail && (
+                            <div 
+                                className="pt-6 text-slate-500 text-sm text-left leading-relaxed prose-sm max-h-40 overflow-y-auto pr-2"
+                                dangerouslySetInnerHTML={{ __html: data?.offer_detail }}
+                            />
                         )}
-
-                        {/* CTA Button (Remaining original CTA, moved below coupon area) */}
-                        <Link
-                            href={absoluteOutUrl}
-                            className="btn-modal-cta-two secondary-cta-two"
-                            target="_blank"
-                        >
-                            {data?.coupon_code ? "Go to Store" : "Get Deal"}
-                        </Link>
                     </div>
-
-                    {/* HTML Description */}
-                    {data?.offer_detail && (
-                        <div
-                            className="modal-html-content-two my-2"
-                            dangerouslySetInnerHTML={{ __html: data?.offer_detail }}
-                        />
-                    )}
                 </div>
 
-                {/* 3. Footer/Extension Popup Style Bar */}
-                <div className="offer-modal-footer-two extension-bar-two">
-                    <div className="footer-content-two">
-                        <p className="footer-hook-text-two">{hookText}</p>
-                    </div>
+                {/* Footer Extension Bar */}
+                <div className="bg-slate-900 p-4 text-center">
+                    <p className="text-[10px] font-black text-blue-400 uppercase tracking-[0.3em] animate-pulse">
+                        {hookText}
+                    </p>
                 </div>
             </div>
         </div>,

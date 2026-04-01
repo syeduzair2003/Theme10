@@ -4,8 +4,18 @@ import Image from 'next/image';
 import cookieService from '@/services/CookiesService';
 import { getBaseImageUrl } from '@/constants/hooks';
 import { faArrowRight, FontAwesomeIcon } from '@/constants/icons';
+import { Merchant, SearchCategories, SearchResponse } from '@/services/dataTypes'
 
-const SearchPage = async ({ slug_type, mer_slug, cat_slug, searchData, query }: any) => {
+
+interface Props {
+    slug_type: string,
+    mer_slug: string,
+    cat_slug: string,
+    searchData: SearchResponse,
+    query: string
+}
+
+const SearchPage = async ({ slug_type, mer_slug, cat_slug, searchData, query }: Props) => {
     const companyDomain = await cookieService.get("domain");
 
     if (!searchData?.merchants?.length && !searchData?.categories?.length) {

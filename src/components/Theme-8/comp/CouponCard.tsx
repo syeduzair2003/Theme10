@@ -9,7 +9,17 @@ import Link from 'next/link';
 import SocialMediaShare from './SocialMediaShare';
 import { ShieldCheck, Zap, ArrowRight } from 'lucide-react';
 
-const CouponCard = async ({ product, merchantHref, domain, merchant_name, merchant_logo, pageType }: any) => {
+interface Props {
+    product: Offer;
+    domain: string;
+    merchantHref: string;
+    merchant_name: string;
+    merchant_logo: string;
+    pageType?: string;
+    productDetailUrl?: string | null;
+}
+
+const CouponCard = async ({ product, merchantHref, domain, merchant_name, merchant_logo, pageType, productDetailUrl }: Props) => {
     const rating = getRandomRating(product?.rating);
     const originalPrice = product?.original_price ? parseFloat(product?.original_price) : 0;
     const salePrice = product?.sale_price ? parseFloat(product?.sale_price) : 0;

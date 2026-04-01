@@ -1,13 +1,12 @@
-import { apiUpdateOfferLikes } from '@/apis/offers';
-import { Offer } from '@/services/dataTypes';
-import React, { useEffect, useState } from 'react'
-import { toast } from "react-toastify";
-import { Modal } from 'react-bootstrap';
-import Link from 'next/link';
-import { calculateOfferDuration, discardHTMLTags, getBaseImageUrl } from '@/constants/hooks';
+import React from 'react';
 import Image from 'next/image';
+import { faThumbsDown, faThumbsUp, faXmark } from '@/constants/icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { calculateOfferDuration, getBaseImageUrl } from '@/constants/hooks';
 import dynamic from 'next/dynamic';
-import { faCheck, faCalendarDays, faThumbsDown, faThumbsUp, FontAwesomeIcon, faCopy } from '@/constants/icons';
+import Link from 'next/link';
+import { Offer } from '@/services/dataTypes';
+
 
 const RateUs = dynamic(() => import('./RateUs'), { ssr: false });
 const SocialMediaShare = dynamic(() => import('./SocialMediaShare'), { ssr: false });
@@ -21,194 +20,126 @@ interface Props {
 }
 
 const OfferModal = ({ data, companyId, onClose, domain, merchantHref }: Props) => {
-    const [onVisible, setOnVisible] = useState(false);
-    const [hasLiked, setHasLiked] = useState(false);
-    const [isLiked, setIsLiked] = useState<number | null>(null);
     const finalUrl = data?.url?.startsWith('/') ? data?.url.replace(/^\/+/, '') : data?.url;
     const absoluteOutUrl = `/${finalUrl}`;
-    const [offerUrl, setOfferUrl] = useState("");
-    const [copied, setCopied] = useState(false);
-
-    useEffect(() => {
-        if (data) {
-            setOnVisible(true);
-        }
-    }, [data]);
-
-    const handleClose = () => {
-        setOnVisible(false);
-        onClose();
-    };
-
-    useEffect(() => {
-        if (data?.unique_id) {
-            const lastLiked = localStorage.getItem(`hasLiked_${data?.unique_id}`);
-            if (lastLiked && new Date().getTime() - parseInt(lastLiked) < 86400000) {
-                setHasLiked(true);
-            }
-        }
-    }, [data?.unique_id]);
-
-    const handleLikeStatus = async (val: number, e: React.FormEvent) => {
-        e.preventDefault();
-        if (hasLiked) {
-            toast.error("You have already rated, please try again later!", { autoClose: 2000 });
-            return;
-        }
-        try {
-            if (data) {
-                const response = await apiUpdateOfferLikes(companyId, data?.unique_id, val);
-                if (response.status === "success") {
-                    toast.success("Thank you for your feedback!", { autoClose: 2000 });
-                    setIsLiked(val);
-                    localStorage.setItem(`hasLiked_${data?.unique_id}`, new Date().getTime().toString());
-                    setHasLiked(true);
-                }
-            }
-        } catch (error) {
-            toast.error("An error occurred while submitting your feedback.", { autoClose: 2000 });
-        }
-    };
-
-    let offerTitle = " "
-    if (data !== null) {
-        offerTitle = encodeURIComponent(data?.offer_title || data?.offer_detail);
-    }
-
-    useEffect(() => {
-        setOfferUrl(encodeURIComponent(window.location.href));
-    }, []);
-
-    const imgSrc = data?.offer_type?.name === "product" ? data?.product_image : data?.merchant.merchant_logo;
-
-    const handleCopy = () => {
-        if (data?.coupon_code) {
-            // Check if navigator.clipboard is available (modern browsers)
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(data.coupon_code);
-            } else {
-                // Fallback for older browsers
-                const textarea = document.createElement('textarea');
-                textarea.value = data.coupon_code;
-                document.body.appendChild(textarea);
-                textarea.select();
-                document.execCommand('copy');
-                document.body.removeChild(textarea);
-            }
-
-            setCopied(true);
-            setTimeout(() => setCopied(false), 2000);
-        }
-    };
-
+    const imgSrc = data?.offer_type?.name === "product" ? data?.product_image : data?.merchant?.merchant_logo;
+    
     return (
-        <Modal show={onVisible} size="lg" centered scrollable onHide={handleClose}>
-            <Modal.Header className="position-relative">
-                <button type="button" className="btn-close position-absolute top-0 end-0 me-3 mt-3" aria-label="Close" onClick={handleClose}></button>
-                <Modal.Title className="d-flex justify-content-center w-100 mt-3">
-                    <div className="d-center flex-column gap-2 gap-md-3">
-                        <h5 className="n17-color fw-mid text-center mb-2 px-8 px-md-0">{data?.offer_title}</h5>
-                        <div className="cmn-btn btn-overlay border-dash rounded-pill d-center input-area">
+        <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
+      
+            <div 
+                onClick={onClose}
+                className="absolute inset-0 bg-slate-900/60 backdrop-blur-md transition-opacity"
+            />
+
+            <div className="relative w-full max-w-3xl bg-white rounded-[2rem] shadow-2xl overflow-hidden flex flex-col max-h-[70vh]">
+                
+                
+                <div className="relative bg-white pt-12 pb-6 px-8 md:px-12 text-center border-b border-slate-50">
+                    <button 
+                        onClick={onClose}
+                        className="absolute top-5 right-5 z-50 w-8 h-8 bg-slate-100 text-slate-500 hover:bg-red-50 hover:text-red-500 rounded-full flex items-center justify-center transition-all"
+                    >
+                        <FontAwesomeIcon icon={faXmark} className="text-sm" />
+                    </button>
+
+                    <div className="max-w-xl mx-auto space-y-4">
+                        <h2 className="text-xl md:text-2xl font-black text-slate-800 leading-tight uppercase tracking-tight">
+                            {data?.offer_title}
+                        </h2>
+
+                        <div className="flex justify-center">
                             {data?.coupon_code ? (
-                                // <div className="d-flex w-100">
-                                //     <input type="text" value={data?.coupon_code} readOnly className="p1-color fs-seven fw-bold coupon-code w-100 px-6 px-md-12 d-center" />
-                                //     <Link href={absoluteOutUrl} rel="nofollow sponsored noopener noreferrer" className="box-style box-second rounded-pill border-stb-none py-3 py-md-4 px-6 px-md-12 d-center">
-                                //         <span className="d-center fs-seven fw-bold">Get</span>
-                                //     </Link>
-                                // </div>
-                                <div className="coupon-code-group-two">
-                                    <div className="coupon-code-display-two">
-                                        <Link href={absoluteOutUrl} rel="nofollow sponsored noopener noreferrer">
-                                            <span className="code-text-two">{data?.coupon_code}</span>
-                                        </Link>
-                                    </div>
-                                    <button
-                                        className={`btn-copy-two ${copied ? 'copied' : ''}`}
-                                        onClick={handleCopy}
-                                    >
-                                        {copied ? <FontAwesomeIcon icon={faCheck} /> : <FontAwesomeIcon icon={faCopy} />}
-                                        {copied ? " Copied!" : " Copy Code"}
+                                <div className="inline-flex flex-col md:flex-row items-center bg-blue-50/50 border-2 border-dashed border-blue-200 rounded-2xl p-1.5 md:pl-5 group">
+                                    <span className="text-lg font-black text-blue-600 tracking-widest uppercase px-4 py-1">
+                                        {data?.coupon_code}
+                                    </span>
+                                    <button className="bg-blue-600 hover:bg-slate-900 text-white px-8 py-3 rounded-xl font-bold text-[11px] uppercase tracking-widest transition-all shadow-md">
+                                        Copy Code
                                     </button>
                                 </div>
                             ) : (
-                                <div className="btn-area d-center justify-content-start gap-3 gap-md-4">
-                                    <Link href={absoluteOutUrl} rel="nofollow sponsored noopener noreferrer" className="box-style box-second gap-2 gap-md-3 rounded-pill py-2 py-md-3 px-5 px-md-7 d-center">
-                                        <span className="fs-six text-nowrap">Get Deal</span>
-                                    </Link>
-                                </div>
+                                <Link 
+                                    href={absoluteOutUrl} 
+                                    className="bg-blue-600 hover:bg-slate-900 text-white px-10 py-3.5 rounded-xl font-black text-[11px] uppercase tracking-widest transition-all shadow-lg"
+                                >
+                                    Activate Deal
+                                </Link>
                             )}
                         </div>
-                        {/* <div className="row px-2 px-md-0 justify-content-center">
-                            <div className="col-xl-10">
+                    </div>
+                </div>
 
+                {/* 2. Scrollable Body Content */}
+                <div className="flex-grow overflow-y-auto p-8 md:p-10 bg-white scrollbar-thin scrollbar-thumb-slate-200">
+                    <div className="flex flex-col md:flex-row gap-8">
+                       
+                        <div className="md:w-3/5 space-y-6">
+                            <div className="flex gap-2">
+                                <span className="bg-emerald-50 text-emerald-600 border border-emerald-100 px-3 py-1 rounded-lg text-[9px] font-black uppercase tracking-wider">
+                                    Verified
+                                </span>
+                                <span className="bg-slate-50 text-slate-500 border border-slate-100 px-3 py-1 rounded-lg text-[9px] font-black uppercase tracking-wider">
+                                    {data?.end_date ? calculateOfferDuration(data?.end_date) : "Active Deal"}
+                                </span>
                             </div>
-                        </div> */}
-                        {/* <span className="f11-color fw-mid">Continue to us.couponly.com • <Link href="#" className="n15-color fw-mid">Terms</Link></span> */}
-                    </div>
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <div className="main-content d-flex gap-3 gap-md-4">
-                    <div style={{ flex: '0 0 60%' }} className='d-flex flex-column'>
-                        <div className="d-center justify-content gap-2 gap-md-3 mb-3">
-                            <span className="f5-color fw-mid rounded-2 p1-2nd-bg-color cus-border border b-tenth d-flex align-items-center gap-1 gap-md-2 px-2 px-md-3 py-1">
-                                <FontAwesomeIcon icon={faCheck} style={{ width: '16px', height: '16px', color: '#1471b0' }} />
-                                <span className="f5-color fw-mid">Verified</span>
-                            </span>
-                            <span className="f5-color fw-mid rounded-2 s1-4th-bg-color cus-border border b-sixth px-2 px-md-3 py-1 d-flex gap-1 gap-md-2">
-                                <FontAwesomeIcon icon={faCalendarDays} style={{ width: '16px', height: '16px', color: '#b3682b' }} />
-                                <span className="f11-color fw-mid">{data?.end_date ? calculateOfferDuration(data?.end_date) : "Life Time"}</span>
-                            </span>
+
+                            <div className="relative w-24 h-14 bg-white rounded-lg border border-slate-100 p-2 shadow-sm">
+                                <Image 
+                                    src={getBaseImageUrl(domain, imgSrc, "")} 
+                                    alt="Logo" fill className="object-contain p-2" 
+                                />
+                            </div>
+
+                            <div className="space-y-2">
+                                <h4 className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Offer Details</h4>
+                                <div 
+                                    className="text-slate-600 text-sm leading-relaxed prose prose-sm max-w-none"
+                                    dangerouslySetInnerHTML={{ __html: data?.offer_detail }}
+                                />
+                            </div>
                         </div>
-                        <div
-                            className="p-2 border rounded-3 d-flex align-items-center justify-content-center mx-auto"
-                            style={{ minWidth: 100, maxWidth: 120, height: 80 }}
-                        >
-                            <Image
-                                src={getBaseImageUrl(domain, imgSrc, "")} alt={`${data?.offer_title}`}
-                                className="img-fluid object-fit-contain"
-                                height={100}
-                                width={100}
-                                style={{ maxHeight: '100%', maxWidth: '100%' }}
-                                layout='responsive'
-                            />
+
+                        {/* Rating Side */}
+                        <div className="md:w-2/5">
+                            <div className="bg-slate-50/50 rounded-2xl p-6 border border-slate-100">
+                                <RateUs offer_id={data?.unique_id || ""} company_id={companyId} />
+                            </div>
                         </div>
-                        {data?.offer_detail && (
-                            <div
-                                className="modal-html-content-two my-2"
-                                dangerouslySetInnerHTML={{ __html: data?.offer_detail }}
-                            />
-                        )}
-                    </div>
-                    <div style={{ flex: '0 0 40%', borderLeft: '2px solid #dee2e6', paddingLeft: '1rem' }}>
-                        <RateUs offer_id={data?.unique_id || ""} company_id={companyId} />
                     </div>
                 </div>
-            </Modal.Body>
-            <Modal.Footer style={{
-                display: 'flex',
-                justifyContent: 'space-around',
-                position: 'sticky',
-                bottom: 0,
-                background: '#fff',
-                padding: '1rem',
-                borderTop: '1px solid #dee2e6'
-            }}>
-                <div className="bottom-area d-center gap-1 gap-md-2 flex-wrap py-3 py-md-5">
-                    <span className="fw-mid fs-seven me-2">Did it work?</span>
-                    <button className="s2-3rd-bg-color rounded-2 d-center gap-1 px-2 px-md-3 py-1" onClick={(e) => { handleLikeStatus(1, e) }}>
-                        <FontAwesomeIcon icon={faThumbsUp} style={{ width: '16px', height: '16px', color: 'green' }} />
-                        <span className="s2-color fw-bold">Yes</span>
-                    </button>
-                    <button className="f13-2nd-bg-color rounded-2 d-center gap-1 px-2 px-md-3 py-1" onClick={(e) => { handleLikeStatus(0, e) }}>
-                        <FontAwesomeIcon icon={faThumbsDown} style={{ width: '16px', height: '16px', color: 'red' }} />
-                        <span className="f13-color fw-bold">No</span>
-                    </button>
+
+                {/* 3. Footer Section (Social Icons & Helpful) */}
+                <div className="bg-slate-50/30 border-t border-slate-100 p-6 md:px-10">
+                    <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+                        <div className="flex items-center gap-4">
+                            <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">Helpful?</span>
+                            <div className="flex gap-2">
+                                <button className="px-5 py-2 rounded-lg text-[10px] font-bold border border-slate-200 bg-white text-slate-600 hover:bg-emerald-500 hover:text-white transition-all">
+                                    <FontAwesomeIcon icon={faThumbsUp} className="mr-2" /> YES
+                                </button>
+                                <button className="px-5 py-2 rounded-lg text-[10px] font-bold border border-slate-200 bg-white text-slate-600 hover:bg-red-500 hover:text-white transition-all">
+                                    <FontAwesomeIcon icon={faThumbsDown} className="mr-2" /> NO
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Social Media Share Icons */}
+                        <div className="flex items-center gap-3">
+                            <SocialMediaShare 
+                                offerUrl={typeof window !== 'undefined' ? encodeURIComponent(window.location.href) : ""} 
+                                offerTitle={data ? encodeURIComponent(data?.offer_title || data?.offer_detail) : ""} 
+                                merchantHref={merchantHref} 
+                                unique_id={data?.unique_id} 
+                                domain={domain} 
+                            />
+                        </div>
+                    </div>
                 </div>
-                <SocialMediaShare offerUrl={offerUrl} offerTitle={offerTitle} merchantHref={merchantHref} unique_id={data?.unique_id} domain={domain} />
-            </Modal.Footer>
-        </Modal>
+
+            </div>
+        </div>
     );
 };
 
-export default OfferModal
+export default OfferModal;

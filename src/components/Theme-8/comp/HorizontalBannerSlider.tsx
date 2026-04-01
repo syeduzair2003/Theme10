@@ -7,8 +7,13 @@ import { filterOfferBanners, getBannerDimensions } from "@/constants/hooks";
 import Banner from "./Banner";
 import { faAngleLeft, faAngleRight, FontAwesomeIcon } from "@/constants/icons";
 
-const HorizontalBannerSlider = ({ companyId, slug_type, mer_slug, domain }: any) => {
-    const [offers, setOffers] = useState<any[]>([]);
+interface Props {
+  companyId: string;
+  mer_slug: string;
+  slug_type: string;
+  domain: string;
+}
+const HorizontalBannerSlider = ({ companyId, slug_type, mer_slug, domain }: Props) => {    const [offers, setOffers] = useState<any[]>([]);
     const [loading, setLoading] = useState(false);
     const sliderSectionRef = useRef<HTMLElement | null>(null);
 

@@ -21,6 +21,7 @@ const VerticalEventOfferBanner = ({ bannerResponse, domain, mer_slug, slug_type 
     return (
         <div className="w-full">
             <div className="flex flex-col gap-6 mt-3">
+                <h4 className='px-2 font-bold text-slate-900'>Offer Banner</h4>
                 {filtered.slice(0, visibleCount).map((offer_data, i) => {
                     const dimension = getBannerDimensions(offer_data);
                     return (
@@ -41,7 +42,7 @@ const VerticalEventOfferBanner = ({ bannerResponse, domain, mer_slug, slug_type 
             {visibleCount < filtered.length && (
                 <button 
                     onClick={() => setVisibleCount(prev => prev + 5)}
-                    className="w-full mt-6 py-3 border-2 border-dashed border-slate-200 text-slate-400 text-xs font-black uppercase tracking-widest rounded-2xl hover:bg-slate-50 hover:text-blue-600 hover:border-blue-200 transition-all"
+                    className="w-full mt-6 py-3 border-2 border-dashed border-slate-200 text-black text-xs font-black uppercase tracking-widest rounded-2xl hover:bg-slate-50 hover:text-blue-600 hover:border-blue-200 transition-all"
                 >
                     Load More Offers
                 </button>

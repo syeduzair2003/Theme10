@@ -1,6 +1,6 @@
 import React from 'react'
 import { apiGetPopularDeals } from '@/apis/page_optimization';
-import { splitHeading } from '@/constants/hooks';
+import { getProductDetailHref, splitHeading } from '@/constants/hooks';
 import OfferCard from '../comp/OfferCard';
 import { Reveal } from '../comp/MotionWrapper'; // Import the wrapper
 
@@ -35,7 +35,7 @@ const FeaturedDeals = async ({ companyId, mer_slug_type, mer_slug }: Props) => {
                             <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-4 tracking-tight">
                                 {firstHalf ? firstHalf : `Featured`} <span className="text-blue-600">{secondHalf ? secondHalf : `Deals`}</span>
                             </h2>
-                            <p className="text-gray-500 text-lg max-w-2xl">
+                            <p className="text-gray-500 text-lg w-full">
                                 {content}
                             </p>
                         </div>
@@ -47,9 +47,11 @@ const FeaturedDeals = async ({ companyId, mer_slug_type, mer_slug }: Props) => {
                     {bestOffers?.offers?.slice(0, count)?.map((item: any, i: number) => (
                         <Reveal key={i} delay={i * 0.1}> {/* Har card thoda late aayega */}
                             <OfferCard 
+                                key={i} 
                                 offer={item} 
                                 mer_slug_type={mer_slug_type} 
                                 mer_slug={mer_slug} 
+                                productDetailUrl={item?.offer?.slug ? getProductDetailHref(item?.merchant, mer_slug_type, item?.offer?.slug) : null}
                             />
                         </Reveal>
                     ))}

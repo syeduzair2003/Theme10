@@ -75,9 +75,9 @@ const CategoryMerchantPage = async ({ params }: Props) => {
             <div className="lg:w-7/12 space-y-6">
               {/* Breadcrumbs */}
               <nav className="flex items-center space-x-2 text-sm text-blue-100/80 mb-4">
-                <Link href="/" className="no-underline hover:text-white transition-colors">Home</Link>
+                <Link href="/" className="no-underline hover:!text-white transition-colors">Home</Link>
                 <FontAwesomeIcon icon={faGreaterThan} className="w-2 h-2" />
-                <Link href="/category" className="no-underline hover:text-white transition-colors">Category</Link>
+                <Link href="/category" className="no-underline hover:!text-white transition-colors">Category</Link>
                 <FontAwesomeIcon icon={faGreaterThan} className="w-2 h-2" />
                 <span className="text-white font-semibold truncate">{catRes?.name}</span>
               </nav>

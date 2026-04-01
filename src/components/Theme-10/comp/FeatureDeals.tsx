@@ -51,7 +51,7 @@ const FeaturedDeals = async ({ companyId, mer_slug_type, mer_slug }: Props) => {
 
     {/* Grid with Individual Reveal for each card */}
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-      {bestOffers?.offers?.slice(0, count)?.map((item: any, i: number) => (
+      {bestOffers?.offers?.slice(0, count)?.map((item, i) => (
         <Reveal key={i} delay={i * 0.1}>
           {" "}
           {/* Har card thoda late aayega */}

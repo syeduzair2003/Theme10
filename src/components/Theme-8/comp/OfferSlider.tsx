@@ -2,7 +2,10 @@
 import React, { useRef, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 
-export default function OfferSlider({ children }: { children: React.ReactNode }) {
+interface Props {
+    children: React.ReactNode;
+}
+const OfferSlider = ({ children }: Props) => {
   const sliderRef = useRef<HTMLDivElement>(null);
   const [isDown, setIsDown] = useState(false);
   const startX = useRef(0);
@@ -66,3 +69,4 @@ export default function OfferSlider({ children }: { children: React.ReactNode })
     </div>
   );
 }
+export default OfferSlider;

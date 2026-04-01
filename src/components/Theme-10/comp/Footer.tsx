@@ -271,57 +271,47 @@ const Footer = async ({
 
         {/* Bottom Bar */}
         <div className="pt-10 border-t border-[#FFFDF5]/10">
-          <div className="flex flex-col lg:flex-row justify-between items-start gap-10">
-            {/* Left Side: Disclaimer Box & Copyright */}
-            <div className="flex-1 max-w-md space-y-6">
-              {disclaimer?.disclaimer?.disclaimer && (
-                /* Maroon BG par glass effect aur Cream text */
-                <div className="p-6 rounded-2xl bg-black/30 border border-[#FFFDF5]/10 hover:border-[#FFFDF5]/30 transition-all duration-500 group/disc backdrop-blur-sm">
-                  <div
-                    className="text-sm leading-relaxed text-[#FFFDF5]/60 group-hover/disc:text-[#FFFDF5]/90 transition-colors italic"
-                    dangerouslySetInnerHTML={{
-                      __html: disclaimer?.disclaimer?.disclaimer || "",
-                    }}
-                  />
-                </div>
-              )}
+          <div className="flex flex-col items-center gap-10">
+            
+            {/* Top/Center: Disclaimer Box (Centered perfectly) */}
+            {disclaimer?.disclaimer?.disclaimer && (
+              <div className="w-full max-w-3xl p-6 md:p-8 rounded-2xl bg-black/30 border border-[#FFFDF5]/10 hover:border-[#FFFDF5]/30 transition-all duration-500 group/disc backdrop-blur-sm text-center">
+                <div
+                  className="text-sm leading-relaxed text-[#FFFDF5]/60 group-hover/disc:text-[#FFFDF5]/90 transition-colors italic mx-auto"
+                  dangerouslySetInnerHTML={{
+                    __html: disclaimer?.disclaimer?.disclaimer || "",
+                  }}
+                />
+              </div>
+            )}
 
-              {/* Copyright & Registration Info - Pure Cream & Black accents */}
-              <div className="text-[10px] tracking-[0.2em] font-black text-[#FFFDF5]/40 uppercase">
+            {/* Bottom Row: Copyright (Left) & Legal Links (Right) */}
+            <div className="w-full flex flex-col md:flex-row justify-between items-center gap-6 w-full pt-4">
+              
+              {/* Copyright & Registration Info */}
+              <div className="text-[10px] tracking-[0.2em] font-black text-[#FFFDF5]/40 uppercase text-center md:text-left">
                 {companyDomain.domain === "gettopdiscounts.com" ? (
-                  <span className="flex items-center gap-2">
+                  <span className="flex flex-wrap items-center justify-center md:justify-start gap-2">
                     © {new Date().getFullYear()}{" "}
                     <span className="text-[#FFFDF5]">GETTOPDISCOUNTS LLC</span>
-                    <span className="w-1 h-1 rounded-full bg-black shadow-[0_0_5px_rgba(0,0,0,0.5)]"></span>
+                    <span className="hidden md:block w-1 h-1 rounded-full bg-black shadow-[0_0_5px_rgba(0,0,0,0.5)]"></span>
                     <span className="text-black font-extrabold">
                       U.S. REGISTERED
                     </span>
                   </span>
                 ) : (
-                  <span className="flex items-center gap-2">
+                  <span className="flex flex-wrap items-center justify-center md:justify-start gap-2">
                     © {new Date().getFullYear()}{" "}
                     <span className="text-[#FFFDF5] uppercase">
                       {companyName}
                     </span>
-                    <span className="w-1 h-1 rounded-full bg-black"></span>
+                    <span className="hidden md:block w-1 h-1 rounded-full bg-black"></span>
                     ALL RIGHTS RESERVED
                   </span>
                 )}
               </div>
-            </div>
 
-            {/* Right Side: Trustpilot & Legal Links */}
-            <div className="flex flex-col items-center lg:items-end gap-8">
-              {socialLinks?.trust_pilot && (
-                /* Maroon par Trustpilot ko thoda subtle rakha hai */
-                <div
-                  className="opacity-60 grayscale brightness-200 hover:grayscale-0 hover:opacity-100 transition-all duration-700 scale-90 lg:origin-right"
-                  dangerouslySetInnerHTML={{
-                    __html: socialLinks?.trust_pilot || "",
-                  }}
-                />
-              )}
-
+              {/* Legal Links */}
               <div className="flex gap-8 text-[10px] font-black uppercase tracking-[0.3em]">
                 <Link
                   href="/privacy-policy"
@@ -339,6 +329,7 @@ const Footer = async ({
                 </Link>
               </div>
             </div>
+            
           </div>
         </div>
       </div>

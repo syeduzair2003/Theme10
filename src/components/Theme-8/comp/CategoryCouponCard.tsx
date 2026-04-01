@@ -86,26 +86,28 @@ const CouponCard = async ({ product, merchantHref, domain, merchant_name, mercha
                     outUrl={product?.url}
                     merchantHref={merchantHref}
                     domain={domain}
-                    customClass={`w-full relative h-14 flex items-center justify-center rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all duration-300 active:scale-95 overflow-hidden ${
+                    customClass={`w-full relative h-14 flex items-center justify-center rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all duration-300 active:scale-95 overflow-hidden no-underline ${
                         product?.coupon_code 
-                        ? "bg-transparent border-2 border-dashed border-blue-500 text-blue-400 hover:bg-blue-500/10" 
-                        : "bg-white text-slate-900 hover:bg-blue-500 hover:text-Black no-underline"
+                        ? "bg-transparent border-2 border-dashed border-blue-500 !text-blue-500 hover:!bg-blue-500/10" 
+                        : "bg-white !text-slate-900 border border-slate-200 hover:!bg-blue-500 hover:!text-white shadow-lg"
                     }`}
                 >
                     {product?.coupon_code ? (
                         <div className="flex items-center gap-3">
-                            <span className="bg-blue-500/20 px-3 py-1 rounded-lg">
+                            <span className="bg-blue-500/20 px-3 py-1 rounded-lg !font-extrabold !text-blue-600">
                                 {product.coupon_code.trim().slice(0, 7)}...
                             </span>
-                            <span>Copy Code</span>
+                            <span className="!font-black">Copy Code</span>
                         </div>
                     ) : (
-                        <div className="flex items-center gap-2">
-                            <span>{product?.offer_type?.name === "product" ? "Buy Now" : "Get Deal"}</span>
-                            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                        <div className="flex items-center gap-2 !font-black">
+                            {/* !text-inherit ensures the span takes the color of the parent button */}
+                            <span className="!text-inherit">{product?.offer_type?.name === "product" ? "Buy Now" : "Get Deal"}</span>
+                            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform !text-inherit" />
                         </div>
                     )}
                 </OfferOutUrl>
+           
 
                 {pageType !== 'events' && (
                     <Link href={merchantHref} className="no-underline text-white block text-center group/link">

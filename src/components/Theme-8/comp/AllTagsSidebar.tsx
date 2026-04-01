@@ -1,7 +1,10 @@
 import { apiGetAllKeywords } from '@/apis/user';
 import Link from 'next/link';
 
-const AllTagsSidebar = async ({ company_id }: any) => {
+interface Props {
+    company_id: string,
+}
+const AllTagsSidebar = async ({ company_id }: Props) => {
     const all_tags = (await apiGetAllKeywords(company_id)).data;
     
     if (!all_tags?.length) return null;

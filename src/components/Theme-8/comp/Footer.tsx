@@ -116,7 +116,7 @@ const Footer = async ({ companyFooterLogo, company_id, socialLinks, blog_title, 
                         <ul className="space-y-3">
                             {topCategoriesResponse?.categories?.slice(0, 6).map((item: any, i: number) => (
                                 <li key={i}>
-                                    <Link href={`/${item?.url}`} className="!text-slate-400 hover:text-white hover:translate-x-1 inline-block transition-all text-sm no-underline">
+                                    <Link href={`/${item?.url}`} className="!text-slate-400 hover:!text-white hover:translate-x-1 inline-block transition-all text-sm no-underline">
                                         {item.name}
                                     </Link>
                                 </li>
@@ -131,11 +131,11 @@ const Footer = async ({ companyFooterLogo, company_id, socialLinks, blog_title, 
                             Navigation
                         </h4>
                         <ul className="space-y-3">
-                            <li><Link href="/" className="!text-slate-400 hover:text-white hover:translate-x-1 inline-block transition-all text-sm no-underline">Home</Link></li>
-                            <li><Link href="/category" className="!text-slate-400 hover:text-white hover:translate-x-1 inline-block transition-all text-sm no-underline">Categories</Link></li>
+                            <li><Link href="/" className="!text-slate-400 hover:!text-white hover:translate-x-1 inline-block transition-all text-sm no-underline">Home</Link></li>
+                            <li><Link href="/category" className="!text-slate-400 hover:!text-white hover:translate-x-1 inline-block transition-all text-sm no-underline">Categories</Link></li>
                             {disclaimer?.footer_pages?.map((item: any, i: number) => (
                                 <li key={i}>
-                                    <Link href={`/${item?.slug}`} className="!text-slate-400 hover:text-white hover:translate-x-1 inline-block transition-all text-sm no-underline capitalize">
+                                    <Link href={`/${item?.slug}`} className="!text-slate-400 hover:!text-white hover:translate-x-1 inline-block transition-all text-sm no-underline capitalize">
                                         {item?.page_name}
                                     </Link>
                                 </li>
@@ -150,11 +150,11 @@ const Footer = async ({ companyFooterLogo, company_id, socialLinks, blog_title, 
                             Resources
                         </h4>
                         <ul className="space-y-3">
-                            <li><Link href="/all-stores/A" className="!text-slate-400 hover:text-white hover:translate-x-1 inline-block transition-all text-sm no-underline">All Stores</Link></li>
+                            <li><Link href="/all-stores/A" className="!text-slate-400 hover:!text-white hover:translate-x-1 inline-block transition-all text-sm no-underline">All Stores</Link></li>
                             {blog_title && blog_url && (
-                                <li><Link href={blog_url} className="!text-slate-400 hover:text-white hover:translate-x-1 inline-block transition-all text-sm no-underline">{blog_title}</Link></li>
+                                <li><Link href={blog_url} className="!text-slate-400 hover:!text-white hover:translate-x-1 inline-block transition-all text-sm no-underline">{blog_title}</Link></li>
                             )}
-                            <li><Link href="/contact-us" className="!text-slate-400 hover:text-white hover:translate-x-1 inline-block transition-all text-sm no-underline">Help Center</Link></li>
+                            <li><Link href="/contact-us" className="!text-slate-400 hover:!text-white hover:translate-x-1 inline-block transition-all text-sm no-underline">Help Center</Link></li>
                         </ul>
                     </div>
 
@@ -197,10 +197,10 @@ const Footer = async ({ companyFooterLogo, company_id, socialLinks, blog_title, 
                                 dangerouslySetInnerHTML={{ __html: socialLinks?.trust_pilot || "" }} />
                         )}
 
-                        <div className="flex gap-6 text-[10px] font-bold uppercase tracking-widest !text-slate-500">
+                        {/* <div className="flex gap-6 text-[10px] font-bold uppercase tracking-widest !text-slate-500">
                             <Link href="/privacy-policy" className="hover:text-blue-500 no-underline transition-colors">Privacy</Link>
                             <Link href="/terms-and-conditions" className="hover:text-blue-500 no-underline transition-colors">Terms</Link>
-                        </div>
+                        </div> */}
                     </div>
 
                     {disclaimer?.disclaimer?.disclaimer && (

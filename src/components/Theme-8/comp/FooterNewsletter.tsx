@@ -3,6 +3,7 @@ import { apiSubscribeNewsletter } from '@/apis/page_optimization';
 import { faPaperPlane, FontAwesomeIcon } from '@/constants/icons';
 import React, { useState } from 'react'
 import { toast, ToastContainer } from "react-toastify";
+import Link from 'next/link';
 
 interface Props {
     companyId: string;
@@ -78,8 +79,8 @@ const FooterNewsletter = ({ companyId }: Props) => {
                     </button>
                 </div>
             </form>
-            <p className="mt-3 text-[11px] text-gray-400 px-4">
-                We care about your data in our <span className="underline cursor-pointer">privacy policy</span>.
+            <p className="mt-3 text-[11px] !text-gray-400 px-4">
+                We care about your data in our <Link href="/privacy-policy"><span className="underline !text-blue-500 cursor-pointer">privacy policy</span></Link>.
             </p>
         </div>
     )

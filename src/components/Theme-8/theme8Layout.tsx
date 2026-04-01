@@ -1,11 +1,10 @@
 import React from 'react';
 import cookieService from '@/services/CookiesService';
-// import { apiCompanyUpdatedData } from '@/apis/user';
 import { ToastContainer } from 'react-toastify';
 import LoaderScripts from './comp/LoaderScripts';
-import Navbar from './comp/navbar';
+// import Navbar from './comp/navbar';
 import { apiCompanyUpdatedData, apiGetAllPromotion, apiGetEvents } from '@/apis/user';
-import { CompanyData } from '@/services/dataTypes';
+import { CompanyData, Merchant } from '@/services/dataTypes';
 import { apiGetPromotionalMerchants, apiNavCategory } from '@/apis/page_optimization';
 import { apiGetNavMerchants } from '@/apis/merchant';
 import Footer from './comp/Footer';
@@ -13,6 +12,7 @@ import Header from './comp/Header';
 interface Props {
   children: React.ReactNode;
   c_data: CompanyData;
+  headerPromoMerchant?: Merchant[] | null;
 }
 
 const Theme8Layout = async ({ children }: Props) => {
@@ -50,37 +50,31 @@ const Theme8Layout = async ({ children }: Props) => {
   return (
     <>
     <div className='p1-2nd-bg-color'>
-      {/* <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} /> */}
-      {/* <Navbar company_id={c_data?.unique_id} domain={companyDomain.domain} mer_slug={c_data.store_slug} slug_type={c_data.slug_type} cat_slug={c_data.category_slug} logo={c_data.company_logo} promotion_slug={c_data?.promotion_slug}/> */}
-      {/* <Navbar
-        unique_id={c_data.unique_id}
-        merchantData={merchantResponse.data}
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} />
+
+      <Header 
+        company_id={c_data?.unique_id} 
+        domain={companyDomain.domain} 
+        mer_slug={c_data.store_slug} 
+        slug_type={c_data.slug_type} 
+        cat_slug={c_data.category_slug} 
+        logo={c_data.company_logo} 
+        promotion_slug={c_data?.promotion_slug}
+        blog_title={c_data.blog_title}
+        blog_url={c_data.blog_url}
         headerPromoMerchant={headerPromoMerchantResponse}
-        categories={categories?.data}
-        companyDomain={companyDomain.domain}
-        mer_slug={c_data.store_slug}
-        mer_slug_type={c_data.slug_type}
-        cat_slug={c_data.category_slug}
-        promo_slug={c_data.promotion_slug}
-        company_logo={c_data?.company_logo}
-        blog_title={c_data.blog_title}
-        blog_url={c_data.blog_url}
-        events={events}
-        promotions={promotions}
-      /> */}
-      <Header company_id={c_data?.unique_id} domain={companyDomain.domain} mer_slug={c_data.store_slug} slug_type={c_data.slug_type} cat_slug={c_data.category_slug} logo={c_data.company_logo} promotion_slug={c_data?.promotion_slug}/>
-      {children} 
-      {/* <Footer company_id={c_data?.unique_id} domain={companyDomain.domain} social_links={c_data} logo={c_data.company_footer_logo}/>  */}
-         {/* <Footer/> */}
-         <Footer
-        companyFooterLogo={c_data?.company_footer_logo}
-        companyName={c_data?.company_legal_name || c_data?.company_name}
-        company_id={c_data?.unique_id}
-        blog_title={c_data.blog_title}
-        blog_url={c_data.blog_url}
-        socialLinks={socialLinks}
+       
       />
-         <LoaderScripts/>
+      {children} 
+         <Footer
+          companyFooterLogo={c_data?.company_footer_logo}
+          companyName={c_data?.company_legal_name || c_data?.company_name}
+          company_id={c_data?.unique_id}
+          blog_title={c_data.blog_title}
+          blog_url={c_data.blog_url}
+          socialLinks={socialLinks}
+        />
+        <LoaderScripts/>
     </div>
     </>
   )

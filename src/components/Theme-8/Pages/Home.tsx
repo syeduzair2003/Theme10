@@ -18,6 +18,8 @@ import HomeBlogSection from '../comp/HomeBlogSection';
 import HomeEventSection from '../comp/HomeEventSection';
 import PopularCoupons from '../comp/PopularCoupons';
 import TrendingProducts from '../comp/TrendingProducts';
+
+
 const Home = async () => {
     const companyDomain = (await cookieService.get("domain"));
     const c_data = (await apiCompanyUpdatedData(companyDomain)).data
@@ -38,21 +40,30 @@ const Home = async () => {
         // <Suspense fallback={<Loader />} >
         <div className='theme-8'>
             <BannerSection merchants={merchants} />
+
             <FeatureDeals companyId={c_data?.unique_id} mer_slug_type={c_data?.slug_type} mer_slug={c_data?.store_slug} />
+            
             <HomeEventSection  companyId={c_data?.unique_id} mer_slug_type={c_data?.slug_type} mer_slug={c_data?.store_slug} />
             {c_data?.popular_offers_status == 1 &&
                 <PopularCoupons companyId={c_data?.unique_id} mer_slug_type={c_data?.slug_type} mer_slug={c_data?.store_slug} />
             }
             
+            {c_data?.top_categories_status &&
             <ExploreCategory companyId={c_data?.unique_id} slug_type={c_data?.slug_type} cat_slug={c_data?.category_slug} />
+            }
             <TrendingProducts companyId={c_data?.unique_id} mer_slug_type={c_data?.slug_type} mer_slug={c_data?.store_slug} />
-            <PremimumBrand companyId={c_data?.unique_id} mer_slug_type={c_data?.slug_type} mer_slug={c_data?.store_slug} />
             
+            {c_data?.top_merchants_status == 1 &&
+            <PremimumBrand companyId={c_data?.unique_id} mer_slug_type={c_data?.slug_type} mer_slug={c_data?.store_slug} />
+            }
             <Subscribe/>
             <HomepageFAQs slug_type={c_data?.slug_type} store_slug={c_data?.store_slug}/>
+            
             {(c_data?.blog_title || c_data?.blog_url) &&
                 <HomeBlogSection companyId={c_data?.unique_id} blog_url={c_data?.blog_url} />
             }
+
+            <HomePageSchema domain={companyDomain.domain} socialLinks={socialLinks} companyLogo={c_data?.company_logo} companyName={c_data?.company_name} />
             {/* <Footer/> */}
         </div>
         // </Suspense>

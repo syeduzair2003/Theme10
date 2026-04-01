@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import OfferOutUrl from "@/components/shared/OfferOutUrl";
 import OfferDetailsToggle from "./OfferDetailsToggle";
+import Link from 'next/link';
 import { Flame, Star } from "lucide-react";
 import {
   getBaseImageUrl,
@@ -10,9 +11,19 @@ import {
   discardHTMLTags,
 } from "@/constants/hooks";
 import cookieService from "@/services/CookiesService";
+import { Merchant, OffersOffer } from "@/services/dataTypes";
 
-const ProductCard = async ({ offer, mer_slug, mer_slug_type, type }: any) => {
-  const merchantHref = getMerchantHref(offer.merchant, mer_slug, mer_slug_type);
+interface Props {
+    offer: OffersOffer;
+    mer_slug_type: string;
+    mer_slug: string;
+    type?: string;
+    merchant: Merchant;
+    productDetailUrl?: string | null;
+}
+
+const ProductCard = async ({ offer, mer_slug, mer_slug_type, type, merchant, productDetailUrl }: Props) => {
+  const merchantHref = getMerchantHref(merchant, mer_slug, mer_slug_type);
   const domain = (await cookieService.get("domain")).domain;
   const product = offer?.offer || offer;
 
@@ -69,11 +80,24 @@ const ProductCard = async ({ offer, mer_slug, mer_slug_type, type }: any) => {
           </span>
         </div>
 
-        <h3 className="text-sm font-bold text-white leading-snug line-clamp-2 min-h-[40px] group-hover:text-blue-400 transition">
+        {/* <h3 className="text-sm font-bold text-white leading-snug line-clamp-2 min-h-[40px] group-hover:text-blue-400 transition">
           {type === "product"
             ? product?.offer_title
             : discardHTMLTags(product?.offer_title)}
-        </h3>
+        </h3> */}
+        {product?.is_detail === 1 ? (
+            (productDetailUrl && (
+                <Link href={productDetailUrl}>
+                    <h3 className="text-sm font-bold text-white leading-snug line-clamp-2 min-h-[40px] group-hover:text-blue-400 transition">
+                        {discardHTMLTags(product?.offer_title)}
+                    </h3>
+                </Link>
+            ))
+        ) : (
+            <h3 className="text-sm font-bold text-white leading-snug line-clamp-2 min-h-[40px] group-hover:text-blue-400 transition">
+                {discardHTMLTags(product?.offer_title)}
+            </h3>
+        )}
 
         <div className="flex justify-between items-center text-xs">
           <OfferDetailsToggle

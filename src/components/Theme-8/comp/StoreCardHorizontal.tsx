@@ -4,8 +4,15 @@ import Link from 'next/link';
 import { discardHTMLTags, getBaseImageUrl, getMerchantHref, splitHeadingFromDetails } from '@/constants/hooks';
 import cookieService from '@/services/CookiesService';
 import { ArrowUpRight } from 'lucide-react';
+import { minimalMerchantData } from '@/services/dataTypes';
 
-const StoreCardHorizontal = async ({ merchant, mer_slug, mer_slug_type }: any) => {
+interface Props {
+    merchant: minimalMerchantData;
+    mer_slug: string;
+    mer_slug_type: string;
+}
+
+const StoreCardHorizontal = async ({ merchant, mer_slug, mer_slug_type }: Props) => {
     const companyDomain = await cookieService.get("domain");
     const [heading] = splitHeadingFromDetails(merchant?.details);
     const logoSrc = getBaseImageUrl(companyDomain.domain, merchant?.merchant_logo, "");

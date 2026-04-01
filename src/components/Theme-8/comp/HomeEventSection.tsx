@@ -62,12 +62,18 @@ const HomeEventSection = async ({ companyId, mer_slug, mer_slug_type }: Props) =
                     <ScaleReveal delay={0.3}>
                         <Link
                             href={getEventsHref(eventMerchants?.event, mer_slug_type)}
-                            className="no-underline group relative overflow-hidden flex items-center gap-3 rounded-full bg-white px-8 py-3.5 text-sm font-black text-slate-900 border border-slate-200 shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-all duration-500 hover:border-blue-600 hover:text-white"
+                            className="no-underline group relative overflow-hidden flex items-center gap-3 rounded-full bg-white px-8 py-3.5 text-sm font-black text-slate-900 border border-slate-200 shadow-[0_4px_12px_rgba(0,0,0,0.05)] transition-all duration-500 hover:border-blue-600"
                         >
+                            {/* Background Slide Effect */}
                             <span className="absolute inset-0 translate-y-full bg-gradient-to-r from-blue-600 to-indigo-600 transition-transform duration-500 ease-out group-hover:translate-y-0" />
-                            <span className="relative z-10 flex items-center gap-2 tracking-tight">
+                            
+                            {/* Text Span - Yahan color change fix kiya hai */}
+                            <span className="relative z-10 flex items-center gap-2 tracking-tight transition-colors duration-500 group-hover:!text-white">
                                 View Collection
-                                <ArrowRight size={18} className="stroke-[3px] transition-all duration-500 group-hover:translate-x-2 group-hover:scale-110" />
+                                <ArrowRight 
+                                    size={18} 
+                                    className="stroke-[3px] transition-all duration-500 group-hover:translate-x-2 group-hover:scale-110 group-hover:!text-white" 
+                                />
                             </span>
                         </Link>
                     </ScaleReveal>

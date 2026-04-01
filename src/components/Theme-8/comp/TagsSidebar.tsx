@@ -32,27 +32,28 @@ const TagsSidebar = async ({ company_id, merchant_id }: Props) => {
                     const isLongTag = tag.split(' ').length > 5;
                     
                     return (
-                        <li key={i} className="inline-block">
+                       <li key={i} className="inline-block">
                             <Link 
                                 href={`/search?query=${tag}`} 
                                 className={`
                                     group no-underline inline-flex items-center justify-center
                                     px-4 py-2 rounded-full border border-slate-200 
-                                    bg-slate-50 text-slate-600 
-                                    transition-all duration-300 ease-in-out
-                                    hover:bg-blue-600 hover:border-blue-600 hover:text-white
+                                    bg-slate-50 transition-all duration-300 ease-in-out
+                                    hover:bg-blue-600 hover:border-blue-600 
                                     hover:shadow-md hover:shadow-blue-100 active:scale-95
                                 `}
                             >
                                 <span className={`
-                                    text-sm font-semibold 
+                                    text-sm font-semibold transition-colors duration-300
+                                    /* Base color yahan rakhein aur hover ko group-hover se force karein */
+                                    text-slate-600 group-hover:text-white
                                     ${isLongTag ? 'whitespace-normal text-left max-w-[200px]' : 'whitespace-nowrap'}
                                 `}>
                                     {tag}
                                 </span>
                             </Link>
                         </li>
-                    )
+                 )
                 })}
             </ul>
         </div>

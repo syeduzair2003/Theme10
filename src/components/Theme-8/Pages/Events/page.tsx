@@ -32,7 +32,7 @@ const EventsPage = async () => {
                             
                             {/* Breadcrumb */}
                             <nav className="mt-6 flex justify-center lg:justify-start items-center gap-3 text-sm font-medium">
-                                <Link href="/" className="text-gray-400 hover:text-white transition-colors">
+                                <Link href="/" className="!text-gray-400 hover:!text-white transition-colors">
                                     Home
                                 </Link>
                                 <FontAwesomeIcon icon={faChevronRight} className="text-[10px] text-gray-600" />

@@ -58,10 +58,10 @@ const AllStoresPage = async ({ store_slug, slug_type, company_id, slug, page }: 
                                 
                                 <nav className="flex justify-center md:justify-start" aria-label="Breadcrumb">
                                     <ol className="flex items-center space-x-3 text-sm font-medium">
-                                        <li><Link href="/" className="no-underline uppercase text-slate-500 hover:text-blue-600 transition-colors">Home</Link></li>
+                                        <li><Link href="/" className="no-underline uppercase !text-slate-500 hover:!text-blue-600 transition-colors">Home</Link></li>
                                         <li className="flex items-center space-x-3">
                                             <FontAwesomeIcon icon={faGreaterThan} className="w-2.5 h-2.5 text-slate-400" />
-                                            <Link href="/all-stores/A" className="no-underline uppercase text-slate-500 hover:text-blue-600 transition-colors">All Stores</Link>
+                                            <Link href="/all-stores/A" className="no-underline uppercase !text-slate-500 hover:!text-blue-600 transition-colors">All Stores</Link>
                                         </li>
                                         <li className="flex items-center space-x-3">
                                             <FontAwesomeIcon icon={faGreaterThan} className="w-2.5 h-2.5 text-slate-400" />

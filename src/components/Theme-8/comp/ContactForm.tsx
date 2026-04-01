@@ -4,7 +4,10 @@ import React, { useState } from 'react';
 import { toast } from 'react-toastify';
 import { ScaleReveal } from './MotionWrapper'; // Animation Wrapper import kiya
 
-const ContactForm = ({ domain }: { domain: string }) => {
+interface Props {
+    domain: string;
+}
+const ContactForm = ({domain}: Props) => {
     const [name, setName] = useState('');
     const [number, setNumber] = useState('');
     const [email, setEmail] = useState('');

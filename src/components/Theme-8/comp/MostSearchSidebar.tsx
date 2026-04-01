@@ -1,7 +1,10 @@
 import { apiMostSearch } from '@/apis/user';
 import Link from 'next/link';
 
-const MostSearchSidebar = async ({ company_id }: any) => {
+interface Props {
+    company_id: string
+}
+const MostSearchSidebar = async ({ company_id }: Props) => {
     const most_search = (await apiMostSearch(company_id))?.data;
     if (!most_search?.length) return null;
 
