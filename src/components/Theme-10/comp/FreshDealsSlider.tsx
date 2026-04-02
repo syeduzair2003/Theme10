@@ -13,9 +13,17 @@ export default function FreshDealsSlider({ children }: { children: React.ReactNo
   }, []);
 
   const scroll = (dir: "left" | "right") => {
-    if (sliderRef.current) {
+    if (sliderRef.current && sliderRef.current.children.length > 0) {
       const container = sliderRef.current;
-      const scrollAmount = container.clientWidth * 0.8;
+      
+      // 1. Pehle card ki width aur gap nikalna
+      const firstChild = container.children[0] as HTMLElement;
+      const cardWidth = firstChild.offsetWidth;
+      const gap = window.innerWidth >= 768 ? 32 : 16; // md:gap-8 (32px) else gap-4 (16px)
+
+      // 2. Exact 2 cards ka scroll amount (Desktop par 2, Mobile par 1)
+      const cardsToScroll = window.innerWidth >= 768 ? 2 : 1;
+      const scrollAmount = (cardWidth + gap) * cardsToScroll;
       
       if (dir === "right" && container.scrollLeft + container.clientWidth >= container.scrollWidth - 10) {
         container.scrollTo({ left: 0, behavior: "smooth" });
@@ -64,10 +72,10 @@ export default function FreshDealsSlider({ children }: { children: React.ReactNo
           <ArrowRight size={20} />
         </button>
 
-        {/* Slider Track */}
+        {/* Slider Track - Snap classes preserved as requested */}
         <div
           ref={sliderRef}
-          className="flex gap-6 overflow-x-auto scroll-smooth no-scrollbar py-4 px-2 snap-x snap-mandatory"
+          className="flex gap-4 md:gap-8 overflow-x-auto scroll-smooth no-scrollbar py-6 px-4 snap-x snap-mandatory justify-start md:justify-center items-center min-h-[300px]"
         >
           {React.Children.map(children, (child) => (
             <div className="flex-shrink-0 snap-start">
@@ -86,7 +94,7 @@ export default function FreshDealsSlider({ children }: { children: React.ReactNo
         <div className="flex justify-center mt-10">
           <button className="group relative px-10 py-3.5 overflow-hidden rounded-2xl bg-white/5 border border-white/10 transition-all hover:border-[#800000]/50 shadow-lg">
             <span className="relative z-10 text-[10px] font-black uppercase tracking-[0.3em] text-white/60 group-hover:text-white">
-               View All Deals
+                View All Deals
             </span>
             <div className="absolute inset-0 bg-[#800000] translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500" />
           </button>

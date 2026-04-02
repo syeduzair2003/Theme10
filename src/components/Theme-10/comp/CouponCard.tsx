@@ -39,7 +39,7 @@ const CouponCard = async ({
   );
 
   return (
-    <div className="group relative  bg-[#F5F5DC] border border-[#EADDCA] rounded-[3rem] p-8 flex flex-col h-full transition-all duration-700 shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:border-[#800000]/30 hover:shadow-[0_30px_60px_rgba(128,0,0,0.12)] hover:-translate-y-3">
+    <div className="group relative  bg-[#F5F5DC] border border-[#EADDCA] rounded-tr-[3rem] rounded-bl-[3rem] p-8 flex flex-col h-full transition-all duration-700 shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:border-[#800000]/30 hover:shadow-[0_30px_60px_rgba(128,0,0,0.12)] hover:-translate-y-3">
       {/* Discount Badge */}
       {finalDiscountTag && (
         <div className="absolute -top-3 -right-3 bg-gradient-to-br from-[#800000] to-[#520000] text-[#FFFDF5] text-[11px] font-black px-5 py-2 rounded-2xl shadow-xl shadow-[#800000]/20 z-20 flex items-center gap-2 border border-[#A52A2A]/20">

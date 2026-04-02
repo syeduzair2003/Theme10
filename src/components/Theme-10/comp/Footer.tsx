@@ -114,7 +114,7 @@ const Footer = async ({
           </div>
 
           <div className="lg:col-span-8">
-            <div className="bg-gradient-to-br from-[#0a0a0a] to-[#000000] border border-[#FFFDF5]/5 rounded-3xl p-8 md:p-10 relative overflow-hidden group hover:border-[#FFFDF5]/20 transition-all duration-700 shadow-[0_30px_60px_rgba(0,0,0,0.6)] hover:shadow-[0_20px_70px_rgba(255,253,245,0.08)] active:scale-[0.99]">
+            <div className="bg-gradient-to-br from-[#0a0a0a] to-[#000000] border border-[#FFFDF5]/5 rounded-tr-[3rem] rounded-bl-[3rem] p-8 md:p-10 relative overflow-hidden group hover:border-[#FFFDF5]/20 transition-all duration-700 shadow-[0_30px_60px_rgba(0,0,0,0.6)] hover:shadow-[0_20px_70px_rgba(255,253,245,0.08)] active:scale-[0.99]">
               <div className="absolute top-0 right-0 p-4 opacity-5 translate-x-4 -translate-y-4 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-700">
                 <FontAwesomeIcon
                   icon={faEnvelopeOpen}
@@ -275,7 +275,7 @@ const Footer = async ({
             
             {/* Top/Center: Disclaimer Box (Centered perfectly) */}
             {disclaimer?.disclaimer?.disclaimer && (
-              <div className="w-full max-w-3xl p-6 md:p-8 rounded-2xl bg-black/30 border border-[#FFFDF5]/10 hover:border-[#FFFDF5]/30 transition-all duration-500 group/disc backdrop-blur-sm text-center">
+              <div className="w-full max-w-lg p-6 md:p-8 rounded-tr-[3rem] rounded-bl-[3rem] bg-black/30 border border-[#FFFDF5]/10 hover:border-[#FFFDF5]/30 transition-all duration-500 group/disc backdrop-blur-sm text-center">
                 <div
                   className="text-sm leading-relaxed text-[#FFFDF5]/60 group-hover/disc:text-[#FFFDF5]/90 transition-colors italic mx-auto"
                   dangerouslySetInnerHTML={{
@@ -286,7 +286,7 @@ const Footer = async ({
             )}
 
             {/* Bottom Row: Copyright (Left) & Legal Links (Right) */}
-            <div className="w-full flex flex-col md:flex-row justify-between items-center gap-6 w-full pt-4">
+            <div className="w-full flex flex-col md:flex-row justify-between items-center gap-6 w-full">
               
               {/* Copyright & Registration Info */}
               <div className="text-[10px] tracking-[0.2em] font-black text-[#FFFDF5]/40 uppercase text-center md:text-left">
