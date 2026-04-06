@@ -17,7 +17,7 @@ const CouponCard = async ({ product, merchantHref, domain, merchant_name, mercha
     const finalDiscountTag = getFinalDiscountTag(product?.offer_title || product?.offer_detail, discountPercent);
 
     return (
-        <div className="group relative bg-[#0f172a] border border-slate-700/50 rounded-[2.5rem] p-8 flex flex-col h-full transition-all duration-500 hover:border-blue-500/50 hover:shadow-[0_20px_50px_rgba(59,130,246,0.15)] hover:-translate-y-2">
+        <div className="group relative bg-white/70 backdrop-blur-xl border border-[#800000]/10 rounded-[2.5rem] p-8 flex flex-col h-full transition-all duration-700 hover:bg-white hover:border-[#800000]/30 hover:shadow-[0_30px_60px_rgba(128,0,0,0.08)] hover:-translate-y-3">
             
             {/* Discount Badge */}
             {finalDiscountTag && (
@@ -30,7 +30,8 @@ const CouponCard = async ({ product, merchantHref, domain, merchant_name, mercha
             <div className="flex-grow">
                 {/* Brand & Stats Row */}
                 <div className="flex justify-between items-start mb-8">
-                    <div className="relative w-16 h-16 bg-white rounded-2xl p-3 shadow-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500">
+                    {/* Logo Wrapper: Added Maroon border on hover */}
+                    <div className="relative w-16 h-16 bg-white rounded-2xl p-3 shadow-[0_10px_30px_rgba(0,0,0,0.05)] flex items-center justify-center group-hover:scale-110 group-hover:border-[#800000]/20 border border-transparent transition-all duration-500">
                         <Image
                             src={(product?.offer_type?.name === "product" && product?.product_image) ? getBaseImageUrl(domain, product?.product_image, '') : getBaseImageUrl(domain, merchant_logo, '')}
                             alt={merchant_name}
@@ -40,8 +41,9 @@ const CouponCard = async ({ product, merchantHref, domain, merchant_name, mercha
                         />
                     </div>
                     <div className="flex flex-col items-end">
-                        <div className="flex items-center gap-1.5 text-blue-400 font-bold text-[10px] uppercase tracking-widest bg-blue-500/10 px-3 py-1.5 rounded-full mb-2">
-                            <ShieldCheck size={12} /> Verified
+                        {/* Verified Badge: Updated to Maroon theme */}
+                        <div className="flex items-center gap-1.5 text-[#800000] font-black text-[10px] uppercase tracking-widest bg-[#800000]/5 px-3 py-1.5 rounded-full mb-2 border border-[#800000]/10">
+                            <ShieldCheck size={12} strokeWidth={3} /> Verified
                         </div>
                         <OfferDuration endDate={product?.end_date} />
                     </div>
@@ -49,29 +51,31 @@ const CouponCard = async ({ product, merchantHref, domain, merchant_name, mercha
 
                 {/* Title Section */}
                 <div className="space-y-3">
-                    <h4 className="text-xl font-bold text-white leading-tight group-hover:text-blue-400 transition-colors line-clamp-2 min-h-[56px]">
+                    {/* Text Color: Matte Black with Maroon Hover */}
+                    <h4 className="text-xl font-black text-[#1A1A1A] leading-tight group-hover:text-[#800000] transition-colors line-clamp-2 min-h-[56px] tracking-tight">
                         {splitOfferTitle(product?.offer_title).join(' / ')}
                     </h4>
                     
                     <div className="flex items-center gap-4">
                         <div className="flex items-center scale-90 origin-left">
                             <RenderRating rating={rating} />
-                            <span className="ml-2 text-slate-500 text-xs font-bold">({rating})</span>
+                            <span className="ml-2 text-[#1A1A1A]/40 text-xs font-black">({rating})</span>
                         </div>
                         <SocialMediaShare offerUrl={`/${product?.url}`} offerTitle={product?.offer_title} merchantHref={merchantHref} unique_id={product?.unique_id} domain={domain} />
                     </div>
                 </div>
 
-                {/* Price Display (Specifically for Products) */}
+                {/* Price Display: High Contrast for Readability */}
                 {(salePrice > 0 || originalPrice > 0) && (
-                    <div className="mt-6 flex items-baseline gap-3">
+                    <div className="mt-8 flex items-baseline gap-3">
                         {salePrice > 0 && (
-                            <span className="text-3xl font-black text-white">
-                                {getCurrencySymbol(product?.currency)}{salePrice}
+                            <span className="text-3xl font-black text-[#1A1A1A]">
+                                <span className="text-[#800000] text-xl mr-0.5">{getCurrencySymbol(product?.currency)}</span>
+                                {salePrice}
                             </span>
                         )}
                         {originalPrice > 0 && (
-                            <span className="text-sm text-slate-500 line-through font-medium italic">
+                            <span className="text-sm text-[#1A1A1A]/30 line-through font-bold italic">
                                 {getCurrencySymbol(product?.currency)}{originalPrice}
                             </span>
                         )}
@@ -80,38 +84,40 @@ const CouponCard = async ({ product, merchantHref, domain, merchant_name, mercha
             </div>
 
             {/* CTA Section */}
-            <div className="mt-10 space-y-4">
+            <div className="mt-10 space-y-5">
                 <OfferOutUrl
                     unique_id={product?.unique_id}
                     outUrl={product?.url}
                     merchantHref={merchantHref}
                     domain={domain}
-                    customClass={`w-full relative h-14 flex items-center justify-center rounded-2xl font-black text-xs uppercase tracking-[0.2em] transition-all duration-300 active:scale-95 overflow-hidden ${
+                    customClass={`w-full relative h-14 flex items-center justify-center rounded-2xl font-black text-[11px] uppercase tracking-[0.25em] transition-all duration-500 active:scale-95 overflow-hidden shadow-sm ${
                         product?.coupon_code 
-                        ? "bg-transparent border-2 border-dashed border-blue-500 text-blue-400 hover:bg-blue-500/10" 
-                        : "bg-white text-slate-900 hover:bg-blue-500 hover:text-Black no-underline"
+                        ? "bg-transparent border-2 border-dashed border-[#800000]/30 text-[#800000] hover:bg-[#800000]/5 hover:border-[#800000]" 
+                        : "bg-[#1A1A1A] text-white hover:bg-[#800000] no-underline shadow-lg shadow-[#1A1A1A]/10"
                     }`}
                 >
                     {product?.coupon_code ? (
                         <div className="flex items-center gap-3">
-                            <span className="bg-blue-500/20 px-3 py-1 rounded-lg">
+                            <span className="bg-[#800000]/10 px-3 py-1.5 rounded-lg border border-[#800000]/10">
                                 {product.coupon_code.trim().slice(0, 7)}...
                             </span>
-                            <span>Copy Code</span>
+                            <span className="font-black">Copy Code</span>
                         </div>
                     ) : (
                         <div className="flex items-center gap-2">
                             <span>{product?.offer_type?.name === "product" ? "Buy Now" : "Get Deal"}</span>
-                            <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                            <ArrowRight size={16} strokeWidth={3} className="group-hover:translate-x-1.5 transition-transform" />
                         </div>
                     )}
                 </OfferOutUrl>
 
                 {pageType !== 'events' && (
-                    <Link href={merchantHref} className="no-underline text-white block text-center group/link">
-                        <span className="text-[12px] font-bold text-slate-400 uppercase tracking-widest group-hover/link:text-blue-400 transition-colors">
+                    <Link href={merchantHref} className="no-underline block text-center group/link mt-2">
+                        <span className="text-[10px] font-black text-[#1A1A1A]/40 uppercase tracking-[0.3em] group-hover/link:text-[#800000] transition-all duration-300">
                             Visit {merchant_name} Store
                         </span>
+                        {/* Subtle Underline for Link */}
+                        <div className="mx-auto mt-1 w-0 h-[1.5px] bg-[#800000]/30 group-hover/link:w-20 transition-all duration-500 rounded-full" />
                     </Link>
                 )}
             </div>

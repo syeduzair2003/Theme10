@@ -12,7 +12,8 @@ const ScrollButtonLeft = ({ sectionType }: { sectionType: string }) => {
             ) as HTMLElement | null;
 
             if (container) {
-                setVisible(container.scrollWidth > container.clientWidth);
+                // Hum +5 isliye check kar rahe hain taake minor pixel gaps par button na show ho
+                setVisible(container.scrollWidth > container.clientWidth + 5);
             }
         };
 
@@ -22,20 +23,26 @@ const ScrollButtonLeft = ({ sectionType }: { sectionType: string }) => {
         return () => window.removeEventListener("resize", checkOverflow);
     }, [sectionType]);
 
-    if (!visible) return null; // 🔥 Don't render if not overflowing
+    // 🔥 Agar cards 4 ya us se kam hain toh maroon circle nazar nahi aayega
+    if (!visible) return null;
 
     return (
         <button
-            className="scroll-btn left"
+            className="bg-[#800000] text-[#fffde0] w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full shadow-[0_10px_20px_rgba(128,0,0,0.3)] border border-[#fffde0]/10 hover:scale-110 hover:bg-[#1A1A1A] transition-all duration-300 cursor-pointer"
             onClick={() => {
-                document
-                    .querySelector(`.horizontal-scroll-${sectionType}`)
-                    ?.scrollBy({ left: -300, behavior: "smooth" });
+                const container = document.querySelector(`.horizontal-scroll-${sectionType}`);
+                if (container) {
+                    // Accurate width calculate karke utna hi piche scroll karega
+                    const containerWidth = container.getBoundingClientRect().width;
+                    container.scrollBy({ left: -containerWidth, behavior: "smooth" });
+                }
             }}
+            aria-label="Scroll Left"
         >
             <FontAwesomeIcon
                 icon={faAngleLeft}
-                style={{ width: '16px', height: '16px', color: 'white' }}
+                className="w-4 h-4 md:w-5 md:h-5"
+                style={{ color: 'currentColor' }} 
             />
         </button>
     );

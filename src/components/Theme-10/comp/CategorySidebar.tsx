@@ -14,33 +14,37 @@ interface Props {
 const CategorySidebar = async ({ categories, cat_slug, slug_type, parentCategory }: Props) => {
     return (
         <div className="space-y-6">
-            <h4 className="text-xl font-black text-slate-800 border-b border-slate-100 pb-4 leading-tight">
+            <h4 className="text-xl font-black text-[#1A1A1A] border-b border-[#800000]/10 pb-4 leading-tight tracking-tight uppercase text-xs sm:text-xl">
                 {parentCategory ? `${parentCategory} Deals` : 'Popular Categories'}
             </h4>
             
-            <div className="space-y-1">
+            <div className="space-y-1.5">
                 {categories?.slice(0, 10).map((category, i) => (
                     <Link
                         key={i}
                         href={`/${category.url}`}
-                        className="no-underline group flex items-center justify-between p-3 rounded-xl hover:bg-blue-50 transition-all duration-200"
+                        className="no-underline group flex items-center justify-between p-3 rounded-2xl hover:bg-[#800000]/5 transition-all duration-300"
                     >
                         <div className="flex items-center gap-3 overflow-hidden">
-                            <span className="w-1.5 h-1.5 bg-slate-300 group-hover:bg-blue-600 rounded-full transition-colors flex-shrink-0"></span>
-                            <span className="text-slate-600 group-hover:text-blue-700 font-medium truncate">
+                            <span className="w-1.5 h-1.5 bg-[#800000]/20 group-hover:bg-[#800000] rounded-full transition-colors flex-shrink-0"></span>
+                            <span className="text-[#1A1A1A]/70 group-hover:text-[#1A1A1A] font-medium truncate transition-colors">
                                 {category?.name}
                             </span>
                         </div>
-                        <span className="text-xs font-bold text-slate-400 bg-slate-50 px-2 py-1 rounded-md group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                   
+                        
+                        {/* Offers Badge */}
+                        <span className="text-[10px] font-black text-[#800000] bg-[#800000]/5 px-2.5 py-1 rounded-lg group-hover:bg-[#800000] group-hover:text-white transition-all duration-500 border border-[#800000]/5">
                             {category?.total_offers}
                         </span>
                     </Link>
                 ))}
             </div>
 
-            <Link href={`/${cat_slug}`} className="flex items-center justify-center gap-2 w-full py-4 bg-slate-50 text-blue-600 font-bold rounded-2xl hover:bg-blue-600 hover:text-white transition-all group">
+            {/* View All Button */}
+            <Link href={`/${cat_slug}`} className="flex items-center justify-center gap-3 w-full py-4 bg-[#800000]/5 text-[#800000] font-black text-xs uppercase tracking-widest rounded-2xl hover:bg-[#800000] hover:text-white transition-all duration-500 shadow-sm group border border-[#800000]/10">
                 <span>View All Categories</span>
-                <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5 group-hover:translate-x-1.5 transition-transform" />
             </Link>
         </div>
     )

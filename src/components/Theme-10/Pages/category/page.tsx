@@ -2,7 +2,7 @@ import { faGreaterThan, FontAwesomeIcon } from '@/constants/icons'
 import Link from 'next/link'
 import React from 'react'
 import Image from 'next/image'
-import CatPage from '@/components/Theme-8/comp/CatPage'
+import CatPage from '@/components/Theme-10/comp/CatPage'
 import cookieService from '@/services/CookiesService'
 import { apiCompanyUpdatedData } from '@/apis/user'
 import CategoryPageSchema from '@/components/shared/SchemaScripts/CategoryPageSchema'
@@ -24,58 +24,61 @@ const page = async () => {
     };
 
     return (
-        <main className="min-h-screen bg-white">
+        <main className="min-h-screen bg-[#fffde0]">
             {/* Banner Section */}
-            <section className="relative overflow-hidden bg-[#1a212e] border-b border-white/5 py-16 md:py-24 rounded-b-[3rem]">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-                        
-                        {/* Left Side: Content Wrapper */}
-                        <div className="w-full lg:w-3/5 flex flex-col items-center lg:items-start text-center lg:text-left">
-                            
-                            <nav className="flex items-center space-x-2 text-[12px] md:text-sm font-semibold tracking-wide mb-6">
-                                <Link href="/" className="text-slate-500 hover:text-blue-500 transition-colors no-underline uppercase">
-                                    Home
-                                </Link>
-                                <FontAwesomeIcon icon={faGreaterThan} className="w-2 h-2 text-slate-700" />
-                                <span className="text-blue-500 uppercase">
-                                    Categories
-                                </span>
-                            </nav>
+            <section className="relative overflow-hidden bg-[#fffde0] pt-24 pb-10 mt-8 rounded-b-[5rem] shadow-[0_30px_70px_rgba(128,0,0,0.04)]">
+    {/* Animated Background Gradients */}
+    <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] bg-[#800000]/5 blur-[120px] rounded-full animate-pulse" />
+    <div className="absolute bottom-[-20%] right-[-10%] w-[500px] h-[500px] bg-[#800000]/5 blur-[120px] rounded-full" />
 
-                            <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-[1.1] tracking-tight">
-                                Our Popular <br className="hidden md:block" />
-                                <span className="text-blue-500 relative">
-                                    Categories
-                                    <svg className="absolute -bottom-2 left-0 w-full h-2 text-blue-500/30" viewBox="0 0 100 10" preserveAspectRatio="none">
-                                        <path d="M0 5 Q 25 0 50 5 T 100 5" stroke="currentColor" strokeWidth="2" fill="none" />
-                                    </svg>
-                                </span>
-                            </h1>
+    <div className="max-w-5xl mx-auto px-6 relative z-10">
+        <div className="flex flex-col items-center text-center">
+            
+            {/* Minimal Breadcrumb */}
+            <nav className="flex items-center space-x-4 text-[10px] md:text-[11px] font-black tracking-[0.4em] mb-5 text-[#1A1A1A]/40 uppercase">
+                <Link href="/" className="hover:text-[#800000] transition-colors no-underline">Home</Link>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#800000]" />
+                <span className="text-[#800000]">Categories</span>
+            </nav>
 
-                            <p className="mt-6 text-slate-400 text-sm md:text-base max-w-md font-medium leading-relaxed">
-                                Explore top-rated brands and exclusive discounts across our most visited categories.
-                            </p>
-                        </div>
+            {/* Main Centered Heading */}
+            <h1 className="text-5xl md:text-7xl lg:text-7xl font-black text-[#1A1A1A] leading-[1] tracking-tighter mb-8">
+                Explore Our <br />
+                <span className="text-[#800000] relative italic px-4">
+                    Top-Rated
+                    {/* Decorative Circle around text */}
+                    {/* <svg className="absolute inset-0 w-full h-full text-[#800000]/10 -rotate-2 scale-110" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="100" cy="50" rx="95" ry="45" stroke="currentColor" strokeWidth="2" />
+                    </svg> */}
+                </span>
+                <br /> Categories
+            </h1>
 
-                        <div className="w-full lg:w-2/5 flex justify-center lg:justify-end">
-                            <div className="relative group">
-                                <div className="absolute inset-0 bg-blue-600/25 blur-[100px] rounded-full group-hover:bg-blue-600/40 transition-all duration-700" />
-                                
-                                <Image 
-                                    src="/themes/Theme_3/images/banner-illus-1.png" 
-                                    alt="Categories Illustration" 
-                                    width={380} 
-                                    height={320} 
-                                    priority
-                                    className="relative z-10 object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)] transform group-hover:scale-105 transition-transform duration-500" 
-                                />
-                            </div>
-                        </div>
+            {/* Description with Max Width */}
+            <p className="text-[#1A1A1A]/60 text-base md:text-xl max-w-2xl font-medium leading-relaxed mb-0">
+                Discover exclusive deals and premium brands curated just for you. <br className="hidden md:block" /> 
+                Your journey to the best discounts starts here.
+            </p>
 
-                    </div>
+            {/* Design Element: Minimalist Stats or Highlights */}
+            {/* <div className="flex flex-wrap justify-center gap-6 md:gap-16 border-t border-[#800000]/10 pt-12 w-full max-w-3xl">
+                <div className="flex flex-col items-center">
+                    <span className="text-2xl md:text-3xl font-black text-[#1A1A1A]">500+</span>
+                    <span className="text-[10px] uppercase tracking-widest text-[#800000] font-bold mt-1">Premium Brands</span>
                 </div>
-            </section>
+                <div className="flex flex-col items-center">
+                    <span className="text-2xl md:text-3xl font-black text-[#1A1A1A]">24/7</span>
+                    <span className="text-[10px] uppercase tracking-widest text-[#800000] font-bold mt-1">Expert Support</span>
+                </div>
+                <div className="flex flex-col items-center">
+                    <span className="text-2xl md:text-3xl font-black text-[#1A1A1A]">100%</span>
+                    <span className="text-[10px] uppercase tracking-widest text-[#800000] font-bold mt-1">Verified Deals</span>
+                </div>
+            </div> */}
+
+        </div>
+    </div>
+</section>
 
             {/* Content Section */}
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

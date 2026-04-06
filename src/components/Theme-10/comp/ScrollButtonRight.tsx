@@ -12,7 +12,8 @@ const ScrollButtonRight = ({ sectionType }: { sectionType: string }) => {
             ) as HTMLElement | null;
 
             if (container) {
-                setVisible(container.scrollWidth > container.clientWidth);
+                // Hum +5 isliye kar rahe hain taake agar 1-2px ka farq ho toh button show na ho
+                setVisible(container.scrollWidth > container.clientWidth + 5);
             }
         };
 
@@ -22,20 +23,25 @@ const ScrollButtonRight = ({ sectionType }: { sectionType: string }) => {
         return () => window.removeEventListener("resize", checkOverflow);
     }, [sectionType]);
 
+    // 🔥 Agar cards 4 ya us se kam hain, toh poora maroon circle gayab ho jayega
     if (!visible) return null;
 
     return (
         <button
-            className="scroll-btn right"
+            className="bg-[#800000] text-[#fffde0] w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full shadow-[0_10px_20px_rgba(128,0,0,0.3)] border border-[#fffde0]/10 hover:scale-110 hover:bg-[#1A1A1A] transition-all duration-300 cursor-pointer"
             onClick={() => {
-                document
-                    .querySelector(`.horizontal-scroll-${sectionType}`)
-                    ?.scrollBy({ left: 300, behavior: "smooth" });
+                const container = document.querySelector(`.horizontal-scroll-${sectionType}`);
+                if (container) {
+                    const containerWidth = container.getBoundingClientRect().width;
+                    container.scrollBy({ left: containerWidth, behavior: "smooth" });
+                }
             }}
+            aria-label="Scroll Right"
         >
             <FontAwesomeIcon
                 icon={faAngleRight}
-                style={{ width: '16px', height: '16px', color: 'white' }}
+                className="w-4 h-4 md:w-5 md:h-5"
+                style={{ color: 'currentColor' }} 
             />
         </button>
     );
