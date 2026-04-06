@@ -43,6 +43,11 @@ const Home = async () => {
         mer_slug_type={c_data?.slug_type}
         mer_slug={c_data?.store_slug}
       />
+      <ExploreCategory
+        companyId={c_data?.unique_id}
+        slug_type={c_data?.slug_type}
+        cat_slug={c_data?.category_slug}
+      />
       <HomeEventSection
         companyId={c_data?.unique_id}
         mer_slug_type={c_data?.slug_type}
@@ -55,12 +60,6 @@ const Home = async () => {
           mer_slug={c_data?.store_slug}
         />
       )}
-
-      <ExploreCategory
-        companyId={c_data?.unique_id}
-        slug_type={c_data?.slug_type}
-        cat_slug={c_data?.category_slug}
-      />
       <TrendingProducts
         companyId={c_data?.unique_id}
         mer_slug_type={c_data?.slug_type}

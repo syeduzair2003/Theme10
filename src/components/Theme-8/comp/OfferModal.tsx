@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { faThumbsDown, faThumbsUp, faXmark } from '@/constants/icons';
+import { faThumbsDown, faThumbsUp } from '@/constants/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { calculateOfferDuration, getBaseImageUrl } from '@/constants/hooks';
 import dynamic from 'next/dynamic';
@@ -40,7 +40,6 @@ const OfferModal = ({ data, companyId, onClose, domain, merchantHref }: Props) =
                         onClick={onClose}
                         className="absolute top-5 right-5 z-50 w-8 h-8 bg-slate-100 text-slate-500 hover:bg-red-50 hover:text-red-500 rounded-full flex items-center justify-center transition-all"
                     >
-                        <FontAwesomeIcon icon={faXmark} className="text-sm" />
                     </button>
 
                     <div className="max-w-xl mx-auto space-y-4">

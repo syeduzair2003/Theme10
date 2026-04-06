@@ -37,12 +37,12 @@ const ProductCard = async ({ offer, mer_slug, mer_slug_type, type }: any) => {
   return (
     <div
       className="group relative w-[274px] min-h-[420px] flex-shrink-0 
-      rounded-3xl bg-[#F5F5DC] border border-[#EADDCA] 
+      rounded-tr-[3rem] rounded-bl-[3rem] bg-[#F5F5DC] border border-[#EADDCA] 
       p-5 flex flex-col transition-all duration-500 
       hover:-translate-y-2 hover:border-[#800000]/40"
     >
       {/* IMAGE */}
-      <div className="relative h-44 rounded-2xl bg-white border border-[#EADDCA] overflow-hidden flex items-center justify-center">
+      <div className="relative h-44 rounded-tr-[2rem] rounded-bl-[2rem] bg-white border border-[#EADDCA] overflow-hidden flex items-center justify-center">
         <Image
           src={imageSrc}
           alt="Product"
