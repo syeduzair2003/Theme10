@@ -32,10 +32,12 @@ const ProductOffers = async ({ page, company_id, mer_slug, mer_slug_type, catego
 
     return (
         <div className="w-full">
-            <div className="row g-4 mb-10">
+            {/* Grid Container: Updated gap and columns for that compact "Amazon" feel */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 mb-10 items-stretch">
                 {offersData && offersData?.offers?.length > 0 ? (
                     offersData?.offers?.map((item: OffersOffer, i: number) => (
-                        <div key={i} className="col-md-6 col-xl-6 col-xxl-4 flex flex-col">
+                        /* Card Wrapper: Pure clean look with flexible height */
+                        <div key={i} className="w-full flex flex-col h-full group">
                             <EventOfferCard
                                 product={item?.offer}
                                 merchantHref={`/store/${item.merchant?.slug}`}
@@ -46,17 +48,22 @@ const ProductOffers = async ({ page, company_id, mer_slug, mer_slug_type, catego
                         </div>
                     ))
                 ) : (
-                    <div className="col-12 text-center py-20 bg-white rounded-[2rem] border-2 border-dashed border-slate-100">
-                        <div className="text-5xl mb-4">🔍</div>
-                        <h3 className="text-2xl font-bold text-slate-900 mb-2">No Offers Found</h3>
-                        {/* Fixed: couldn't -> couldn&apos;t */}
-                        <p className="text-slate-500">We couldn&apos;t find any deals in this category right now.</p>
+                    /* No Offers Found: Theme updated to Maroon/Cream */
+                    <div className="col-span-full text-center py-24 bg-[#FDFBE7]/50 rounded-[3rem] border-2 border-dashed border-[#EADDCA]">
+                        <div className="text-6xl mb-6 grayscale opacity-60">🛍️</div>
+                        <h3 className="text-2xl font-black text-[#1A1A1A] mb-3 uppercase tracking-tight">
+                            No <span className="text-[#800000]">Offers</span> Found
+                        </h3>
+                        <p className="text-[#4A4A4A] max-w-xs mx-auto text-sm font-medium leading-relaxed">
+                            We couldn't find any deals in this category right now. Try exploring other stores!
+                        </p>
                     </div>
                 )}
             </div>
 
+            {/* Pagination: Spacing adjusted */}
             {totalPages > 1 && (
-                <div className="mt-12 d-flex justify-content-center">
+                <div className="mt-16 flex justify-center pb-8">
                     <Pagination
                         currentPage={currentPage}
                         totalPages={totalPages}
