@@ -25,39 +25,46 @@ const PremiumBrand = async ({ companyId, mer_slug, mer_slug_type }: Props) => {
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Header Section Fix */}
           <div className="relative mb-12">
-            <div className="flex flex-col md:flex-row justify-between items-start gap-4">
-              <div className="max-w-full">
-                <p className="text-[#800000] font-bold text-xs mb-3 uppercase tracking-widest">
-                  Trusted by millions
-                </p>
-                {/* Heading color set to Matte Black for Cream BG contrast */}
-                <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-[#1A1A1A] tracking-tighter leading-[1.1] mb-4">
-                  {heading}
-                </h2>
-                {subHeading && (
-                  <p className="text-[#1A1A1A]/50 text-base md:text-lg leading-relaxed max-w-full font-medium">
-                    {subHeading}
-                  </p>
-                )}
-              </div>
+    <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-8">
+        
+        {/* Left Content - Width constrained to give space to button */}
+        <div className="max-w-4xl">
+            <p className="text-[#800000] font-bold text-[10px] md:text-xs mb-3 uppercase tracking-[0.2em]">
+                Trusted by millions
+            </p>
+            
+            {/* Heading - Size slightly reduced for better balance */}
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-[#1A1A1A] tracking-tighter leading-[1.1] mb-4">
+                {heading}
+            </h2>
 
-              {/* View All Button - Refined for Branded Look */}
-              <Link
-                href={`/all-stores/A`}
-                className="inline-flex items-center gap-2 text-[#1A1A1A]/60 font-black text-[11px] uppercase tracking-widest hover:text-[#800000] transition-all whitespace-nowrap mt-2 md:mt-4 group no-underline"
-                target="_blank"
-              >
-                <span className="relative pb-1">
-                  View all
-                  <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-[#800000] group-hover:w-full transition-all duration-500" />
-                </span>
+            {subHeading && (
+                <p className="text-[#1A1A1A]/60 text-sm md:text-base leading-relaxed max-w-3xl font-medium">
+                    {subHeading}
+                </p>
+            )}
+        </div>
+
+        {/* View All Button - Increased width and centered content */}
+        <Link
+            href={`/all-stores/A`}
+            className="no-underline group relative overflow-hidden inline-flex items-center justify-center gap-3 rounded-full bg-[#FFFDF5] min-w-[160px] px-8 py-3.5 text-[11px] font-black text-[#1A1A1A] border border-[#EADDCA] shadow-[0_4px_12px_rgba(128,0,0,0.05)] transition-all duration-500 hover:border-[#800000] hover:text-[#FFFDF5] uppercase tracking-widest whitespace-nowrap lg:mb-2"
+            target="_blank"
+        >
+            {/* Hover fill effect */}
+            <span className="absolute inset-0 translate-y-full bg-gradient-to-r from-[#800000] to-[#520000] transition-transform duration-500 ease-out group-hover:translate-y-0" />
+
+            {/* Content Layer */}
+            <span className="relative z-10 flex items-center justify-center gap-2 w-full">
+                View all
                 <ArrowRight
-                  size={16}
-                  className="group-hover:translate-x-1.5 transition-transform duration-500"
+                    size={14}
+                    className="stroke-[3px] transition-all duration-500 group-hover:translate-x-1.5 group-hover:scale-110"
                 />
-              </Link>
-            </div>
-          </div>
+            </span>
+        </Link>
+    </div>
+</div>
 
           {/* Brands Grid Rendering */}
           <div className="mt-8">

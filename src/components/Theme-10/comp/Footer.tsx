@@ -272,12 +272,11 @@ const Footer = async ({
         {/* Bottom Bar */}
         <div className="pt-10 border-t border-[#FFFDF5]/10">
           <div className="flex flex-col items-center gap-10">
-            
             {/* Top/Center: Disclaimer Box (Centered perfectly) */}
             {disclaimer?.disclaimer?.disclaimer && (
-              <div className="w-full max-w-lg p-6 md:p-8 rounded-tr-[3rem] rounded-bl-[3rem] bg-black/30 border border-[#FFFDF5]/10 hover:border-[#FFFDF5]/30 transition-all duration-500 group/disc backdrop-blur-sm text-center">
+              <div className="w-full max-w-lg p-6 md:p-8 rounded-tr-[3rem] rounded-bl-[3rem] bg-black/30 border border-[#FFFDF5]/30 hover:border-[#FFFDF5]/10 transition-all duration-500 group/disc backdrop-blur-sm text-center">
                 <div
-                  className="text-sm leading-relaxed text-[#FFFDF5]/60 group-hover/disc:text-[#FFFDF5]/90 transition-colors italic mx-auto"
+                  className="text-sm leading-relaxed text-[#FFFDF5]/90 group-hover/disc:text-[#FFFDF5]/60 transition-colors italic mx-auto"
                   dangerouslySetInnerHTML={{
                     __html: disclaimer?.disclaimer?.disclaimer || "",
                   }}
@@ -286,8 +285,7 @@ const Footer = async ({
             )}
 
             {/* Bottom Row: Copyright (Left) & Legal Links (Right) */}
-            <div className="w-full flex flex-col md:flex-row justify-between items-center gap-6 w-full">
-              
+            <div className="w-full flex flex-col md:flex-row justify-between items-center gap-6">
               {/* Copyright & Registration Info */}
               <div className="text-[10px] tracking-[0.2em] font-black text-[#FFFDF5]/40 uppercase text-center md:text-left">
                 {companyDomain.domain === "gettopdiscounts.com" ? (
@@ -329,7 +327,6 @@ const Footer = async ({
                 </Link>
               </div>
             </div>
-            
           </div>
         </div>
       </div>

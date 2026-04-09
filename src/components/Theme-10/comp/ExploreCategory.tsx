@@ -53,27 +53,21 @@ const ExploreCategory = async ({ companyId, cat_slug, slug_type }: Props) => {
           </div>
 
           <Link
-            href={`/${cat_slug}`}
-            className="group relative flex items-center gap-3 w-fit text-[#1A1A1A]/70 font-black text-[12px] uppercase tracking-[0.2em] no-underline transition-all duration-300 hover:text-[#800000]"
-          >
-            {/* Main Text */}
-            <span className="relative">
-              All Categories
-              {/* Animated Underline */}
-              <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-[#800000] transition-all duration-300 group-hover:w-full" />
-            </span>
+  href={`/${cat_slug}`}
+  className="no-underline group relative overflow-hidden w-full max-w-[190px] flex items-center justify-center gap-3 rounded-full bg-[#FFFDF5] px-6 py-4 text-[13px] font-black text-[#1A1A1A] border border-[#EADDCA] shadow-[0_4px_12px_rgba(128,0,0,0.05)] transition-all duration-500 hover:border-[#800000] hover:text-[#FFFDF5]"
+>
+  {/* Hover fill effect (Sliding up gradient) */}
+  <span className="absolute inset-0 translate-y-full bg-gradient-to-r from-[#800000] to-[#520000] transition-transform duration-500 ease-out group-hover:translate-y-0" />
 
-            {/* Dynamic Arrow Icon */}
-            <div className="relative flex items-center justify-center">
-              {/* Arrow Background Circle on Hover - Updated to Maroon tint for theme consistency */}
-              <div className="absolute h-8 w-8 scale-0 rounded-full bg-[#800000]/5 transition-transform duration-300 group-hover:scale-100" />
-
-              <ArrowRight
-                size={18}
-                className="relative z-10 transition-all duration-300 group-hover:translate-x-1.5 group-hover:text-[#800000]"
-              />
-            </div>
-          </Link>
+  {/* Content Layer - Centered */}
+  <span className="relative z-10 flex items-center justify-center gap-2 w-full">
+    All Categories
+    <ArrowRight
+      size={18}
+      className="stroke-[3px] transition-all duration-500 group-hover:translate-x-2 group-hover:scale-110"
+    />
+  </span>
+</Link>
         </div>
 
         {/* Categories Grid */}
