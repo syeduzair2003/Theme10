@@ -15,105 +15,139 @@ const EventsPage = async () => {
     const events = eventsResponse?.data || [];
 
     return (
-        <main className="min-h-screen bg-gray-50/50">
+        <main className="min-h-screen bg-[#fffde0]">
             {/* --- Hero / Banner Section --- */}
-            <section className="relative mx-4 md:mx-8 lg:mx-12 mt-6 overflow-hidden rounded-3xl bg-slate-900 py-12 md:py-20 shadow-2xl">
-                {/* Background Pattern Decors */}
-                <div className="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-96 h-96 bg-blue-500/20 blur-[100px] rounded-full" />
-                <div className="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/2 w-80 h-80 bg-purple-500/20 blur-[100px] rounded-full" />
+            <section className="relative mx-4 md:mx-8 lg:mx-12 mt-12 overflow-hidden rounded-[2.5rem] bg-[#FDFBE7] py-10 md:py-12 shadow-md border border-[#EADDCA]">
+    <div className="container mx-auto px-10 relative z-10">
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
+            
+            {/* --- Left Side: Content (Slightly Scaled Up) --- */}
+            <div className="w-full lg:w-[55%] text-center lg:text-left">
+                {/* Breadcrumb */}
+                <nav className="mb-4 flex justify-center lg:justify-start items-center gap-2 text-[10px] font-black uppercase tracking-[0.15em]">
+                    <Link href="/" className="text-slate-400 hover:text-[#800000] transition-colors">
+                        Home
+                    </Link>
+                    <span className="w-1.5 h-1.5 rounded-full bg-[#800000]"></span>
+                    <span className="text-[#800000]">Events</span>
+                </nav>
 
-                <div className="container mx-auto px-6 relative z-10">
-                    <div className="flex flex-col lg:flex-row items-center justify-between gap-12">
-                        {/* Left Side: Content */}
-                        <div className="w-full lg:w-1/2 text-center lg:text-left">
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
-                                Our <span className="text-blue-400">Trending</span> Events
-                            </h1>
-                            
-                            {/* Breadcrumb */}
-                            <nav className="mt-6 flex justify-center lg:justify-start items-center gap-3 text-sm font-medium">
-                                <Link href="/" className="text-gray-400 hover:text-white transition-colors">
-                                    Home
-                                </Link>
-                                <FontAwesomeIcon icon={faChevronRight} className="text-[10px] text-gray-600" />
-                                <span className="text-blue-400">Events</span>
-                            </nav>
-                        </div>
+                {/* Heading: Increased to 5xl */}
+                <h1 className="text-3xl md:text-5xl lg:text-[3.2rem] font-black text-[#1A1A1A] leading-[1.1] tracking-tight">
+                    Our <span className="text-[#800000]">Trending</span> <br/>
+                    Events
+                </h1>
+                
+                <div className="mt-6 flex items-start gap-4 max-w-lg mx-auto lg:mx-0">
+                    {/* Vertical Line */}
+                    <div className="w-[4px] h-12 bg-[#800000] rounded-full shrink-0" />
+                    <p className="text-slate-600 text-sm md:text-base font-medium leading-relaxed text-left">
+                        Discover handpicked premium offers and seasonal events tailored for your lifestyle. 
+                        Save big with our verified exclusive discounts.
+                    </p>
+                </div>
+            </div>
 
-                        {/* Right Side: Illustration */}
-                        <div className="w-full lg:w-1/2 flex justify-center lg:justify-end">
-                            <div className="relative group">
-                                <div className="absolute inset-0 bg-blue-500/10 blur-2xl group-hover:bg-blue-500/20 transition-all duration-500" />
-                                <Image 
-                                    src="/themes/Theme_3/images/banner-illus-5.png" 
-                                    alt="Trending Events" 
-                                    width={400} 
-                                    height={350} 
-                                    className="relative object-contain transform hover:scale-105 transition-transform duration-500"
-                                    priority
-                                />
-                            </div>
-                        </div>
+            {/* --- Right Side: Illustration (Slightly Larger & Centered) --- */}
+            <div className="w-full lg:w-[40%] flex justify-center lg:justify-end mt-4">
+                <div className="relative w-full max-w-[340px] aspect-square flex items-center justify-center">
+                    
+                    {/* Organic Background Shapes: Scaled to 340px */}
+                    <div className="absolute inset-0 bg-[#800000]/5 rounded-[3rem] rotate-6 scale-95" />
+                    <div className="absolute inset-0 bg-[#EADDCA]/30 rounded-[3rem] -rotate-3 transition-transform group-hover:-rotate-6 duration-700 shadow-sm" />
+                    
+                    {/* Main Image Container */}
+                    <div className="relative z-10 w-[80%] h-[80%] flex items-center justify-center">
+                        <Image 
+                            src="/themes/Theme_3/images/banner-illus-5.png" 
+                            alt="Trending Events" 
+                            width={310} 
+                            height={270} 
+                            className="object-contain transition-all duration-700 hover:scale-105 drop-shadow-2xl"
+                            priority
+                        />
                     </div>
                 </div>
-            </section>
-
+            </div>
+        </div>
+    </div>
+</section>
             {/* --- Events Listing Section --- */}
             <section className="py-16 md:py-24">
                 <div className="container mx-auto px-6">
-                    <div className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-gray-200 pb-8">
-                        <div>
-                            <h2 className="text-2xl font-bold text-gray-900">Active Events</h2>
-                            <p className="text-gray-500 mt-2">Discover the best offers across all our curated events.</p>
-                        </div>
-                        <div className="text-sm font-semibold text-blue-600 bg-blue-50 px-4 py-2 rounded-full">
-                            Total Events: {events?.length}
-                        </div>
-                    </div>
+                    <div className="mb-10 flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-[#EADDCA] pb-8">
+    <div className="relative">
+        {/* Aesthetic vertical accent next to title */}
+        <div className="absolute -left-4 top-1 w-1 h-8 bg-[#800000] rounded-full hidden md:block" />
+        
+        <h2 className="text-3xl font-black text-[#1A1A1A] tracking-tight uppercase">
+            Active <span className="text-[#800000]">Events</span>
+        </h2>
+        <p className="text-slate-500 mt-2 text-sm font-medium">
+            Discover the best offers across all our curated events.
+        </p>
+    </div>
+
+    {/* Themed Badge for Total Events */}
+    <div className="inline-flex items-center gap-2 text-[11px] font-black text-[#800000] bg-[#800000]/5 border border-[#800000]/20 px-5 py-2.5 rounded-full uppercase tracking-widest shadow-sm">
+        <span className="w-1.5 h-1.5 rounded-full bg-[#800000] animate-pulse" />
+        Total Events: <span className="text-[#1A1A1A] ml-1">{events?.length}</span>
+    </div>
+</div>
 
                     {/* Grid Layout */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                        {events?.length > 0 ? (
-                            events.map((event: EventResponse, index: number) => (
-                                <Link 
-                                    key={index} 
-                                    href={getEventsHref(event, 'slug')}
-                                    className="group relative bg-white border border-gray-200 rounded-2xl p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-2 hover:border-blue-100 no-underline"
-                                >
-                                    <div className="flex flex-col h-full justify-between gap-6">
-                                        <div className="space-y-3">
-                                            {/* Icon/Decoration */}
-                                            <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 group-hover:bg-blue-600 group-hover:text-white transition-colors duration-300 shadow-sm">
-                                                <FontAwesomeIcon icon={faStar} className="w-5 h-5" />
-                                            </div>
-                                            
-                                            <h3 className="text-xl font-bold text-gray-800 line-clamp-2 leading-snug">
-                                                {event?.name}
-                                            </h3>
-                                        </div>
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+    {events?.length > 0 ? (
+        events.map((event: EventResponse, index: number) => (
+            <Link 
+                key={index} 
+                href={getEventsHref(event, 'slug')}
+                className="group relative bg-[#FDFBE7]/50 backdrop-blur-sm border border-[#EADDCA] rounded-[2rem] p-7 transition-all duration-500 hover:shadow-[0_20px_40px_rgba(128,0,0,0.1)] hover:-translate-y-3 hover:border-[#800000]/30 no-underline overflow-hidden"
+            >
+                {/* Decorative Background Element for Hover */}
+                <div className="absolute top-0 right-0 w-24 h-24 bg-[#800000]/5 rounded-full -mr-10 -mt-10 transition-transform group-hover:scale-[3] duration-700" />
 
-                                        {/* View Button (Mockup style) */}
-                                        <div className="flex items-center justify-between mt-4 pt-4 border-t border-gray-50">
-                                            <div className="flex items-center gap-2">
-                                                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                                                <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Live Offers</span>
-                                            </div>
-                                            <div className="bg-gray-900 text-white p-2 rounded-lg group-hover:bg-blue-600 transition-colors">
-                                                <FontAwesomeIcon icon={faChevronRight} className="w-3 h-3 text-white" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    
-                                    {/* Subtle Gradient Hover Overlay */}
-                                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-600/5 to-purple-600/5 opacity-0 group-hover:opacity-100 transition-opacity" />
-                                </Link>
-                            ))
-                        ) : (
-                            <div className="col-span-full py-20 text-center">
-                                <p className="text-gray-400 text-lg">No events available right now.</p>
-                            </div>
-                        )}
+                <div className="flex flex-col h-full justify-between gap-8 relative z-10">
+                    <div className="space-y-4">
+                        {/* Icon/Decoration: Themed to Maroon */}
+                        <div className="w-14 h-14 bg-white border border-[#EADDCA] rounded-2xl flex items-center justify-center text-[#800000] shadow-sm group-hover:bg-[#800000] group-hover:text-white group-hover:border-[#800000] transition-all duration-500 transform group-hover:rotate-[10deg]">
+                            <FontAwesomeIcon icon={faStar} className="w-6 h-6" />
+                        </div>
+                        
+                        <h3 className="text-xl font-black text-[#1A1A1A] line-clamp-2 leading-tight group-hover:text-[#800000] transition-colors duration-300">
+                            {event?.name}
+                        </h3>
                     </div>
+
+                    {/* Bottom Action Bar */}
+                    <div className="flex items-center justify-between mt-2 pt-5 border-t border-[#EADDCA]/60">
+                        <div className="flex items-center gap-2">
+                            <div className="w-2 h-2 rounded-full bg-[#800000] animate-pulse" />
+                            <span className="text-[10px] font-black text-slate-500 uppercase tracking-widest">
+                                Live Offers
+                            </span>
+                        </div>
+                        
+                        {/* Arrow Button: Capsule Style */}
+                        <div className="bg-[#1A1A1A] text-white w-10 h-10 rounded-xl flex items-center justify-center group-hover:bg-[#800000] group-hover:shadow-[0_5px_15px_rgba(128,0,0,0.3)] transition-all duration-300">
+                            <FontAwesomeIcon icon={faChevronRight} className="w-3 h-3" />
+                        </div>
+                    </div>
+                </div>
+                
+                {/* Subtle Hover Gradient Overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-[#800000]/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </Link>
+        ))
+    ) : (
+        <div className="col-span-full py-24 text-center">
+            <div className="inline-flex items-center justify-center w-20 h-20 bg-[#FDFBE7] rounded-full mb-4 border border-[#EADDCA]">
+                 <div className="w-10 h-10 border-2 border-dashed border-[#800000]/30 rounded-full animate-spin" />
+            </div>
+            <p className="text-slate-400 text-lg font-medium">No events available right now.</p>
+        </div>
+    )}
+</div>
                 </div>
             </section>
         </main>

@@ -16,28 +16,33 @@ const MerchantDetailsShort = ({ details }: Props) => {
     const hasMoreContent = plainText.length > (shortSentence.length + 5);
 
     return (
-        <div className="w-full bg-white rounded-xl p-4 border border-slate-100 group">
-            <div className="relative">
-                <p className="text-slate-600 leading-relaxed text-sm md:text-base line-clamp-3 md:line-clamp-4">
-                    {shortSentence}
-                </p>
+        <div className="w-full py-2 group">
+    <div className="relative">
+        {/* Text styling updated to match premium feel */}
+        <p className="text-slate-600 leading-relaxed text-sm md:text-[0.95rem] font-medium line-clamp-2 md:line-clamp-3">
+            {shortSentence}
+        </p>
+        
+        {hasMoreContent && (
+            <div className="mt-3 flex items-center gap-3">
+                {/* Horizontal line updated to match cream/border theme */}
+                <div className="h-[1px] flex-grow bg-[#EADDCA]"></div>
                 
-                {hasMoreContent && (
-                    <div className="mt-3 flex items-center gap-2">
-                        <div className="h-px flex-grow bg-slate-200"></div>
-                        <Link 
-                            href={`#fullDetails`}
-                            className="text-blue-600 font-bold text-sm flex-shrink-0 hover:underline flex items-center gap-1"
-                        >
-                            See Full Details
-                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
-                            </svg>
-                        </Link>
+                <Link 
+                    href={`#fullDetails`}
+                    className="text-[#800000] font-black text-[10px] uppercase tracking-widest flex-shrink-0 no-underline flex items-center gap-1.5 hover:opacity-80 transition-opacity"
+                >
+                    See Full Details
+                    <div className="w-4 h-4 rounded-full bg-[#800000]/5 flex items-center justify-center">
+                        <svg className="w-2.5 h-2.5 text-[#800000]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M19 9l-7 7-7-7" />
+                        </svg>
                     </div>
-                )}
+                </Link>
             </div>
-        </div>
+        )}
+    </div>
+</div>
     );
 };
 

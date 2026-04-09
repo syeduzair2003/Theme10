@@ -31,12 +31,7 @@ import {
 } from "@/constants/icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import cookieService from "@/services/CookiesService";
-import {
-  CategoryChild,
-  EventMerchant,
-  MerchantWithOffers,
-  Offer,
-} from "@/services/dataTypes";
+import { CategoryChild } from "@/services/dataTypes";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import React from "react";
@@ -92,128 +87,94 @@ const page = async ({ params }: { params: Props }) => {
       (merchant?.offers || []).map((offer) => ({ offer, merchant })),
     ) || [];
 
-  const sortChildren = (children?: CategoryChild[]) => {
-    if (!children) return [];
-    return [...children].sort((a, b) => {
-      const nameA = typeof a === "string" ? a : a?.name;
-      const nameB = typeof b === "string" ? b : b?.name;
-      return nameA?.localeCompare(nameB, undefined, { sensitivity: "base" });
-    });
-  };
-
   return (
-    <main className="bg-[#f8fafc] min-h-screen">
-      {/* --- Event Banner Section --- */}
+    <main className="bg-[#FCFBF4] min-h-screen pb-16 selection:bg-[#800000]/20 selection:text-[#800000]">
+      {/* --- Hero Banner Section --- */}
       {banners?.length > 0 && (
-        <div className="w-full">
+        <section className="w-full relative overflow-hidden bg-[#FDFBE7]">
           <EventBanner
             domain={companyDomain.domain}
             banners={banners}
             eventName={event?.event?.name}
           />
-        </div>
+        </section>
       )}
 
-      {/* --- Breadcrumb & Title Section --- */}
-      <div className="container mx-auto px-4 py-6">
-        <nav className="flex items-center gap-2 text-sm text-slate-500 mb-6 bg-white w-fit px-4 py-2 rounded-full shadow-sm border border-slate-100">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-10">
+        {/* --- Breadcrumb --- */}
+        <nav className="flex items-center gap-1.5 text-[9px] font-black uppercase tracking-[0.15em] mb-5 bg-white/90 backdrop-blur-md w-fit px-4 py-2 rounded-full shadow-sm border border-[#EADDCA]">
           <Link
             href="/"
-            className="no-underline hover:text-blue-600 transition-colors"
+            className="text-slate-400 hover:text-[#800000] transition-colors no-underline"
           >
             Home
           </Link>
-          <FontAwesomeIcon icon={faChevronRight} className="text-[10px]" />
+          <FontAwesomeIcon
+            icon={faChevronRight}
+            className="text-[7px] text-slate-300"
+          />
           <Link
             href="/events"
-            className="no-underline hover:text-blue-600 transition-colors"
+            className="text-slate-400 hover:text-[#800000] transition-colors no-underline"
           >
             Events
           </Link>
-          <FontAwesomeIcon icon={faChevronRight} className="text-[10px]" />
-          <span className="text-slate-900 font-semibold truncate max-w-[150px]">
-            {event?.event?.name}
-          </span>
+          <FontAwesomeIcon
+            icon={faChevronRight}
+            className="text-[7px] text-slate-300"
+          />
+          <span className="text-[#800000]">{event?.event?.name}</span>
         </nav>
 
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-          <h1 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tight">
-            {event?.event?.name}{" "}
-            <span className="text-blue-600">Exclusive Deals</span>
-          </h1>
-          <div className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-xl text-sm font-bold shadow-lg shadow-blue-200">
-            <FontAwesomeIcon icon={faTags} />
-            {allOffers.length} Offers Available
-          </div>
-        </div>
+        {/* --- Title Section --- */}
+        <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-5 mb-8">
+          <div className="space-y-4 max-w-3xl">
+            <div className="space-y-2.5">
+              <span className="inline-flex items-center px-3 py-1 bg-[#800000]/5 text-[#800000] rounded-full text-[9px] font-black uppercase tracking-widest border border-[#800000]/20">
+                <span className="w-1 h-1 rounded-full bg-[#800000] mr-1.5 animate-pulse" />
+                Special Event
+              </span>
+              <h1 className="text-3xl md:text-4xl lg:text-[2.75rem] font-black text-[#1A1A1A] leading-[1.1] tracking-tight">
+                {event?.event?.name}{" "}
+                <span className="text-[#800000]">Exclusive Deals</span>
+              </h1>
+            </div>
 
-        <div className="row g-4">
-          {/* --- Main Content (Left) --- */}
-          <div className="col-xl-8">
+            {/* --- Description moved under heading & shape removed --- */}
             {event?.event?.description && (
-              <div className="bg-white p-6 rounded-2xl shadow-sm border border-slate-100 mb-8">
+              <div className="text-slate-600 leading-relaxed max-w-2xl">
                 <MerchantDetailsShort details={event?.event?.description} />
               </div>
             )}
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {allOffers.map((item, index) => (
-                <React.Fragment key={index}>
-                  <div className="group transition-all duration-300">
-                    <EventOfferCard
-                      product={item?.offer}
-                      merchantHref={getMerchantHref(
-                        item.merchant,
-                        companyData?.store_slug,
-                        companyData?.slug_type,
-                      )}
-                      domain={companyDomain.domain}
-                      merchant_name={item.merchant?.merchant_name}
-                      merchant_logo={item.merchant?.merchant_logo}
-                    />
-                  </div>
-
-                  {/* Inline Banner Logic */}
-                  {(index + 1) % 6 === 0 &&
-                    filteredOfferBanners[Math.floor(index / 6)] && (
-                      <div className="col-span-full my-4">
-                        <div className="rounded-2xl overflow-hidden shadow-md">
-                          <Banner
-                            data={filteredOfferBanners[Math.floor(index / 6)]}
-                            height={120}
-                            domain={companyDomain.domain}
-                            mer_slug={companyData?.store_slug}
-                            slug_type={companyData?.slug_type}
-                          />
-                        </div>
-                      </div>
-                    )}
-                </React.Fragment>
-              ))}
-            </div>
-
-            {event?.event?.description && (
-              <div className="mt-10 bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
-                <h3 className="text-xl font-bold mb-4 text-slate-900">
-                  About {event?.event?.name}
-                </h3>
-                <MerchantDetailsFull details={event?.event?.description} />
-              </div>
-            )}
           </div>
 
-          {/* --- Sidebar (Right) --- */}
-          <aside className="col-xl-4">
-            <div className="sticky top-6 flex flex-col gap-6">
-              {/* Suggested Brands */}
+          <div className="flex items-center gap-3 bg-white border border-[#EADDCA] px-5 py-2.5 rounded-3xl shadow-sm hover:shadow-[0_8px_25px_rgba(128,0,0,0.05)] transition-shadow lg:mt-2">
+            <div className="w-10 h-10 bg-[#800000] text-white rounded-xl flex items-center justify-center shadow-[0_6px_12px_rgba(128,0,0,0.2)]">
+              <FontAwesomeIcon icon={faTags} className="w-4 h-4" />
+            </div>
+            <div>
+              <p className="text-[9px] text-slate-400 font-black uppercase tracking-widest m-0">
+                Available
+              </p>
+              <p className="text-lg font-black text-[#1A1A1A] m-0 leading-none">
+                {allOffers.length} Offers
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
+          {/* --- Sidebar (Left) --- */}
+          <aside className="lg:col-span-4 order-2 lg:order-1 space-y-6">
+            <div className="sticky top-20 space-y-6">
               {eventMerchants?.length > 0 && (
-                <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100">
+                <div className="bg-white rounded-3xl p-6 shadow-sm border border-[#EADDCA]">
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="w-10 h-10 bg-orange-50 text-orange-500 rounded-xl flex items-center justify-center">
+                    <div className="w-10 h-10 bg-[#1A1A1A] text-white rounded-xl flex items-center justify-center text-lg shadow-sm">
                       <FontAwesomeIcon icon={faStore} />
                     </div>
-                    <h4 className="font-bold text-slate-900">
-                      Suggested Brands
+                    <h4 className="font-black text-[#1A1A1A] text-base uppercase tracking-wide">
+                      Featured Brands
                     </h4>
                   </div>
                   <div className="grid grid-cols-2 gap-3">
@@ -229,41 +190,38 @@ const page = async ({ params }: { params: Props }) => {
                 </div>
               )}
 
-              {/* Categories Sidebar */}
               {suggestedCategories?.length > 0 && (
-                <div className="bg-white rounded-3xl p-6 shadow-sm border border-slate-100">
+                <div className="bg-white rounded-3xl p-6 shadow-sm border border-[#EADDCA]">
                   <div className="flex items-center gap-3 mb-6">
-                    <div className="w-10 h-10 bg-purple-50 text-purple-500 rounded-xl flex items-center justify-center">
+                    <div className="w-10 h-10 bg-[#800000]/10 text-[#800000] rounded-xl flex items-center justify-center text-lg shadow-inner">
                       <FontAwesomeIcon icon={faLayerGroup} />
                     </div>
-                    <h4 className="font-bold text-slate-900">
-                      Trending Categories
+                    <h4 className="font-black text-[#1A1A1A] text-base uppercase tracking-wide">
+                      Top Categories
                     </h4>
                   </div>
-                  <ul className="space-y-3">
+                  <div className="flex flex-col gap-2.5">
                     {suggestedCategories.slice(0, 8).map((cat, i) => (
-                      <li key={i}>
-                        <Link
-                          href={`/${cat?.category?.url}`}
-                          className="no-underline flex items-center justify-between p-3 rounded-xl border border-slate-50 hover:border-blue-200 hover:bg-blue-50 transition-all group"
-                        >
-                          <span className="text-sm font-medium text-slate-700 group-hover:text-blue-700">
-                            {cat?.category?.name}
-                          </span>
-                          <FontAwesomeIcon
-                            icon={faChevronRight}
-                            className="text-[10px] text-slate-300 group-hover:text-blue-400"
-                          />
-                        </Link>
-                      </li>
+                      <Link
+                        key={i}
+                        href={`/${cat?.category?.url}`}
+                        className="no-underline flex items-center justify-between p-3 rounded-xl border border-transparent bg-[#FDFBE7]/50 hover:border-[#800000]/20 hover:bg-[#800000]/5 transition-all group"
+                      >
+                        <span className="text-xs font-bold text-slate-600 group-hover:text-[#800000]">
+                          {cat?.category?.name}
+                        </span>
+                        <FontAwesomeIcon
+                          icon={faChevronRight}
+                          className="text-[9px] text-slate-300 group-hover:text-[#800000] group-hover:translate-x-1 transition-transform"
+                        />
+                      </Link>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               )}
 
-              {/* Vertical Banners */}
               {filteredVerticalBanners?.length > 0 && (
-                <div className="rounded-3xl overflow-hidden shadow-lg border-4 border-white">
+                <div className="rounded-3xl overflow-hidden shadow-md shadow-[#800000]/5 border-[3px] border-white group">
                   <VerticalEventOfferBanner
                     bannerResponse={filteredVerticalBanners}
                     domain={companyDomain.domain}
@@ -273,33 +231,101 @@ const page = async ({ params }: { params: Props }) => {
                 </div>
               )}
 
-              {/* Suggested Events */}
               {suggestedEvents?.length > 0 && (
-                <div className="bg-slate-900 rounded-3xl p-6 text-white shadow-xl border border-slate-800">
-                  <h4 className="font-bold mb-4 flex items-center gap-2 text-sm uppercase tracking-wider text-slate-400">
-                    <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(59,130,246,0.8)]"></span>
-                    More Events
-                  </h4>
-                  <div className="flex flex-wrap gap-2">
-                    {suggestedEvents
-                      ?.filter((se) => se.slug !== slug?.[0])
-                      .slice(0, 6)
-                      .map((se, i) => (
-                        <Link
-                          key={i}
-                          href={getEventsHref(se, "slug")}
-                          className="group no-underline text-xs bg-slate-800/50 text-slate-200 hover:bg-white px-4 py-2.5 rounded-xl transition-all duration-300 border border-slate-700 hover:border-white hover:shadow-[0_10px_20px_rgba(255,255,255,0.1)] flex items-center gap-2"
-                        >
-                          <span className="group-hover:text-black transition-colors duration-300 font-medium">
+    <div className="bg-white rounded-[2rem] p-5 md:p-6 shadow-sm border border-[#EADDCA]/60 transition-all duration-500 hover:shadow-md">
+        {/* --- Section Header --- */}
+        <h4 className="font-black mb-5 flex items-center gap-2 text-[10px] uppercase tracking-[0.15em] text-[#1A1A1A]">
+            <div className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#800000] opacity-20"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#800000]"></span>
+            </div>
+            More Events
+        </h4>
+
+        {/* --- Chips Container --- */}
+        <div className="flex flex-wrap gap-2">
+            {suggestedEvents
+                ?.filter((se) => se.slug !== slug?.[0])
+                .slice(0, 6)
+                .map((se, i) => (
+                    <Link
+                        key={i}
+                        href={getEventsHref(se, "slug")}
+                        className="no-underline text-[11px] bg-[#FDFBE7]/50 px-4 py-2 rounded-full border border-[#EADDCA] transition-all duration-300 hover:bg-[#800000] hover:border-[#800000] hover:translate-y-[-2px] active:scale-95 flex items-center gap-2 [&:hover>span]:text-white [&:hover>svg]:text-white/50"
+                    >
+                        <span className="text-slate-600 transition-colors duration-300 font-bold">
                             {se?.name}
-                          </span>
-                        </Link>
-                      ))}
-                  </div>
-                </div>
-              )}
+                        </span>
+                        <svg 
+                            className="w-2.5 h-2.5 text-[#EADDCA] transition-colors" 
+                            fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                        >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 5l7 7-7 7" />
+                        </svg>
+                    </Link>
+                ))}
+        </div>
+    </div>
+)}
             </div>
           </aside>
+
+          {/* --- Main Content (Right) --- */}
+          <div className="lg:col-span-8 order-1 lg:order-2 space-y-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+              {allOffers.map((item, index) => (
+                <React.Fragment key={index}>
+                  <div className="group transition-all duration-300 hover:-translate-y-1.5">
+                    <EventOfferCard
+                      product={item?.offer}
+                      merchantHref={getMerchantHref(
+                        item.merchant,
+                        companyData?.store_slug,
+                        companyData?.slug_type,
+                      )}
+                      domain={companyDomain.domain}
+                      merchant_name={item.merchant?.merchant_name}
+                      merchant_logo={item.merchant?.merchant_logo}
+                    />
+                  </div>
+
+                  {(index + 1) % 6 === 0 &&
+                    filteredOfferBanners[Math.floor(index / 6)] && (
+                      <div className="col-span-full py-3">
+                        <div className="rounded-3xl overflow-hidden shadow-sm border border-[#EADDCA] hover:shadow-md transition-all duration-500">
+                          <Banner
+                            data={filteredOfferBanners[Math.floor(index / 6)]}
+                            height={140}
+                            domain={companyDomain.domain}
+                            mer_slug={companyData?.store_slug}
+                            slug_type={companyData?.slug_type}
+                          />
+                        </div>
+                      </div>
+                    )}
+                </React.Fragment>
+              ))}
+            </div>
+
+            {event?.event?.description && (
+              <div className="bg-white p-5 md:p-7 rounded-[2rem] border border-[#EADDCA]/60 shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-500 hover:shadow-md hover:border-[#800000]/20 group">
+                {/* --- Section Title with Clean Accent --- */}
+                <h3 className="text-lg md:text-xl font-black mb-6 text-[#1A1A1A] flex items-center gap-2.5 tracking-tight">
+                  <div className="relative flex items-center justify-center">
+                    <span className="w-1 h-5 bg-[#800000] rounded-full"></span>
+                    <span className="absolute w-3 h-3 border border-[#800000]/20 rounded-full scale-0 group-hover:scale-150 opacity-0 group-hover:opacity-100 transition-all duration-500"></span>
+                  </div>
+                  About{" "}
+                  <span className="text-[#800000]">{event?.event?.name}</span>
+                </h3>
+
+                {/* --- Content Area --- */}
+                <div className="relative">
+                  <MerchantDetailsFull details={event?.event?.description} />
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 

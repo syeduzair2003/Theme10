@@ -72,24 +72,29 @@ const EventOfferCard = ({ product, merchantHref, domain, merchant_name, merchant
 
                 {/* --- Pricing: Clean and Compact --- */}
                 <div className="mt-auto mb-3">
-                    {type === "product" ? (
-                        <div className="flex items-center justify-center gap-2">
-                             <span className="text-xl font-black text-[#1A1A1A] tracking-tighter">
-                                {getCurrencySymbol(product?.currency)}{product?.sale_price}
-                            </span>
-                            {product?.original_price && (
-                                <span className="text-[10px] text-slate-400 line-through decoration-[#800000]/20">
-                                    {getCurrencySymbol(product?.currency)}{product?.original_price}
-                                </span>
-                            )}
-                        </div>
-                    ) : (
-                        <div className="inline-flex items-center justify-center gap-1 text-[#800000] font-bold text-[9px] bg-[#FDFBE7] px-2 py-0.5 rounded border border-[#800000]/10">
-                            <Sparkles size={9} fill="#800000" />
-                            VERIFIED
-                        </div>
-                    )}
-                </div>
+    {type === "product" ? (
+        <div className="flex items-center justify-center gap-2">
+            {/* Sale Price Check */}
+            {product?.sale_price && (
+                <span className="text-xl font-black text-[#1A1A1A] tracking-tighter">
+                    {getCurrencySymbol(product?.currency)}{product?.sale_price}
+                </span>
+            )}
+
+            {/* Original Price Check */}
+            {product?.original_price && (
+                <span className="text-[10px] text-slate-400 line-through decoration-[#800000]/20">
+                    {getCurrencySymbol(product?.currency)}{product?.original_price}
+                </span>
+            )}
+        </div>
+    ) : (
+        <div className="inline-flex items-center justify-center gap-1 text-[#800000] font-bold text-[9px] bg-[#FDFBE7] px-2 py-0.5 rounded border border-[#800000]/10">
+            <Sparkles size={9} fill="#800000" />
+            VERIFIED
+        </div>
+    )}
+</div>
 
                 {/* --- Action Buttons: Original Logic --- */}
                 <div className="relative group/btn w-full">
