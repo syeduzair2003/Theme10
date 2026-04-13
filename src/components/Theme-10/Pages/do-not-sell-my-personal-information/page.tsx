@@ -11,7 +11,7 @@ const PrivacyPage = async () => {
     const pageData = (await apiFooterPagesData(companyDomain, SLUG)).data;
 
     return (
-        <main className="min-h-screen bg-slate-50/50">
+        <main className="min-h-screen bg-[#fffde0]">
             {/* Header / Banner Section */}
             <section className="relative mx-4 md:mx-10 mt-6 mb-16 overflow-hidden rounded-[2.5rem] bg-[#0F172A] text-white">
                 {/* Decorative Background Elements */}

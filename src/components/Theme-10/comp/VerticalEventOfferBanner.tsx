@@ -39,12 +39,14 @@ const VerticalEventOfferBanner = ({ bannerResponse, domain, mer_slug, slug_type 
             </div>
             
             {visibleCount < filtered.length && (
-                <button 
-                    onClick={() => setVisibleCount(prev => prev + 5)}
-                    className="w-full mt-6 py-3 border-2 border-dashed border-slate-200 text-slate-400 text-xs font-black uppercase tracking-widest rounded-2xl hover:bg-slate-50 hover:text-blue-600 hover:border-blue-200 transition-all"
-                >
-                    Load More Offers
-                </button>
+                <div className="flex justify-center w-full"> {/* Button ko center karne ke liye wrapper */}
+    <button 
+        onClick={() => setVisibleCount(prev => prev + 5)}
+        className="px-10 py-3 mt-6 border border-[#800000] bg-transparent text-[#1A1A1A] text-[10px] font-black uppercase tracking-[0.2em] rounded-xl hover:bg-[#800000] hover:text-white transition-all duration-300 active:scale-95"
+    >
+        Load More Offers
+    </button>
+</div>
             )}
         </div>
     );

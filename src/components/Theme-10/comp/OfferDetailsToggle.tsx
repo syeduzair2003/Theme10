@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
-import OfferModal from './SimpleOfferModal';
+import SimpleOfferModal from './SimpleOfferModal';
 import { Offer } from '@/services/dataTypes';
 import { getFinalDiscountTag } from '@/constants/hooks';
 
@@ -56,7 +56,7 @@ const OfferDetailsToggle = ({ offer, merchantHref, domain, type, buttonClass, im
             )}
 
             {showModal && (
-                <OfferModal
+                <SimpleOfferModal
                     data={offer}
                     onClose={() => setShowModal(false)}
                     domain={domain}

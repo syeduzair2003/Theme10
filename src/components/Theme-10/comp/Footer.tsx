@@ -230,7 +230,7 @@ const Footer = async ({
                   href="/contact-us"
                   className="text-[#FFFDF5]/50 hover:text-[#FFFDF5] text-[13px] font-medium no-underline hover:translate-x-1 inline-block transition-all duration-500"
                 >
-                  Help Center
+                  Contact Us
                 </Link>
               </li>
             </ul>
@@ -292,8 +292,8 @@ const Footer = async ({
                   <span className="flex flex-wrap items-center justify-center md:justify-start gap-2">
                     © {new Date().getFullYear()}{" "}
                     <span className="text-[#FFFDF5]">GETTOPDISCOUNTS LLC</span>
-                    <span className="hidden md:block w-1 h-1 rounded-full bg-black shadow-[0_0_5px_rgba(0,0,0,0.5)]"></span>
-                    <span className="text-black font-extrabold">
+                    <span className="hidden md:block w-1 h-1 rounded-full bg-white shadow-[0_0_5px_rgba(0,0,0,0.5)]"></span>
+                    <span className="font-extrabold">
                       U.S. REGISTERED
                     </span>
                   </span>
