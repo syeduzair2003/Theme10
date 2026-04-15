@@ -272,7 +272,6 @@ const Footer = async ({
         {/* Bottom Bar */}
         <div className="pt-10 border-t border-[#FFFDF5]/10">
           <div className="flex flex-col items-center gap-10">
-            {/* Top/Center: Disclaimer Box (Centered perfectly) */}
             {disclaimer?.disclaimer?.disclaimer && (
               <div className="w-full max-w-lg p-6 md:p-8 rounded-tr-[3rem] rounded-bl-[3rem] bg-black/30 border border-[#FFFDF5]/30 hover:border-[#FFFDF5]/10 transition-all duration-500 group/disc backdrop-blur-sm text-center">
                 <div
@@ -284,7 +283,7 @@ const Footer = async ({
               </div>
             )}
 
-            {/* Bottom Row: Copyright (Left) & Legal Links (Right) */}
+            {/* Bottom Row */}
             <div className="w-full flex flex-col md:flex-row justify-between items-center gap-6">
               {/* Copyright & Registration Info */}
               <div className="text-[10px] tracking-[0.2em] font-black text-[#FFFDF5]/40 uppercase text-center md:text-left">
@@ -293,9 +292,7 @@ const Footer = async ({
                     © {new Date().getFullYear()}{" "}
                     <span className="text-[#FFFDF5]">GETTOPDISCOUNTS LLC</span>
                     <span className="hidden md:block w-1 h-1 rounded-full bg-white shadow-[0_0_5px_rgba(0,0,0,0.5)]"></span>
-                    <span className="font-extrabold">
-                      U.S. REGISTERED
-                    </span>
+                    <span className="font-extrabold">U.S. REGISTERED</span>
                   </span>
                 ) : (
                   <span className="flex flex-wrap items-center justify-center md:justify-start gap-2">

@@ -28,14 +28,12 @@ const StoreCard = async ({ merchant, mer_slug, mer_slug_type }: Props) => {
       href={getMerchantHref(merchant, mer_slug, mer_slug_type)}
       className="no-underline group relative flex flex-col items-center w-full"
     >
-      {/* Main Circle Container */}
+      {/* Main Container */}
       <div className="relative w-full aspect-square mb-5 transition-all duration-500">
-        {/* Animated Background Glow */}
         <div className="absolute inset-0 bg-[#800000]/0 group-hover:bg-[#800000]/5 rounded-[2.5rem] blur-2xl transition-all duration-500" />
 
         {/* Logo Frame */}
         <div className="relative w-full h-full bg-[#F5F2E8] border border-[#E0DBCF] rounded-[2.5rem] flex items-center justify-center p-8 shadow-sm group-hover:shadow-3xl group-hover:shadow-[#800000]/20 group-hover:border-[#800000]/40 transition-all duration-500 overflow-hidden">
-          {/* Subtle Sparkle on Hover */}
           <div className="absolute -top-10 -right-10 w-20 h-20 bg-[#800000]/5 rounded-full group-hover:scale-[3] transition-transform duration-700" />
 
           <div className="relative w-full h-full z-10">
@@ -49,7 +47,6 @@ const StoreCard = async ({ merchant, mer_slug, mer_slug_type }: Props) => {
           </div>
         </div>
 
-        {/* Floating "Go" Button that appears on hover */}
         <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-[#1A1A1A] text-[#FFFDF5] p-2.5 rounded-2xl opacity-0 group-hover:opacity-100 translate-y-3 group-hover:translate-y-0 transition-all duration-300 shadow-2xl z-50 overflow-visible">
           <svg
             className="w-4 h-4"

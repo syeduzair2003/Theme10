@@ -14,12 +14,14 @@ const AboutUs = async () => {
     <main className="min-h-screen bg-[#fffde0]">
       {/* Banner Section */}
       <section className="relative mx-4 md:mx-10 mt-6 mb-16 overflow-hidden rounded-[2.5rem] bg-[#FDFBE7] border border-[#EADDCA]">
+        <div className="absolute bottom-0 left-0 h-1.5 w-full bg-gradient-to-r from-[#800000] via-[#a00000] to-[#800000] z-20" />
+
         <div className="max-w-7xl mx-auto px-8 py-16 md:py-24 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-[-16px]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-[-16px] mb-[-16px]">
             {/* Left Content */}
             <div className="flex flex-col items-center lg:items-start text-center lg:text-left space-y-6">
               <div className="space-y-6 mt-4">
-                {/* --- Breadcrumb --- */}
+                {/* Breadcrumb */}
                 <nav className="flex items-center justify-center lg:justify-start gap-3 text-[11px] font-black uppercase tracking-[0.2em]">
                   <Link
                     href="/"
@@ -31,7 +33,7 @@ const AboutUs = async () => {
                   <span className="text-[#800000]">About Us</span>
                 </nav>
 
-                {/* Heading spacing adjusted */}
+                {/* Heading */}
                 <h1 className="text-4xl md:text-6xl font-black text-[#1A1A1A] leading-[1.1] tracking-tight">
                   About <span className="text-[#800000]">Us</span>
                 </h1>
@@ -40,7 +42,6 @@ const AboutUs = async () => {
 
             {/* Right Image Section */}
             <div className="hidden order-1 lg:order-2 lg:flex justify-end relative group translate-y-6 scale-90">
-              {/* Fixed Decorative Shapes */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 border border-[#800000]/10 rounded-full" />
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 border-2 border-dashed border-[#EADDCA]/40 rounded-full" />
 
@@ -51,7 +52,7 @@ const AboutUs = async () => {
               <div className="relative transition-all duration-500 group-hover:scale-105 group-hover:-translate-y-2">
                 <Image
                   src="/themes/Theme_3/images/banner-illus-15.png"
-                  alt="Contact"
+                  alt="About Us"
                   width={320}
                   height={280}
                   className="object-contain drop-shadow-[0_15px_35px_rgba(128,0,0,0.1)] group-hover:drop-shadow-[0_25px_50px_rgba(128,0,0,0.2)] transition-all duration-500"
@@ -69,30 +70,29 @@ const AboutUs = async () => {
 
       {/* Content Section */}
       <section className="px-6 pb-20 relative overflow-hidden">
-    <div className="max-w-4xl mx-auto relative z-10">
-        {/* --- More Compact Content Card --- */}
-        <div className="bg-white/80 backdrop-blur-md rounded-[2rem] border border-[#EADDCA] p-6 md:p-10 shadow-[0_15px_40px_-15px_rgba(128,0,0,0.04)]">
+        <div className="max-w-4xl mx-auto relative z-10">
+          <div className="bg-white/80 backdrop-blur-md rounded-[2rem] border border-[#EADDCA] p-6 md:p-10 shadow-[0_15px_40px_-15px_rgba(128,0,0,0.04)]">
             <article
-                className="prose prose-slate max-w-none 
+              className="prose prose-slate max-w-none 
                     prose-p:text-base prose-p:leading-relaxed prose-p:text-slate-600
                     prose-headings:text-[#1A1A1A] prose-headings:font-black prose-headings:tracking-tight
                     prose-headings:mb-4 prose-p:mb-4
                     prose-li:text-slate-600 prose-li:marker:text-[#800000]
                     prose-strong:text-[#1A1A1A]
                     prose-a:text-[#800000] prose-a:font-bold prose-a:no-underline"
-                dangerouslySetInnerHTML={{
-                    __html:
-                        pageData?.page_description || "<p>Content not available.</p>",
-                }}
+              dangerouslySetInnerHTML={{
+                __html:
+                  pageData?.page_description || "<p>Content not available.</p>",
+              }}
             />
-        </div>
+          </div>
 
-        {/* --- Subtle Bottom Detail --- */}
-        <div className="flex justify-center mt-8">
+          {/* Bottom Detail */}
+          <div className="flex justify-center mt-8">
             <div className="w-16 h-1 bg-[#800000]/10 rounded-full" />
+          </div>
         </div>
-    </div>
-</section>
+      </section>
     </main>
   );
 };

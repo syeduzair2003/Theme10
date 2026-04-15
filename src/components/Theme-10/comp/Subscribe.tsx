@@ -21,8 +21,7 @@ const Subscribe = async ({ store_slug, slug_type }: Props) => {
       <div className="absolute bottom-[-5%] left-[-5%] w-[400px] h-[400px] bg-[#D1C7A7]/5 blur-[100px] rounded-full z-0" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16">
-        
-        {/* LEFT SIDE: Subscribe Content */}
+        {/* Left Side Subscribe Content */}
         <div className="w-full lg:w-5/12 text-left space-y-5">
           <div className="space-y-2">
             <h2 className="text-4xl md:text-6xl font-black text-[#D1C7A7] tracking-tighter leading-[0.95] uppercase">
@@ -64,7 +63,7 @@ const Subscribe = async ({ store_slug, slug_type }: Props) => {
           </form>
         </div>
 
-        {/* RIGHT SIDE: Slider Section - Hover Fix applied here */}
+        {/* Right Side Slider Section */}
         <div className="w-full lg:w-7/12 relative transform lg:scale-95 origin-right">
           {promoMerchants?.length > 0 && (
             <div className="relative p-3 rounded-[2rem] bg-white/5 border border-white/5 backdrop-blur-sm shadow-inner">
@@ -85,9 +84,8 @@ const Subscribe = async ({ store_slug, slug_type }: Props) => {
           {/* Premium Theme Badge */}
           <div className="absolute -top-3 -right-2 z-30 scale-90 md:scale-100">
             <div className="relative group/badge overflow-hidden bg-[#800000] text-[#D1C7A7] text-[9px] font-black px-5 py-2 rounded-full rotate-12 shadow-2xl border border-[#D1C7A7]/20 uppercase tracking-[0.12em] flex items-center gap-2 transition-all hover:rotate-0 hover:scale-110 duration-500 cursor-default">
-              
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover/badge:translate-x-full transition-transform duration-1000" />
-              
+
               <span className="relative flex h-1.5 w-1.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#D1C7A7] opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-[#D1C7A7]"></span>
@@ -96,7 +94,6 @@ const Subscribe = async ({ store_slug, slug_type }: Props) => {
             </div>
           </div>
         </div>
-
       </div>
     </section>
   );

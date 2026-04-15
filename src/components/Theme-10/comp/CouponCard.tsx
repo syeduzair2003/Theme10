@@ -49,7 +49,6 @@ const CouponCard = async ({
       )}
 
       <div className="flex-grow">
-        {/* Brand & Stats Row */}
         <div className="flex justify-between items-start mb-8">
           <div className="relative w-16 h-16 bg-[#F5F5DC] rounded-2xl p-3 shadow-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-500 border border-[#EADDCA]/30">
             <Image
@@ -96,11 +95,10 @@ const CouponCard = async ({
           </div>
         </div>
 
-        {/* Price Display (Specifically for Products) */}
         {(salePrice > 0 || originalPrice > 0) && (
           <div className="mt-6 flex items-baseline gap-3">
             {salePrice > 0 && (
-              <span className="text-3xl font-black text-white">
+              <span className="text-3xl font-black text-[#1A1A1A]">
                 {getCurrencySymbol(product?.currency)}
                 {salePrice}
               </span>
@@ -161,7 +159,6 @@ const CouponCard = async ({
                 {merchant_name}
               </span>{" "}
               Store
-              {/* Animated Underline Effect - Maroon for Cream BG */}
               <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-[#800000] group-hover/link:w-full transition-all duration-500 opacity-0 group-hover/link:opacity-100"></span>
             </span>
           </Link>

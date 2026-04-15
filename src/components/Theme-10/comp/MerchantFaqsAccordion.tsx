@@ -15,10 +15,10 @@ const MerchantFaqsAccordion = ({ faq, index }: { faq: any; index: number }) => {
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full flex justify-between items-center p-7 text-left"
+        className="w-full flex justify-between items-center py-4 px-7 text-left"
       >
         <span
-          className={`text-xl font-bold transition-colors duration-500 tracking-tight ${
+          className={`text-lg font-bold transition-colors duration-500 tracking-tight ${
             isOpen
               ? "text-[#800000]"
               : "text-[#1A1A1A]/50 group-hover:text-[#1A1A1A]"
@@ -41,10 +41,8 @@ const MerchantFaqsAccordion = ({ faq, index }: { faq: any; index: number }) => {
         className={`transition-all duration-500 ease-in-out overflow-hidden ${isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"}`}
       >
         <div className="px-7 pb-8 text-[#1A1A1A]/70 text-lg leading-relaxed antialiased">
-          {/* Divider Line: Premium Maroon Gradient for Cream BG */}
           <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-[#800000]/20 via-[#800000]/40 via-[#800000]/20 to-transparent mb-7"></div>
 
-          {/* Answer Text: Soft Matte Black with a Rich Maroon Border */}
           <div className="pl-5 border-l-2 border-[#800000]/30 font-medium italic italic-none tracking-tight">
             {faq.answer}
           </div>

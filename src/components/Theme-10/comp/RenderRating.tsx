@@ -1,5 +1,5 @@
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 
 interface Props {
   rating: number;
@@ -12,7 +12,7 @@ const RenderRating = ({ rating }: Props) => {
   return (
     // This wrapper div controls the size of the image.
     // 'position: relative' is required for layout="fill".
-    <div style={{ position: 'relative', width: '100px', height: '20px' }}>
+    <div style={{ position: "relative", width: "100px", height: "20px" }}>
       <Image
         src={imageUrl}
         alt={`Rating: ${roundedRating} out of 5 stars`}

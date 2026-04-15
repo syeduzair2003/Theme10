@@ -43,31 +43,29 @@ const ExploreCategory = async ({ companyId, cat_slug, slug_type }: Props) => {
                 Explore Categories
               </p>
             </div>
-            <h2 className="text-5xl md:text-6xl font-black text-[#1A1A1A] mb-4 tracking-tight">
+            <h2 className="text-4xl md:text-5xl font-black text-[#1A1A1A] mb-4 tracking-tight">
               {firstHalf ? firstHalf : `Browse by`}{" "}
               <span className="text-[#800000]">
                 {secondHalf ? secondHalf : `Category`}
               </span>
             </h2>
-            <p className="text-gray-500 text-lg">{content}</p>
+            <p className="text-[#1A1A1A]/60 text-lg leading-relaxed max-w-3xl font-medium">{content}</p>
           </div>
 
           <Link
-  href={`/${cat_slug}`}
-  className="no-underline group relative overflow-hidden w-full max-w-[190px] flex items-center justify-center gap-3 rounded-full bg-[#FFFDF5] px-6 py-4 text-[13px] font-black text-[#1A1A1A] border border-[#EADDCA] shadow-[0_4px_12px_rgba(128,0,0,0.05)] transition-all duration-500 hover:border-[#800000] hover:text-[#FFFDF5]"
->
-  {/* Hover fill effect (Sliding up gradient) */}
-  <span className="absolute inset-0 translate-y-full bg-gradient-to-r from-[#800000] to-[#520000] transition-transform duration-500 ease-out group-hover:translate-y-0" />
+            href={`/${cat_slug}`}
+            className="no-underline group relative overflow-hidden w-full max-w-[190px] flex items-center justify-center gap-3 rounded-full bg-[#FFFDF5] px-6 py-4 text-[13px] font-black text-[#1A1A1A] border border-[#EADDCA] shadow-[0_4px_12px_rgba(128,0,0,0.05)] transition-all duration-500 hover:border-[#800000] hover:text-[#FFFDF5]"
+          >
+            <span className="absolute inset-0 translate-y-full bg-gradient-to-r from-[#800000] to-[#520000] transition-transform duration-500 ease-out group-hover:translate-y-0" />
 
-  {/* Content Layer - Centered */}
-  <span className="relative z-10 flex items-center justify-center gap-2 w-full">
-    All Categories
-    <ArrowRight
-      size={18}
-      className="stroke-[3px] transition-all duration-500 group-hover:translate-x-2 group-hover:scale-110"
-    />
-  </span>
-</Link>
+            <span className="relative z-10 flex items-center justify-center gap-2 w-full">
+              All Categories
+              <ArrowRight
+                size={18}
+                className="stroke-[3px] transition-all duration-500 group-hover:translate-x-2 group-hover:scale-110"
+              />
+            </span>
+          </Link>
         </div>
 
         {/* Categories Grid */}

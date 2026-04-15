@@ -29,17 +29,17 @@ const StoreCardHorizontal = async ({
       className="no-underline block group"
     >
       <div className="flex flex-col gap-4 p-4 rounded-[2.5rem] bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all border border-white/10 hover:border-[#800000]/40 group shadow-none hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] min-w-[260px] w-[260px] h-full flex-shrink-0 relative overflow-hidden">
-        {/* Logo Box - Isko bada aur center kar diya portrait look ke liye */}
+        {/* Logo Box */}
         <div className="relative w-full aspect-square bg-white/[0.03] backdrop-blur-sm border border-white/10 rounded-[2rem] flex-shrink-0 p-4 shadow-sm group-hover:bg-white/[0.07] group-hover:border-[#800000]/30 transition-all duration-500 overflow-hidden flex items-center justify-center">
           <Image
             src={logoSrc}
             alt={merchant?.merchant_name}
             fill
-            className="object-contain p-6" // Padding barha di taaki logo chota aur clean lage
+            className="object-contain p-6"
           />
         </div>
 
-        {/* Info Section - Ab ye niche aayegi */}
+        {/* Info Section */}
         <div className="flex-1 text-center pt-2">
           <h4 className="font-black text-[#FFFDF5] text-lg group-hover:text-[#800000] transition-colors duration-300 line-clamp-1 mb-2 tracking-tight">
             {discardHTMLTags(heading ? heading : merchant?.merchant_name)}
@@ -55,7 +55,7 @@ const StoreCardHorizontal = async ({
           </div>
         </div>
 
-        {/* Arrow Icon - Isko top right par absolute position kar diya professional look ke liye */}
+        {/* Arrow Icon */}
         <div className="absolute top-6 right-6 opacity-0 translate-x-4 -translate-y-4 group-hover:opacity-100 group-hover:translate-x-0 group-hover:translate-y-0 transition-all duration-500 ease-out">
           <div className="bg-[#800000]/20 p-2 rounded-full backdrop-blur-md border border-[#800000]/30 shadow-[0_0_20px_rgba(128,0,0,0.2)]">
             <ArrowUpRight

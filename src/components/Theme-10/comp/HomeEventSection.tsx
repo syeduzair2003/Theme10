@@ -52,18 +52,17 @@ const HomeEventSection = async ({
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-[#800000]/10 via-[#800000]/60 via-[#800000]/10 to-transparent opacity-100 shadow-[0_1px_2px_rgba(0,0,0,0.05)]" />
 
       <div className="max-w-7xl mx-auto">
-        {/* Header Section with Scale Effect */}
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
           <div className="max-w-4xl">
             <ScaleReveal>
-              <h2 className="text-4xl md:text-6xl font-black text-[#1A1A1A] tracking-tighter mb-4">
+              <h2 className="text-4xl md:text-5xl font-black text-[#1A1A1A] tracking-tighter mb-4">
                 <span className="text-[#800000]">{firstHalf}</span>
                 {secondHalf || " Trending Deals"}
               </h2>
             </ScaleReveal>
 
             <ScaleReveal delay={0.2}>
-              <p className="text-gray-500 text-lg leading-relaxed max-w-full">
+              <p className="text-[#1A1A1A]/60 text-lg leading-relaxed max-w-3xl font-medium">
                 {discardHTMLTags(content)}
               </p>
             </ScaleReveal>
@@ -74,7 +73,6 @@ const HomeEventSection = async ({
               href={getEventsHref(eventMerchants?.event, mer_slug_type)}
               className="no-underline group relative overflow-hidden flex items-center gap-3 rounded-full bg-[#FFFDF5] px-8 py-3.5 text-sm font-black text-[#1A1A1A] border border-[#EADDCA] shadow-[0_4px_12px_rgba(128,0,0,0.05)] transition-all duration-500 hover:border-[#800000] hover:text-[#FFFDF5]"
             >
-              {/* Hover fill effect */}
               <span className="absolute inset-0 translate-y-full bg-gradient-to-r from-[#800000] to-[#520000] transition-transform duration-500 ease-out group-hover:translate-y-0" />
 
               <span className="relative z-10 flex items-center gap-2 tracking-tight">
@@ -88,7 +86,6 @@ const HomeEventSection = async ({
           </ScaleReveal>
         </div>
 
-        {/* Offers Grid with Staggered Scale Reveal */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {allOffers.slice(0, 8).map((item, i) => (
             <ScaleReveal key={i} delay={i * 0.1}>

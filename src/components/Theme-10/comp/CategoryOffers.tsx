@@ -26,6 +26,7 @@ const CategoryOffers = async ({ url_slug, page, company_id, mer_slug, mer_slug_t
     if (offers?.length > 0) {
         return (
             <div className="space-y-8">
+                
                 {/* Hand-tested Badge */}
                 {/* <div className="inline-flex items-center gap-3 bg-emerald-50 border border-emerald-100 text-emerald-700 px-5 py-3 rounded-2xl shadow-sm">
                     <span className="flex h-3 w-3 relative">

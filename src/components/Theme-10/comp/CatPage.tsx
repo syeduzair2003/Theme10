@@ -58,13 +58,13 @@ const CatPage = async ({ company_id }: Props) => {
                 href={child?.url}
                 className="no-underline flex items-center justify-between group-hover/item:translate-x-1.5 transition-all duration-300 py-1.5"
               >
-                {/* Text Style: Back to Original Font Weight & Case */}
                 <div className="flex items-center gap-2 text-[#1A1A1A]/70 group-hover/item:text-[#800000] text-[14px] font-medium transition-colors">
-                  <span className="text-[#800000]/40 group-hover/item:text-[#800000]">•</span>
+                  <span className="text-[#800000]/40 group-hover/item:text-[#800000]">
+                    •
+                  </span>
                   {child?.name}
                 </div>
-                
-                {/* Offers Badge: Minimalist & Clean */}
+
                 <span className="bg-[#800000]/5 text-[#800000] text-[10px] font-bold px-2 py-0.5 rounded-md border border-[#800000]/10 transition-all duration-300 group-hover/item:bg-[#800000] group-hover/item:text-white">
                   {child?.total_offers}
                 </span>
@@ -94,7 +94,6 @@ const CatPage = async ({ company_id }: Props) => {
             <h4 className="text-xl font-black text-[#1A1A1A] group-hover:text-[#800000] transition-all duration-300 flex items-center justify-between tracking-tight">
               {cat?.category?.name}
 
-              {/* Dynamic Maroon Arrow Circle */}
               <div className="w-9 h-9 rounded-full bg-[#800000]/5 flex items-center justify-center text-[#800000] scale-0 group-hover:scale-100 transition-all duration-500 shadow-sm border border-[#800000]/10">
                 <svg
                   width="18"

@@ -14,7 +14,6 @@ const OfferDuration = ({ endDate, className }: Props) => {
   return (
     <div className={`flex items-center ${className ?? ""}`}>
       <span
-        // Style attribute ko Maroon aur Cream ke hisaab se update kiya gaya hai
         style={{ color: isPermanent ? "#FFFDF5" : "#FFFDF5" }}
         className={`
             inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-[10px] font-black uppercase tracking-widest
@@ -32,7 +31,6 @@ const OfferDuration = ({ endDate, className }: Props) => {
           <Clock size={14} className="!text-[#800000]" />
         )}
 
-        {/* Cream aur Maroon ka touch diya hai */}
         <span
           className={`whitespace-nowrap ${isPermanent ? "!text-[#FFFDF5]" : "!text-[#FFFDF5]/90"}`}
         >

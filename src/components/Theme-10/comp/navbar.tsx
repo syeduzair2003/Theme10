@@ -34,7 +34,11 @@ export default function Navbar({
               className="relative inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             >
               <span className="sr-only">Open main menu</span>
-              {mobileOpen ? <FaTimes className="h-6 w-6" /> : <FaBars className="h-6 w-6" />}
+              {mobileOpen ? (
+                <FaTimes className="h-6 w-6" />
+              ) : (
+                <FaBars className="h-6 w-6" />
+              )}
             </button>
           </div>
 
@@ -50,7 +54,7 @@ export default function Navbar({
               />
             </div>
           </div>
-          
+
           {/* Desktop Nav */}
           <div className="hidden sm:ml-6 sm:block">
             <div className="flex space-x-4">{nav}</div>
@@ -65,8 +69,6 @@ export default function Navbar({
               cat_slug={cat_slug}
             />
           </div>
-
-          
         </div>
       </div>
 

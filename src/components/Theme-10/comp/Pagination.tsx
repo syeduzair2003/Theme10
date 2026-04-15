@@ -20,34 +20,59 @@ const Pagination = ({ currentPage, totalPages, baseUrl }: PaginationProps) => {
       if (currentPage <= 4) {
         items.push(2, 3, 4, 5, "...", totalPages - 1);
       } else if (currentPage >= totalPages - 3) {
-        items.push("...", totalPages - 4, totalPages - 3, totalPages - 2, totalPages - 1);
+        items.push(
+          "...",
+          totalPages - 4,
+          totalPages - 3,
+          totalPages - 2,
+          totalPages - 1,
+        );
       } else {
-        items.push("...", currentPage - 1, currentPage, currentPage + 1, "...", totalPages - 1);
+        items.push(
+          "...",
+          currentPage - 1,
+          currentPage,
+          currentPage + 1,
+          "...",
+          totalPages - 1,
+        );
       }
     }
     return items;
   };
 
   return (
-    <nav className="flex justify-center items-center py-10" aria-label="Pagination">
-    <div className="flex items-center gap-2 p-2 bg-[#FDFBE7]/60 backdrop-blur-md border border-[#EADDCA] rounded-[2rem] shadow-sm">
-        
-        {/* Previous Button - Maroon Hover */}
+    <nav
+      className="flex justify-center items-center py-10"
+      aria-label="Pagination"
+    >
+      <div className="flex items-center gap-2 p-2 bg-[#FDFBE7]/60 backdrop-blur-md border border-[#EADDCA] rounded-[2rem] shadow-sm">
+        {/* Previous Button */}
         <Link
           href={getPageUrl(currentPage - 1)}
           className={`no-underline flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 ${
-            currentPage > 1 
-            ? "text-[#1A1A1A] hover:bg-[#800000] hover:text-white hover:scale-110 active:scale-95 shadow-sm" 
-            : "text-[#EADDCA] pointer-events-none"
+            currentPage > 1
+              ? "text-[#1A1A1A] hover:bg-[#800000] hover:text-white hover:scale-110 active:scale-95 shadow-sm"
+              : "text-[#EADDCA] pointer-events-none"
           }`}
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" />
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2.5"
+              d="M15 19l-7-7 7-7"
+            />
           </svg>
         </Link>
 
         <div className="flex items-center gap-1">
-          {/* First Page - Active Maroon State */}
+          {/* First Page */}
           <Link
             href={getPageUrl(1)}
             className={`flex items-center justify-center w-10 h-10 rounded-full text-sm font-black transition-all duration-300 ${
@@ -80,7 +105,7 @@ const Pagination = ({ currentPage, totalPages, baseUrl }: PaginationProps) => {
               >
                 {p}
               </Link>
-            )
+            ),
           )}
 
           {/* Last Page */}
@@ -98,21 +123,31 @@ const Pagination = ({ currentPage, totalPages, baseUrl }: PaginationProps) => {
           )}
         </div>
 
-        {/* Next Button - Maroon Hover */}
+        {/* Next Button */}
         <Link
           href={getPageUrl(currentPage + 1)}
           className={`no-underline flex items-center justify-center w-10 h-10 rounded-full transition-all duration-300 ${
             currentPage < totalPages
-            ? "text-[#1A1A1A] hover:bg-[#800000] hover:text-white hover:scale-110 active:scale-95 shadow-sm"
-            : "text-[#EADDCA] pointer-events-none"
+              ? "text-[#1A1A1A] hover:bg-[#800000] hover:text-white hover:scale-110 active:scale-95 shadow-sm"
+              : "text-[#EADDCA] pointer-events-none"
           }`}
         >
-          <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" />
+          <svg
+            className="w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2.5"
+              d="M9 5l7 7-7 7"
+            />
           </svg>
         </Link>
-    </div>
-</nav>
+      </div>
+    </nav>
   );
 };
 

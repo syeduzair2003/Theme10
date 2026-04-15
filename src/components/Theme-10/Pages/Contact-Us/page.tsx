@@ -29,12 +29,15 @@ const ContactUsPage = async () => {
 
   return (
     <main className="min-h-screen bg-[#fffde0]">
+      {/* Banner Section */}
       <section className="relative mx-4 md:mx-10 mt-6 mb-16 overflow-hidden rounded-[2.5rem] bg-[#FDFBE7] border border-[#EADDCA]">
+        <div className="absolute bottom-0 left-0 h-1.5 w-full bg-gradient-to-r from-[#800000] via-[#a00000] to-[#800000] z-20" />
+
         <div className="max-w-7xl mx-auto px-8 py-16 md:py-24 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-[-16px]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mt-[-16px] mb-[-16px]">
             <div className="flex flex-col items-center lg:items-start mt-1 text-center lg:text-left space-y-6">
               <div className="space-y-6 mt-8">
-                {/* --- Breadcrumb (Minimalist Style) --- */}
+                {/* Breadcrumb */}
                 <nav className="flex items-center justify-center lg:justify-start gap-3 text-[11px] font-black uppercase tracking-[0.2em]">
                   <Link
                     href="/"
@@ -53,18 +56,16 @@ const ContactUsPage = async () => {
 
               <div
                 className="text-slate-600 max-w-lg leading-relaxed prose prose-slate 
-                    prose-p:text-slate-600 prose-strong:text-[#1A1A1A] prose-a:text-[#800000]"
+              prose-p:text-slate-600 prose-strong:text-[#1A1A1A] prose-a:text-[#800000]"
                 dangerouslySetInnerHTML={{ __html: pageData?.details || "" }}
               />
             </div>
 
-            {/* --- Image Section (Slightly smaller and shifted down) --- */}
+            {/* Image Section */}
             <div className="hidden lg:flex justify-end relative group translate-y-6 scale-90">
-              {/* Decorative Shapes (Smaller Scale) */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 border border-[#800000]/10 rounded-full" />
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 border-2 border-dashed border-[#EADDCA]/40 rounded-full" />
 
-              {/* Glow Background */}
               <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-56 h-56 bg-[#800000]/5 rounded-full blur-3xl group-hover:bg-[#800000]/15 transition-all duration-700" />
 
               {/* Main Image */}

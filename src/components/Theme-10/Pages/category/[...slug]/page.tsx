@@ -84,9 +84,8 @@ const CategoryMerchantPage = async ({ params }: Props) => {
 
   return (
     <div className="bg-[#fffde0] min-h-screen">
-      {/* --- PREMIUM HERO SECTION --- */}
+      {/* PREMIUM HERO SECTION */}
       <section className="relative overflow-hidden bg-[#800000] border-b border-[#800000]/20 py-16 md:py-24 rounded-b-[4rem] shadow-2xl">
-        {/* Decorative Circle: Changed to Maroon Glow */}
         <div className="absolute top-0 right-0 -mr-20 -mt-20 opacity-20 text-[#fffde0]">
           <svg width="400" height="400" fill="currentColor">
             <circle cx="200" cy="200" r="200" />
@@ -96,7 +95,7 @@ const CategoryMerchantPage = async ({ params }: Props) => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-col lg:flex-row items-center h-[45vh] justify-between gap-10">
             <div className="lg:w-7/12 space-y-6">
-              {/* Breadcrumbs: Updated to Creamy Tones */}
+              {/* Breadcrumbs */}
               <nav className="flex items-center space-x-2 text-[11px] font-black tracking-[0.2em] text-[#fffde0]/70 mb-4 uppercase">
                 <Link
                   href="/"
@@ -148,10 +147,10 @@ const CategoryMerchantPage = async ({ params }: Props) => {
         </div>
       </section>
 
-      {/* --- TRENDING MERCHANTS SECTION --- */}
+      {/* TRENDING MERCHANTS SECTION */}
       <section className="relative -mt-24 z-30 pb-10">
         <div className="container mx-auto px-4">
-          {/* Main Card: Updated to Pure White/Cream Glass */}
+          {/* Main Card */}
           <div className="bg-white/90 backdrop-blur-2xl rounded-[4rem] shadow-[0_30px_100px_-20px_rgba(128,0,0,0.15)] p-8 md:p-14 border border-white">
             {/* Header with Badge */}
             <div className="flex flex-col md:flex-row items-center justify-between mb-12 gap-4">
@@ -164,23 +163,16 @@ const CategoryMerchantPage = async ({ params }: Props) => {
                 </h3>
               </div>
 
-              <div className="hidden md:block">
-                {/* <div className="h-1.5 w-24 bg-[#800000]/5 rounded-full overflow-hidden">
-                      <div className="h-full bg-[#800000] w-1/3"></div>
-                  </div> */}
-              </div>
+              <div className="hidden md:block"></div>
             </div>
 
-            {/* Scrollable Container */}
-            {/* --- SCROLL AREA WRAPPER --- */}
+            {/* SCROLL AREA WRAPPER */}
             <div className="relative px-4 md:px-10 group">
-              {/* --- LEFT BUTTON POSITION --- */}
-              {/* Sirf position set karni hai, circle button ke andar khud banega */}
               <div className="absolute top-[40%] -left-2 md:-left-5 z-[100] -translate-y-1/2">
                 <ScrollButtonLeft sectionType="merchant" />
               </div>
 
-              {/* --- SCROLL CONTAINER --- */}
+              {/* SCROLL CONTAINER */}
               <div className="horizontal-scroll horizontal-scroll-merchant flex overflow-x-auto pb-10 scroll-smooth snap-x snap-mandatory [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                 {merchants?.merchants?.length > 0 ? (
                   merchants?.merchants.map(
@@ -208,8 +200,6 @@ const CategoryMerchantPage = async ({ params }: Props) => {
                 )}
               </div>
 
-              {/* --- RIGHT BUTTON POSITION --- */}
-              {/* Sirf position set karni hai, circle button ke andar khud banega */}
               <div className="absolute top-[40%] -right-2 md:-right-5 z-[100] -translate-y-1/2">
                 <ScrollButtonRight sectionType="merchant" />
               </div>
@@ -218,11 +208,11 @@ const CategoryMerchantPage = async ({ params }: Props) => {
         </div>
       </section>
 
-      {/* --- MAIN CONTENT SECTION --- */}
+      {/* MAIN CONTENT SECTION */}
       <section className="py-20 bg-[#fffde0]">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row gap-12">
-            {/* Left Content: Coupons */}
+            {/* Left Content Coupons */}
             <div className="lg:w-2/3 xl:w-3/4 order-2 lg:order-1">
               <div className="mb-12">
                 <h2 className="text-4xl font-black text-[#1A1A1A] mb-4 tracking-tighter leading-tight">

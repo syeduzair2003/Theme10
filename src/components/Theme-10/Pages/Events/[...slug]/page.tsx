@@ -89,7 +89,7 @@ const page = async ({ params }: { params: Props }) => {
 
   return (
     <main className="bg-[#FCFBF4] min-h-screen pb-16 selection:bg-[#800000]/20 selection:text-[#800000]">
-      {/* --- Hero Banner Section --- */}
+      {/* Hero Banner Section */}
       {banners?.length > 0 && (
         <section className="w-full relative overflow-hidden bg-[#FDFBE7]">
           <EventBanner
@@ -101,7 +101,7 @@ const page = async ({ params }: { params: Props }) => {
       )}
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-10">
-        {/* --- Breadcrumb --- */}
+        {/* Breadcrumb */}
         <nav className="flex items-center gap-1.5 text-[9px] font-black uppercase tracking-[0.15em] mb-5 bg-white/90 backdrop-blur-md w-fit px-4 py-2 rounded-full shadow-sm border border-[#EADDCA]">
           <Link
             href="/"
@@ -126,7 +126,7 @@ const page = async ({ params }: { params: Props }) => {
           <span className="text-[#800000]">{event?.event?.name}</span>
         </nav>
 
-        {/* --- Title Section --- */}
+        {/* Title Section */}
         <div className="flex flex-col lg:flex-row lg:items-start justify-between gap-5 mb-8">
           <div className="space-y-4 max-w-3xl">
             <div className="space-y-2.5">
@@ -140,7 +140,6 @@ const page = async ({ params }: { params: Props }) => {
               </h1>
             </div>
 
-            {/* --- Description moved under heading & shape removed --- */}
             {event?.event?.description && (
               <div className="text-slate-600 leading-relaxed max-w-2xl">
                 <MerchantDetailsShort details={event?.event?.description} />
@@ -164,7 +163,7 @@ const page = async ({ params }: { params: Props }) => {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8">
-          {/* --- Sidebar (Left) --- */}
+          {/* Sidebar */}
           <aside className="lg:col-span-4 order-2 lg:order-1 space-y-6">
             <div className="sticky top-20 space-y-6">
               {eventMerchants?.length > 0 && (
@@ -232,45 +231,51 @@ const page = async ({ params }: { params: Props }) => {
               )}
 
               {suggestedEvents?.length > 0 && (
-    <div className="bg-white rounded-[2rem] p-5 md:p-6 shadow-sm border border-[#EADDCA]/60 transition-all duration-500 hover:shadow-md">
-        {/* --- Section Header --- */}
-        <h4 className="font-black mb-5 flex items-center gap-2 text-[10px] uppercase tracking-[0.15em] text-[#1A1A1A]">
-            <div className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#800000] opacity-20"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-[#800000]"></span>
-            </div>
-            More Events
-        </h4>
+                <div className="bg-white rounded-[2rem] p-5 md:p-6 shadow-sm border border-[#EADDCA]/60 transition-all duration-500 hover:shadow-md">
+                  {/* Section Header */}
+                  <h4 className="font-black mb-5 flex items-center gap-2 text-[10px] uppercase tracking-[0.15em] text-[#1A1A1A]">
+                    <div className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#800000] opacity-20"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-[#800000]"></span>
+                    </div>
+                    More Events
+                  </h4>
 
-        {/* --- Chips Container --- */}
-        <div className="flex flex-wrap gap-2">
-            {suggestedEvents
-                ?.filter((se) => se.slug !== slug?.[0])
-                .slice(0, 6)
-                .map((se, i) => (
-                    <Link
-                        key={i}
-                        href={getEventsHref(se, "slug")}
-                        className="no-underline text-[11px] bg-[#FDFBE7]/50 px-4 py-2 rounded-full border border-[#EADDCA] transition-all duration-300 hover:bg-[#800000] hover:border-[#800000] hover:translate-y-[-2px] active:scale-95 flex items-center gap-2 [&:hover>span]:text-white [&:hover>svg]:text-white/50"
-                    >
-                        <span className="text-slate-600 transition-colors duration-300 font-bold">
-                            {se?.name}
-                        </span>
-                        <svg 
-                            className="w-2.5 h-2.5 text-[#EADDCA] transition-colors" 
-                            fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                  <div className="flex flex-wrap gap-2">
+                    {suggestedEvents
+                      ?.filter((se) => se.slug !== slug?.[0])
+                      .slice(0, 6)
+                      .map((se, i) => (
+                        <Link
+                          key={i}
+                          href={getEventsHref(se, "slug")}
+                          className="no-underline text-[11px] bg-[#FDFBE7]/50 px-4 py-2 rounded-full border border-[#EADDCA] transition-all duration-300 hover:bg-[#800000] hover:border-[#800000] hover:translate-y-[-2px] active:scale-95 flex items-center gap-2 [&:hover>span]:text-white [&:hover>svg]:text-white/50"
                         >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 5l7 7-7 7" />
-                        </svg>
-                    </Link>
-                ))}
-        </div>
-    </div>
-)}
+                          <span className="text-slate-600 transition-colors duration-300 font-bold">
+                            {se?.name}
+                          </span>
+                          <svg
+                            className="w-2.5 h-2.5 text-[#EADDCA] transition-colors"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="3"
+                              d="M9 5l7 7-7 7"
+                            />
+                          </svg>
+                        </Link>
+                      ))}
+                  </div>
+                </div>
+              )}
             </div>
           </aside>
 
-          {/* --- Main Content (Right) --- */}
+          {/* Main Content */}
           <div className="lg:col-span-8 order-1 lg:order-2 space-y-6">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {allOffers.map((item, index) => (
@@ -309,7 +314,6 @@ const page = async ({ params }: { params: Props }) => {
 
             {event?.event?.description && (
               <div className="bg-white p-5 md:p-7 rounded-[2rem] border border-[#EADDCA]/60 shadow-[0_4px_20px_rgba(0,0,0,0.02)] transition-all duration-500 hover:shadow-md hover:border-[#800000]/20 group">
-                {/* --- Section Title with Clean Accent --- */}
                 <h3 className="text-lg md:text-xl font-black mb-6 text-[#1A1A1A] flex items-center gap-2.5 tracking-tight">
                   <div className="relative flex items-center justify-center">
                     <span className="w-1 h-5 bg-[#800000] rounded-full"></span>
@@ -319,7 +323,7 @@ const page = async ({ params }: { params: Props }) => {
                   <span className="text-[#800000]">{event?.event?.name}</span>
                 </h3>
 
-                {/* --- Content Area --- */}
+                {/* Content Area */}
                 <div className="relative">
                   <MerchantDetailsFull details={event?.event?.description} />
                 </div>

@@ -49,7 +49,6 @@ const Blog = ({ data }: Props) => {
         </Link>
       </div>
 
-      {/* Subtle Gradient Glow (on hover) */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#800000]/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 rounded-[2.5rem] pointer-events-none transition-opacity duration-700"></div>
     </div>
   );

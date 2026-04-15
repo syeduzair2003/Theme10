@@ -61,7 +61,6 @@ const FooterNewsletter = ({ companyId }: Props) => {
             onChange={(e) => setEmail(e.target.value)}
             disabled={isLoading}
           />
-
           <button
             type="submit"
             disabled={isLoading}

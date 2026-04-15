@@ -24,7 +24,6 @@ const TopCategories = async ({ category }: Props) => {
       className="no-underline group relative flex flex-col items-center w-full max-w-[160px] mx-auto transition-all duration-300"
     >
       <div className="relative w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden bg-[#FFFDF5] border border-[#EADDCA]/30 shadow-sm group-hover:shadow-lg group-hover:border-[#800000]/20 transition-all duration-500 mb-3 flex items-center justify-center p-4">
-        {/* Fixed: img to Image with proper Next.js props */}
         <Image
           src={imageSrc}
           alt={category?.name || "Category"}

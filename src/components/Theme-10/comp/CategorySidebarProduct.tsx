@@ -34,7 +34,7 @@ const CategorySidebarProduct = ({ categories, pageSlug, categoryName }: Props) =
                         href={`/${pageSlug}/${category.url}`}
                         className="group no-underline flex items-center justify-between p-3.5 rounded-xl transition-all duration-300 border border-transparent hover:border-[#800000]/20 hover:bg-white hover:shadow-md active:scale-[0.98]"
                     >
-                        {/* Left Side: Dot and Name */}
+
                         <div className="flex items-center gap-3">
                             <div className="w-2 h-2 rounded-full bg-[#EADDCA] group-hover:bg-[#800000] group-hover:scale-125 transition-all duration-300"></div>
                             <span className="text-sm font-bold text-[#4A4A4A] group-hover:text-[#1A1A1A] transition-colors">
@@ -46,7 +46,6 @@ const CategorySidebarProduct = ({ categories, pageSlug, categoryName }: Props) =
                 ))}
             </div>
 
-            {/* --- Show More / Show Less Button (Clean Version) --- */}
             {categories?.length > 5 && (
                 <button
                     onClick={() => setIsExpanded(!isExpanded)}

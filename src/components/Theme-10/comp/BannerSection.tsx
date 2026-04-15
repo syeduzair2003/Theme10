@@ -5,20 +5,17 @@ import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Pagination } from "swiper/modules";
 
-
 export default function BannerSection({ merchants }: { merchants: any[] }) {
   const [bubbles, setBubbles] = useState<any[]>([]);
 
   useEffect(() => {
     if (merchants && merchants.length > 0) {
-      // Top 8 merchants ka data map karein
       const selected = merchants.slice(0, 8).map((m, i) => ({
         name: m.merchant_name,
         logo: m.merchant_logo,
-        // Responsive left position (taaki mobile par overlap na ho)
         left: `${i * 12 + 5}%`,
         delay: i * 2,
-        duration: 10 + Math.random() * 5, // Random speed for natural look
+        duration: 10 + Math.random() * 5,
       }));
       setBubbles(selected);
     }
@@ -45,27 +42,24 @@ export default function BannerSection({ merchants }: { merchants: any[] }) {
             Discover elite coupon codes and deals from 15,000+ brands. Verified
             daily. Saved instantly.
           </motion.p>
-          {/* Buttons: Full width on mobile */}
-    <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4 sm:px-0">
-      <button className="w-full sm:w-auto px-8 py-4 bg-[#800000] text-[#FFFDF5] rounded-full font-black text-[10px] uppercase tracking-[0.2em] hover:scale-105 transition-all shadow-lg active:scale-95">
-        Recent Deals
-      </button>
-      <button className="w-full sm:w-auto px-8 py-4 bg-[#0D0D0D] text-[#FFFDF5] rounded-full font-black text-[10px] uppercase tracking-[0.2em] hover:bg-transparent hover:text-[#0D0D0D] border border-[#0D0D0D] transition-all active:scale-95">
-        Categories
-      </button>
-    </div>
-  </div>
+          {/* Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4 sm:px-0">
+            <button className="w-full sm:w-auto px-8 py-4 bg-[#800000] text-[#FFFDF5] rounded-full font-black text-[10px] uppercase tracking-[0.2em] hover:scale-105 transition-all shadow-lg active:scale-95">
+              Recent Deals
+            </button>
+            <button className="w-full sm:w-auto px-8 py-4 bg-[#0D0D0D] text-[#FFFDF5] rounded-full font-black text-[10px] uppercase tracking-[0.2em] hover:bg-transparent hover:text-[#0D0D0D] border border-[#0D0D0D] transition-all active:scale-95">
+              Categories
+            </button>
+          </div>
+        </div>
 
-        {/* Right Side: Image Carousel - Size Locked */}
         <motion.div
           initial={{ opacity: 0, scale: 0.98 }}
           animate={{ opacity: 1, scale: 1 }}
           className="relative w-full aspect-video lg:aspect-[16/9] z-10 order-1 lg:order-2"
         >
-          {/* Decorative Shadow/Background */}
           <div className="absolute inset-0 bg-[#800000]/5 rounded-[2.5rem] -rotate-2 translate-x-3 translate-y-2"></div>
 
-          {/* Main Slider Container - Inset-0 ensure karta hai ke ye parent se bada na ho */}
           <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden border border-[#D1C7A7] shadow-2xl bg-white">
             <Swiper
               modules={[Autoplay, EffectFade, Pagination]}
@@ -74,7 +68,7 @@ export default function BannerSection({ merchants }: { merchants: any[] }) {
               autoplay={{ delay: 3000, disableOnInteraction: false }}
               pagination={{ clickable: true }}
               loop={true}
-              className="h-full w-full" // Force Swiper to take parent height
+              className="h-full w-full"
             >
               {/* Slide 1 */}
               <SwiperSlide className="h-full w-full">
@@ -94,7 +88,20 @@ export default function BannerSection({ merchants }: { merchants: any[] }) {
               <SwiperSlide className="h-full w-full">
                 <div className="relative h-full w-full group">
                   <Image
-                    src="/uploads/company_5/images/1748025392_6830c030a518b.png" // Doosri image ka path
+                    src="/uploads/company_5/images/1748025392_6830c030a518b.png"
+                    fill
+                    className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                    alt="Deal 2"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                </div>
+              </SwiperSlide>
+
+              {/* Slide 3 */}
+              <SwiperSlide className="h-full w-full">
+                <div className="relative h-full w-full group">
+                  <Image
+                    src="/uploads/company_5/images/1753911160_688a8f78eaaee.jpg"
                     fill
                     className="object-cover transition-transform duration-1000 group-hover:scale-105"
                     alt="Deal 2"
@@ -104,7 +111,7 @@ export default function BannerSection({ merchants }: { merchants: any[] }) {
               </SwiperSlide>
             </Swiper>
 
-            {/* Live Tag - Fixed Position */}
+            {/* Live Tag */}
             <div className="absolute top-6 left-6 z-20 inline-flex items-center gap-2 bg-white/20 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5">
               <span className="flex h-2 w-2 rounded-full bg-[#800000] animate-pulse"></span>
               <span className="text-[9px] font-black text-white uppercase tracking-[0.2em]">

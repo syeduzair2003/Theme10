@@ -37,7 +37,6 @@ export default function OfferSlider({
 
   return (
     <div className="relative group/slider px-2">
-      {/* LEFT FLOATING ARROW */}
       <button
         onClick={() => scroll("left")}
         className="absolute left-[-30px] top-1/2 -translate-y-1/2 z-40 p-4 rounded-full bg-white border border-[#800000] text-[#800000] hover:bg-[#800000] hover:text-white hover:border-[#800000] transition-all duration-500 shadow-[0_10px_25px_rgba(0,0,0,0.06)] hover:shadow-[0_15px_30px_rgba(128,0,0,0.25)] hidden md:flex items-center justify-center active:scale-90 group"
@@ -50,7 +49,6 @@ export default function OfferSlider({
         />
       </button>
 
-      {/* RIGHT FLOATING ARROW */}
       <button
         onClick={() => scroll("right")}
         className="absolute right-[-30px] top-1/2 -translate-y-1/2 z-40 p-4 rounded-full bg-white border border-[#800000] text-[#800000] hover:bg-[#800000] hover:text-white hover:border-[#800000] transition-all duration-500 shadow-[0_10px_25px_rgba(0,0,0,0.06)] hover:shadow-[0_15px_30px_rgba(128,0,0,0.25)] hidden md:flex items-center justify-center active:scale-90 group"
@@ -63,7 +61,6 @@ export default function OfferSlider({
         />
       </button>
 
-      {/* SCROLLABLE TRACK */}
       <div
         ref={sliderRef}
         className="flex gap-6 overflow-x-auto scroll-smooth no-scrollbar select-none py-4 px-1"
@@ -76,7 +73,6 @@ export default function OfferSlider({
         {children}
       </div>
 
-      {/* Global CSS for hiding scrollbar */}
       <style jsx global>{`
         .no-scrollbar::-webkit-scrollbar {
           display: none;

@@ -57,9 +57,7 @@ const ProductCard = async ({ offer, mer_slug, mer_slug_type, type }: any) => {
             font-black text-[#FFFDF5] border border-white/10 shadow-[0_8px_20px_rgba(128,0,0,0.25)] z-20 tracking-widest uppercase animate-in fade-in zoom-in duration-300"
           >
             <Flame size={12} className="fill-[#FFFDF5] animate-pulse" />
-            <span className="drop-shadow-sm">
-                {finalDiscountTag}
-            </span>
+            <span className="drop-shadow-sm">{finalDiscountTag}</span>
           </div>
         )}
       </div>
@@ -97,7 +95,6 @@ const ProductCard = async ({ offer, mer_slug, mer_slug_type, type }: any) => {
         </div>
       </div>
 
-      {/* BUTTON FIXED (NO STICKING) */}
       <div className="mt-auto pt-6">
         <OfferOutUrl
           unique_id={product?.unique_id}

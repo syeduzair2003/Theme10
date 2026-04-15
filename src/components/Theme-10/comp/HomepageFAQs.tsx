@@ -15,17 +15,15 @@ const HomepageFAQs = async ({ store_slug, slug_type }: Props) => {
   const faqs = (await apiHomePageFaqs(companyDomain)).data;
 
   return (
-    <section className="bg-[#fffde0] py-12 px-6">
+    <section className="bg-[#fffde0] py-16 px-6">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header Section */}
         {faqs?.length > 0 && (
           <div className="mb-16 flex flex-col items-start">
-            {/* Badge remains at the left corner */}
             <span className="bg-[#800000]/5 backdrop-blur-md text-[#800000] px-5 py-2 rounded-full text-[11px] font-black uppercase tracking-[0.35em] border border-[#800000]/20 shadow-[0_5px_15px_rgba(128,0,0,0.05)] hover:bg-[#8f4848] hover:text-white transition-all duration-500 cursor-default inline-block">
               Support Center
             </span>
 
-            {/* Heading is centered globally in the container */}
             <div className="w-full text-center mt-6">
               <h2 className="text-5xl md:text-6xl font-black text-[#1A1A1A] tracking-tighter leading-[1.1] max-w-3xl mx-auto">
                 Everything you <br />
