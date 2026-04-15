@@ -12,7 +12,7 @@ import {
 import cookieService from "@/services/CookiesService";
 
 const ProductCard = async ({ offer, mer_slug, mer_slug_type, type }: any) => {
-  const merchantHref = getMerchantHref(offer.merchant, mer_slug, mer_slug_type);
+  const merchantHref = getMerchantHref(offer, mer_slug, mer_slug_type);
   const domain = (await cookieService.get("domain")).domain;
   const product = offer?.offer || offer;
 

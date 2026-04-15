@@ -55,10 +55,13 @@ const Header = async ({
     Blog: "https://blog.gettopdiscounts.com",
   };
 
-  const categories = (await apiNavCategory(company_id))?.data;
-  const merchants = (await apiGetNavMerchants(company_id))?.data;
-  const events = (await apiGetEvents(company_id))?.data;
-  const promotions = (await apiGetAllPromotion(domain))?.data;
+
+  const [categories, merchants, events, promotions] = await Promise.all([
+  apiNavCategory(company_id).then((res) => res?.data),
+  apiGetNavMerchants(company_id).then((res) => res?.data),
+  apiGetEvents(company_id).then((res) => res?.data),
+  apiGetAllPromotion(domain).then((res) => res?.data),
+]);
   const headersList = await headers();
   const currentPath = headersList.get("x-pathname") || "/";
   const companyLogo = getBaseImageUrl(

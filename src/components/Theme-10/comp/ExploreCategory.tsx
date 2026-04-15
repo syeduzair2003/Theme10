@@ -37,7 +37,7 @@ const ExploreCategory = async ({ companyId, cat_slug, slug_type }: Props) => {
         {/* Header Area */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
           <div className="max-w-full">
-            <div className="flex items-center gap-3 mb-6">
+            <div className="flex items-center gap-3 mb-3">
               <span className="h-[2px] w-12 bg-[#1A1A1A]"></span>
               <p className="text-[#800000] font-bold text-sm uppercase tracking-[0.2em] leading-none">
                 Explore Categories
@@ -57,7 +57,6 @@ const ExploreCategory = async ({ companyId, cat_slug, slug_type }: Props) => {
             className="no-underline group relative overflow-hidden w-full max-w-[190px] flex items-center justify-center gap-3 rounded-full bg-[#FFFDF5] px-6 py-4 text-[13px] font-black text-[#1A1A1A] border border-[#EADDCA] shadow-[0_4px_12px_rgba(128,0,0,0.05)] transition-all duration-500 hover:border-[#800000] hover:text-[#FFFDF5]"
           >
             <span className="absolute inset-0 translate-y-full bg-gradient-to-r from-[#800000] to-[#520000] transition-transform duration-500 ease-out group-hover:translate-y-0" />
-
             <span className="relative z-10 flex items-center justify-center gap-2 w-full">
               All Categories
               <ArrowRight

@@ -47,7 +47,7 @@ const HomeEventSection = async ({
   if (allOffers?.length === 0) return null;
 
   return (
-    <section className="relative bg-[#fffde0] py-24 px-6 overflow-hidden">
+    <section className="relative bg-[#fffde0] py-24 px-6 overflow-hidden" id="recent-deals-section">
       {/* Section Divider Line (Maroon Gradient) */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-[#800000]/10 via-[#800000]/60 via-[#800000]/10 to-transparent opacity-100 shadow-[0_1px_2px_rgba(0,0,0,0.05)]" />
 
@@ -55,6 +55,12 @@ const HomeEventSection = async ({
         <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
           <div className="max-w-4xl">
             <ScaleReveal>
+              <div className="flex items-center gap-3 mb-3">
+              <span className="h-[2px] w-12 bg-[#1A1A1A]"></span>
+              <p className="text-[#800000] font-bold text-sm uppercase tracking-[0.2em] leading-none">
+                Explore Event Deals
+              </p>
+            </div>
               <h2 className="text-4xl md:text-5xl font-black text-[#1A1A1A] tracking-tighter mb-4">
                 <span className="text-[#800000]">{firstHalf}</span>
                 {secondHalf || " Trending Deals"}

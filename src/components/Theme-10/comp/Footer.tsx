@@ -5,6 +5,7 @@ import { apiGetTopCategories } from "@/apis/page_optimization";
 import { getBaseImageUrl } from "@/constants/hooks";
 import FooterNewsletter from "./FooterNewsletter";
 import cookieService from "@/services/CookiesService";
+import BackToTopButton from "./BackToTopButton";
 import { apiGetDisclaimer } from "@/apis/user";
 import {
   faEnvelopeOpen,
@@ -327,6 +328,7 @@ const Footer = async ({
           </div>
         </div>
       </div>
+      <BackToTopButton />
     </footer>
   );
 };

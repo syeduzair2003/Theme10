@@ -42,7 +42,7 @@ const EventsPage = async () => {
 
               <div className="mt-6 flex items-start gap-4 max-w-lg mx-auto lg:mx-0">
                 {/* Vertical Line */}
-                <div className="w-[4px] h-12 bg-[#800000] rounded-full shrink-0" />
+                <div className="w-[4px] h-10 bg-[#800000] rounded-full shrink-0" />
                 <p className="text-slate-600 text-sm md:text-base font-medium leading-relaxed text-left">
                   Discover handpicked premium offers and seasonal events
                   tailored for your lifestyle. Save big with our verified

@@ -41,14 +41,14 @@ const PopularCoupons = async ({
         <div className="mb-16">
           {/* Header */}
           <Reveal x={-30} y={0}>
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-3 mb-3">
               <span className="h-[2px] w-12 bg-[#800000]"></span>
               <span className="text-[#1A1A1A] font-bold uppercase tracking-[0.3em] text-xs">
                 Verified Savings
               </span>
             </div>
             <h2 className="text-4xl md:text-5xl font-black text-[#800000] drop-shadow-[0_0_10px_rgba(128,0,0,0.3)] leading-tight mb-6">
-              {firstHalf || "Today's"}{" "}
+              {firstHalf || "Today's"}{" "} <br />
               <span className="text-[#1A1A1A]">{secondHalf || "Deals"}</span>
             </h2>
           </Reveal>

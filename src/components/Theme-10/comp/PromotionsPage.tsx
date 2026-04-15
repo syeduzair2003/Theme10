@@ -12,76 +12,59 @@ const PromotionsPage = async ({ promotionSlug }: { promotionSlug: string }) => {
   const promotions = (await apiGetAllPromotion(companyDomain)).data;
 
   return (
-    <div className="bg-[#f8fafc] min-h-screen font-sans selection:bg-blue-100 selection:text-blue-600">
-      {/* --- PREMIUM HERO SECTION --- */}
-      <section className="relative pt-32 pb-20 overflow-hidden mx-4 md:mx-10 mt-6 bg-slate-900 rounded-[3rem] shadow-2xl">
-        {/* Decorative Elements */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gradient-to-br from-blue-600/30 to-purple-600/20 rounded-full blur-[120px] -mr-40 -mt-40"></div>
-        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-indigo-500/10 rounded-full blur-[100px] -ml-20 -mb-20"></div>
-
-        <div className="container mx-auto px-8 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-16">
-            <div className="max-w-2xl text-center lg:text-left">
-              <nav className="inline-flex items-center bg-white/10 backdrop-blur-md px-4 py-2 rounded-full mb-8 border border-white/10 shadow-inner">
-                <ol className="flex items-center gap-3 text-[10px] font-black tracking-[0.2em] uppercase text-white p-0 m-0 list-none">
-                  <li>
-                    <Link
-                      href="/"
-                      className="no-underline text-slate-300 hover:text-white transition-colors duration-300"
-                    >
-                      Home
-                    </Link>
-                  </li>
-
-                  {/* Replacement for FontAwesome Icon - Reliable SVG */}
-                  <li className="flex items-center">
-                    <svg
-                      width="6"
-                      height="10"
-                      viewBox="0 0 6 10"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                      className="opacity-60"
-                    >
-                      <path
-                        d="M1 9L5 5L1 1"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </li>
-
-                  <li className="text-blue-400 font-black">Promotions</li>
-                </ol>
+    <div className="min-h-screen bg-[#fffde0]">
+      {/* Hero/Banner Section */}
+      <section className="relative mx-4 md:mx-8 lg:mx-12 mt-12 overflow-hidden rounded-[2.5rem] bg-[#FDFBE7] py-10 md:py-12 shadow-md border border-[#EADDCA]">
+        <div className="container mx-auto px-10 relative z-10">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-10">
+            {/* Left Side Content */}
+            <div className="w-full lg:w-[55%] text-center lg:text-left">
+              {/* Breadcrumb */}
+              <nav className="mb-4 flex justify-center lg:justify-start items-center gap-2 text-[10px] font-black uppercase tracking-[0.15em]">
+                <Link
+                  href="/"
+                  className="text-slate-400 hover:text-[#800000] transition-colors"
+                >
+                  Home
+                </Link>
+                <span className="w-1.5 h-1.5 rounded-full bg-[#800000]"></span>
+                <span className="text-[#800000]">Promotion</span>
               </nav>
 
-              <h1 className="text-5xl md:text-7xl font-black text-white leading-[1.05] mb-8 tracking-tight">
-                Big Savings. <br />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">
-                  Exclusive Deals.
-                </span>
+              {/* Heading */}
+              <h1 className="text-3xl md:text-5xl lg:text-[3.2rem] font-black text-[#1A1A1A] leading-[1.1] tracking-tight">
+                Big <span className="text-[#800000]">Savings.</span> <br />
+                Exclusive Deals.
               </h1>
 
-              <p className="text-slate-400 text-xl font-medium max-w-lg mx-auto lg:mx-0 leading-relaxed">
-                Experience the next level of shopping with our handpicked daily
-                promotions and trending brand offers.
-              </p>
+              <div className="mt-6 flex items-start gap-4 max-w-lg mx-auto lg:mx-0">
+                {/* Vertical Line */}
+                <div className="w-[4px] h-16 bg-[#800000] rounded-full shrink-0" />
+                <p className="text-slate-600 text-sm md:text-base font-medium leading-relaxed text-left">
+                  Experience the next level of shopping with our handpicked
+                  daily promotions and trending brand offers. Save big with our
+                  verified exclusive discounts.
+                </p>
+              </div>
             </div>
+             
+            {/* Right Side Illustration */}
+            <div className="w-full lg:w-[40%] flex justify-center lg:justify-end mt-4">
+              <div className="relative w-full max-w-[340px] aspect-square flex items-center justify-center">
+                <div className="absolute inset-0 bg-[#800000]/5 rounded-[3rem] rotate-6 scale-95" />
+                <div className="absolute inset-0 bg-[#EADDCA]/30 rounded-[3rem] -rotate-3 transition-transform group-hover:-rotate-6 duration-700 shadow-sm" />
 
-            <div className="relative hidden lg:block group">
-              {/* Animated Image Glow */}
-              <div className="absolute inset-0 bg-blue-500 rounded-full blur-[100px] opacity-20 group-hover:opacity-40 transition-opacity duration-700"></div>
-              <div className="relative z-10 transform group-hover:rotate-3 transition-transform duration-500">
-                <Image
-                  src="/themes/Theme_3/images/banner-illus-5.png"
-                  alt="Promotions Illustration"
-                  width={450}
-                  height={400}
-                  className="object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.3)]"
-                  priority
-                />
+                {/* Main Image Container */}
+                <div className="relative z-10 w-[80%] h-[80%] flex items-center justify-center">
+                  <Image
+                    src="/themes/Theme_3/images/banner-illus-5.png"
+                    alt="Trending Events"
+                    width={310}
+                    height={270}
+                    className="object-contain transition-all duration-700 hover:scale-105 drop-shadow-2xl"
+                    priority
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -89,136 +72,98 @@ const PromotionsPage = async ({ promotionSlug }: { promotionSlug: string }) => {
       </section>
 
       {/* --- PROMOTIONS GRID --- */}
-      <section className="container mx-auto px-6 py-24">
-        {/* <div className="flex items-center justify-between mb-16 border-b border-slate-200 pb-8">
-                    <div>
-                        <h2 className="text-3xl font-black text-slate-900 tracking-tight">Active Events</h2>
-                        <p className="text-slate-500 font-medium mt-1">Showing {promotions?.length || 0} active campaigns</p>
-                    </div>
-                    <div className="hidden md:block">
-                        <div className="flex gap-2">
-                            <div className="w-3 h-3 rounded-full bg-blue-600 animate-pulse"></div>
-                            <span className="text-xs font-black uppercase tracking-widest text-slate-400">Live Now</span>
-                        </div>
-                    </div>
-                </div> */}
+      <section className="relative bg-[#FDFBE7]/30 py-24 px-6 overflow-hidden">
+  {/* --- MINIMAL BACKGROUND DECOR --- */}
+  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full opacity-[0.03] pointer-events-none" 
+       style={{ backgroundImage: 'radial-gradient(#800000 0.5px, transparent 0.5px)', backgroundSize: '24px 24px' }} />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {promotions?.length > 0 ? (
-            promotions.map((promotion: Promotion, index: number) => (
-              <Link
-                key={index}
-                href={getPromotionHref(promotion, promotionSlug)}
-                className="no-underline group relative block h-full"
-              >
-                {/* 1. Animated Border Glow (Srf Hover par dikhega) */}
-                <div className="absolute -inset-[1px] bg-gradient-to-tr from-blue-500 via-purple-500 to-pink-500 rounded-[2.5rem] opacity-0 group-hover:opacity-100 blur-[2px] transition-opacity duration-500"></div>
+  <div className="max-w-7xl mx-auto relative z-10">
+    
+    {/* --- CLEAN CENTERED HEADER --- */}
+    <div className="flex flex-col items-center text-center mb-20">
+      <div className="px-4 py-1.5 rounded-full border border-[#800000]/20 bg-white mb-6">
+        <span className="text-[#800000] text-[10px] font-black uppercase tracking-[0.3em]">
+          Special Promotions
+        </span>
+      </div>
+      <h2 className="text-4xl md:text-6xl font-black text-[#1A1A1A] tracking-tighter mb-4">
+        Our Trending <span className="text-[#800000]">Events</span>
+      </h2>
+      <p className="text-slate-500 font-medium max-w-xl mx-auto text-sm md:text-base">
+        Discover handpicked premium offers and seasonal events tailored for your lifestyle. 
+        Showing {promotions?.length || 0} active campaigns.
+      </p>
+    </div>
 
-                {/* 2. Main Card Body */}
-                <div className="relative bg-white rounded-[2.5rem] p-1 h-full overflow-hidden shadow-sm group-hover:shadow-2xl transition-all duration-500 border border-slate-100">
-                  {/* Inner Content Wrapper */}
-                  <div className="relative bg-gradient-to-b from-slate-50 to-white rounded-[2.3rem] p-8 h-full flex flex-col">
-                    {/* Top Section: Index & Status */}
-                    <div className="flex justify-between items-start mb-10">
-                      <div className="relative">
-                        <span className="text-6xl font-black text-slate-100 absolute -top-6 -left-2 group-hover:text-blue-50 transition-colors duration-500">
-                          0{index + 1}
-                        </span>
-                        <div className="relative z-10 w-12 h-12 bg-white rounded-2xl shadow-sm border border-slate-100 flex items-center justify-center group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500">
-                          <div className="w-2 h-2 bg-blue-600 rounded-full animate-ping"></div>
-                        </div>
-                      </div>
-                      <div className="px-4 py-1.5 bg-white border border-slate-100 rounded-full shadow-sm">
-                        <span className="text-[10px] font-black uppercase tracking-tighter text-slate-400 group-hover:text-blue-600 transition-colors">
-                          Special Event
-                        </span>
-                      </div>
-                    </div>
+    {/* --- THE CARDS (Keeping your favorite design) --- */}
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 justify-items-center">
+      {promotions?.length > 0 ? (
+        promotions.map((promotion: Promotion, index: number) => (
+          <Link
+            key={index}
+            href={getPromotionHref(promotion, promotionSlug)}
+            className="no-underline group relative block h-full"
+          >
+            {/* Main Card Wrapper */}
+<div className="relative bg-white border border-[#EADDCA] rounded-tl-[3rem] rounded-br-[3rem] p-10 h-full min-h-[380px] flex flex-col transition-all duration-700 ease-in-out group-hover:border-[#800000] group-hover:shadow-[15px_15px_0px_rgba(128,0,0,0.05)] overflow-hidden">
+  
+  {/* Watermark Number */}
+  <span className="absolute top-4 right-8 text-8xl font-black text-[#FDFBE7] group-hover:text-[#800000]/5 transition-colors duration-700 select-none">
+    {index < 9 ? `0${index + 1}` : index + 1}
+  </span>
 
-                    {/* Middle Section: Title & Content */}
-                    <div className="flex-grow">
-                      <h3 className="text-2xl font-black text-slate-900 leading-tight mb-4 group-hover:translate-x-1 transition-transform duration-500">
-                        {promotion?.name}
-                      </h3>
-                      <div className="w-10 h-1 bg-blue-600 rounded-full mb-6 group-hover:w-24 transition-all duration-700"></div>
-                      <p className="text-slate-500 text-sm font-medium leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
-                        Unlocking exclusive membership rewards and premium
-                        discounts for{" "}
-                        <span className="text-slate-900 font-bold">
-                          {promotion?.name}
-                        </span>{" "}
-                        subscribers.
-                      </p>
-                    </div>
+  {/* FIXED: Vertical Animated Line with Matching Radius */}
+  <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#800000] origin-bottom scale-y-0 group-hover:scale-y-100 transition-transform duration-500 rounded-tl-[3rem]"></div>
 
-                    {/* Bottom Section: CTA */}
-                    <div className="mt-12 flex items-center gap-4">
-                      <div className="flex-grow h-[50px] bg-slate-900 rounded-2xl flex items-center justify-center group-hover:bg-blue-600 transition-all duration-500 overflow-hidden relative">
-                        <span className="text-white text-[11px] font-black uppercase tracking-[0.2em] relative z-10">
-                          Explore Deals
-                        </span>
-                        {/* Hover filling effect */}
-                        <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-blue-600 translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-                      </div>
+  {/* Card Content */}
+  <div className="relative z-10 flex-grow pt-4">
+    <p className="text-[#800000] text-[10px] font-black uppercase tracking-[0.3em] mb-4">
+      Verified Deal
+    </p>
+    <h3 className="text-2xl font-black text-[#1A1A1A] leading-tight mb-6 group-hover:translate-x-2 transition-transform duration-500">
+      {promotion?.name}
+    </h3>
+    <p className="text-slate-500 text-sm font-medium leading-relaxed group-hover:text-slate-900 transition-colors duration-500">
+      Unlocking exclusive membership rewards and premium discounts for <span className="text-[#800000] font-bold">{promotion?.name}</span> subscribers.
+    </p>
+  </div>
 
-                      <div className="w-[50px] h-[50px] rounded-2xl border-2 border-slate-100 flex items-center justify-center group-hover:border-blue-200 transition-colors">
-                        <svg
-                          width="14"
-                          height="14"
-                          viewBox="0 0 14 14"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                          className="text-slate-400 group-hover:text-blue-600 group-hover:rotate-45 transition-all duration-500"
-                        >
-                          <path
-                            d="M1 13L13 1M13 1H4.5M13 1V9.5"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
+  {/* Card Footer */}
+  <div className="relative z-10 mt-12 pt-8 border-t border-[#EADDCA] flex items-center justify-between">
+    <div className="overflow-hidden h-4">
+      <div className="flex flex-col transition-transform duration-500 group-hover:-translate-y-4">
+        <span className="text-[#1A1A1A] text-[11px] font-black uppercase tracking-[0.25em]">
+          Explore Now
+        </span>
+        <span className="text-[#800000] text-[11px] font-black uppercase tracking-[0.25em]">
+          View Deals
+        </span>
+      </div>
+    </div>
 
-                  {/* Background Decorative Pattern */}
-                  <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
-                    <svg
-                      width="80"
-                      height="80"
-                      viewBox="0 0 80 80"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <circle
-                        cx="40"
-                        cy="40"
-                        r="38"
-                        stroke="black"
-                        strokeWidth="4"
-                        strokeDasharray="8 8"
-                      />
-                    </svg>
-                  </div>
-                </div>
-              </Link>
-            ))
-          ) : (
-            <div className="col-span-full flex flex-col items-center justify-center py-32 bg-white rounded-[3rem] border border-dashed border-slate-200">
-              <div className="w-20 h-20 bg-slate-50 rounded-full flex items-center justify-center mb-6">
-                <span className="text-2xl">🔍</span>
-              </div>
-              <h3 className="text-slate-900 font-black uppercase tracking-widest text-sm">
-                No Active Promotions
-              </h3>
-              <p className="text-slate-400 text-xs mt-2 font-medium">
-                Please check back later for new events.
-              </p>
-            </div>
-          )}
+    <div className="relative w-10 h-10 flex items-center justify-center">
+      <div className="absolute inset-0 bg-[#800000] rounded-full scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="relative z-10 text-[#1A1A1A] group-hover:text-white transition-colors duration-500" stroke="currentColor" strokeWidth="2.5">
+        <path d="M5 12h14M12 5l7 7-7 7" />
+      </svg>
+    </div>
+  </div>
+</div>
+          </Link>
+        ))
+      ) : (
+        /* Minimal Empty State */
+        <div className="col-span-full py-32 flex flex-col items-center justify-center border border-dashed border-[#EADDCA] rounded-3xl bg-white/50">
+          <div className="w-16 h-16 rounded-full bg-[#FDFBE7] flex items-center justify-center mb-6">
+            <span className="text-2xl opacity-50">✨</span>
+          </div>
+          <h3 className="text-[#1A1A1A] font-black uppercase tracking-widest text-sm">No Active Events</h3>
+          <p className="text-slate-400 text-xs mt-2">New promotions are coming soon.</p>
         </div>
-      </section>
+      )}
+    </div>
+  </div>
+</section>
     </div>
   );
 };

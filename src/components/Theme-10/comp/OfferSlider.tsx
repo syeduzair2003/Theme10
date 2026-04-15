@@ -12,20 +12,32 @@ export default function OfferSlider({
   const startX = useRef(0);
   const scrollLeft = useRef(0);
 
+  // --- UPDATE: Fix alignment by calculating container width ---
   const scroll = (dir: "left" | "right") => {
-    sliderRef.current?.scrollBy({
-      left: dir === "left" ? -300 : 300,
+    if (!sliderRef.current) return;
+    
+    // 300 ki jagah container ki width ka 80% scroll karega taake alignment out na ho
+    const scrollAmount = sliderRef.current.clientWidth * 0.8; 
+    
+    sliderRef.current.scrollBy({
+      left: dir === "left" ? -scrollAmount : scrollAmount,
       behavior: "smooth",
     });
   };
 
   const onMouseDown = (e: React.MouseEvent) => {
     setIsDown(true);
+    // Dragging ke waqt snapping band karni parti hai taake smooth rahay
+    if (sliderRef.current) sliderRef.current.style.scrollSnapType = "none";
     startX.current = e.pageX - (sliderRef.current?.offsetLeft || 0);
     scrollLeft.current = sliderRef.current?.scrollLeft || 0;
   };
 
-  const stopDrag = () => setIsDown(false);
+  const stopDrag = () => {
+    setIsDown(false);
+    // Drag khatam hotay hi snapping wapis on
+    if (sliderRef.current) sliderRef.current.style.scrollSnapType = "x mandatory";
+  };
 
   const onMouseMove = (e: React.MouseEvent) => {
     if (!isDown || !sliderRef.current) return;
@@ -37,40 +49,43 @@ export default function OfferSlider({
 
   return (
     <div className="relative group/slider px-2">
+      {/* --- Desktop Buttons --- */}
       <button
         onClick={() => scroll("left")}
-        className="absolute left-[-30px] top-1/2 -translate-y-1/2 z-40 p-4 rounded-full bg-white border border-[#800000] text-[#800000] hover:bg-[#800000] hover:text-white hover:border-[#800000] transition-all duration-500 shadow-[0_10px_25px_rgba(0,0,0,0.06)] hover:shadow-[0_15px_30px_rgba(128,0,0,0.25)] hidden md:flex items-center justify-center active:scale-90 group"
+        className="absolute left-[-40px] top-1/2 -translate-y-1/2 z-40 p-4 rounded-full bg-white border border-[#800000] text-[#800000] hover:bg-[#800000] hover:text-white transition-all duration-500 shadow-lg hidden xl:flex items-center justify-center active:scale-90 group"
         aria-label="Scroll Left"
       >
-        <ArrowLeft
-          size={24}
-          strokeWidth={3}
-          className="transition-transform group-hover:-translate-x-1"
-        />
+        <ArrowLeft size={24} strokeWidth={3} className="transition-transform group-hover:-translate-x-1" />
       </button>
 
       <button
         onClick={() => scroll("right")}
-        className="absolute right-[-30px] top-1/2 -translate-y-1/2 z-40 p-4 rounded-full bg-white border border-[#800000] text-[#800000] hover:bg-[#800000] hover:text-white hover:border-[#800000] transition-all duration-500 shadow-[0_10px_25px_rgba(0,0,0,0.06)] hover:shadow-[0_15px_30px_rgba(128,0,0,0.25)] hidden md:flex items-center justify-center active:scale-90 group"
+        className="absolute right-[-40px] top-1/2 -translate-y-1/2 z-40 p-4 rounded-full bg-white border border-[#800000] text-[#800000] hover:bg-[#800000] hover:text-white transition-all duration-500 shadow-lg hidden xl:flex items-center justify-center active:scale-90 group"
         aria-label="Scroll Right"
       >
-        <ArrowRight
-          size={24}
-          strokeWidth={3}
-          className="transition-transform group-hover:translate-x-1"
-        />
+        <ArrowRight size={24} strokeWidth={3} className="transition-transform group-hover:translate-x-1" />
       </button>
 
+      {/* --- Main Slider Container --- */}
       <div
         ref={sliderRef}
-        className="flex gap-6 overflow-x-auto scroll-smooth no-scrollbar select-none py-4 px-1"
+        onMouseDown={onMouseDown}
+        onMouseLeave={stopDrag}
+        onMouseUp={stopDrag}
+        onMouseMove={onMouseMove}
+        className="flex gap-4 md:gap-6 overflow-x-auto scroll-smooth no-scrollbar select-none py-6 px-1 snap-x snap-mandatory"
         style={{
           scrollbarWidth: "none",
           msOverflowStyle: "none",
           WebkitOverflowScrolling: "touch",
         }}
       >
-        {children}
+        {/* Children wrapping for alignment logic */}
+        {React.Children.map(children, (child) => (
+          <div className="flex-none w-[85%] md:w-[45%] lg:w-[calc((100%-72px)/4)] snap-start">
+            {child}
+          </div>
+        ))}
       </div>
 
       <style jsx global>{`

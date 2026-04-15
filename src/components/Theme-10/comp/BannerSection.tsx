@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Pagination } from "swiper/modules";
 
@@ -44,12 +45,16 @@ export default function BannerSection({ merchants }: { merchants: any[] }) {
           </motion.p>
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto px-4 sm:px-0">
-            <button className="w-full sm:w-auto px-8 py-4 bg-[#800000] text-[#FFFDF5] rounded-full font-black text-[10px] uppercase tracking-[0.2em] hover:scale-105 transition-all shadow-lg active:scale-95">
+            <Link
+            href="/#recent-deals-section"
+             className="w-full sm:w-auto px-8 py-4 bg-[#800000] text-[#FFFDF5] rounded-full font-black text-[10px] uppercase tracking-[0.2em] hover:scale-105 transition-all shadow-lg active:scale-95">
               Recent Deals
-            </button>
-            <button className="w-full sm:w-auto px-8 py-4 bg-[#0D0D0D] text-[#FFFDF5] rounded-full font-black text-[10px] uppercase tracking-[0.2em] hover:bg-transparent hover:text-[#0D0D0D] border border-[#0D0D0D] transition-all active:scale-95">
+            </Link>
+            <Link
+            href={"/category"}
+             className="w-full no-underline sm:w-auto px-8 py-4 bg-[#0D0D0D] text-[#FFFDF5] rounded-full font-black text-[10px] uppercase tracking-[0.2em] hover:bg-transparent hover:text-[#0D0D0D] border border-[#0D0D0D] transition-all active:scale-95">
               Categories
-            </button>
+            </Link>
           </div>
         </div>
 
