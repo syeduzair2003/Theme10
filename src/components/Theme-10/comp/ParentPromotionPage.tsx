@@ -107,121 +107,229 @@ const ParentPromotionPage = async ({ params }: { params: string }) => {
   </div>
 </section>
 
-      <div className="container mx-auto px-6 space-y-32">
+      <div className="container mx-auto px-6">
   {/* --- PREMIUM BENTO GRID CATEGORIES --- */}
   {subPromotions?.length > 0 && (
-    <section>
-      <div className="flex flex-col mb-12 relative">
-        <div className="absolute -left-6 top-0 bottom-0 w-1 bg-[#800000] opacity-50 rounded-full"></div>
-        <span className="text-[#800000] font-black text-[11px] uppercase tracking-[0.4em] mb-3 pl-2">
-          Curated Collections
-        </span>
-        <h2 className="text-4xl md:text-5xl font-black text-[#1A1A1A] tracking-tighter pl-2">
-          Explore Sub-Promotions
-        </h2>
-      </div>
+    <section className="py-12 mb-12">
+  {/* --- REFINED COMPACT HEADER --- */}
+  <div className="flex flex-col mb-10 relative">
+    <div className="flex items-center gap-3 mb-3">
+      <div className="w-8 h-[1.5px] bg-[#800000]"></div>
+      <span className="text-[#1A1A1A] font-black text-[9px] uppercase tracking-[0.4em]">
+        Curated Collection 
+      </span>
+    </div>
+    
+    <h2 className="text-4xl md:text-5xl font-black text-[#1A1A1A] tracking-tighter leading-none">
+      Explore <span className="text-[#800000] italic">Collections</span>
+    </h2>
+  </div>
+  
+  {/* --- COMPACT ASYMMETRIC GRID --- */}
+  <div className="grid grid-cols-1 md:grid-cols-12 gap-5 lg:gap-6">
+    {subPromotions.map((item: SubPromotion, index: number) => {
+      // Maintaining the asymmetric feel but with smaller scale
+      const isWide = index % 3 === 0;
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-        {subPromotions.map((item: SubPromotion, index: number) => (
-          <Link
-            key={index}
-            href={getPromotionHref(item, companyData?.promotion_slug)}
-            className="group relative h-[350px] overflow-hidden rounded-[3rem] border border-[#EADDCA] transition-all duration-700 hover:shadow-[0_30px_60px_-15px_rgba(128,0,0,0.15)]"
-          >
-            <Image
-              src={getBaseImageUrl(
-                companyDomain?.domain,
-                item?.category_image,
-                "",
-              )}
-              alt={item?.category_name}
-              fill
-              className="object-cover group-hover:scale-110 transition-transform duration-1000 grayscale-[20%] group-hover:grayscale-0"
-            />
-            {/* Elegant Maroon Gradient Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A] via-[#1A1A1A]/20 to-transparent p-12 flex flex-col justify-end">
-              <h3 className="text-white text-4xl font-black tracking-tight mb-4 group-hover:-translate-y-2 transition-transform duration-500">
-                {item.category_name}
-              </h3>
-              <div className="flex items-center gap-3 text-[#FDFBE7] font-black text-[10px] uppercase tracking-[0.3em] opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-                <span className="bg-[#800000] px-4 py-2 rounded-full">View Offers</span>
-                <span className="text-xl">→</span>
-              </div>
+      return (
+        <Link
+          key={index}
+          href={getPromotionHref(item, companyData?.promotion_slug)}
+          className={`group relative overflow-hidden rounded-[2rem] border border-[#EADDCA] transition-all duration-500 hover:shadow-[0_20px_40px_-10px_rgba(128,0,0,0.12)] 
+            ${isWide ? 'md:col-span-7 h-[280px]' : 'md:col-span-5 h-[280px]'}`}
+        >
+          <Image
+            src={getBaseImageUrl(
+              companyDomain?.domain,
+              item?.category_image,
+              "",
+            )}
+            alt={item?.category_name}
+            fill
+            className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+          />
+
+          {/* Cleaner Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A1A]/90 via-[#1A1A1A]/20 to-transparent transition-opacity duration-500" />
+
+          {/* Compact Content */}
+          <div className="absolute inset-0 p-8 flex flex-col justify-end items-start">
+            
+            <h3 className="text-white text-2xl lg:text-3xl font-black tracking-tight mb-4 leading-tight transform group-hover:-translate-y-1 transition-transform duration-500">
+              {item.category_name}
+            </h3>
+
+            {/* Minimalist Button */}
+            <div className="flex items-center gap-3 text-[#FDFBE7]">
+               <div className="w-9 h-9 rounded-full border border-white/40 flex items-center justify-center group-hover:bg-[#800000] group-hover:border-[#800000] transition-all duration-500">
+                 <span className="text-sm">→</span>
+               </div>
+               <span className="font-bold text-[9px] uppercase tracking-[0.2em] opacity-0 group-hover:opacity-100 transition-all duration-500">
+                 View Deals
+               </span>
             </div>
-          </Link>
-        ))}
-      </div>
-    </section>
+          </div>
+        </Link>
+      );
+    })}
+  </div>
+</section>
   )}
 
-  {/* --- TOP RATED DEALS GRID --- */}
-  <section>
-    <div className="flex items-end justify-between mb-16 pb-8 border-b-2 border-[#EADDCA]">
+ {/* --- PROMINENT TOP RATED DEALS SECTION --- */}
+<section className="py-20 px-4 md:px-10 relative">
+  {/* --- MULTI-STOP LUXURY DIVIDER LINE --- */}
+  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-[#800000]/10 via-[#800000]/60 via-[#800000]/10 to-transparent opacity-100 shadow-[0_1px_2px_rgba(0,0,0,0.05)]" />
+
+  {/* --- MAIN CONTAINER WITH ELEVATED DESIGN --- */}
+  <div className="container mx-auto bg-[#FDFBE7]/40 rounded-[4rem] border border-[#EADDCA]/60 p-8 md:p-16 shadow-[0_40px_100px_-30px_rgba(128,0,0,0.05)] relative overflow-hidden mt-8">
+    
+    {/* Abstract Background Accent - Corner Decor */}
+    <div className="absolute top-0 right-0 w-64 h-64 bg-[#800000]/[0.03] rounded-bl-full -z-10"></div>
+    <div className="absolute bottom-0 left-0 w-40 h-40 bg-[#800000]/[0.02] rounded-tr-full -z-10"></div>
+
+    {/* --- HEADER WITH MORE POP --- */}
+    <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 relative z-10">
       <div>
-        <h2 className="text-4xl font-black text-[#1A1A1A] tracking-tighter uppercase italic">
-          Top Rated Deals
+        <div className="flex items-center gap-3 mb-3">
+          <div className="w-12 h-1 bg-[#800000] rounded-full"></div>
+          <span className="text-[#800000] font-black text-[10px] uppercase tracking-[0.4em]">
+            Premium Picks
+          </span>
+        </div>
+        
+        <h2 className="text-4xl md:text-5xl font-black text-[#1A1A1A] tracking-tighter italic leading-none">
+          Top Rated <span className="text-[#800000] not-italic">Deals</span>
         </h2>
-        <p className="text-slate-400 text-sm font-bold tracking-widest uppercase mt-2">Premium curated selections</p>
+        <p className="text-slate-500 text-xs font-bold tracking-widest uppercase mt-3 pl-1 opacity-80">
+          Handpicked for quality & value
+        </p>
       </div>
-      <div className="hidden md:flex items-center gap-3 bg-[#FDFBE7] px-4 py-2 rounded-full border border-[#800000]/10">
+
+      {/* Verified Badge - More Visible */}
+      <div className="mt-8 md:mt-0 flex items-center gap-3 bg-white px-5 py-2.5 rounded-2xl border-2 border-[#800000]/10 shadow-sm transition-transform hover:scale-105 duration-300">
         <div className="w-2.5 h-2.5 rounded-full bg-[#800000] animate-pulse"></div>
-        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-[#800000]">
-          Verified Offers
+        <span className="text-[11px] font-black uppercase tracking-widest text-[#1A1A1A]">
+          Verified <span className="text-[#800000]">Offers</span>
         </span>
       </div>
     </div>
 
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10">
+    {/* --- OPTIMIZED GRID --- */}
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 gap-y-2 relative z-10">
       {allOffers?.map((item, index) => (
-        <OfferCardThree
-          key={index}
-          product={item?.offer}
-          merchantHref={getMerchantHref(
-            item.merchant,
-            companyData?.store_slug,
-            companyData?.slug_type,
-          )}
-          domain={companyDomain.domain}
-          merchant_name={item.merchant?.merchant_name}
-          merchant_logo={item.merchant?.merchant_logo}
-        />
-      ))}
-    </div>
-  </section>
-
-  {/* --- FEATURED BRANDS SECTION --- */}
-  <section className="bg-[#FDFBE7] rounded-[4rem] p-16 border border-[#EADDCA] relative overflow-hidden shadow-sm">
-    {/* Minimalist Top Border Accent */}
-    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1.5 bg-[#800000] rounded-b-full"></div>
-    
-    <h2 className="text-2xl font-black text-[#1A1A1A] text-center mb-20 uppercase tracking-[0.4em]">
-      Featured <span className="text-[#800000]">Brands</span>
-    </h2>
-    
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-y-16 gap-x-10">
-      {allOffers?.map((item, index) => (
-        <div key={index} className="hover:scale-110 transition-transform duration-500">
-          <SidebarRoundMerchantCard
-            merSlug={companyData?.store_slug}
-            slugType={companyData?.slug_type}
-            merchant={item?.merchant}
+        <div key={index} className="transition-transform duration-500 hover:scale-[1.02]">
+          <OfferCardThree
+            product={item?.offer}
+            merchantHref={getMerchantHref(
+              item.merchant,
+              companyData?.store_slug,
+              companyData?.slug_type,
+            )}
+            domain={companyDomain.domain}
+            merchant_name={item.merchant?.merchant_name}
+            merchant_logo={item.merchant?.merchant_logo}
           />
         </div>
       ))}
     </div>
-  </section>
 
-  {/* --- FULL DETAILS FOOTER --- */}
-  {showFullDetailsSection && (
-    <div className="bg-white p-12 rounded-[3rem] border border-[#EADDCA] shadow-inner relative">
-      <div className="absolute top-0 left-10 -translate-y-1/2 bg-[#800000] text-white px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em]">
-        Merchant Terms & Info
+  </div>
+</section>
+
+ {/* FEATURED BRANDS SECTION */}
+<section className="relative py-24 px-4 md:px-10 overflow-hidden mt-8">
+  {/* Divider Line */}
+  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-[#800000]/10 via-[#800000]/60 via-[#800000]/10 to-transparent opacity-80" />
+
+  <div className="container mx-auto bg-white/60 backdrop-blur-xl rounded-[5rem] border border-[#EADDCA]/40 py-16 relative shadow-[0_50px_100px_-40px_rgba(0,0,0,0.04)] overflow-hidden">
+    
+    {/* --- REFINED ROUNDED ACCENTS --- */}
+    {/* Top Right - Soft Glow Circle */}
+    <div className="absolute -top-12 -right-12 w-48 h-48 bg-[#800000]/[0.03] rounded-full blur-2xl -z-10"></div>
+    
+    {/* Bottom Left - Soft Glow Circle */}
+    <div className="absolute -bottom-12 -left-12 w-48 h-48 bg-[#800000]/[0.03] rounded-full blur-2xl -z-10"></div>
+
+    {/* Section Header */}
+    <div className="flex flex-col items-center mb-12 relative z-10 text-center px-6">
+      <div className="inline-flex items-center gap-4 mb-4">
+        <span className="w-10 h-[1px] bg-[#800000]/20"></span>
+        <span className="text-[#800000] font-black text-[9px] uppercase tracking-[0.5em]">Global Partners</span>
+        <span className="w-10 h-[1px] bg-[#800000]/20"></span>
       </div>
-      <div className="prose prose-slate max-w-none prose-p:text-slate-600 prose-headings:text-[#1A1A1A] prose-strong:text-[#800000]">
-        <MerchantDetailsFull details={promotion?.promotion?.description} />
+      <h2 className="text-4xl md:text-5xl font-black text-[#1A1A1A] tracking-tighter uppercase italic leading-none">
+        Featured <span className="text-[#800000] not-italic">Brands</span>
+      </h2>
+      <div className="mt-6 w-10 h-1 bg-[#800000] rounded-full opacity-20"></div>
+    </div>
+
+    {/* --- BRANDS GRID CONTAINER --- */}
+    <div className="relative w-full px-8 md:px-16">
+      <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-12 py-6">
+        {allOffers?.map((item, index) => (
+          <div key={index} className="flex-none">
+            <SidebarRoundMerchantCard
+              merSlug={companyData?.store_slug}
+              slugType={companyData?.slug_type}
+              merchant={item?.merchant}
+            />
+          </div>
+        ))}
       </div>
     </div>
-  )}
+  </div>
+</section>
+  {/* --- WIDTH-CONTROLLED MERCHANT TERMS & INFO SECTION --- */}
+{showFullDetailsSection && (
+  /* py-20 ko maintain kiya aur badge ki position adjust ki */
+  <div className="relative py-20 max-w-5xl mx-auto px-4"> 
+    
+    {/* --- LUXURY DIVIDER LINE (TOP) --- */}
+    <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-[#800000]/10 via-[#800000]/40 via-[#800000]/10 to-transparent opacity-80" />
+
+    {/* --- FLOATING HEADER BADGE --- */}
+    {/* top-0 ko top-20 kiya taake py-20 ke saath match kare aur divider line se niche rahe */}
+    <div className="absolute top-20 left-8 md:left-12 -translate-y-1/2 z-20">
+      <div className="bg-[#800000] text-white px-8 py-3 rounded-2xl text-[10px] font-black uppercase tracking-[0.3em] shadow-[0_15px_30px_-5px_rgba(128,0,0,0.3)] flex items-center gap-3">
+        <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+        Merchant Terms <span className="text-white/40 ml-1">&</span> Info
+      </div>
+    </div>
+
+    {/* --- MAIN CONTENT CONTAINER --- */}
+    <div className="bg-[#FDFBE7]/40 backdrop-blur-sm px-8 md:px-14 py-8 rounded-[3.5rem] border border-[#EADDCA]/60 shadow-[inset_0_2px_15px_rgba(234,221,202,0.3)] relative overflow-hidden">
+      
+      {/* Background Subtle Accent */}
+      <div className="absolute top-0 right-0 w-64 h-64 bg-[#800000]/[0.02] rounded-bl-full -z-10"></div>
+
+      <div className="flex flex-col md:flex-row gap-10">
+        
+        {/* Left Side: Minimalist Line + Dot */}
+        <div className="hidden md:flex flex-col items-center gap-4 py-2">
+          <div className="w-[1px] h-12 bg-gradient-to-b from-transparent to-[#800000]/30"></div>
+          <div className="w-8 h-8 rounded-full border border-[#800000]/20 flex items-center justify-center">
+            <div className="w-1.5 h-1.5 rounded-full bg-[#800000] animate-pulse"></div>
+          </div>
+          <div className="w-[1px] flex-grow bg-gradient-to-t from-transparent to-[#800000]/30"></div>
+        </div>
+
+        {/* Right Side: Content Area */}
+        <div className="flex-grow pt-4">
+          <div className="prose prose-slate max-w-none 
+            prose-p:text-slate-600 prose-p:leading-relaxed prose-p:text-sm prose-p:mb-4
+            prose-headings:text-[#1A1A1A] prose-headings:font-black prose-headings:tracking-tighter prose-headings:uppercase prose-headings:mt-6
+            prose-strong:text-[#800000] prose-strong:font-black
+            prose-li:text-slate-600 prose-li:text-sm prose-li:mb-1
+            prose-a:text-[#800000] prose-a:font-bold prose-a:no-underline hover:prose-a:underline">
+            
+            <MerchantDetailsFull details={promotion?.promotion?.description} />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+)}
 </div>
     </div>
   );

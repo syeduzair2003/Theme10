@@ -62,7 +62,7 @@ const AllStoresPage = async ({
     .slice(0, PAGE_SIZE);
 
   return (
-    <main className="min-h-screen bg-slate-50/50">
+    <main className="min-h-screen bg-[#fffde0]">
       {/* Hero Banner Section */}
       <section className="relative overflow-hidden bg-[#1a212e] border-b border-white/5 py-16 md:py-24 rounded-b-[3rem]">
         <div className="container mx-auto px-4 relative z-10">

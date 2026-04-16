@@ -29,59 +29,55 @@ const SidebarRoundMerchantCard = async ({
 
   return (
     <Link
-      href={getMerchantHref(merchant, merSlug, slugType)}
-      className="no-underline group relative flex flex-col items-center py-5 px-3 transition-all duration-500"
+  href={getMerchantHref(merchant, merSlug, slugType)}
+  className="no-underline group relative flex flex-col items-center py-8 px-5 transition-all duration-500"
+>
+  {/* --- 1. THE LAYERED FRAME --- */}
+  {/* Ye card ke piche ek geometric "L" shape accent hai jo sirf hover par nazar ata hai */}
+  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-28 h-28 border border-[#800000]/0 rounded-full group-hover:border-[#800000]/10 group-hover:scale-125 transition-all duration-700 -z-10"></div>
+  
+  <div className="relative z-10">
+    {/* --- 2. LOGO CONTAINER (The Floating Diamond/Circle Hybrid) --- */}
+    <div
+      className="relative w-24 h-24 flex items-center justify-center 
+      rounded-[2.5rem] bg-[#FDFBE7]/50 backdrop-blur-sm border border-[#EADDCA]/40 
+      transition-all duration-700 
+      group-hover:rounded-2xl group-hover:bg-white group-hover:rotate-[10deg]
+      group-hover:shadow-[20px_20px_60px_-15px_rgba(128,0,0,0.1)]"
     >
-      {/* Background Soft Glow - Maroon Tint */}
-      <div
-        className="absolute inset-0 scale-50 group-hover:scale-110 opacity-0 group-hover:opacity-100 
-        transition-all duration-700 bg-[#800000]/5 rounded-[3rem] blur-3xl"
-      ></div>
+      {/* Subtle Corner Accent */}
+      <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-[#800000]/0 group-hover:border-[#800000]/20 rounded-tr-xl transition-all duration-500"></div>
 
-      {/* Merchant Logo Container */}
-      <div
-        className="relative z-10 w-20 h-20 flex items-center justify-center 
-        rounded-2xl bg-white border border-[#EADDCA] 
-        shadow-[0_8px_20px_-10px_rgba(0,0,0,0.1)] 
-        transition-all duration-500 
-        group-hover:-translate-y-2 
-        group-hover:shadow-[0_15px_40px_-12px_rgba(128,0,0,0.15)] 
-        group-hover:border-[#800000]/20"
-      >
-        <div
-          className="absolute inset-0 rounded-2xl p-[1px] 
-          bg-gradient-to-tr from-[#800000] via-[#A52A2A] to-[#1A1A1A] 
-          opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-        >
-          <div className="w-full h-full bg-white rounded-2xl"></div>
-        </div>
-
-        {/* Logo Image */}
-        <div className="relative z-10 w-12 h-12 flex items-center justify-center">
-          <Image
-            src={getBaseImageUrl(domain, merchant?.merchant_logo, "")}
-            alt={getRandomStoreSeoTitle(merchant?.merchant_name)}
-            height={48}
-            width={48}
-            className="object-contain transition-all duration-500 group-hover:scale-110"
-          />
-        </div>
+      {/* Logo Image */}
+      <div className="relative w-14 h-14 flex items-center justify-center transition-all duration-700 group-hover:-rotate-[10deg] group-hover:scale-110">
+        <Image
+          src={getBaseImageUrl(domain, merchant?.merchant_logo, "")}
+          alt={getRandomStoreSeoTitle(merchant?.merchant_name)}
+          height={56}
+          width={56}
+          className="object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500"
+        />
       </div>
+    </div>
 
-      <div className="mt-4 text-center relative z-10">
-        <p
-          className="text-[10px] font-black tracking-[0.15em] text-[#4A4A4A] 
-          group-hover:text-[#800000] transition-colors duration-300 uppercase leading-tight"
-        >
-          {merchant?.merchant_name}
-        </p>
+    {/* --- 3. THE "OFFER COUNT" BUBBLE --- */}
+    <div className="absolute -bottom-2 -right-2 bg-[#800000] text-white text-[7px] font-black w-7 h-7 flex items-center justify-center rounded-full shadow-lg border-2 border-white scale-0 group-hover:scale-100 transition-all duration-500 delay-100">
+      HOT
+    </div>
+  </div>
 
-        <div
-          className="mx-auto mt-2 h-[1.5px] w-0 bg-[#800000] 
-          rounded-full group-hover:w-6 transition-all duration-300"
-        ></div>
-      </div>
-    </Link>
+  {/* --- 4. TYPOGRAPHY (Editorial Style) --- */}
+  <div className="mt-8 flex flex-col items-center gap-1">
+    <span className="text-[10px] font-black text-[#1A1A1A] tracking-[0.3em] uppercase group-hover:text-[#800000] transition-colors">
+      {merchant?.merchant_name}
+    </span>
+    
+    {/* Minimalist Progress Indicator */}
+    <div className="relative w-8 h-[2px] bg-[#EADDCA] overflow-hidden rounded-full">
+      <div className="absolute inset-0 bg-[#800000] -translate-x-full group-hover:translate-x-0 transition-transform duration-700"></div>
+    </div>
+  </div>
+</Link>
   );
 };
 

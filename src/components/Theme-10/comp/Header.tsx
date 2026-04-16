@@ -14,6 +14,7 @@ import {
   getMerchantHref,
   getPromotionHref,
 } from "@/constants/hooks";
+import StickyHeader from "./StickyHeader";
 
 interface Props {
   company_id: string;
@@ -55,13 +56,12 @@ const Header = async ({
     Blog: "https://blog.gettopdiscounts.com",
   };
 
-
   const [categories, merchants, events, promotions] = await Promise.all([
-  apiNavCategory(company_id).then((res) => res?.data),
-  apiGetNavMerchants(company_id).then((res) => res?.data),
-  apiGetEvents(company_id).then((res) => res?.data),
-  apiGetAllPromotion(domain).then((res) => res?.data),
-]);
+    apiNavCategory(company_id).then((res) => res?.data),
+    apiGetNavMerchants(company_id).then((res) => res?.data),
+    apiGetEvents(company_id).then((res) => res?.data),
+    apiGetAllPromotion(domain).then((res) => res?.data),
+  ]);
   const headersList = await headers();
   const currentPath = headersList.get("x-pathname") || "/";
   const companyLogo = getBaseImageUrl(
@@ -143,7 +143,7 @@ const Header = async ({
   );
 
   return (
-    <header className="fixed top-0 left-0 w-full z-[100] bg-[#F5F5DC]/85 backdrop-blur-md border-b border-[#800000]/5 shadow-sm">
+    <StickyHeader>
       <div className="max-w-7xl mx-auto px-4 lg:px-10">
         <div className="flex h-20 items-center justify-between gap-6">
           <Link
@@ -229,7 +229,7 @@ const Header = async ({
           __html: `.no-scrollbar::-webkit-scrollbar { display: none; } .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }`,
         }}
       />
-    </header>
+    </StickyHeader>
   );
 };
 
