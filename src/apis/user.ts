@@ -1,4 +1,4 @@
-import { ResponseObject, CompanyData, OfferResponse, CategoryData, SearchResponse, FooterResponse, MetaResponse, WidgetResponse, EventResponse, EventDetailsResponse, EventBannerResponse, DisclaimerResponse, FooterPageResponse, Template, Faqs, minimalMerchantData, ContactPageResponse, MetaKeywordsResponse, CategoryWithSub, SuggestedCategoriesResponse, CategoryOffers, Promotion, PromotionDetailsResponse, PromotionBannerResponse, EventMerchant, PromotionCategoryResponse, HomeMultiProducts, Offer, ProductData, ProductCategory, ProductCategoryData, NotFound, } from '@services/dataTypes';
+import { ResponseObject, CompanyData, OfferResponse, CategoryData, SearchResponse, FooterResponse, MetaResponse, WidgetResponse, EventResponse, EventDetailsResponse, EventBannerResponse, DisclaimerResponse, FooterPageResponse, Template, Faqs, minimalMerchantData, ContactPageResponse, MetaKeywordsResponse, CategoryWithSub, SuggestedCategoriesResponse, CategoryOffers, Promotion, PromotionDetailsResponse, PromotionBannerResponse, EventMerchant, PromotionCategoryResponse, HomeMultiProducts, Offer, ProductData, ProductCategory, ProductCategoryData, NotFound, BrandedMerchant, } from '@services/dataTypes';
 import apiService from '@services/ApiService';
 
 export const apiCategoryData = async (company_id: string): Promise<ResponseObject<CategoryData[]>> => {
@@ -198,6 +198,11 @@ export const apiGetMultiProductOffers = async (company_id: string): Promise<Resp
 export const apiGetProductMerchants = async (company_id: string): Promise<ResponseObject<minimalMerchantData[]>> => {
 	const response = await apiService.post<minimalMerchantData[]>('/company/get_products', { company_id });
 	return response;
+};
+
+export const apiCheckBrandedMerchants = async (company_id: string, slug: string): Promise<BrandedMerchant> => {
+	const response = await apiService.post<BrandedMerchant>('/company/check_merchant_branded_status', { company_id, slug });
+	return response as unknown as BrandedMerchant;
 };
 
 export const apiGetMerchantProducts = async (company_id: string, slug: string): Promise<ResponseObject<ProductData[]>> => {

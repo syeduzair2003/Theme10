@@ -36,7 +36,7 @@ const ProductCard = async ({ offer, mer_slug, mer_slug_type, type }: any) => {
 
   return (
     <div
-      className="group relative w-[274px] min-h-[420px] flex-shrink-0 
+      className="group relative w-full min-h-[420px] flex-shrink-0 
       rounded-tr-[3rem] rounded-bl-[3rem] bg-[#F5F5DC] border border-[#EADDCA] 
       p-5 flex flex-col transition-all duration-500 
       hover:-translate-y-2 hover:border-[#800000]/40"

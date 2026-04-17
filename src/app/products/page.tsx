@@ -8,7 +8,7 @@ import P4 from '@theme4/Pages/All-Products/page';
 import P5 from '@theme5/Pages/Products/page';
 import P6 from '@theme6/Pages/Products/page';
 import P8 from '@theme8/Pages/All-Products/page';
-import P10 from '@theme10/Pages/All-Products/page';
+import P10 from '@theme10/Pages/Products/page'; 
 import { getBaseImageUrl } from '@/constants/hooks';
 import { Metadata } from "next";
 

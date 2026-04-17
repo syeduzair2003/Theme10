@@ -19,75 +19,75 @@ const MerchantCard = ({
   const nameParts = merchant_name.trim().split(" ");
 
   return (
-    <Link href={merchant_href} className="no-underline group block h-full">
-      <div className="relative h-full bg-white rounded-[2rem] p-6 transition-all duration-500 hover:shadow-[0_30px_60px_-15px_rgba(37,99,235,0.25)] flex flex-col items-center text-center overflow-hidden border border-slate-100">
-        {/* 1. Background Decorative Mesh - Sirf hover par chamkega */}
-        <div className="absolute -top-20 -right-20 w-40 h-40 bg-blue-50 rounded-full blur-3xl group-hover:bg-blue-100 transition-colors duration-500"></div>
-        <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-indigo-50 rounded-full blur-3xl group-hover:bg-indigo-100 transition-colors duration-500"></div>
+    <Link href={merchant_href} className="no-underline group block h-full max-w-[320px] mx-auto">
+  <div className="relative h-full transition-all duration-500 flex flex-col items-center">
+    
+    {/* 1. The Main Architectural Body */}
+    <div className="relative w-full h-full bg-white rounded-tr-[4rem] rounded-bl-[4rem] rounded-tl-2xl rounded-br-2xl p-7 pt-12 border border-[#EADDCA]/60 transition-all duration-500 group-hover:shadow-[20px_20px_60px_-15px_rgba(128,0,0,0.12)] group-hover:-translate-y-2 group-hover:border-[#800000]/20 flex flex-col items-center overflow-hidden">
+      
+      {/* Decorative Background Element */}
+      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#fdf2e7] to-transparent rounded-bl-full opacity-50 group-hover:opacity-100 transition-opacity duration-500"></div>
 
-        {/* 2. Floating Logo Container */}
-        <div className="relative mb-8 mt-4">
-          {/* Ring animation on hover */}
-          <div className="absolute inset-0 bg-blue-600 rounded-2xl blur-md opacity-0 group-hover:opacity-20 group-hover:scale-125 transition-all duration-500"></div>
-
-          <div className="relative w-28 h-28 bg-white rounded-2xl shadow-[0_10px_25px_-5px_rgba(0,0,0,0.1)] border border-slate-50 p-4 flex items-center justify-center z-10 group-hover:-rotate-3 group-hover:scale-110 transition-all duration-500">
-            <Image
-              src={getBaseImageUrl(companyDomain, merchant_logo, "")}
-              alt={`${merchant_name} logo`}
-              width={80}
-              height={80}
-              className="object-contain transition-transform duration-500"
-            />
-          </div>
-        </div>
-
-        {/* 3. Typography with Gradient Text */}
-        <div className="flex flex-col flex-grow items-center mb-6">
-          <h3 className="text-xl font-black text-slate-800 tracking-tight leading-tight transition-all duration-300 group-hover:text-blue-600">
-            <span className="block text-2xl bg-clip-text text-transparent bg-gradient-to-r from-slate-900 to-slate-700 group-hover:from-blue-700 group-hover:to-indigo-600">
-              {nameParts[0]}
-            </span>
-            {nameParts.length > 1 && (
-              <span className="block text-sm font-bold uppercase tracking-[0.2em] text-slate-400 mt-1 group-hover:text-slate-500">
-                {nameParts.slice(1).join(" ")}
-              </span>
-            )}
-          </h3>
-        </div>
-
-        {/* 4. Modern Action Button - Bilkul hatke! */}
-        <div className="relative w-full overflow-hidden rounded-xl py-3 px-4 bg-slate-900 group-hover:bg-blue-600 transition-all duration-300 shadow-lg shadow-slate-200 group-hover:shadow-blue-200">
-          <div className="flex items-center justify-center gap-2 relative z-10">
-            <span className="text-xs font-black text-white uppercase tracking-widest">
-              Grab Coupons
-            </span>
-            <svg
-              className="w-4 h-4 text-white transform group-hover:translate-x-1 transition-transform"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="3"
-                d="M14 5l7 7-7 7M5 12h16"
-              />
-            </svg>
-          </div>
-
-          {/* Gloss effect on button */}
-          <div className="absolute top-0 -left-[100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-25deg] group-hover:left-[150%] transition-all duration-700"></div>
-        </div>
-
-        {/* 5. Subtle Discount Badge Overlay (Optional Style) */}
-        <div className="absolute top-4 left-4">
-          <div className="bg-emerald-500/10 text-emerald-600 text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-tighter border border-emerald-500/20 backdrop-blur-sm">
-            Verified
-          </div>
+      {/* 2. Offset Logo Container */}
+      <div className="relative z-10 mb-6">
+        <div className="absolute -inset-2 bg-[#FDFBE7] rounded-2xl rotate-6 group-hover:rotate-12 transition-transform duration-500"></div>
+        <div className="relative w-24 h-24 bg-white rounded-2xl shadow-sm border border-[#EADDCA]/40 p-4 flex items-center justify-center overflow-hidden transition-all duration-500 group-hover:scale-110 group-hover:-rotate-3 group-hover:shadow-xl group-hover:shadow-black/5">
+          <Image
+            src={getBaseImageUrl(companyDomain, merchant_logo, "")}
+            alt={`${merchant_name} logo`}
+            width={80}
+            height={80}
+            className="object-contain"
+          />
         </div>
       </div>
-    </Link>
+
+      {/* 3. Typography Section */}
+      <div className="flex flex-col flex-grow items-center text-center z-10 px-2">
+        <h3 className="group-hover:text-[#800000] transition-colors duration-300">
+          <span className="block text-xl font-black text-[#1A1A1A] uppercase tracking-tighter leading-none">
+            {nameParts[0]}
+          </span>
+          {nameParts.length > 1 && (
+            <span className="inline-block mt-3 px-3 py-1 bg-[#800000]/5 text-[#800000] text-[9px] font-black uppercase tracking-[0.2em] rounded-full transition-all duration-300 group-hover:bg-[#800000] group-hover:text-white">
+              {nameParts.slice(1).join(" ")}
+            </span>
+          )}
+        </h3>
+      </div>
+
+      {/* 4. NEW: Floating Magnetic Button Style */}
+      <div className="mt-8 w-full group/btn relative">
+        <button className="w-full relative group/btn overflow-hidden border-2 border-[#800000] rounded-xl py-3 px-6 transition-all duration-500">
+          
+          {/* Background Fill on Hover */}
+          <div className="absolute inset-0 bg-[#800000] translate-y-[101%] group-hover/btn:translate-y-0 transition-transform duration-500 ease-out"></div>
+
+          {/* Button Text & Icon */}
+          <div className="relative z-10 flex items-center justify-center gap-3">
+            <span className="text-[12px] font-black uppercase tracking-[0.2em] text-[#800000] group-hover/btn:text-white transition-colors duration-500">
+              Get Offer
+            </span>
+          </div>
+        </button>
+
+        {/* Decorative shadow behind button */}
+        <div className="absolute inset-0 bg-[#800000]/10 rounded-xl translate-y-1 translate-x-1 -z-10 group-hover/btn:translate-y-0 group-hover/btn:translate-x-0 transition-transform duration-300"></div>
+      </div>
+
+      {/* 5. Floating Vertical Badge */}
+      <div className="absolute top-10 left-0">
+        <div className="bg-black text-white text-[8px] font-black py-3 px-1.5 rounded-r-lg uppercase [writing-mode:vertical-lr] tracking-[0.2em] opacity-80 group-hover:opacity-100 group-hover:bg-[#800000] transition-all">
+          VERIFIED
+        </div>
+      </div>
+
+    </div>
+
+    {/* Subtle Background Shadow Shape */}
+    <div className="absolute -z-10 inset-4 bg-[#EADDCA]/20 blur-2xl rounded-[4rem] group-hover:bg-[#800000]/5 transition-colors duration-500"></div>
+  </div>
+</Link>
   );
 };
 

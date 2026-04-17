@@ -95,7 +95,7 @@ const OffersPage = async ({
   );
 
   return (
-    <div className="bg-slate-50 min-h-screen font-sans">
+    <div className="bg-[#fffde0] min-h-screen font-sans">
       {/* HERO SECTION */}
       <section className="relative bg-[#1a212e] border-b border-gray-100 pt-32 pb-16 overflow-hidden">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50/40 rounded-full blur-[120px] -mr-64 -mt-64 z-0"></div>

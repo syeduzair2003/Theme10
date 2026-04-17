@@ -1,11 +1,12 @@
 import { apiCheckBrandedMerchants, apiCompanyUpdatedData, apiGetProductCategoryUniqueId, apiGetProductDetails } from '@/apis/user'
 import cookieService from '@/services/CookiesService'
 import React from 'react'
-import MerchantProductsPage from '@/components/Theme-3/comp/MerchantProductsPage'
-import OfferDetailsPage from '@/components/Theme-3/comp/OfferDetailsPage';
 import { notFound, redirect } from 'next/navigation';
 import { extractTrailingId } from '@/constants/hooks';
-import CategoryProductOffers from '@/components/Theme-3/comp/CategoryProductOffers';
+import MerchantProductsPage from '@/components/Theme-10/comp/MerchantProductsPage';
+import CategoryProductOffers from '@/components/Theme-10/comp/CategoryProductOffers';
+import OfferDetailsPage from '@/components/Theme-10/comp/OfferDetailsPage';
+
 
 type Props = Promise<{ slug: string[] }>;
 

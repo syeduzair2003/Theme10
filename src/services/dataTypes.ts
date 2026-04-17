@@ -151,15 +151,15 @@ export type MetaResponse = {
   merchant_logo: string | null;
   og_image: string | null;
   company_data: {
-      id: number,
-      unique_id: string,
-      company_name: string,
-      company_logo: string | null,
-      site_icon: string | null,
-      store_slug: string,
-      category_slug: string,
-      promotion_slug: string,
-      widgets: Widget[]
+    id: number,
+    unique_id: string,
+    company_name: string,
+    company_logo: string | null,
+    site_icon: string | null,
+    store_slug: string,
+    category_slug: string,
+    promotion_slug: string,
+    widgets: Widget[]
   };
   pagination: PaginationType;
 }
@@ -501,7 +501,7 @@ export type offerBannerMinimalData = {
   offer_detail: string;
   url: string;
   unique_id: string;
-  banner_size?: string |null;
+  banner_size?: string | null;
   merchant: minimalMerchantData;
 }
 
@@ -684,11 +684,11 @@ export type ContactInfo = {
 
 export type MetaKeywordsResponse = {
   keyword: string,
-    merchant: {
-      id: number,
-      unique_id: string,
-      slug: string
-    }
+  merchant: {
+    id: number,
+    unique_id: string,
+    slug: string
+  }
 }
 
 export type CategoryWithSub = {
@@ -815,7 +815,7 @@ export type HomeMultiProducts = {
   first: HomeMultiProductData;
   second: HomeMultiProductData;
 };
-export type HomeMultiProductData ={
+export type HomeMultiProductData = {
   merchant: Merchant;
   offers: OffersOffer[];
   home_page_widget: {
@@ -876,14 +876,21 @@ export type ProductCategoryData = {
   name: string;
   slug: string;
   created_at: string | null;
-  updated_at: string | null ; 
+  updated_at: string | null;
 }
 
-export type NotFound ={
+export type NotFound = {
   is_seen: boolean;
-  url:string;
+  url: string;
   company_id: string;
   updated_at: string | null;
   created_at: string | null;
   id: number;
+}
+
+export type BrandedMerchant = {
+  merchant_name: string | null;
+  has_branded_products: boolean;
+  total_branded_items: number;
+  status: string;
 }
