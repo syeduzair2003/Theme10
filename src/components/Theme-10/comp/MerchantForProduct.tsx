@@ -23,19 +23,10 @@ const MerchantForProduct = ({
 
   return (
     <Link href={merchant_href} className="group block h-full">
-      <div className="relative bg-white border border-slate-100 rounded-[2.5rem] p-8 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_30px_60px_-15px_rgba(37,99,235,0.15)] hover:border-blue-100 transition-all duration-500 flex flex-col h-full overflow-hidden">
-        {/* Modern Discount Badge */}
-        {parsedDiscount && (
-          <div className="absolute top-6 right-6 z-10">
-            <div className="bg-slate-900 text-white px-4 py-1.5 rounded-full font-black text-[10px] uppercase tracking-widest shadow-xl group-hover:bg-blue-600 transition-colors duration-300">
-              {parsedDiscount.value} {parsedDiscount.middle}
-            </div>
-          </div>
-        )}
-
-        <div className="flex-1 space-y-6">
-          {/* Brand Identity / Logo */}
-          <div className="w-20 h-20 bg-slate-50 rounded-[1.8rem] p-4 flex items-center justify-center relative group-hover:bg-white transition-all duration-500 border border-slate-50 group-hover:border-blue-50 group-hover:scale-105 group-hover:rotate-3 shadow-sm">
+      <div className="relative bg-[#FDFCF0] border border-[#800000]/10 rounded-[2rem] p-6 transition-all duration-500 flex flex-col h-full overflow-hidden hover:bg-white hover:shadow-[20px_20px_60px_-15px_rgba(128,0,0,0.1)] hover:-translate-y-2">
+        <div className="flex justify-between items-start mb-8">
+          {/* Brand Logo */}
+          <div className="w-16 h-16 bg-white rounded-2xl p-3 flex items-center justify-center border border-slate-100 shadow-sm group-hover:rotate-[-4deg] transition-transform duration-500">
             <div className="relative w-full h-full">
               <Image
                 src={getBaseImageUrl(companyDomain, merchant_logo, "")}
@@ -46,29 +37,53 @@ const MerchantForProduct = ({
             </div>
           </div>
 
-          {/* Text Content */}
-          <div className="space-y-3">
-            <h3 className="text-xl font-black text-slate-900 leading-tight uppercase tracking-tight group-hover:text-blue-600 transition-colors italic">
-              {merchant_name}
-            </h3>
-            <p className="text-slate-400 text-xs font-bold uppercase tracking-wider leading-relaxed">
-              Verified premium <br /> collections & offers
-            </p>
+          {parsedDiscount && (
+            <div className="bg-[#800000] text-[#FDFCF0] px-4 py-1.5 rounded-full font-black text-[10px] uppercase tracking-tighter shadow-lg shadow-[#800000]/20">
+              {parsedDiscount.value} {parsedDiscount.middle}
+            </div>
+          )}
+        </div>
+
+        <div className="flex-1">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="w-6 h-[2px] bg-[#800000]"></span>
+            <span className="text-[#800000] text-[9px] font-black uppercase tracking-[0.2em]">
+              Official Store
+            </span>
+          </div>
+
+          <h3 className="text-2xl font-black text-[#0f172a] leading-tight mb-3 tracking-tighter group-hover:text-[#800000] transition-colors duration-300">
+            {merchant_name}
+          </h3>
+
+          <p className="text-slate-500 text-xs font-medium leading-relaxed opacity-80">
+            Premium collections curated for excellence. Explore verified deals
+            and seasonal offers.
+          </p>
+        </div>
+
+        <div className="mt-10 pt-6 border-t border-[#800000]/5 flex items-center justify-between">
+          <div className="flex flex-col">
+            <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none mb-1">
+              Status
+            </span>
+            <span className="text-emerald-600 text-[10px] font-black uppercase tracking-widest flex items-center gap-1">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              Verified
+            </span>
+          </div>
+
+          <div className="flex items-center gap-2 group/btn">
+            <span className="text-black font-black text-[11px] uppercase tracking-widest opacity-0 group-hover:opacity-100 -translate-x-4 group-hover:translate-x-0 transition-all duration-500">
+              View Store
+            </span>
+            <div className="w-10 h-10 rounded-xl bg-black text-white flex items-center justify-center group-hover:bg-[#800000] transition-all duration-500 shadow-md">
+              <FontAwesomeIcon icon={faArrowRight} className="w-3.5 h-3.5" />
+            </div>
           </div>
         </div>
 
-        {/* Modern Footer Action */}
-        <div className="mt-10 flex items-center justify-between border-t border-slate-50 pt-6">
-          <span className="text-slate-900 font-black text-[10px] uppercase tracking-[0.2em] group-hover:text-blue-600 transition-colors">
-            View Products
-          </span>
-          <div className="w-12 h-12 rounded-2xl bg-slate-50 text-slate-400 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-all duration-500 transform group-hover:translate-x-2 shadow-sm">
-            <FontAwesomeIcon icon={faArrowRight} className="w-4 h-4" />
-          </div>
-        </div>
-
-        {/* Decorative Bottom Glow Effect (Hidden by default, shows on hover) */}
-        <div className="absolute -bottom-24 -right-24 w-40 h-40 bg-blue-400/10 blur-[60px] rounded-full group-hover:bg-blue-400/20 transition-all duration-700"></div>
+        <div className="absolute top-0 right-0 w-32 h-32 bg-[#800000]/5 blur-[60px] rounded-full pointer-events-none"></div>
       </div>
     </Link>
   );

@@ -3,8 +3,8 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, EffectFade, Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, EffectFade, Pagination } from 'swiper/modules';
 
 export default function BannerSection({ merchants }: { merchants: any[] }) {
   const [bubbles, setBubbles] = useState<any[]>([]);
@@ -65,65 +65,76 @@ export default function BannerSection({ merchants }: { merchants: any[] }) {
         >
           <div className="absolute inset-0 bg-[#800000]/5 rounded-[2.5rem] -rotate-2 translate-x-3 translate-y-2"></div>
 
-          <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden border border-[#D1C7A7] shadow-2xl bg-white">
-            <Swiper
-              modules={[Autoplay, EffectFade, Pagination]}
-              effect={"fade"}
-              fadeEffect={{ crossFade: true }}
-              autoplay={{ delay: 3000, disableOnInteraction: false }}
-              pagination={{ clickable: true }}
-              loop={true}
-              className="h-full w-full"
-            >
-              {/* Slide 1 */}
-              <SwiperSlide className="h-full w-full">
-                <div className="relative h-full w-full group">
-                  <Image
-                    src="/uploads/company_5/images/1754425975_68926a778d774.jpg"
-                    fill
-                    className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                    alt="Deal 1"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                </div>
-              </SwiperSlide>
+         <div className="absolute inset-0 rounded-[2.5rem] overflow-hidden border border-[#D1C7A7] shadow-2xl bg-white">
+  <Swiper
+    modules={[Autoplay, EffectFade, Pagination]}
+    effect={"fade"}
+    fadeEffect={{ crossFade: true }}
+    autoplay={{
+      delay: 3000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+    }}
+    pagination={{ 
+      clickable: true,
+      dynamicBullets: true
+    }}
+    loop={true}
+    speed={1000}
+    className="h-full w-full"
+  >
+    {/* Slide 1 */}
+    <SwiperSlide className="h-full w-full">
+      <div className="relative h-full w-full group">
+        <Image
+          src="/uploads/company_5/images/1754425975_68926a778d774.jpg"
+          fill
+          className="object-cover transition-transform duration-1000 group-hover:scale-105"
+          alt="Deal 1"
+          priority
+          unoptimized
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+      </div>
+    </SwiperSlide>
 
-              {/* Slide 2 */}
-              <SwiperSlide className="h-full w-full">
-                <div className="relative h-full w-full group">
-                  <Image
-                    src="/uploads/company_5/images/1748025392_6830c030a518b.png"
-                    fill
-                    className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                    alt="Deal 2"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                </div>
-              </SwiperSlide>
+    {/* Slide 2 */}
+    <SwiperSlide className="h-full w-full">
+      <div className="relative h-full w-full group">
+        <Image
+          src="/uploads/company_5/images/1748025392_6830c030a518b.png"
+          fill
+          className="object-cover transition-transform duration-1000 group-hover:scale-105"
+          alt="Deal 2"
+          unoptimized
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+      </div>
+    </SwiperSlide>
 
-              {/* Slide 3 */}
-              <SwiperSlide className="h-full w-full">
-                <div className="relative h-full w-full group">
-                  <Image
-                    src="/uploads/company_5/images/1753911160_688a8f78eaaee.jpg"
-                    fill
-                    className="object-cover transition-transform duration-1000 group-hover:scale-105"
-                    alt="Deal 2"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-                </div>
-              </SwiperSlide>
-            </Swiper>
+    {/* Slide 3 */}
+    <SwiperSlide className="h-full w-full">
+      <div className="relative h-full w-full group">
+        <Image
+          src="/uploads/company_5/images/1753911160_688a8f78eaaee.jpg"
+          fill
+          className="object-cover transition-transform duration-1000 group-hover:scale-105"
+          alt="Deal 3"
+          unoptimized
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+      </div>
+    </SwiperSlide>
+  </Swiper>
 
-            {/* Live Tag */}
-            <div className="absolute top-6 left-6 z-20 inline-flex items-center gap-2 bg-white/20 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5">
-              <span className="flex h-2 w-2 rounded-full bg-[#800000] animate-pulse"></span>
-              <span className="text-[9px] font-black text-white uppercase tracking-[0.2em]">
-                Live Premium Discounts
-              </span>
-            </div>
-          </div>
+  {/* Live Tag */}
+  <div className="absolute top-6 left-6 z-20 inline-flex items-center gap-2 bg-black/30 backdrop-blur-md border border-white/20 rounded-full px-4 py-1.5">
+    <span className="flex h-2 w-2 rounded-full bg-[#800000] animate-pulse"></span>
+    <span className="text-[9px] font-black text-white uppercase tracking-[0.2em]">
+      Live Premium Discounts
+    </span>
+  </div>
+</div>
         </motion.div>
       </div>
     </section>

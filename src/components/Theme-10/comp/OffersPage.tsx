@@ -96,112 +96,141 @@ const OffersPage = async ({
 
   return (
     <div className="bg-[#fffde0] min-h-screen font-sans">
-      {/* HERO SECTION */}
-      <section className="relative bg-[#1a212e] border-b border-gray-100 pt-32 pb-16 overflow-hidden">
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-50/40 rounded-full blur-[120px] -mr-64 -mt-64 z-0"></div>
-        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-indigo-50/40 rounded-full blur-[100px] -ml-32 -mb-32 z-0"></div>
+      {/* --- THE ELITE SIGNATURE HERO (PRO UPDATED) --- */}
+      <section className="relative bg-[#FDFCF0] pt-36 pb-20 overflow-hidden border-b border-[#800000]/10">
+        {/* Luxury Ambient Orbs */}
+        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#800000]/[0.03] rounded-full blur-[140px] -mr-40 -mt-40 pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#D1C7A7]/[0.15] rounded-full blur-[100px] -ml-20 -mb-20 pointer-events-none"></div>
 
-        <div className="container mx-auto px-4 relative z-10">
-          {/* Breadcrumbs */}
-          <nav className="inline-flex items-center bg-white backdrop-blur-md border border-gray-100 px-3 py-3 rounded-2xl shadow-[0_2px_15px_-3px_rgba(0,0,0,0.04)] mb-10 transition-all hover:shadow-md">
-            <ol className="flex items-center gap-3 text-[10px] sm:text-[11px] font-black tracking-[0.15em] uppercase p-0 m-0">
-              <li>
+        <div className="container mx-auto px-6 lg:px-20 relative z-10">
+          <div className="flex flex-col lg:flex-row gap-16 items-center">
+            <div className="w-full lg:w-1/2 space-y-10">
+              <nav className="inline-flex items-center gap-4 text-[9px] font-black tracking-[0.3em] uppercase text-slate-400">
                 <Link
                   href="/"
-                  className="text-gray-400 hover:text-blue-600 transition-colors no-underline"
+                  className="hover:text-[#800000] transition-colors"
                 >
                   Home
                 </Link>
-              </li>
-              <li className="text-gray-300">
-                <FontAwesomeIcon icon={faGreaterThan} className="w-2 h-2" />
-              </li>
-              <li>
+                <div className="w-1.5 h-1.5 rounded-full bg-[#800000]"></div>
                 <Link
                   href="/all-stores/A"
-                  className="text-gray-400 hover:text-blue-600 transition-colors no-underline capitalize"
+                  className="hover:text-[#800000] transition-colors uppercase"
                 >
                   {store_slug}
                 </Link>
-              </li>
-              <li className="text-gray-300">
-                <FontAwesomeIcon icon={faGreaterThan} className="w-2 h-2" />
-              </li>
-              <li className="text-blue-600 font-extrabold truncate max-w-[120px] sm:max-w-[200px]">
-                {merchant_details?.data?.merchant_name}
-              </li>
-            </ol>
-          </nav>
+                <div className="w-1.5 h-1.5 rounded-full bg-[#800000]"></div>
+                <span className="text-[#800000]">
+                  {merchant_details?.data?.merchant_name}
+                </span>
+              </nav>
 
-          <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-10">
-            <div className="max-w-4xl">
-              {/* Main Title: Enhanced Line Height */}
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-[1.15] tracking-tight mb-8">
-                {heading ? (
-                  discardHTMLTags(heading)
-                ) : (
-                  <>
-                    Save with{" "}
-                    <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
-                      {merchant_details?.data?.merchant_name}
-                      <span className="absolute bottom-1 left-0 w-full h-1 bg-blue-600/10 rounded-full"></span>
-                    </span>{" "}
-                    Promo Codes
-                  </>
-                )}
-              </h1>
+              {/* Heading */}
+              <div className="space-y-6">
+                <h1 className="text-4xl md:text-5xl lg:text-5xl font-black text-[#1A1A1A] leading-[1.1] tracking-tighter uppercase">
+                  {heading ? (
+                    discardHTMLTags(heading)
+                  ) : (
+                    <>
+                      Exclusive{" "}
+                      <span className="text-[#800000] font-serif italic lowercase tracking-normal font-normal">
+                        Savings
+                      </span>{" "}
+                      <br />
+                      For {merchant_details?.data?.merchant_name}
+                    </>
+                  )}
+                </h1>
 
-              {/* Dynamic Trust Badges: More Spacing */}
-              {/* <div className="flex flex-wrap items-center gap-3">
-          <div className="group flex items-center gap-2.5 bg-white text-emerald-700 px-4 py-2.5 rounded-xl border border-emerald-100 text-xs font-black shadow-sm transition-all hover:bg-emerald-50">
-            <span className="relative flex h-2.5 w-2.5">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
-            </span>
-            VERIFIED TODAY
-          </div>
-          
-          <div className="flex items-center gap-2.5 bg-white text-blue-700 px-4 py-2.5 rounded-xl border border-blue-100 text-xs font-black shadow-sm transition-all hover:bg-blue-50">
-            <svg className="w-4 h-4 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-            TOP DISCOUNT APPLIED
-          </div>
-
-          <div className="flex items-center gap-2 ml-2 text-gray-400 text-[10px] font-bold tracking-widest">
-             <div className="w-1.5 h-1.5 rounded-full bg-gray-200"></div>
-             UPDATED: <span className="text-gray-900 underline decoration-blue-200 underline-offset-4">{getLastUpdateDate(0)}</span>
-          </div>
-        </div> */}
+                <p className="text-slate-500 text-sm md:text-base font-medium leading-relaxed max-w-md italic border-l-2 border-[#800000]/10 pl-6">
+                  Hand-curated selection of premium vouchers and seasonal offers
+                  for an optimized shopping experience.
+                </p>
+              </div>
             </div>
 
-            {/* Quick Stats: Enhanced Floating Effect */}
-            <div className="flex items-center gap-4 sm:gap-8 bg-white backdrop-blur-xl p-6 rounded-[2.5rem] border border-gray-100 shadow-[0_20px_50px_-12px_rgba(0,0,0,0.08)] transform transition hover:-translate-y-1">
-              <div className="text-center px-2 sm:px-4">
-                <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] mb-2">
-                  Offers
-                </p>
-                <p className="text-3xl font-black text-slate-900">
-                  {offers?.data?.offers.length || "0"}
-                </p>
-              </div>
-              <div className="w-px h-12 bg-gray-100"></div>
-              <div className="text-center px-2 sm:px-4">
-                <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] mb-2">
-                  Rating
-                </p>
-                <p className="text-3xl font-black text-blue-600">
-                  {getRandomRating(merchant_details?.data?.rating)}
-                </p>
-              </div>
-              <div className="w-px h-12 bg-gray-100"></div>
-              <div className="text-center px-2 sm:px-4">
-                <p className="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em] mb-2">
-                  Status
-                </p>
-                <div className="flex items-center justify-center gap-1.5 text-[10px] font-black text-emerald-600 px-3 py-1.5 bg-emerald-50 rounded-full border border-emerald-100">
-                  <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
-                  ACTIVE
+            {/* RIGHT Grid */}
+            <div className="w-full lg:w-1/2 relative">
+              <div className="grid grid-cols-2 gap-5">
+                {/* Card 1: Offers */}
+                <div className="bg-white p-8 rounded-[2rem] border border-[#800000]/5 shadow-[0_15px_35px_-15px_rgba(0,0,0,0.05)] flex flex-col justify-between h-40 hover:border-[#800000]/20 transition-all duration-500 group">
+                  <p className="text-[10px] font-black text-slate-300 uppercase tracking-widest group-hover:text-[#800000] transition-colors">
+                    Total Offers
+                  </p>
+                  <div className="space-y-1">
+                    <h3 className="text-5xl font-black text-[#1A1A1A] tracking-tighter">
+                      {offers?.data?.offers.length || "0"}
+                    </h3>
+                    <p className="text-[9px] font-bold text-[#800000] uppercase tracking-tighter">
+                      Active Today
+                    </p>
+                  </div>
+                </div>
+
+                {/* Card 2: Status */}
+                <div className="bg-white p-8 rounded-[2rem] border border-[#800000]/5 shadow-[0_15px_35px_-15px_rgba(0,0,0,0.05)] flex flex-col justify-between h-40">
+                  <p className="text-[10px] font-black text-slate-300 uppercase tracking-widest">
+                    Feed Status
+                  </p>
+                  <div className="flex flex-col gap-3">
+                    <div className="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 px-3 py-1.5 rounded-full border border-emerald-100 text-[9px] font-black w-fit">
+                      <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></div>
+                      VERIFIED
+                    </div>
+                    <p className="text-[10px] font-bold text-slate-400 italic tracking-tight">
+                      Security Guaranteed
+                    </p>
+                  </div>
+                </div>
+
+                {/* Card 3 */}
+                <div className="col-span-2 bg-[#1A1A1A] p-8 rounded-[2.5rem] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.25)] relative overflow-hidden flex items-center justify-between group">
+                  <div className="absolute right-0 bottom-0 p-4 opacity-[0.03] text-8xl font-black text-white italic select-none">
+                    {merchant_details?.data?.merchant_name?.charAt(0)}
+                  </div>
+
+                  <div className="flex items-center gap-6 relative z-10">
+                    <div className="w-20 h-20 bg-white rounded-2xl p-3 shadow-xl flex items-center justify-center transform group-hover:scale-105 transition-transform duration-500">
+                      {merchant_details?.data?.merchant_logo ? (
+                        <img
+                          src={merchant_details.data.merchant_logo}
+                          alt={merchant_details.data.merchant_name}
+                          className="w-full h-full object-contain"
+                        />
+                      ) : (
+                        <span className="text-[#800000] font-serif italic text-4xl">
+                          {merchant_details?.data?.merchant_name?.charAt(0)}
+                        </span>
+                      )}
+                    </div>
+                    <div className="space-y-1">
+                      <h4 className="text-white font-black text-xl tracking-tight uppercase">
+                        {merchant_details?.data?.merchant_name}
+                      </h4>
+                      <div className="flex items-center gap-2">
+                        <div className="flex gap-1">
+                          {[1, 2, 3, 4, 5].map((i) => (
+                            <div
+                              key={i}
+                              className="w-1 h-1 rounded-full bg-[#800000]"
+                            ></div>
+                          ))}
+                        </div>
+                        <span className="text-slate-400 text-[9px] font-black tracking-[0.3em] uppercase">
+                          Verified Partner
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="hidden md:block relative z-10 text-right border-l border-white/10 pl-8">
+                    <p className="text-[9px] font-black text-white/30 uppercase tracking-[0.4em] mb-1">
+                      Trust Score
+                    </p>
+                    <p className="text-3xl font-black text-[#D1C7A7]">
+                      {getRandomRating(merchant_details?.data?.rating)}
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -215,7 +244,7 @@ const OffersPage = async ({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
             {/* --- LEFT SIDEBAR --- */}
             <aside className="lg:col-span-4 space-y-8">
-              {/* Merchant Logo & Rating Card */}
+              {/* Merchant Logo Card */}
               <div className="bg-white rounded-[2rem] shadow-sm border border-slate-200 overflow-hidden">
                 <div className="p-8 flex flex-col items-center">
                   <div className="relative w-full aspect-video bg-slate-50 rounded-2xl border border-slate-100 flex items-center justify-center p-6 mb-6">
