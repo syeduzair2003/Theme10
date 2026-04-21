@@ -17,6 +17,8 @@ import {
 import { apiGetNavMerchants } from "@/apis/merchant";
 import Footer from "./comp/Footer";
 import Header from "./comp/Header";
+import PageLoader from "./comp/PageLoader";
+
 interface Props {
   children: React.ReactNode;
   c_data: CompanyData;
@@ -56,25 +58,8 @@ const Theme10Layout = async ({ children }: Props) => {
 
   return (
     <>
+    <PageLoader logo={c_data?.company_logo || ""} />
       <div className="p1-2nd-bg-color">
-        {/* <ToastContainer position="top-right" autoClose={3000} hideProgressBar={false} /> */}
-        {/* <Navbar company_id={c_data?.unique_id} domain={companyDomain.domain} mer_slug={c_data.store_slug} slug_type={c_data.slug_type} cat_slug={c_data.category_slug} logo={c_data.company_logo} promotion_slug={c_data?.promotion_slug}/> */}
-        {/* <Navbar
-        unique_id={c_data.unique_id}
-        merchantData={merchantResponse.data}
-        headerPromoMerchant={headerPromoMerchantResponse}
-        categories={categories?.data}
-        companyDomain={companyDomain.domain}
-        mer_slug={c_data.store_slug}
-        mer_slug_type={c_data.slug_type}
-        cat_slug={c_data.category_slug}
-        promo_slug={c_data.promotion_slug}
-        company_logo={c_data?.company_logo}
-        blog_title={c_data.blog_title}
-        blog_url={c_data.blog_url}
-        events={events}
-        promotions={promotions}
-      /> */}
         <Header
           company_id={c_data?.unique_id}
           domain={companyDomain.domain}
@@ -85,8 +70,6 @@ const Theme10Layout = async ({ children }: Props) => {
           promotion_slug={c_data?.promotion_slug}
         />
         {children}
-        {/* <Footer company_id={c_data?.unique_id} domain={companyDomain.domain} social_links={c_data} logo={c_data.company_footer_logo}/>  */}
-        {/* <Footer/> */}
         <Footer
           companyFooterLogo={c_data?.company_footer_logo}
           companyName={c_data?.company_legal_name || c_data?.company_name}

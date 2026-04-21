@@ -17,6 +17,7 @@ import { apiOfferDetails } from "@/apis/offers";
 import OfferOutUrl from "@/components/shared/OfferOutUrl";
 import OfferDuration from "./OfferDuration";
 import SocialMediaShare from "./SocialMediaShare";
+import OfferDetailsToggle from "./OfferDetailsToggle";
 
 interface Props {
   product: OffersOffer;
@@ -81,140 +82,139 @@ const OffersListView = ({
   );
 
   return (
-    <div className="group relative mb-8">
-      <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-500 rounded-[2rem] blur opacity-0 group-hover:opacity-20 transition duration-1000 group-hover:duration-200"></div>
+    <div className="group relative mb-6"> {/* Margin reduced for tighter list */}
+  {/* --- Luxury Ambient Glow (Subtle) --- */}
+  <div className="absolute -inset-0.5 bg-[#800000]/10 rounded-[1.8rem] blur-lg opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none"></div>
 
-      <div className="relative flex flex-col lg:flex-row bg-white rounded-[2rem] shadow-[0_10px_40px_-15px_rgba(0,0,0,0.05)] overflow-hidden border border-gray-100">
-        <div className="lg:w-1/4 bg-gray-50/50 p-6 flex flex-col items-center justify-center relative border-b lg:border-b-0 lg:border-r border-dashed border-gray-200">
-          <div className="hidden lg:block absolute -top-4 -right-4 w-8 h-8 bg-slate-50 rounded-full border border-gray-100 shadow-inner"></div>
-          <div className="hidden lg:block absolute -bottom-4 -right-4 w-8 h-8 bg-slate-50 rounded-full border border-gray-100 shadow-inner"></div>
+  <div className="relative flex flex-col lg:flex-row bg-white rounded-[1.8rem] shadow-sm overflow-hidden border border-[#800000]/5 transition-all duration-300 group-hover:border-[#800000]/20">
+    
+    {/* --- Left Part: Compact Branding --- */}
+    <div className="lg:w-[22%] bg-[#FDFCF0]/40 p-5 flex flex-col items-center justify-center relative border-b lg:border-b-0 lg:border-r border-dashed border-[#800000]/10">
+      {/* Smaller Ticket Notches */}
+      <div className="hidden lg:block absolute -top-3 -right-3 w-6 h-6 bg-[#FDFCF0] rounded-full border border-[#800000]/5 shadow-inner"></div>
+      <div className="hidden lg:block absolute -bottom-3 -right-3 w-6 h-6 bg-[#FDFCF0] rounded-full border border-[#800000]/5 shadow-inner"></div>
 
-          <div className="relative w-28 h-28 lg:w-32 lg:h-32 bg-white rounded-3xl p-4 shadow-sm group-hover:scale-110 transition-transform duration-500 flex items-center justify-center">
-            <Image
-              src={getBaseImageUrl(
-                domain,
-                product?.offer?.product_image ||
-                  product?.merchant?.merchant_logo,
-                "",
-              )}
-              alt="Offer"
-              width={100}
-              height={100}
-              className="object-contain"
-            />
-          </div>
+      <div className="relative w-20 h-20 lg:w-24 lg:h-24 bg-white rounded-2xl p-3 shadow-sm group-hover:scale-105 transition-transform duration-500 flex items-center justify-center border border-[#800000]/5">
+        <Image
+          src={getBaseImageUrl(domain, product?.offer?.product_image || product?.merchant?.merchant_logo, "")}
+          alt="Offer"
+          width={80}
+          height={80}
+          className="object-contain"
+        />
+      </div>
 
-          {finalDiscountTag && (
-            <div className="mt-4 px-4 py-1 bg-blue-600 text-white text-[10px] font-black uppercase tracking-widest rounded-full shadow-lg shadow-blue-200">
-              {finalDiscountTag}
-            </div>
-          )}
+      {finalDiscountTag && (
+        <div className="mt-3 px-3 py-1 bg-[#800000] text-[#FDFCF0] text-[8px] font-black uppercase tracking-widest rounded-full">
+          {finalDiscountTag}
         </div>
+      )}
+    </div>
 
-        {/* --- Middle Part: Content --- */}
-        <div className="lg:w-2/4 p-8 flex flex-col justify-center">
-          <div className="flex items-center gap-2 mb-3">
-            <OfferDuration endDate={product?.offer?.end_date} />
-            <span className="text-[10px] font-bold text-gray-300 uppercase tracking-tighter">
-              • Verified
-            </span>
-          </div>
-
-          <h4 className="text-xl lg:text-2xl font-black text-gray-900 leading-tight group-hover:text-blue-600 transition-colors">
-            {discardHTMLTags(product?.offer?.offer_title?.replaceAll("_", " "))}
-          </h4>
-
-          <div className="flex items-center gap-4 mt-4">
-            <div className="flex items-center bg-amber-50 px-3 py-1 rounded-lg border border-amber-100">
-              <RenderRating rating={getRandomRating(product.offer?.rating)} />
-              <span className="ml-2 text-xs font-bold text-amber-700">
-                {getRandomRating(product?.offer?.rating)}
-              </span>
-            </div>
-            <SocialMediaShare
-              offerUrl={`/${product?.offer?.url}`}
-              offerTitle={product?.offer?.offer_title}
-              merchantHref={merchantHref}
-              unique_id={product?.offer?.unique_id}
-              domain={domain}
-            />
-          </div>
-
-          {product?.offer?.offer_type?.name === "product" && (
-            <div className="mt-6 flex items-center gap-3">
-              <span className="text-3xl font-black text-blue-600 tracking-tighter">
-                {getCurrencySymbol(product?.offer?.currency)}
-                {product?.offer?.sale_price}
-              </span>
-              <span className="text-sm font-medium text-gray-400 line-through decoration-red-400">
-                {getCurrencySymbol(product?.offer?.currency)}
-                {product?.offer?.original_price}
-              </span>
-            </div>
-          )}
+    {/* --- Middle Part: Content (Truncated) --- */}
+    <div className="lg:w-[53%] p-6 flex flex-col justify-center bg-white">
+      <div className="flex items-center gap-3 mb-2">
+        <div className="flex items-center gap-1">
+          <div className="w-1 h-1 rounded-full bg-emerald-500"></div>
+          <span className="text-[7px] font-black text-emerald-600 uppercase tracking-widest">Verified</span>
         </div>
-
-        {/* Call to Action */}
-        <div className="lg:w-1/4 p-8 bg-gray-50/30 flex items-center justify-center border-t lg:border-t-0 lg:border-l border-gray-100">
-          <div className="w-full space-y-3">
-            {product?.offer?.coupon_code ? (
-              <OfferOutUrl
-                unique_id={product?.offer?.unique_id}
-                outUrl={product?.offer?.url}
-                merchantHref={merchantHref}
-                domain={domain}
-                customClass="relative w-full h-16 bg-white border-2 border-dashed border-blue-400 rounded-2xl flex flex-col items-center justify-center group/btn overflow-hidden transition-all hover:border-blue-600"
-              >
-                <span className="text-xs font-bold text-blue-400 uppercase tracking-[0.2em] mb-1 group-hover/btn:opacity-0 transition-opacity">
-                  Coupon Code
-                </span>
-                <span className="text-blue-700 font-mono font-black text-lg group-hover/btn:opacity-0 transition-opacity">
-                  {product?.offer?.coupon_code.trim().slice(0, 8)}
-                </span>
-                <div className="absolute inset-0 bg-blue-600 flex items-center justify-center text-white font-black text-sm tracking-widest translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300">
-                  REVEAL CODE
-                </div>
-              </OfferOutUrl>
-            ) : (
-              <OfferOutUrl
-                unique_id={product.offer.unique_id}
-                outUrl={product.offer.url}
-                merchantHref={merchantHref}
-                domain={domain}
-                customClass="no-underline w-full h-16 bg-gray-900 text-white font-black rounded-2xl flex items-center justify-center hover:bg-blue-600 hover:-translate-y-1 shadow-xl hover:shadow-blue-200 transition-all duration-300 active:scale-95 text-sm tracking-widest uppercase"
-              >
-                {product?.offer?.offer_type?.name === "product"
-                  ? "Buy Now"
-                  : "Get Deal"}
-              </OfferOutUrl>
-            )}
-            <p className="text-[10px] text-center text-gray-400 font-medium italic">
-              * No registration required
-            </p>
-          </div>
+        <div className="text-[10px] scale-90 origin-left">
+           <OfferDuration endDate={product?.offer?.end_date} />
         </div>
       </div>
 
-      {/* Modal Logic (Unchanged) */}
-      {showModal && p_data != null && !ads_campaign && (
-        <OfferModal
-          data={p_data}
-          companyId={companyId}
-          onClose={() => setShowModal(false)}
+      {/* Heading with Truncation (line-clamp-2) */}
+      <h4 className="text-lg lg:text-xl font-black text-[#1A1A1A] leading-tight tracking-tighter uppercase line-clamp-2 transition-colors group-hover:text-[#800000] min-h-[3rem] lg:min-h-0">
+        {discardHTMLTags(product?.offer?.offer_title?.replaceAll("_", " "))}
+      </h4>
+
+      <div className="flex items-center gap-4 mt-3">
+        {/* Rating Badge Small */}
+        <div className="flex items-center bg-[#FDFCF0] px-2 py-1 rounded-lg border border-[#800000]/5 scale-90 origin-left">
+          <RenderRating rating={getRandomRating(product.offer?.rating)} />
+          <span className="ml-1.5 text-[11px] font-black text-[#800000]">
+            {getRandomRating(product?.offer?.rating)}
+          </span>
+        </div>
+      
+        <OfferDetailsToggle
           domain={domain}
+          imageSrc={product?.offer?.product_image}
           merchantHref={merchantHref}
+          offer={product?.offer}
+          type="anchor"
+          buttonClass="text-[11px] font-bold text-slate-400 hover:text-[#800000] transition-colors"
         />
-      )}
-      {showModal && ads_campaign && p_data != null && (
-        <SimpleOfferModal
-          data={p_data}
-          onClose={() => setShowModal(false)}
-          domain={domain}
-          merchantHref={merchantHref}
-          finalDiscountTag={finalDiscountTag}
-        />
+      </div>
+
+      {product?.offer?.offer_type?.name === "product" && (
+        <div className="mt-3 flex items-baseline gap-2">
+          <span className="text-xl font-black text-[#1A1A1A]">
+            {getCurrencySymbol(product?.offer?.currency)}{product?.offer?.sale_price}
+          </span>
+          <span className="text-[10px] font-bold text-slate-400 line-through decoration-[#800000]/40">
+            {getCurrencySymbol(product?.offer?.currency)}{product?.offer?.original_price}
+          </span>
+        </div>
       )}
     </div>
+
+    {/* --- Right Part: Compact Action --- */}
+    <div className="lg:w-[25%] p-6 bg-[#FDFCF0]/20 flex items-center justify-center border-t lg:border-t-0 lg:border-l border-[#800000]/5">
+      <div className="w-full">
+        {product?.offer?.coupon_code ? (
+          <OfferOutUrl
+            unique_id={product?.offer?.unique_id}
+            outUrl={product?.offer?.url}
+            merchantHref={merchantHref}
+            domain={domain}
+            customClass="relative w-full h-14 bg-white border-2 border-dashed border-[#800000]/20 rounded-xl flex flex-col items-center justify-center group/btn overflow-hidden transition-all hover:border-[#800000]"
+          >
+            <span className="text-[7px] font-black text-[#800000]/60 uppercase tracking-widest mb-0.5 group-hover/btn:opacity-0 transition-opacity">
+              CODE
+            </span>
+            <span className="text-[#1A1A1A] font-mono font-black text-sm group-hover/btn:opacity-0 transition-opacity tracking-widest">
+              {product?.offer?.coupon_code.trim().slice(0, 8)}
+            </span>
+            <div className="absolute inset-0 bg-[#800000] flex items-center justify-center text-[#FDFCF0] font-black text-[10px] tracking-widest translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300">
+              GET CODE
+            </div>
+          </OfferOutUrl>
+        ) : (
+          <OfferOutUrl
+            unique_id={product.offer.unique_id}
+            outUrl={product.offer.url}
+            merchantHref={merchantHref}
+            domain={domain}
+            customClass="no-underline w-full h-12 bg-[#1A1A1A] text-[#FDFCF0] font-black rounded-xl flex items-center justify-center hover:bg-[#800000] shadow-sm transition-all duration-300 text-[10px] tracking-widest uppercase"
+          >
+            {product?.offer?.offer_type?.name === "product" ? "Buy" : "Get Deal"}
+          </OfferOutUrl>
+        )}
+      </div>
+    </div>
+  </div>
+
+  {/* Modals Logic stays exactly as you provided */}
+  {showModal && p_data != null && !ads_campaign && (
+    <OfferModal
+      data={p_data}
+      companyId={companyId}
+      onClose={() => setShowModal(false)}
+      domain={domain}
+      merchantHref={merchantHref}
+    />
+  )}
+  {showModal && ads_campaign && p_data != null && (
+    <SimpleOfferModal
+      data={p_data}
+      onClose={() => setShowModal(false)}
+      domain={domain}
+      merchantHref={merchantHref}
+      finalDiscountTag={finalDiscountTag}
+    />
+  )}
+</div>
   );
 };
 

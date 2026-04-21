@@ -91,10 +91,13 @@ const Header = async ({
         <div className="mb-4 border-b border-[#800000]/5 pb-4">
           <Link
             href={navPaths[name]}
-            className="group/btn relative flex items-center justify-center gap-3 py-3.5 border-2 border-[#800000] rounded-[18px] text-[10px] font-black uppercase tracking-[0.25em] text-[#800000] transition-all duration-500 no-underline overflow-hidden"
+            className="group/btn relative flex items-center justify-center gap-3 py-3.5 border-2 border-[#800000] rounded-[18px] text-[10px] font-black uppercase tracking-[0.25em] text-[#FDFCF0] transition-all duration-500 no-underline overflow-hidden bg-transparent"
           >
-            <span className="absolute inset-0 bg-[#800000] translate-y-[102%] group-hover/btn:translate-y-0 transition-transform duration-500 ease-out z-0" />
-            <span className="relative z-10 flex items-center gap-2 group-hover/btn:text-[#D1C7A7] transition-colors duration-500">
+            {/* Background Layer - Default state is FILL (translate-y-0) */}
+            <span className="absolute inset-0 bg-[#800000] translate-y-0 group-hover/btn:translate-y-[102%] transition-transform duration-500 ease-out z-0" />
+
+            {/* Text Layer - Changes from Light to Maroon on hover */}
+            <span className="relative z-10 flex items-center gap-2 text-[#FDFCF0] group-hover/btn:text-[#800000] transition-colors duration-500">
               View All {name}
               <FaArrowRight className="text-[9px] group-hover/btn:translate-x-1 transition-transform duration-500" />
             </span>
@@ -195,6 +198,21 @@ const Header = async ({
                 return renderDropdown(name, promotions, (p: any) =>
                   getPromotionHref(p, promotion_slug),
                 );
+              if (name === "Products") {
+                // 1. Define the variable right here
+                const dropdownItems = [
+                  {
+                    id: "static-branded",
+                    name: "Branded Products",
+                    isStatic: true,
+                  },
+                ];
+                return renderDropdown(
+                  name,
+                  dropdownItems, // This variable is now defined in this scope
+                  (p: any) => (p.isStatic ? "/products" : ""),
+                );
+              }
 
               const isActive = currentPath === navPaths[name];
               return (

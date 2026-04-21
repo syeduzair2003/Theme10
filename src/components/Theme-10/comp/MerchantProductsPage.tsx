@@ -174,7 +174,7 @@ const MerchantProductsPage = async ({
 
             <div className="shrink-0 group/btnContainer">
               <Link
-                href={`/stores/${slug}`}
+                href={getMerchantHref(merRes, storeSlug, slugType)}
                 className="group/btn relative inline-flex items-center justify-between min-w-[160px] px-6 py-4 bg-[#1A1A1A] rounded-2xl overflow-hidden transition-all duration-500 ease-[cubic-bezier(0.23,1,0.32,1)] hover:shadow-[0_20px_40px_-10px_rgba(128,0,0,0.3)] active:scale-95"
               >
                 <div className="absolute inset-0 bg-[#800000] translate-y-full group-hover/btn:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.23,1,0.32,1)]"></div>
