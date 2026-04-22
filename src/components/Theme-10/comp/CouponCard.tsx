@@ -78,21 +78,28 @@ const CouponCard = async ({
             {splitOfferTitle(product?.offer_title).join(" / ")}
           </h4>
 
-          <div className="flex items-center gap-4">
-            <div className="flex items-center scale-90 origin-left">
-              <RenderRating rating={rating} />
-              <span className="ml-2 text-slate-500 text-xs font-bold">
-                ({rating})
-              </span>
-            </div>
-            <SocialMediaShare
-              offerUrl={`/${product?.url}`}
-              offerTitle={product?.offer_title}
-              merchantHref={merchantHref}
-              unique_id={product?.unique_id}
-              domain={domain}
-            />
-          </div>
+          <div className="flex items-center justify-between w-full gap-1 mt-3">
+  {/* Left Side: Rating - Fully Responsive */}
+  <div className="flex items-center min-w-0 shrink">
+    <div className="scale-[0.7] xs:scale-90 origin-left shrink-0">
+      <RenderRating rating={rating} />
+    </div>
+    <span className="ml-1 text-slate-500 text-[10px] font-bold whitespace-nowrap">
+      ({rating})
+    </span>
+  </div>
+
+  {/* Right Side: Social Media - Pushed to the edge */}
+  <div className="flex-none flex justify-end">
+    <SocialMediaShare
+      offerUrl={`/${product?.url}`}
+      offerTitle={product?.offer_title}
+      merchantHref={merchantHref}
+      unique_id={product?.unique_id}
+      domain={domain}
+    />
+  </div>
+</div>
         </div>
 
         {(salePrice > 0 || originalPrice > 0) && (

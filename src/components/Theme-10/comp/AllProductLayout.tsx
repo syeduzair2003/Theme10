@@ -20,6 +20,8 @@ import {
 import CategorySidebarProduct from "./CategorySidebarProduct";
 import AllProductsSchema from "@/components/shared/SchemaScripts/AllProductSchema";
 import SidebarRoundMerchantCard from "./SidebarRoundMerchantCard";
+import Pagination from "./Pagination";
+import { apiGetAllProducts } from "@/apis/user";
 
 interface Props {
   page?: string;
@@ -49,24 +51,39 @@ const AllProductLayout = async ({
       (res) => res.data,
     ),
   ]);
+
+  const currentPage = Math.max(1, parseInt(page || "1", 10));
+
+  // Fixed: variable names matched with Props (companyId, categoryId)
+  const offersData = (
+    await apiGetAllProducts(companyId, categoryId, currentPage.toString(), 18)
+  ).data;
+
+  const totalPages = offersData?.pagination?.last_page || 0;
+
   const safeSlug = slug ?? [];
 
-  const cleanedSlug = safeSlug?.filter(
-    (s, i) =>
-      !(s === "page" || (!isNaN(Number(s)) && safeSlug[i - 1] === "page")),
-  );
+  // Fixed: Combined cleanedSlug logic to avoid duplicate declaration error
+  const cleanedSlug = safeSlug.filter((s, i) => {
+    if (s === "page" && !isNaN(Number(safeSlug[i + 1]))) return false;
+    if (i > 0 && safeSlug[i - 1] === "page" && !isNaN(Number(s))) return false;
+    return true;
+  });
 
-  const paths: { href: string; label: string }[] = cleanedSlug?.map(
+  const baseUrl = cleanedSlug.length
+    ? `/all-products/${cleanedSlug.join("/")}`
+    : `/all-products`;
+
+  const paths: { href: string; label: string }[] = cleanedSlug.map(
     (segment, index) => {
-      const href = `/all-products/${cleanedSlug?.slice(0, index + 1).join("/")}`;
+      const href = `/all-products/${cleanedSlug.slice(0, index + 1).join("/")}`;
       const label = segment.replace(/-/g, " ");
       return { href, label };
     },
   );
-
   return (
     <div className="bg-[#fffde0] min-h-screen font-sans">
-      <section className="relative overflow-hidden bg-[#FDFBE7] border-b border-[#EADDCA] pt-20 pb-10">
+      <section className="relative overflow-hidden bg-[#FDFBE7] border-b border-[#EADDCA] pt-32 sm:pt-40 lg:pt-20 pb-10">
         {/* Background Decorative Glow */}
         <div className="absolute top-10 right-0 w-[350px] h-[350px] bg-[#800000]/5 blur-[90px] rounded-full pointer-events-none" />
 
@@ -218,104 +235,102 @@ const AllProductLayout = async ({
         </section>
       )}
 
-      <section className="py-12 bg-[#FDFBE7]/30">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Top Info Bar */}
-          <div className="bg-white border border-[#EADDCA] rounded-2xl p-4 mb-10 flex items-center justify-between shadow-[0_4px_20px_rgba(128,0,0,0.03)]">
-            <div className="flex items-center gap-3">
-              <div className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
-              </div>
-              <p className="text-[#4A4A4A] font-medium m-0 text-sm">
-                Verified Deals:{" "}
-                <span className="text-[#1A1A1A] font-bold">
-                  {getLastUpdateDate(1)}
-                </span>
-              </p>
-            </div>
-            <div className="hidden md:block text-[10px] text-[#A52A2A]/50 font-bold uppercase tracking-[0.2em]">
-              Secure Shopping Experience
-            </div>
-          </div>
-
-          <div className="flex flex-col lg:flex-row gap-8">
-            {/* Sidebar Section */}
-            <aside className="w-full lg:w-[350px] shrink-0">
-              <div className="sticky top-8 flex flex-col gap-8">
-                {categories?.length > 0 && (
-                  <div className="bg-white rounded-[2.5rem] p-8 shadow-[0_10px_40px_rgba(128,0,0,0.03)] border border-[#EADDCA]/50">
-                    <CategorySidebarProduct
-                      categories={categories}
-                      pageSlug="all-products"
-                      categoryName={categoryName}
-                    />
-                  </div>
-                )}
-
-                {suggestedMerchants?.length > 0 && (
-                  <div className="bg-white rounded-[2.5rem] p-8 shadow-[0_20px_50px_rgba(128,0,0,0.04)] border border-[#EADDCA]/50 relative overflow-hidden">
-                    
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-[#800000]/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
-
-                    <h4 className="text-[#1A1A1A] text-xl font-bold mb-8 flex items-center gap-2 relative">
-                      Popular <span className="text-[#800000]">Stores</span>
-                    </h4>
-
-                    <div className="flex flex-col gap-4 mb-8 relative">
-                      {suggestedMerchants
-                        .slice(0, 6)
-                        .map((merchant: Merchant) => (
-                          <SidebarRoundMerchantCard
-                            key={merchant.unique_id}
-                            merchant={merchant}
-                            merSlug={storeSlug}
-                            slugType={slugType}
-                          />
-                        ))}
-                    </div>
-                    
-                    <div className="flex justify-center w-full mt-4">
-                      <Link
-                        href={`/all-stores/A`}
-                        className="group no-underline flex items-center justify-center gap-3 py-2.5 px-8 rounded-full border-2 border-[#800000] bg-transparent hover:bg-[#800000] transition-all duration-500 relative overflow-hidden shadow-sm hover:shadow-[#800000]/20"
-                      >
-                        
-                        <span className="relative z-10 text-[#800000] group-hover:text-white font-black text-[10px] uppercase tracking-[0.15em] transition-colors duration-500 whitespace-nowrap">
-                          View All Stores
-                        </span>
-
-                        <div className="relative z-10 flex items-center justify-center">
-                          <FontAwesomeIcon
-                            icon={faArrowRight}
-                            className="text-[#800000] group-hover:text-white text-[10px] group-hover:translate-x-1 transition-all duration-500"
-                          />
-                        </div>
-
-                        <div className="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                      </Link>
-                    </div>
-                  </div>
-                )}
-              </div>
-            </aside>
-
-            {/* Main Content Area */}
-            <div className="flex-1 min-w-0">
-              <div className="bg-white p-4 md:p-8 rounded-[2.5rem] shadow-[0_10px_40px_rgba(128,0,0,0.02)] border border-[#EADDCA]/50">
-                <ProductOffers
-                  category_id={categoryId}
-                  page={page}
-                  company_id={companyId}
-                  mer_slug={storeSlug}
-                  mer_slug_type={slugType}
-                  slug={slug}
-                />
-              </div>
-            </div>
-          </div>
+      <section className="py-8 md:py-12 bg-[#FDFBE7]/30">
+  <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Top Info Bar (Same as before) */}
+    <div className="bg-white border border-[#EADDCA] rounded-2xl p-3 md:p-4 mb-8 md:mb-10 flex items-center justify-between shadow-[0_4px_20px_rgba(128,0,0,0.03)]">
+      <div className="flex items-center gap-3">
+        <div className="relative flex h-2.5 w-2.5 md:h-3 md:w-3">
+          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+          <span className="relative inline-flex rounded-full h-2.5 w-2.5 md:h-3 md:w-3 bg-green-500"></span>
         </div>
-      </section>
+        <p className="text-[#4A4A4A] font-medium m-0 text-[12px] md:text-sm">
+          Verified Deals: <span className="text-[#1A1A1A] font-bold">{getLastUpdateDate(1)}</span>
+        </p>
+      </div>
+      <div className="hidden md:block text-[10px] text-[#A52A2A]/50 font-bold uppercase tracking-[0.2em]">
+        Secure Shopping Experience
+      </div>
+    </div>
+
+    <div className="flex flex-col lg:flex-row gap-8">
+      {/* Main Content Area */}
+      <div className="flex-1 min-w-0 order-1 lg:order-2">
+        {/* Card Box Div */}
+        <div className="bg-white p-4 md:p-8 rounded-[1.5rem] md:rounded-[2.5rem] shadow-[0_10px_40px_rgba(128,0,0,0.02)] border border-[#EADDCA]/50">
+          <ProductOffers
+            category_id={categoryId}
+            page={page}
+            company_id={companyId}
+            mer_slug={storeSlug}
+            mer_slug_type={slugType}
+            slug={slug}
+            limit={18}
+          />
+        </div>
+
+        {/* UPDATED: Pagination is now OUTSIDE the white card box */}
+        {totalPages > 1 && (
+          <div className="mt-12 flex justify-center pb-8">
+            <Pagination
+              currentPage={currentPage}
+              totalPages={totalPages}
+              baseUrl={baseUrl}
+            />
+          </div>
+        )}
+      </div>
+
+      {/* Sidebar Section */}
+      <aside className="w-full lg:w-[350px] shrink-0 order-2 lg:order-1">
+        <div className="sticky top-8 flex flex-col gap-6 md:gap-8">
+          {categories?.length > 0 && (
+            <div className="bg-white rounded-[1.5rem] md:rounded-[2.5rem] p-6 md:p-8 shadow-[0_10px_40px_rgba(128,0,0,0.03)] border border-[#EADDCA]/50">
+              <CategorySidebarProduct
+                categories={categories}
+                pageSlug="all-products"
+                categoryName={categoryName}
+              />
+            </div>
+          )}
+
+          {suggestedMerchants?.length > 0 && (
+            <div className="bg-white rounded-[1.5rem] md:rounded-[2.5rem] p-6 md:p-8 shadow-[0_20px_50px_rgba(128,0,0,0.04)] border border-[#EADDCA]/50 relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#800000]/5 rounded-full -mr-16 -mt-16 blur-3xl"></div>
+              <h4 className="text-[#1A1A1A] text-lg md:text-xl font-bold mb-6 md:mb-8 flex items-center gap-2 relative">
+                Popular <span className="text-[#800000]">Stores</span>
+              </h4>
+              <div className="flex flex-col gap-4 mb-6 md:mb-8 relative">
+                {suggestedMerchants.slice(0, 6).map((merchant: Merchant) => (
+                  <SidebarRoundMerchantCard
+                    key={merchant.unique_id}
+                    merchant={merchant}
+                    merSlug={storeSlug}
+                    slugType={slugType}
+                  />
+                ))}
+              </div>
+              <div className="flex justify-center w-full mt-2 md:mt-4">
+                <Link
+                  href={`/all-stores/A`}
+                  className="group no-underline flex items-center justify-center gap-3 py-2.5 px-8 rounded-full border-2 border-[#800000] bg-transparent hover:bg-[#800000] transition-all duration-500 relative overflow-hidden shadow-sm hover:shadow-[#800000]/20 w-full md:w-auto"
+                >
+                  <span className="relative z-10 text-[#800000] group-hover:text-white font-black text-[10px] uppercase tracking-[0.15em] transition-colors duration-500 whitespace-nowrap">
+                    View All Stores
+                  </span>
+                  <FontAwesomeIcon
+                    icon={faArrowRight}
+                    className="relative z-10 text-[#800000] group-hover:text-white text-[10px] group-hover:translate-x-1 transition-all duration-500"
+                  />
+                </Link>
+              </div>
+            </div>
+          )}
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
 
       {page !== "1" && (
         <AllProductsSchema

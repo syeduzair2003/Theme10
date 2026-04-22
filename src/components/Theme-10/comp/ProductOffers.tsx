@@ -12,6 +12,7 @@ interface Props {
   mer_slug_type: string;
   category_id?: string;
   slug?: string[];
+  limit?: 18;
 }
 
 const ProductOffers = async ({
@@ -24,7 +25,7 @@ const ProductOffers = async ({
 }: Props) => {
   const currentPage = Math.max(1, parseInt(page || "1", 10));
   const offersData = (
-    await apiGetAllProducts(company_id, category_id, currentPage.toString(), 30)
+    await apiGetAllProducts(company_id, category_id, currentPage.toString(), 18)
   ).data;
   const totalPages = offersData?.pagination?.last_page || 0;
   const domain = (await cookieService.get("domain")).domain;
@@ -71,7 +72,7 @@ const ProductOffers = async ({
       </div>
 
       {/* Pagination */}
-      {totalPages > 1 && (
+      {/* {totalPages > 1 && (
         <div className="mt-16 flex justify-center pb-8">
           <Pagination
             currentPage={currentPage}
@@ -79,7 +80,7 @@ const ProductOffers = async ({
             baseUrl={baseUrl}
           />
         </div>
-      )}
+      )} */}
     </div>
   );
 };

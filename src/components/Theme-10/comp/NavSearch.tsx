@@ -78,8 +78,8 @@ const NavSearch = ({ companyId, mer_slug, slug_type, cat_slug }: Props) => {
 
   return (
     <div className="relative w-full group/search">
-      <div className="flex items-center bg-white/50 backdrop-blur-sm rounded-2xl border border-[#800000]/10 focus-within:bg-white focus-within:border-[#800000]/40 focus-within:shadow-[0_10px_30px_rgba(128,0,0,0.05)] transition-all duration-500 px-4 py-1.5">
-        <FaSearch className="text-slate-400 group-focus-within/search:text-[#800000] transition-colors mr-3 text-sm" />
+      <div className="flex items-center bg-white/50 backdrop-blur-sm rounded-2xl border border-[#800000]/10 focus-within:bg-white focus-within:border-[#800000]/40 focus-within:shadow-[0_10px_30px_rgba(128,0,0,0.05)] transition-all duration-500 px-3 md:px-4 py-1.5">
+        <FaSearch className="text-slate-400 group-focus-within/search:text-[#800000] transition-colors mr-2 md:mr-3 text-sm" />
         <input
           ref={inputRef}
           type="text"
@@ -88,19 +88,19 @@ const NavSearch = ({ companyId, mer_slug, slug_type, cat_slug }: Props) => {
           onFocus={() => setIsOpen(true)}
           onBlur={() => setTimeout(() => setIsOpen(false), 250)}
           placeholder="Search stores or deals..."
-          className="flex-1 bg-transparent outline-none text-[14px] text-slate-700 placeholder-slate-400 font-medium py-2"
+          className="flex-1 bg-transparent outline-none text-[13px] md:text-[14px] text-slate-700 placeholder-slate-400 font-medium py-2 w-full"
         />
         {search && (
           <button
             onClick={clearSearch}
-            className="p-1 hover:bg-slate-100 rounded-full transition-colors mr-2"
+            className="p-1 hover:bg-slate-100 rounded-full transition-colors mr-1 md:mr-2"
           >
             <FaTimes className="text-slate-400 text-[10px]" />
           </button>
         )}
         <button
           onClick={() => search && router.push(`/search?query=${search}`)}
-          className="bg-[#800000] hover:bg-[#600000] text-white px-5 py-2 rounded-xl text-[13px] font-bold transition-all active:scale-95 shadow-md shadow-[#800000]/10"
+          className="bg-[#800000] hover:bg-[#600000] text-white px-3 md:px-5 py-2 rounded-xl text-[12px] md:text-[13px] font-bold transition-all active:scale-95 shadow-md shadow-[#800000]/10 shrink-0"
         >
           Search
         </button>
@@ -110,21 +110,23 @@ const NavSearch = ({ companyId, mer_slug, slug_type, cat_slug }: Props) => {
         (tagsData.length > 0 ||
           merchantData.length > 0 ||
           categoriesData.length > 0) && (
-          <div className="absolute left-0 mt-4 w-[520px] bg-[#FEF9E7] backdrop-blur-xl rounded-[2.5rem] shadow-[0_30px_70px_rgba(0,0,0,0.15)] z-[999] max-h-[480px] overflow-y-auto no-scrollbar border border-white/60 p-2 animate-in fade-in slide-in-from-top-4 duration-500">
-            <div className="p-5 space-y-7">
+          /* FIXED: Added responsive width (w-full on mobile, w-[520px] on desktop) */
+          <div className="absolute left-0 mt-4 w-full md:w-[520px] bg-[#FEF9E7] backdrop-blur-xl rounded-[1.5rem] md:rounded-[2.5rem] shadow-[0_30px_70px_rgba(0,0,0,0.15)] z-[999] max-h-[400px] md:max-h-[480px] overflow-y-auto no-scrollbar border border-white/60 p-1 md:p-2 animate-in fade-in slide-in-from-top-4 duration-500">
+            <div className="p-4 md:p-5 space-y-6 md:space-y-7">
               {merchantData.length > 0 && (
                 <div>
-                  <h3 className="flex items-center gap-2 text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4 px-2">
+                  <h3 className="flex items-center gap-2 text-[10px] md:text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4 px-2">
                     <FaStore className="text-[#800000]/60" /> Top Merchants
                   </h3>
-                  <div className="grid grid-cols-2 gap-3">
+                  {/* FIXED: Single column on very small screens, 2 columns on others */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {merchantData.map((merchant, i) => (
                       <Link
                         key={i}
                         href={getMerchantHref(merchant, mer_slug, slug_type)}
-                        className="no-underline flex items-center gap-3 p-3 rounded-2xl bg-white/40 hover:bg-white transition-all group border border-transparent hover:border-[#800000]/10 hover:shadow-sm"
+                        className="no-underline flex items-center gap-3 p-2.5 md:p-3 rounded-2xl bg-white/40 hover:bg-white transition-all group border border-transparent hover:border-[#800000]/10 hover:shadow-sm"
                       >
-                        <div className="w-11 h-11 relative bg-white rounded-xl p-2 border border-slate-50 group-hover:scale-105 transition-transform shadow-sm">
+                        <div className="w-10 h-10 md:w-11 md:h-11 relative bg-white rounded-xl p-2 border border-slate-50 group-hover:scale-105 transition-transform shadow-sm shrink-0">
                           <Image
                             src={merchant.merchant_logo}
                             alt={merchant.merchant_name}
@@ -132,7 +134,7 @@ const NavSearch = ({ companyId, mer_slug, slug_type, cat_slug }: Props) => {
                             className="object-contain p-1.5"
                           />
                         </div>
-                        <span className="font-bold text-slate-700 group-hover:text-[#800000] truncate text-[13px]">
+                        <span className="font-bold text-slate-700 group-hover:text-[#800000] truncate text-[12px] md:text-[13px]">
                           {merchant.merchant_name}
                         </span>
                       </Link>
@@ -142,15 +144,15 @@ const NavSearch = ({ companyId, mer_slug, slug_type, cat_slug }: Props) => {
               )}
               {tagsData.length > 0 && (
                 <div className="animate-in fade-in slide-in-from-bottom-2 duration-700 delay-150">
-                  <h3 className="flex items-center gap-2 text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4 px-2">
+                  <h3 className="flex items-center gap-2 text-[10px] md:text-[11px] font-black text-slate-400 uppercase tracking-[0.2em] mb-4 px-2">
                     <FaTags className="text-[#800000]/60" /> Trending Keywords
                   </h3>
-                  <div className="flex flex-wrap gap-2 px-2">
+                  <div className="flex flex-wrap gap-2 px-1 md:px-2">
                     {tagsData.slice(0, 8).map((item, i) => (
                       <Link
                         key={i}
                         href={`/search?query=${item}`}
-                        className="no-underline text-slate-600 px-4 py-2 bg-white/60 rounded-xl text-[11px] font-bold hover:bg-[#800000] hover:text-white transition-all shadow-sm"
+                        className="no-underline text-slate-600 px-3 md:px-4 py-2 bg-white/60 rounded-xl text-[10px] md:text-[11px] font-bold hover:bg-[#800000] hover:text-white transition-all shadow-sm"
                       >
                         #{item}
                       </Link>
