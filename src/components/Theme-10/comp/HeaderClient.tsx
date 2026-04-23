@@ -197,15 +197,16 @@ const HeaderClient = ({
     {/* MOBILE NAVIGATION */}
     <div className="lg:hidden">
       <MobileNavMenu 
-        nav={[]} 
-        company_id={company_id} 
-        mer_slug={mer_slug} 
-        slug_type={slug_type} 
-        cat_slug={cat_slug} 
-        categories={categories} 
-        merchants={merchants} 
-        events={events} 
-      />
+          company_id={company_id} 
+          mer_slug={mer_slug} 
+          slug_type={slug_type} 
+          cat_slug={cat_slug} 
+          categories={categories} 
+          merchants={merchants} 
+          events={events}
+          promotions={promotions}
+          promotion_slug={promotion_slug}
+        />
     </div>
   </div>
 </div>

@@ -109,12 +109,12 @@ const CategoryMerchantPage = async ({ params }: Props) => {
           </span>
         </nav>
 
-        {/* Heading - text-2xl/3xl for mobile to ensure it fits */}
+        {/* Heading */}
         <h1 className="text-3xl md:text-5xl lg:text-6xl font-black leading-[1.2] md:leading-[1.1] text-white tracking-tighter">
           {getRandomCategorySeoTitle(catRes?.name)}
         </h1>
 
-        {/* Description - text-sm for better fit on small screens */}
+        {/* Description */}
         <p className="text-sm md:text-lg text-[#fffde0]/80 max-w-xl font-medium leading-relaxed mx-auto lg:mx-0 px-2 md:px-0">
           Save big with our hand-picked deals and verified promo codes for top brands in{" "}
           <span className="text-white underline decoration-[#fffde0]/30">
@@ -191,10 +191,9 @@ const CategoryMerchantPage = async ({ params }: Props) => {
       {/* MAIN CONTENT SECTION */}
 <section className="py-10 md:py-20 bg-[#fffde0]">
   <div className="container mx-auto px-4">
-    {/* Flex-col-reverse handle karega ke mobile par Coupons pehle dikhen */}
     <div className="flex flex-col lg:flex-row gap-8 md:gap-12">
       
-      {/* Left Content Coupons - order-1 on mobile for primary visibility */}
+      {/* Left Content Coupons */}
       <div className="w-full lg:w-2/3 xl:w-3/4 order-1 lg:order-1">
         <div className="mb-8 md:mb-12 text-center lg:text-left">
           <h2 className="text-2xl md:text-4xl font-black text-[#1A1A1A] mb-3 md:mb-4 tracking-tighter leading-tight">

@@ -21,7 +21,7 @@ interface Props {
 }
 
 const ALPHABETS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-const PAGE_SIZE = 33;
+const PAGE_SIZE = 32;
 
 const AllStoresPage = async ({
   store_slug,

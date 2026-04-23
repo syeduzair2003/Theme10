@@ -22,33 +22,21 @@ const RateUs = ({ offer_id, company_id }: RatingProps) => {
     }
   }, [offer_id]);
 
-  const handleRate = async (e: React.FormEvent) => {
+  const handleStarClick = (index: number) => {
+    if (hasRated) return;
+    setRating(index + 1);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
     if (hasRated) {
-      toast.error("You have already rated please try again later!", {
-        autoClose: 2000,
-      });
+      toast.error("You have already rated. Please try again later!", { autoClose: 2000 });
       return;
     }
-    handleSubmit();
-    localStorage.setItem(
-      `hasRated_${offer_id}`,
-      new Date().getTime().toString(),
-    );
-    setHasRated(true);
-  };
-
-  const handleStarClick = (index: number) => {
-    setRating(index + 1); // Add 1 because array is 0-based
-  };
-
-  const handleSubmit = async (e?: React.FormEvent) => {
-    e?.preventDefault();
 
     if (!rating && !comment.trim()) {
-      toast.error("Please select a rating or add a comment.", {
-        autoClose: 2000,
-      });
+      toast.error("Please select a rating or add a comment.", { autoClose: 2000 });
       return;
     }
 
@@ -59,81 +47,95 @@ const RateUs = ({ offer_id, company_id }: RatingProps) => {
         offer_id,
         company_id,
         comment,
-        rating.toString(),
+        rating.toString()
       );
 
-      if (response.status == "success") {
+      if (response.status === "success") {
         toast.success("Thank you for your feedback!", { autoClose: 2000 });
+        localStorage.setItem(`hasRated_${offer_id}`, new Date().getTime().toString());
+        setHasRated(true);
         setRating(0);
         setComment("");
       } else {
-        toast.error("An error occurred. Please try again later!", {
-          autoClose: 2000,
-        });
+        toast.error("An error occurred. Please try again later!");
       }
     } catch (error) {
-      toast.error("An error occurred while submitting feedback.", {
-        autoClose: 2000,
-      });
+      toast.error("An error occurred while submitting feedback.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="align-items-center p-3">
-      <h4 className="n17-color fw-bold fw-5">Rate This Product</h4>
-      <div className="d-flex align-items-center gap-1">
-        <form onSubmit={handleRate} autoComplete="off">
-          <ToastContainer />
-          <div className="row gy-4">
-            <div className="col-sm-12 col-xs-12">
-              <div className="rating" style={{ display: "flex", gap: "5px" }}>
-                {[...Array(5)].map((_, index) => (
+    <div className="w-full text-left">
+      <ToastContainer />
+      
+      <form onSubmit={handleSubmit} className="space-y-6">
+        {/* Rating Section */}
+        <div className="space-y-3">
+          <h4 className="text-[11px] font-black text-black uppercase tracking-[0.2em]">
+            Rate Your Experience
+          </h4>
+          
+          <div className="flex items-center gap-4">
+            <div className="flex gap-1.5">
+              {[...Array(5)].map((_, index) => (
+                <button
+                  key={index}
+                  type="button"
+                  disabled={hasRated}
+                  onClick={() => handleStarClick(index)}
+                  className={`transition-all duration-200 transform ${!hasRated && 'hover:scale-125 active:scale-95'}`}
+                >
                   <FontAwesomeIcon
-                    key={index}
                     icon={index < rating ? filledStar : emptyStar}
-                    onClick={() => handleStarClick(index)}
-                    style={{
-                      cursor: "pointer",
-                      fontSize: "20px",
-                      transition: "color 0.2s ease",
-                      color: index < rating ? "#FFD700" : "#ccc",
-                      width: "16px",
-                      height: "16px",
-                    }}
+                    className={`w-5 h-5 ${
+                      index < rating ? "text-[#800000]" : "text-black/10"
+                    }`}
                   />
-                ))}
-              </div>
-              <span className="text-body">
-                {rating
-                  ? `${rating} Star${rating > 1 ? "s" : ""}`
-                  : "Select Rating"}
-              </span>
+                </button>
+              ))}
             </div>
-            <div className="col-sm-12 col-xs-12">
-              <label htmlFor="comment" className="form-label mb-2">
-                <h4 className="n17-color fw-bold fw-5">Add a Comment</h4>
-              </label>
-              <textarea
-                className="common-input stylish-textarea comment-textarea"
-                id="comment"
-                placeholder="Add your comment"
-                value={comment}
-                onChange={(e) => setComment(e.target.value)}
-              />
-            </div>
-            <div className="btn-area d-center justify-content-start gap-3 gap-md-4">
-              <button
-                type="submit"
-                className="box-style box-second gap-2 gap-md-3 rounded-pill py-2 py-md-3 px-5 px-md-7 d-center"
-              >
-                <span className="fs-six text-nowrap">Submit</span>
-              </button>
-            </div>
+            <span className="text-[10px] font-bold text-[#800000] uppercase tracking-wider">
+              {rating ? `${rating} Star${rating > 1 ? "s" : ""}` : "Pick stars"}
+            </span>
           </div>
-        </form>
-      </div>
+        </div>
+
+        {/* Comment Section */}
+        <div className="space-y-2">
+          <label htmlFor="comment" className="text-[11px] font-black text-black uppercase tracking-[0.2em]">
+            Your Review
+          </label>
+          <textarea
+            id="comment"
+            disabled={hasRated}
+            placeholder={hasRated ? "Feedback already submitted" : "Tell us what you think..."}
+            className="w-full min-h-[100px] p-4 bg-[#FDFBF7] border border-black/10 rounded-xl text-sm text-black placeholder:text-black/30 focus:ring-2 focus:ring-[#800000]/20 focus:border-[#800000] outline-none transition-all resize-none"
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+          />
+        </div>
+
+        {/* Submit Button */}
+        <button
+          type="submit"
+          disabled={loading || hasRated}
+          className={`w-full py-4 rounded-xl font-black text-[12px] uppercase tracking-widest transition-all duration-300 shadow-lg flex items-center justify-center gap-2
+            ${hasRated 
+              ? "bg-black/5 text-black/40 cursor-not-allowed" 
+              : "bg-black text-[#FDFBF7] hover:bg-[#800000] active:scale-[0.98]"
+            }`}
+        >
+          {loading ? (
+            <div className="w-5 h-5 border-2 border-[#FDFBF7]/30 border-t-[#FDFBF7] rounded-full animate-spin" />
+          ) : hasRated ? (
+            "Feedback Sent"
+          ) : (
+            "Submit Review"
+          )}
+        </button>
+      </form>
     </div>
   );
 };

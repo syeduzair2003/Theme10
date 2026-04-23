@@ -47,7 +47,7 @@ const TrendingProducts = async ({
     const offersCount = offers.length;
 
     return (
-      <div className={`relative ${!isFirst ? "mt-24" : ""}`}>
+      <div className={`relative ${!isFirst ? "mt-16" : ""}`}>
         {/* --- HEADER SECTION --- */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 relative z-10">
           <div className="flex items-center gap-5">
@@ -71,7 +71,7 @@ const TrendingProducts = async ({
             <div className="space-y-2 text-left">
               <h2 className="text-4xl md:text-5xl font-black text-[#1A1A1A] tracking-tight">
                 {headingFirst} <br />
-                <span className="text-[#800000] drop-shadow-[0_0_15px_rgba(128,0,0,0.1)]">
+                <span className="text-3xl md:text-4xl text-[#800000] drop-shadow-[0_0_15px_rgba(128,0,0,0.1)]">
                   {headingSecond}
                 </span>
               </h2>
@@ -169,7 +169,7 @@ const TrendingProducts = async ({
   if (!responseData?.first && !responseData?.second) return null;
 
   return (
-    <section className="bg-[#fffde0] py-20 px-6 lg:px-20 overflow-hidden relative">
+    <section className="bg-[#fffde0] py-16 px-4 lg:px-20 overflow-hidden relative">
       {/* Preserving your Top Divider Line */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-[#800000]/10 via-[#800000]/60 via-[#800000]/10 to-transparent opacity-100" />
 
@@ -179,7 +179,7 @@ const TrendingProducts = async ({
 
         {/* Styled Divider (Logic from Code 1, Styled with Maroon from Code 2) */}
         {responseData?.first && responseData?.second && (
-          <div className="my-24 flex items-center justify-center gap-4 opacity-30">
+          <div className="my-16 flex items-center justify-center gap-4 opacity-30">
             <div className="h-px flex-1 bg-gradient-to-r from-transparent to-[#800000]"></div>
             <div className="w-2 h-2 rounded-full bg-[#800000]"></div>
             <div className="h-px flex-1 bg-gradient-to-l from-transparent to-[#800000]"></div>

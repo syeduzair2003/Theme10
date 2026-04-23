@@ -10,6 +10,7 @@ import {
 } from "@/constants/hooks";
 import OfferOutUrl from "@/components/shared/OfferOutUrl";
 import Link from "next/link";
+import OfferDetailsToggle from "./OfferDetailsToggle";
 import {
   Calendar,
   Tag,
@@ -86,9 +87,15 @@ const EventOfferCard = ({
           {discardHTMLTags(product?.offer_title)}
         </h5>
 
-        <div className="flex items-center justify-center gap-1 text-[8px] font-bold text-slate-400 mb-3 uppercase">
-          <Calendar size={10} className="text-[#800000]" />
-          {calculateOfferDuration(product?.end_date)}
+        <div className="flex items-center justify-center gap-1 text-[11px] font-bold text-slate-400 mb-3">
+          <OfferDetailsToggle
+            domain={domain}
+            imageSrc={imageSrc}
+            merchantHref={merchantHref}
+            offer={product}
+            type="anchor"
+            buttonClass="text-slate-400 font-semibold hover:text-[#800000] transition"
+          />
         </div>
 
         <div className="mt-auto mb-3">

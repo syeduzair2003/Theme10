@@ -82,139 +82,149 @@ const OffersListView = ({
   );
 
   return (
-    <div className="group relative mb-6"> {/* Margin reduced for tighter list */}
-  {/* --- Luxury Ambient Glow (Subtle) --- */}
-  <div className="absolute -inset-0.5 bg-[#800000]/10 rounded-[1.8rem] blur-lg opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none"></div>
+    <div className="group relative mb-6">
+      {" "}
+      {/* Margin reduced for tighter list */}
+      {/* --- Luxury Ambient Glow (Subtle) --- */}
+      <div className="absolute -inset-0.5 bg-[#800000]/10 rounded-[1.8rem] blur-lg opacity-0 group-hover:opacity-100 transition duration-500 pointer-events-none"></div>
+      <div className="relative flex flex-col lg:flex-row bg-white rounded-[1.8rem] shadow-sm overflow-hidden border border-[#800000]/5 transition-all duration-300 group-hover:border-[#800000]/20">
+        {/* --- Left Part: Compact Branding --- */}
+        <div className="lg:w-[22%] bg-[#FDFCF0]/40 p-5 flex flex-col items-center justify-center relative border-b lg:border-b-0 lg:border-r border-dashed border-[#800000]/10">
+          {/* Smaller Ticket Notches */}
+          <div className="hidden lg:block absolute -top-3 -right-3 w-6 h-6 bg-[#FDFCF0] rounded-full border border-[#800000]/5 shadow-inner"></div>
+          <div className="hidden lg:block absolute -bottom-3 -right-3 w-6 h-6 bg-[#FDFCF0] rounded-full border border-[#800000]/5 shadow-inner"></div>
 
-  <div className="relative flex flex-col lg:flex-row bg-white rounded-[1.8rem] shadow-sm overflow-hidden border border-[#800000]/5 transition-all duration-300 group-hover:border-[#800000]/20">
-    
-    {/* --- Left Part: Compact Branding --- */}
-    <div className="lg:w-[22%] bg-[#FDFCF0]/40 p-5 flex flex-col items-center justify-center relative border-b lg:border-b-0 lg:border-r border-dashed border-[#800000]/10">
-      {/* Smaller Ticket Notches */}
-      <div className="hidden lg:block absolute -top-3 -right-3 w-6 h-6 bg-[#FDFCF0] rounded-full border border-[#800000]/5 shadow-inner"></div>
-      <div className="hidden lg:block absolute -bottom-3 -right-3 w-6 h-6 bg-[#FDFCF0] rounded-full border border-[#800000]/5 shadow-inner"></div>
+          <div className="relative w-20 h-20 lg:w-24 lg:h-24 bg-white rounded-2xl p-3 shadow-sm group-hover:scale-105 transition-transform duration-500 flex items-center justify-center border border-[#800000]/5">
+            <Image
+              src={getBaseImageUrl(
+                domain,
+                product?.offer?.product_image ||
+                  product?.offer?.merchant?.merchant_logo,
+                "",
+              )}
+              alt="Offer"
+              width={80}
+              height={80}
+              className="object-contain"
+            />
+          </div>
 
-      <div className="relative w-20 h-20 lg:w-24 lg:h-24 bg-white rounded-2xl p-3 shadow-sm group-hover:scale-105 transition-transform duration-500 flex items-center justify-center border border-[#800000]/5">
-        <Image
-          src={getBaseImageUrl(domain, product?.offer?.product_image || product?.merchant?.merchant_logo, "")}
-          alt="Offer"
-          width={80}
-          height={80}
-          className="object-contain"
-        />
-      </div>
-
-      {finalDiscountTag && (
-        <div className="mt-3 px-3 py-1 bg-[#800000] text-[#FDFCF0] text-[8px] font-black uppercase tracking-widest rounded-full">
-          {finalDiscountTag}
-        </div>
-      )}
-    </div>
-
-    {/* --- Middle Part: Content (Truncated) --- */}
-    <div className="lg:w-[53%] p-6 flex flex-col justify-center bg-white">
-      <div className="flex items-center gap-3 mb-2">
-        <div className="flex items-center gap-1">
-          <div className="w-1 h-1 rounded-full bg-emerald-500"></div>
-          <span className="text-[7px] font-black text-emerald-600 uppercase tracking-widest">Verified</span>
-        </div>
-        <div className="text-[10px] scale-90 origin-left">
-           <OfferDuration endDate={product?.offer?.end_date} />
-        </div>
-      </div>
-
-      {/* Heading with Truncation (line-clamp-2) */}
-      <h4 className="text-lg lg:text-xl font-black text-[#1A1A1A] leading-tight tracking-tighter uppercase line-clamp-2 transition-colors group-hover:text-[#800000] min-h-[3rem] lg:min-h-0">
-        {discardHTMLTags(product?.offer?.offer_title?.replaceAll("_", " "))}
-      </h4>
-
-      <div className="flex items-center gap-4 mt-3">
-        {/* Rating Badge Small */}
-        <div className="flex items-center bg-[#FDFCF0] px-2 py-1 rounded-lg border border-[#800000]/5 scale-90 origin-left">
-          <RenderRating rating={getRandomRating(product.offer?.rating)} />
-          <span className="ml-1.5 text-[11px] font-black text-[#800000]">
-            {getRandomRating(product?.offer?.rating)}
-          </span>
-        </div>
-      
-        <OfferDetailsToggle
-          domain={domain}
-          imageSrc={product?.offer?.product_image}
-          merchantHref={merchantHref}
-          offer={product?.offer}
-          type="anchor"
-          buttonClass="text-[11px] font-bold text-slate-400 hover:text-[#800000] transition-colors"
-        />
-      </div>
-
-      {product?.offer?.offer_type?.name === "product" && (
-        <div className="mt-3 flex items-baseline gap-2">
-          <span className="text-xl font-black text-[#1A1A1A]">
-            {getCurrencySymbol(product?.offer?.currency)}{product?.offer?.sale_price}
-          </span>
-          <span className="text-[10px] font-bold text-slate-400 line-through decoration-[#800000]/40">
-            {getCurrencySymbol(product?.offer?.currency)}{product?.offer?.original_price}
-          </span>
-        </div>
-      )}
-    </div>
-
-    {/* --- Right Part: Compact Action --- */}
-    <div className="lg:w-[25%] p-6 bg-[#FDFCF0]/20 flex items-center justify-center border-t lg:border-t-0 lg:border-l border-[#800000]/5">
-      <div className="w-full">
-        {product?.offer?.coupon_code ? (
-          <OfferOutUrl
-            unique_id={product?.offer?.unique_id}
-            outUrl={product?.offer?.url}
-            merchantHref={merchantHref}
-            domain={domain}
-            customClass="relative w-full h-14 bg-white border-2 border-dashed border-[#800000]/20 rounded-xl flex flex-col items-center justify-center group/btn overflow-hidden transition-all hover:border-[#800000]"
-          >
-            <span className="text-[7px] font-black text-[#800000]/60 uppercase tracking-widest mb-0.5 group-hover/btn:opacity-0 transition-opacity">
-              CODE
-            </span>
-            <span className="text-[#1A1A1A] font-mono font-black text-sm group-hover/btn:opacity-0 transition-opacity tracking-widest">
-              {product?.offer?.coupon_code.trim().slice(0, 8)}
-            </span>
-            <div className="absolute inset-0 bg-[#800000] flex items-center justify-center text-[#FDFCF0] font-black text-[10px] tracking-widest translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300">
-              GET CODE
+          {finalDiscountTag && (
+            <div className="mt-3 px-3 py-1 bg-[#800000] text-[#FDFCF0] text-[8px] font-black uppercase tracking-widest rounded-full">
+              {finalDiscountTag}
             </div>
-          </OfferOutUrl>
-        ) : (
-          <OfferOutUrl
-            unique_id={product.offer.unique_id}
-            outUrl={product.offer.url}
-            merchantHref={merchantHref}
-            domain={domain}
-            customClass="no-underline w-full h-12 bg-[#1A1A1A] text-[#FDFCF0] font-black rounded-xl flex items-center justify-center hover:bg-[#800000] shadow-sm transition-all duration-300 text-[10px] tracking-widest uppercase"
-          >
-            {product?.offer?.offer_type?.name === "product" ? "Buy" : "Get Deal"}
-          </OfferOutUrl>
-        )}
-      </div>
-    </div>
-  </div>
+          )}
+        </div>
 
-  {/* Modals Logic stays exactly as you provided */}
-  {showModal && p_data != null && !ads_campaign && (
-    <OfferModal
-      data={p_data}
-      companyId={companyId}
-      onClose={() => setShowModal(false)}
-      domain={domain}
-      merchantHref={merchantHref}
-    />
-  )}
-  {showModal && ads_campaign && p_data != null && (
-    <SimpleOfferModal
-      data={p_data}
-      onClose={() => setShowModal(false)}
-      domain={domain}
-      merchantHref={merchantHref}
-      finalDiscountTag={finalDiscountTag}
-    />
-  )}
-</div>
+        {/* --- Middle Part: Content (Truncated) --- */}
+        <div className="lg:w-[53%] p-6 flex flex-col justify-center bg-white">
+          <div className="flex items-center gap-3 mb-2">
+            <div className="flex items-center gap-1">
+              <div className="w-1 h-1 rounded-full bg-emerald-500"></div>
+              <span className="text-[7px] font-black text-emerald-600 uppercase tracking-widest">
+                Verified
+              </span>
+            </div>
+            <div className="text-[10px] scale-90 origin-left">
+              <OfferDuration endDate={product?.offer?.end_date} />
+            </div>
+          </div>
+
+          {/* Heading with Truncation (line-clamp-2) */}
+          <h4 className="text-lg lg:text-xl font-black text-[#1A1A1A] leading-tight tracking-tighter uppercase line-clamp-2 transition-colors group-hover:text-[#800000] min-h-[3rem] lg:min-h-0">
+            {discardHTMLTags(product?.offer?.offer_title?.replaceAll("_", " "))}
+          </h4>
+
+          <div className="flex items-center gap-4 mt-3">
+            {/* Rating Badge Small */}
+            <div className="flex items-center bg-[#FDFCF0] px-2 py-1 rounded-lg border border-[#800000]/5 scale-90 origin-left">
+              <RenderRating rating={getRandomRating(product.offer?.rating)} />
+              <span className="ml-1.5 text-[11px] font-black text-[#800000]">
+                {getRandomRating(product?.offer?.rating)}
+              </span>
+            </div>
+
+            <OfferDetailsToggle
+              domain={domain}
+              imageSrc={product?.offer?.product_image}
+              merchantHref={merchantHref}
+              offer={product?.offer}
+              type="anchor"
+              buttonClass="text-[11px] font-bold text-slate-400 hover:text-[#800000] transition-colors"
+            />
+          </div>
+
+          {product?.offer?.offer_type?.name === "product" && (
+            <div className="mt-3 flex items-baseline gap-2">
+              <span className="text-xl font-black text-[#1A1A1A]">
+                {getCurrencySymbol(product?.offer?.currency)}
+                {product?.offer?.sale_price}
+              </span>
+              <span className="text-[10px] font-bold text-slate-400 line-through decoration-[#800000]/40">
+                {getCurrencySymbol(product?.offer?.currency)}
+                {product?.offer?.original_price}
+              </span>
+            </div>
+          )}
+        </div>
+
+        {/* --- Right Part: Compact Action --- */}
+        <div className="lg:w-[25%] p-6 bg-[#FDFCF0]/20 flex items-center justify-center border-t lg:border-t-0 lg:border-l border-[#800000]/5">
+          <div className="w-full">
+            {product?.offer?.coupon_code ? (
+              <OfferOutUrl
+                unique_id={product?.offer?.unique_id}
+                outUrl={product?.offer?.url}
+                merchantHref={merchantHref}
+                domain={domain}
+                customClass="relative w-full h-14 bg-white border-2 border-dashed border-[#800000]/20 rounded-xl flex flex-col items-center justify-center group/btn overflow-hidden transition-all hover:border-[#800000]"
+              >
+                <span className="text-[7px] font-black text-[#800000]/60 uppercase tracking-widest mb-0.5 group-hover/btn:opacity-0 transition-opacity">
+                  CODE
+                </span>
+                <span className="text-[#1A1A1A] font-mono font-black text-sm group-hover/btn:opacity-0 transition-opacity tracking-widest">
+                  {product?.offer?.coupon_code.trim().slice(0, 8)}
+                </span>
+                <div className="absolute inset-0 bg-[#800000] flex items-center justify-center text-[#FDFCF0] font-black text-[10px] tracking-widest translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300">
+                  GET CODE
+                </div>
+              </OfferOutUrl>
+            ) : (
+              <OfferOutUrl
+                unique_id={product.offer.unique_id}
+                outUrl={product.offer.url}
+                merchantHref={merchantHref}
+                domain={domain}
+                customClass="no-underline w-full h-12 bg-[#1A1A1A] text-[#FDFCF0] font-black rounded-xl flex items-center justify-center hover:bg-[#800000] shadow-sm transition-all duration-300 text-[10px] tracking-widest uppercase"
+              >
+                {product?.offer?.offer_type?.name === "product"
+                  ? "Buy"
+                  : "Get Deal"}
+              </OfferOutUrl>
+            )}
+          </div>
+        </div>
+      </div>
+      {/* Modals Logic stays exactly as you provided */}
+      {showModal && p_data != null && !ads_campaign && (
+        <OfferModal
+          data={p_data}
+          companyId={companyId}
+          onClose={() => setShowModal(false)}
+          domain={domain}
+          merchantHref={merchantHref}
+        />
+      )}
+      {showModal && ads_campaign && p_data != null && (
+        <SimpleOfferModal
+          data={p_data}
+          onClose={() => setShowModal(false)}
+          domain={domain}
+          merchantHref={merchantHref}
+          finalDiscountTag={finalDiscountTag}
+        />
+      )}
+    </div>
   );
 };
 

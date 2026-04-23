@@ -139,7 +139,7 @@ const Footer = async ({
         </div>
 
         {/* Middle Section: Links Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 border-t border-[#FFFDF5]/10 pt-16 pb-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 border-t border-[#FFFDF5]/10 pt-16 pb-2">
           {/* 1. Trending Categories */}
           <div className="group/card p-6 rounded-2xl border border-[#FFFDF5]/5 bg-black/40 hover:border-[#FFFDF5]/20 hover:bg-black/60 transition-all duration-700 shadow-xl relative overflow-hidden backdrop-blur-sm">
             <h4 className="text-[#FFFDF5] font-black text-[10px] uppercase tracking-[0.3em] flex items-center gap-3 mb-8 opacity-90">
@@ -270,64 +270,103 @@ const Footer = async ({
           </div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="pt-10 border-t border-[#FFFDF5]/10">
-          <div className="flex flex-col items-center gap-10">
-            {disclaimer?.disclaimer?.disclaimer && (
-              <div className="w-full max-w-lg p-6 md:p-8 rounded-tr-[3rem] rounded-bl-[3rem] bg-black/30 border border-[#FFFDF5]/30 hover:border-[#FFFDF5]/10 transition-all duration-500 group/disc backdrop-blur-sm text-center">
-                <div
-                  className="text-sm leading-relaxed text-[#FFFDF5]/90 group-hover/disc:text-[#FFFDF5]/60 transition-colors italic mx-auto"
-                  dangerouslySetInnerHTML={{
-                    __html: disclaimer?.disclaimer?.disclaimer || "",
-                  }}
-                />
-              </div>
-            )}
-
-            {/* Bottom Row */}
-            <div className="w-full flex flex-col md:flex-row justify-between items-center gap-6">
-              {/* Copyright & Registration Info */}
-              <div className="text-[10px] tracking-[0.2em] font-black text-[#FFFDF5]/40 uppercase text-center md:text-left">
+        {/* Bottom Row - Integrated Disclaimer & Copyright */}
+        <div className="w-full mt-16 pt-10 border-t border-[#FFFDF5]/5">
+          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-start justify-between gap-10">
+            {/* Left Side: Copyright & Registration Info */}
+            <div className="w-full lg:w-1/4 shrink-0 text-center lg:text-left">
+              <div className="text-[10px] tracking-[0.2em] font-black text-[#FFFDF5]/40 uppercase space-y-2">
                 {companyDomain.domain === "gettopdiscounts.com" ? (
-                  <span className="flex flex-wrap items-center justify-center md:justify-start gap-2">
-                    © {new Date().getFullYear()}{" "}
-                    <span className="text-[#FFFDF5]">GETTOPDISCOUNTS LLC</span>
-                    <span className="hidden md:block w-1 h-1 rounded-full bg-white shadow-[0_0_5px_rgba(0,0,0,0.5)]"></span>
-                    <span className="font-extrabold">U.S. REGISTERED</span>
-                  </span>
+                  <>
+                    <div className="text-[#FFFDF5] text-xs">
+                      © {new Date().getFullYear()} GETTOPDISCOUNTS LLC
+                    </div>
+                    <div className="flex items-center justify-center lg:justify-start gap-2 opacity-60">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#800000]"></span>
+                      <span className="font-extrabold">U.S. REGISTERED</span>
+                    </div>
+                  </>
                 ) : (
-                  <span className="flex flex-wrap items-center justify-center md:justify-start gap-2">
-                    © {new Date().getFullYear()}{" "}
-                    <span className="text-[#FFFDF5] uppercase">
+                  <>
+                    <div className="text-[#FFFDF5] text-xs uppercase">
                       {companyName}
-                    </span>
-                    <span className="hidden md:block w-1 h-1 rounded-full bg-black"></span>
-                    ALL RIGHTS RESERVED
-                  </span>
+                    </div>
+                    <div className="opacity-60">
+                      © {new Date().getFullYear()} ALL RIGHTS RESERVED
+                    </div>
+                  </>
                 )}
               </div>
-
-              {/* Legal Links */}
-              <div className="flex gap-8 text-[10px] font-black uppercase tracking-[0.3em]">
-                <Link
-                  href="/privacy-policy"
-                  className="text-[#FFFDF5]/50 hover:text-[#FFFDF5] no-underline transition-all duration-300 relative group/link"
-                >
-                  Privacy
-                  <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-[#FFFDF5] group-hover/link:w-full transition-all duration-300"></span>
-                </Link>
-                <Link
-                  href="/terms-and-conditions"
-                  className="text-[#FFFDF5]/50 hover:text-[#FFFDF5] no-underline transition-all duration-300 relative group/link"
-                >
-                  Terms
-                  <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-[#FFFDF5] group-hover/link:w-full transition-all duration-300"></span>
-                </Link>
-              </div>
             </div>
+
+            {/* Right Side: Disclaimer Box */}
+            {disclaimer?.disclaimer?.disclaimer && (
+              <div className="relative flex-1 w-full pb-4 p-6 md:p-6 rounded-[2rem] bg-black border border-[#FFFDF5]/5 hover:border-[#FFFDF5]/10 transition-all duration-500 group/disc backdrop-blur-sm">
+                {/* Dynamic Disclaimer Heading Badge (Based on Screenshot Image_4) */}
+                <div className="absolute -top-4 left-6 lg:left-8 z-20 flex items-center group/badge cursor-default">
+                  {/* 1. Yellow Warning Triangle with Exclamation */}
+                  <div className="relative z-30 shrink-0 transform -rotate-[5deg] -translate-x-1 hover:rotate-0 transition-transform duration-300">
+                    <svg
+                      viewBox="0 0 24 24"
+                      className="w-10 h-10 md:w-11 md:h-11 drop-shadow-lg"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      {/* Main Triangle Body */}
+                      <path
+                        d="M12.0122 3.19302C12.3392 2.62886 13.1608 2.62886 13.4878 3.19302L21.4334 16.9032C21.7588 17.4646 21.3533 18.1667 20.7013 18.1667H3.29868C2.64672 18.1667 2.2412 17.4646 2.56658 16.9032L10.5122 3.19302H12.0122Z"
+                        fill="#FBBF24" /* Tailwing Amber-400 (Screenshot yellow) */
+                        stroke="#FBBF24"
+                        strokeWidth="0.5"
+                      />
+                      {/* Exclamation Mark - Body */}
+                      <rect
+                        x="11.5"
+                        y="7.5"
+                        width="2.5"
+                        height="6.5"
+                        rx="1.25"
+                        fill="white"
+                      />
+                      {/* Exclamation Mark - Dot */}
+                      <circle cx="12.75" cy="16.25" r="1.25" fill="white" />
+                    </svg>
+                  </div>
+
+                  {/* 2. Red Rounded Rectangle with Narrow Bold Text */}
+                  <div className="relative -ml-4 pl-6 pr-6 py-2.5 bg-[#E62E2E] rounded-full shadow-2xl border-t border-[#FFFDF5]/10 group-hover/badge:bg-[#EF4444] transition-colors overflow-hidden">
+                    {/* Subtle Shine Effect over red box */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover/badge:translate-x-full transition-transform duration-1000" />
+
+                    <span
+                      className="relative z-10 text-[#FFFDF5] font-black text-xs md:text-sm uppercase tracking-tight flex items-center leading-none"
+                      style={{
+                        fontFamily:
+                          'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+                        fontStretch:
+                          "condensed" /* This attempts to narrow the font like screenshot */,
+                        fontWeight: 1000 /* Extra bold */,
+                      }}
+                    >
+                      DISCLAIMER
+                    </span>
+                  </div>
+                </div>
+
+                <div className="relative z-10 pt-3">
+                  <div
+                    className="text-[11px] md:text-[12px] leading-relaxed text-[#FFFDF5]/80 group-hover/disc:text-[#FFFDF5]/50 transition-colors italic text-left"
+                    dangerouslySetInnerHTML={{
+                      __html: disclaimer?.disclaimer?.disclaimer || "",
+                    }}
+                  />
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
+
       <BackToTopButton />
     </footer>
   );

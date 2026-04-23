@@ -39,7 +39,7 @@ const TopCategories = async ({ category }: Props) => {
           {category?.name}
         </h4>
 
-        <div className="inline-flex items-center gap-1 px-2.5 py-1 bg-[#F5F5DC]/50 group-hover:bg-[#800000] rounded-full border border-[#EADDCA]/30 transition-all duration-300">
+        {/* <div className="inline-flex items-center gap-1 px-2.5 py-1 bg-[#F5F5DC]/50 group-hover:bg-[#800000] rounded-full border border-[#EADDCA]/30 transition-all duration-300">
           <span className="text-[9px] font-bold text-[#1A1A1A]/60 group-hover:text-[#FFFDF5] uppercase tracking-tight">
             {category?.total_offers ? `${category.total_offers}` : "12"} Deals
           </span>
@@ -47,7 +47,7 @@ const TopCategories = async ({ category }: Props) => {
             size={10}
             className="text-[#1A1A1A]/40 group-hover:text-[#FFFDF5]"
           />
-        </div>
+        </div> */}
       </div>
     </Link>
   );

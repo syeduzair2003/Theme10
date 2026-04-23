@@ -20,7 +20,7 @@ const Subscribe = async ({ store_slug, slug_type }: Props) => {
       <div className="absolute top-[-5%] right-[-5%] w-[400px] h-[400px] bg-[#800000]/10 blur-[100px] rounded-full z-0" />
       <div className="absolute bottom-[-5%] left-[-5%] w-[400px] h-[400px] bg-[#D1C7A7]/5 blur-[100px] rounded-full z-0" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16">
+      <div className="relative z-10 w-full pr-10 pl-10  mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16">
         {/* Left Side Subscribe Content */}
         <div className="w-full lg:w-5/12 text-left space-y-5">
           <div className="space-y-2">

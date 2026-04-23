@@ -14,6 +14,7 @@ import OfferOutUrl from "@/components/shared/OfferOutUrl";
 import OfferDuration from "./OfferDuration";
 import Link from "next/link";
 import SocialMediaShare from "./SocialMediaShare";
+import OfferDetailsToggle from "./OfferDetailsToggle";
 import { ShieldCheck, Zap, ArrowRight } from "lucide-react";
 
 const CouponCard = async ({
@@ -37,6 +38,11 @@ const CouponCard = async ({
     product?.offer_title || product?.offer_detail,
     discountPercent,
   );
+  const type = product?.offer_type?.name;
+  const imageSrc =
+      type === "product"
+        ? getBaseImageUrl(domain, product?.product_image, "")
+        : getBaseImageUrl(domain, merchant_logo, "");
 
   return (
     <div className="group relative  bg-[#F5F5DC] border border-[#EADDCA] rounded-tr-[3rem] rounded-bl-[3rem] p-8 flex flex-col h-full transition-all duration-700 shadow-[0_10px_30px_rgba(0,0,0,0.02)] hover:border-[#800000]/30 hover:shadow-[0_30px_60px_rgba(128,0,0,0.12)] hover:-translate-y-3">
@@ -91,13 +97,14 @@ const CouponCard = async ({
 
   {/* Right Side: Social Media - Pushed to the edge */}
   <div className="flex-none flex justify-end">
-    <SocialMediaShare
-      offerUrl={`/${product?.url}`}
-      offerTitle={product?.offer_title}
-      merchantHref={merchantHref}
-      unique_id={product?.unique_id}
-      domain={domain}
-    />
+    <OfferDetailsToggle
+            domain={domain}
+            imageSrc={imageSrc}
+            merchantHref={merchantHref}
+            offer={product}
+            type="anchor"
+            buttonClass="text-slate-400 text-[11px] font-semibold hover:text-[#800000] transition"
+          />
   </div>
 </div>
         </div>

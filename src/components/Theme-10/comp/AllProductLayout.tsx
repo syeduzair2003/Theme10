@@ -54,7 +54,6 @@ const AllProductLayout = async ({
 
   const currentPage = Math.max(1, parseInt(page || "1", 10));
 
-  // Fixed: variable names matched with Props (companyId, categoryId)
   const offersData = (
     await apiGetAllProducts(companyId, categoryId, currentPage.toString(), 18)
   ).data;
@@ -63,7 +62,6 @@ const AllProductLayout = async ({
 
   const safeSlug = slug ?? [];
 
-  // Fixed: Combined cleanedSlug logic to avoid duplicate declaration error
   const cleanedSlug = safeSlug.filter((s, i) => {
     if (s === "page" && !isNaN(Number(safeSlug[i + 1]))) return false;
     if (i > 0 && safeSlug[i - 1] === "page" && !isNaN(Number(s))) return false;
@@ -90,7 +88,7 @@ const AllProductLayout = async ({
         <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-10">
             <div className="w-full lg:w-7/12">
-              {/* Breadcrumb Modern Badge Style */}
+              {/* Breadcrumb */}
               <nav aria-label="breadcrumb" className="mb-6">
                 <ol className="flex items-center justify-center lg:justify-start gap-3 list-none p-0 m-0">
                   <li className="flex items-center gap-3">
@@ -100,7 +98,7 @@ const AllProductLayout = async ({
                     >
                       Home
                     </Link>
-                    {/* Minimalist Dot Separator */}
+                    {/* Minimalist Dot */}
                     <span className="w-1.5 h-1.5 rounded-full bg-[#800000]" />
                   </li>
 
@@ -237,7 +235,7 @@ const AllProductLayout = async ({
 
       <section className="py-8 md:py-12 bg-[#FDFBE7]/30">
   <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
-    {/* Top Info Bar (Same as before) */}
+    {/* Top Info Bar */}
     <div className="bg-white border border-[#EADDCA] rounded-2xl p-3 md:p-4 mb-8 md:mb-10 flex items-center justify-between shadow-[0_4px_20px_rgba(128,0,0,0.03)]">
       <div className="flex items-center gap-3">
         <div className="relative flex h-2.5 w-2.5 md:h-3 md:w-3">
@@ -269,7 +267,7 @@ const AllProductLayout = async ({
           />
         </div>
 
-        {/* UPDATED: Pagination is now OUTSIDE the white card box */}
+        {/* Pagination */}
         {totalPages > 1 && (
           <div className="mt-12 flex justify-center pb-8">
             <Pagination

@@ -123,38 +123,44 @@ const CouponCard = async ({
       {/* CTA Section */}
       <div className="mt-8 md:mt-10 space-y-4 md:space-y-5">
         <OfferOutUrl
-          unique_id={product?.unique_id}
-          outUrl={product?.url}
-          merchantHref={merchantHref}
-          domain={domain}
-          customClass={`w-full relative h-12 md:h-14 flex items-center justify-center rounded-xl md:rounded-2xl font-black text-[10px] md:text-[11px] uppercase tracking-[0.2em] md:tracking-[0.25em] transition-all duration-500 active:scale-95 overflow-hidden shadow-sm ${
-            product?.coupon_code
-              ? "bg-transparent border-2 border-dashed border-[#800000]/30 text-[#800000] hover:bg-[#800000]/5 hover:border-[#800000]"
-              : "bg-[#1A1A1A] text-white hover:bg-[#800000] no-underline shadow-lg shadow-[#1A1A1A]/10"
-          }`}
-        >
-          {product?.coupon_code ? (
-            <div className="flex items-center gap-2 md:gap-3">
-              <span className="bg-[#800000]/10 px-2 md:px-3 py-1 rounded-lg border border-[#800000]/10 shrink-0">
-                {product.coupon_code.trim().slice(0, 5)}...
-              </span>
-              <span className="font-black">Copy Code</span>
-            </div>
-          ) : (
-            <div className="flex items-center gap-2">
-              <span>
-                {product?.offer_type?.name === "product"
-                  ? "Buy Now"
-                  : "Get Deal"}
-              </span>
-              <ArrowRight
-                size={16}
-                strokeWidth={3}
-                className="group-hover:translate-x-1.5 transition-transform"
-              />
-            </div>
-          )}
-        </OfferOutUrl>
+  unique_id={product?.unique_id}
+  outUrl={product?.url}
+  merchantHref={merchantHref}
+  domain={domain}
+  // FIXED: Coupon wale button ke styles ko full deal button jesa kar diya hai (Black base)
+  customClass={`w-full relative h-12 md:h-14 flex items-center justify-center rounded-xl md:rounded-2xl font-black text-[10px] md:text-[11px] uppercase tracking-[0.2em] md:tracking-[0.25em] transition-all duration-500 active:scale-95 overflow-hidden shadow-sm ${
+    product?.coupon_code
+      ? "bg-[#1A1A1A] text-white hover:bg-[#800000] no-underline shadow-lg shadow-[#1A1A1A]/10 border border-transparent"
+      : "bg-[#1A1A1A] text-white hover:bg-[#800000] no-underline shadow-lg shadow-[#1A1A1A]/10 border border-transparent"
+  }`}
+>
+  {product?.coupon_code ? (
+    <div className="flex items-center gap-2 md:gap-3 group">
+      {/* Design standardizing: text and background simplified */}
+      
+      <span className="font-black text-white group-hover:text-white transition-colors">Copy Code</span>
+      {/* Arrow also added for design matching */}
+      <ArrowRight
+        size={16}
+        strokeWidth={3}
+        className="text-white group-hover:translate-x-1.5 transition-transform"
+      />
+    </div>
+  ) : (
+    <div className="flex items-center gap-2 group">
+      <span className="font-black text-white">
+        {product?.offer_type?.name === "product"
+          ? "Buy Now"
+          : "Get Deal"}
+      </span>
+      <ArrowRight
+        size={16}
+        strokeWidth={3}
+        className="text-white group-hover:translate-x-1.5 transition-transform"
+      />
+    </div>
+  )}
+</OfferOutUrl>
 
         {pageType !== "events" && (
           <Link

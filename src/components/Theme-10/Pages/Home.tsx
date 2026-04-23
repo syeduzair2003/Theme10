@@ -85,7 +85,6 @@ const Home = async () => {
           blog_url={c_data?.blog_url}
         />
       )}
-      
     </div>
     // </Suspense>
   );

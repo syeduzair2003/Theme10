@@ -12,31 +12,27 @@ export default function PageLoader({ logo }: PageLoaderProps) {
   const [mounted, setMounted] = useState(false);
   const pathname = usePathname();
 
-  // 1. Hydration Error Fix: Sirf client-side par render hone ke liye
   useEffect(() => {
     setMounted(true);
-    
-    // Pehli baar jab site khule
+
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 1500); // 1.5 seconds ka delay premium feel ke liye
+    }, 1500); // 1.5 seconds delay
 
     return () => clearTimeout(timer);
   }, []);
 
-  // 2. Route Change Logic: Jab user links click kare
   useEffect(() => {
     if (mounted) {
       setLoading(true);
       const timer = setTimeout(() => {
         setLoading(false);
-      }, 800); // Route change par chota loader
-      
+      }, 800); 
+
       return () => clearTimeout(timer);
     }
   }, [pathname, mounted]);
 
-  // 3. Body Scroll Lock: Loader ke peeche scrolling band karne ke liye
   useEffect(() => {
     if (loading && mounted) {
       document.body.style.overflow = "hidden";
@@ -45,10 +41,8 @@ export default function PageLoader({ logo }: PageLoaderProps) {
     }
   }, [loading, mounted]);
 
-  // Server-side rendering ke waqt kuch na dikhao (mismatch se bachne ke liye)
   if (!mounted) return null;
 
-  // Agar loading khatam ho jaye toh component hide kar do
   if (!loading) return null;
 
   return (

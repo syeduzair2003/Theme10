@@ -1,308 +1,227 @@
-import { apiUpdateOfferLikes } from "@/apis/offers";
-import { Offer } from "@/services/dataTypes";
-import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
-import { Modal } from "react-bootstrap";
-import Link from "next/link";
-import {
-  calculateOfferDuration,
-  discardHTMLTags,
-  getBaseImageUrl,
-} from "@/constants/hooks";
-import Image from "next/image";
-import dynamic from "next/dynamic";
-import {
-  faCheck,
-  faCalendarDays,
-  faThumbsDown,
-  faThumbsUp,
-  FontAwesomeIcon,
-  faCopy,
-} from "@/constants/icons";
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
+import Image from 'next/image';
+import { faThumbsDown, faThumbsUp } from '@/constants/icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { calculateOfferDuration, getBaseImageUrl } from '@/constants/hooks';
+import dynamic from 'next/dynamic';
+import Link from 'next/link';
+import { Offer } from '@/services/dataTypes';
 
-const RateUs = dynamic(() => import("./RateUs"), { ssr: false });
-const SocialMediaShare = dynamic(() => import("./SocialMediaShare"), {
-  ssr: false,
-});
+const RateUs = dynamic(() => import('./RateUs'), { ssr: false });
+const SocialMediaShare = dynamic(() => import('./SocialMediaShare'), { ssr: false });
 
 interface Props {
-  data: Offer;
-  companyId: string;
-  onClose: () => void;
-  domain: string;
-  merchantHref: string;
+    data: Offer;
+    companyId: string;
+    onClose: () => void;
+    domain: string;
+    merchantHref: string;
 }
 
-const OfferModal = ({
-  data,
-  companyId,
-  onClose,
-  domain,
-  merchantHref,
-}: Props) => {
-  const [onVisible, setOnVisible] = useState(false);
-  const [hasLiked, setHasLiked] = useState(false);
-  const [isLiked, setIsLiked] = useState<number | null>(null);
-  const finalUrl = data?.url?.startsWith("/")
-    ? data?.url.replace(/^\/+/, "")
-    : data?.url;
-  const absoluteOutUrl = `/${finalUrl}`;
-  const [offerUrl, setOfferUrl] = useState("");
-  const [copied, setCopied] = useState(false);
+const OfferModal = ({ data, companyId, onClose, domain, merchantHref }: Props) => {
+    const [mounted, setMounted] = useState(false);
+    const [copied, setCopied] = useState(false);
 
-  useEffect(() => {
-    if (data) {
-      setOnVisible(true);
-    }
-  }, [data]);
+    useEffect(() => {
+        setMounted(true);
+        // Lock background scroll when modal is open
+        document.body.style.overflow = 'hidden';
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, []);
 
-  const handleClose = () => {
-    setOnVisible(false);
-    onClose();
-  };
-
-  useEffect(() => {
-    if (data?.unique_id) {
-      const lastLiked = localStorage.getItem(`hasLiked_${data?.unique_id}`);
-      if (lastLiked && new Date().getTime() - parseInt(lastLiked) < 86400000) {
-        setHasLiked(true);
-      }
-    }
-  }, [data?.unique_id]);
-
-  const handleLikeStatus = async (val: number, e: React.FormEvent) => {
-    e.preventDefault();
-    if (hasLiked) {
-      toast.error("You have already rated, please try again later!", {
-        autoClose: 2000,
-      });
-      return;
-    }
-    try {
-      if (data) {
-        const response = await apiUpdateOfferLikes(
-          companyId,
-          data?.unique_id,
-          val,
-        );
-        if (response.status === "success") {
-          toast.success("Thank you for your feedback!", { autoClose: 2000 });
-          setIsLiked(val);
-          localStorage.setItem(
-            `hasLiked_${data?.unique_id}`,
-            new Date().getTime().toString(),
-          );
-          setHasLiked(true);
+    const handleCopy = async () => {
+        const code = data?.coupon_code;
+        if (code) {
+            try {
+                // Primary method
+                await navigator.clipboard.writeText(code);
+                setCopied(true);
+                setTimeout(() => setCopied(false), 2000);
+            } catch (err) {
+                // Fallback method for older browsers or non-secure contexts
+                try {
+                    const textArea = document.createElement("textarea");
+                    textArea.value = code;
+                    document.body.appendChild(textArea);
+                    textArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(textArea);
+                    setCopied(true);
+                    setTimeout(() => setCopied(false), 2000);
+                } catch (fallbackErr) {
+                    console.error('Unable to copy', fallbackErr);
+                }
+            }
         }
-      }
-    } catch (error) {
-      toast.error("An error occurred while submitting your feedback.", {
-        autoClose: 2000,
-      });
-    }
-  };
+    };
 
-  let offerTitle = " ";
-  if (data !== null) {
-    offerTitle = encodeURIComponent(data?.offer_title || data?.offer_detail);
-  }
+    const finalUrl = data?.url?.startsWith('/') ? data?.url.replace(/^\/+/, '') : data?.url;
+    const absoluteOutUrl = `/${finalUrl}`;
+    const imgSrc = data?.offer_type?.name === "product" ? data?.product_image : data?.merchant?.merchant_logo;
 
-  useEffect(() => {
-    setOfferUrl(encodeURIComponent(window.location.href));
-  }, []);
+    if (!mounted) return null;
 
-  const imgSrc =
-    data?.offer_type?.name === "product"
-      ? data?.product_image
-      : data?.merchant.merchant_logo;
+    const modalContent = (
+        <>
+            <style>{`
+                @keyframes modalPop {
+                    0% { opacity: 0; transform: scale(0.95) translateY(15px); }
+                    100% { opacity: 1; transform: scale(1) translateY(0); }
+                }
+                @keyframes backdropFade {
+                    0% { opacity: 0; }
+                    100% { opacity: 1; }
+                }
+                /* Cross-browser scrollbar hiding */
+                .no-scrollbar::-webkit-scrollbar {
+                    display: none;
+                }
+                .no-scrollbar {
+                    -ms-overflow-style: none;  /* IE and Edge */
+                    scrollbar-width: none;  /* Firefox */
+                }
+            `}</style>
 
-  const handleCopy = () => {
-    if (data?.coupon_code) {
-      // Check if navigator.clipboard is available (modern browsers)
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(data.coupon_code);
-      } else {
-        // Fallback for older browsers
-        const textarea = document.createElement("textarea");
-        textarea.value = data.coupon_code;
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand("copy");
-        document.body.removeChild(textarea);
-      }
+            <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6">
+                {/* Backdrop */}
+                <div 
+                    onClick={onClose}
+                    className="absolute inset-0 bg-black/85 backdrop-blur-sm transition-opacity"
+                    style={{ animation: 'backdropFade 0.3s ease-out forwards' }}
+                />
 
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  };
+                {/* Modal Container */}
+                <div 
+                    className="relative w-full max-w-4xl bg-[#FDFBF7] text-black rounded-[2rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col max-h-[90vh] border border-[#800000]/20"
+                    style={{ animation: 'modalPop 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards' }}
+                >
+                    {/* 1. Header Section */}
+                    <div className="relative bg-[#FDFBF7] pt-12 pb-8 px-8 md:px-12 text-center z-10">
+                        <button 
+                            onClick={onClose}
+                            className="absolute top-5 right-5 z-50 w-10 h-10 bg-black/5 hover:bg-[#800000] text-black hover:text-[#FDFBF7] rounded-full flex items-center justify-center transition-all duration-300"
+                            aria-label="Close"
+                        >
+                            <span className="text-2xl font-light leading-none mb-1">×</span>
+                        </button>
 
-  return (
-    <Modal show={onVisible} size="lg" centered scrollable onHide={handleClose}>
-      <Modal.Header className="position-relative">
-        <button
-          type="button"
-          className="btn-close position-absolute top-0 end-0 me-3 mt-3"
-          aria-label="Close"
-          onClick={handleClose}
-        ></button>
-        <Modal.Title className="d-flex justify-content-center w-100 mt-3">
-          <div className="d-center flex-column gap-2 gap-md-3">
-            <h5 className="n17-color fw-mid text-center mb-2 px-8 px-md-0">
-              {data?.offer_title}
-            </h5>
-            <div className="cmn-btn btn-overlay border-dash rounded-pill d-center input-area">
-              {data?.coupon_code ? (
-                // <div className="d-flex w-100">
-                //     <input type="text" value={data?.coupon_code} readOnly className="p1-color fs-seven fw-bold coupon-code w-100 px-6 px-md-12 d-center" />
-                //     <Link href={absoluteOutUrl} rel="nofollow sponsored noopener noreferrer" className="box-style box-second rounded-pill border-stb-none py-3 py-md-4 px-6 px-md-12 d-center">
-                //         <span className="d-center fs-seven fw-bold">Get</span>
-                //     </Link>
-                // </div>
-                <div className="coupon-code-group-two">
-                  <div className="coupon-code-display-two">
-                    <Link
-                      href={absoluteOutUrl}
-                      rel="nofollow sponsored noopener noreferrer"
-                    >
-                      <span className="code-text-two">{data?.coupon_code}</span>
-                    </Link>
-                  </div>
-                  <button
-                    className={`btn-copy-two ${copied ? "copied" : ""}`}
-                    onClick={handleCopy}
-                  >
-                    {copied ? (
-                      <FontAwesomeIcon icon={faCheck} />
-                    ) : (
-                      <FontAwesomeIcon icon={faCopy} />
-                    )}
-                    {copied ? " Copied!" : " Copy Code"}
-                  </button>
-                </div>
-              ) : (
-                <div className="btn-area d-center justify-content-start gap-3 gap-md-4">
-                  <Link
-                    href={absoluteOutUrl}
-                    rel="nofollow sponsored noopener noreferrer"
-                    className="box-style box-second gap-2 gap-md-3 rounded-pill py-2 py-md-3 px-5 px-md-7 d-center"
-                  >
-                    <span className="fs-six text-nowrap">Get Deal</span>
-                  </Link>
-                </div>
-              )}
-            </div>
-            {/* <div className="row px-2 px-md-0 justify-content-center">
-                            <div className="col-xl-10">
+                        <div className="max-w-2xl mx-auto space-y-6">
+                            <h2 className="text-2xl md:text-3xl font-black text-black leading-tight uppercase tracking-tight">
+                                {data?.offer_title}
+                            </h2>
 
+                            <div className="flex justify-center mt-4">
+                                {data?.coupon_code ? (
+                                    <div className="inline-flex flex-col md:flex-row items-center bg-white border border-[#800000]/30 rounded-2xl p-2 md:pl-6 shadow-[0_4px_20px_rgba(128,0,0,0.08)]">
+                                        <span className="text-2xl font-black text-[#800000] tracking-widest uppercase px-6 py-2">
+                                            {data?.coupon_code}
+                                        </span>
+                                        <button 
+                                            onClick={handleCopy}
+                                            className={`${copied ? 'bg-emerald-600' : 'bg-[#800000] hover:bg-black'} text-[#FDFBF7] px-8 py-4 rounded-xl font-black text-[13px] uppercase tracking-widest transition-all duration-300 shadow-md w-full md:w-auto mt-2 md:mt-0 active:scale-95`}
+                                        >
+                                            {copied ? 'Copied!' : 'Copy Code'}
+                                        </button>
+                                    </div>
+                                ) : (
+                                    <Link 
+                                        href={absoluteOutUrl} 
+                                        className="bg-[#800000] hover:bg-black text-[#FDFBF7] px-12 py-4 rounded-xl font-black text-[14px] uppercase tracking-widest transition-all duration-300 shadow-lg active:scale-95"
+                                    >
+                                        Activate Deal
+                                    </Link>
+                                )}
                             </div>
-                        </div> */}
-            {/* <span className="f11-color fw-mid">Continue to us.couponly.com • <Link href="#" className="n15-color fw-mid">Terms</Link></span> */}
-          </div>
-        </Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <div className="main-content d-flex gap-3 gap-md-4">
-          <div style={{ flex: "0 0 60%" }} className="d-flex flex-column">
-            <div className="d-center justify-content gap-2 gap-md-3 mb-3">
-              <span className="f5-color fw-mid rounded-2 p1-2nd-bg-color cus-border border b-tenth d-flex align-items-center gap-1 gap-md-2 px-2 px-md-3 py-1">
-                <FontAwesomeIcon
-                  icon={faCheck}
-                  style={{ width: "16px", height: "16px", color: "#1471b0" }}
-                />
-                <span className="f5-color fw-mid">Verified</span>
-              </span>
-              <span className="f5-color fw-mid rounded-2 s1-4th-bg-color cus-border border b-sixth px-2 px-md-3 py-1 d-flex gap-1 gap-md-2">
-                <FontAwesomeIcon
-                  icon={faCalendarDays}
-                  style={{ width: "16px", height: "16px", color: "#b3682b" }}
-                />
-                <span className="f11-color fw-mid">
-                  {data?.end_date
-                    ? calculateOfferDuration(data?.end_date)
-                    : "Life Time"}
-                </span>
-              </span>
+                        </div>
+                    </div>
+
+                    {/* 2. Scrollable Body Content */}
+                    <div className="flex-grow overflow-y-auto no-scrollbar px-6 pb-6 md:px-10 md:pb-10 bg-[#FDFBF7]">
+                        <div className="flex flex-col md:flex-row gap-6">
+                           
+                            {/* Left Column - Details Card */}
+                            <div className="md:w-3/5 bg-white rounded-3xl p-8 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-black/5 relative overflow-hidden">
+                                <div className="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-[#800000] via-[#800000]/70 to-black"></div>
+                                
+                                <div className="space-y-8">
+                                    <div className="flex justify-between items-start">
+                                        <div className="relative w-28 h-16 bg-[#FDFBF7] rounded-xl border border-black/5 p-2 flex items-center justify-center">
+                                            <Image 
+                                                src={getBaseImageUrl(domain, imgSrc, "")} 
+                                                alt="Merchant Logo" 
+                                                fill 
+                                                className="object-contain p-2" 
+                                            />
+                                        </div>
+
+                                        <div className="flex flex-col items-end gap-2">
+                                            <span className="bg-black text-[#FDFBF7] px-4 py-1.5 rounded-md text-[9px] font-black uppercase tracking-widest">
+                                                Verified
+                                            </span>
+                                            <span className="bg-[#800000]/10 text-[#800000] border border-[#800000]/20 px-4 py-1.5 rounded-md text-[9px] font-black uppercase tracking-widest">
+                                                {data?.end_date ? calculateOfferDuration(data?.end_date) : "Active Deal"}
+                                            </span>
+                                        </div>
+                                    </div>
+
+                                    <div className="space-y-3">
+                                        <div className="flex items-center gap-3">
+                                            <h4 className="text-[12px] font-black text-black uppercase tracking-widest">Offer Details</h4>
+                                            <div className="flex-grow h-px bg-black/5"></div>
+                                        </div>
+                                        <div 
+                                            className="text-black/70 text-sm leading-relaxed prose prose-sm max-w-none prose-a:text-[#800000] prose-a:font-bold hover:prose-a:text-black transition-colors"
+                                            dangerouslySetInnerHTML={{ __html: data?.offer_detail || '' }}
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Right Column - Rating Card */}
+                            <div className="md:w-2/5 bg-white rounded-3xl p-8 shadow-[0_8px_30px_rgba(0,0,0,0.04)] border border-black/5 flex flex-col justify-center items-center text-center">
+                                <h4 className="text-[12px] font-black text-black uppercase tracking-widest mb-4">Rate this deal</h4>
+                                <div className="w-full bg-[#FDFBF7] rounded-2xl p-6 border border-black/5">
+                                    <RateUs offer_id={data?.unique_id || ""} company_id={companyId} />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* 3. Footer Section */}
+                    <div className="bg-white border-t border-black/5 p-6 md:px-10 z-10">
+                        <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
+                            <div className="flex items-center gap-5">
+                                <span className="text-[11px] font-black text-black/50 uppercase tracking-widest">Helpful?</span>
+                                <div className="flex gap-3">
+                                    <button className="px-6 py-2.5 rounded-xl text-[11px] font-black border border-black/10 bg-[#FDFBF7] text-black hover:bg-black hover:text-[#FDFBF7] hover:border-black transition-all duration-300">
+                                        <FontAwesomeIcon icon={faThumbsUp} className="mr-2" /> YES
+                                    </button>
+                                    <button className="px-6 py-2.5 rounded-xl text-[11px] font-black border border-black/10 bg-[#FDFBF7] text-black hover:bg-[#800000] hover:text-[#FDFBF7] hover:border-[#800000] transition-all duration-300">
+                                        <FontAwesomeIcon icon={faThumbsDown} className="mr-2" /> NO
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div className="flex items-center gap-3">
+                                <SocialMediaShare 
+                                    offerUrl={typeof window !== 'undefined' ? encodeURIComponent(window.location.href) : ""} 
+                                    offerTitle={data ? encodeURIComponent(data?.offer_title || data?.offer_detail || "") : ""} 
+                                    merchantHref={merchantHref} 
+                                    unique_id={data?.unique_id} 
+                                    domain={domain} 
+                                />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div
-              className="p-2 border rounded-3 d-flex align-items-center justify-content-center mx-auto"
-              style={{ minWidth: 100, maxWidth: 120, height: 80 }}
-            >
-              <Image
-                src={getBaseImageUrl(domain, imgSrc, "")}
-                alt={`${data?.offer_title}`}
-                className="img-fluid object-fit-contain"
-                height={100}
-                width={100}
-                style={{ maxHeight: "100%", maxWidth: "100%" }}
-                layout="responsive"
-              />
-            </div>
-            {data?.offer_detail && (
-              <div
-                className="modal-html-content-two my-2"
-                dangerouslySetInnerHTML={{ __html: data?.offer_detail }}
-              />
-            )}
-          </div>
-          <div
-            style={{
-              flex: "0 0 40%",
-              borderLeft: "2px solid #dee2e6",
-              paddingLeft: "1rem",
-            }}
-          >
-            <RateUs offer_id={data?.unique_id || ""} company_id={companyId} />
-          </div>
-        </div>
-      </Modal.Body>
-      <Modal.Footer
-        style={{
-          display: "flex",
-          justifyContent: "space-around",
-          position: "sticky",
-          bottom: 0,
-          background: "#fff",
-          padding: "1rem",
-          borderTop: "1px solid #dee2e6",
-        }}
-      >
-        <div className="bottom-area d-center gap-1 gap-md-2 flex-wrap py-3 py-md-5">
-          <span className="fw-mid fs-seven me-2">Did it work?</span>
-          <button
-            className="s2-3rd-bg-color rounded-2 d-center gap-1 px-2 px-md-3 py-1"
-            onClick={(e) => {
-              handleLikeStatus(1, e);
-            }}
-          >
-            <FontAwesomeIcon
-              icon={faThumbsUp}
-              style={{ width: "16px", height: "16px", color: "green" }}
-            />
-            <span className="s2-color fw-bold">Yes</span>
-          </button>
-          <button
-            className="f13-2nd-bg-color rounded-2 d-center gap-1 px-2 px-md-3 py-1"
-            onClick={(e) => {
-              handleLikeStatus(0, e);
-            }}
-          >
-            <FontAwesomeIcon
-              icon={faThumbsDown}
-              style={{ width: "16px", height: "16px", color: "red" }}
-            />
-            <span className="f13-color fw-bold">No</span>
-          </button>
-        </div>
-        <SocialMediaShare
-          offerUrl={offerUrl}
-          offerTitle={offerTitle}
-          merchantHref={merchantHref}
-          unique_id={data?.unique_id}
-          domain={domain}
-        />
-      </Modal.Footer>
-    </Modal>
-  );
+        </>
+    );
+
+    return createPortal(modalContent, document.body);
 };
 
 export default OfferModal;
