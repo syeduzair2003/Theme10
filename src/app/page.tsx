@@ -7,7 +7,7 @@ import P4 from "@theme4/Pages/Home";
 import P5 from "@theme5/Pages/Home";
 import P6 from "@theme6/Pages/Home";
 import P8 from "@theme8/Pages/Home";
-import P10 from "@theme10/Pages/Home";
+import P9 from "@theme9/Pages/Home";
 
 export const dynamic = "force-dynamic";
 
@@ -30,14 +30,14 @@ export default async function Home() {
         return P6;
       case "theme 8":
         return P8;
-      case "theme 10":
-        return P10;
+      case "theme 9":
+        return P9;
       default:
         return P3;
     }
   };
 
-  const SelectedPage = selector("theme 10");
+  const SelectedPage = selector("theme 9");
   // const SelectedPage = selector(template?.name);
   return (
     <>

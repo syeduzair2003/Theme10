@@ -8,7 +8,7 @@ import P4 from '@theme4/Pages/Affiliate-Disclosure/page';
 import P5 from '@theme5/Pages/Affiliate-Disclosure/page';
 import P6 from '@theme6/Pages/Affiliate-Disclosure/page';
 import P8 from '@theme8/Pages/Affiliate-Disclosure/page';
-import P10 from '@theme10/Pages/Affiliate-Disclosure/page';
+import P9 from '@theme9/Pages/Affiliate-Disclosure/page';
 import { Metadata } from 'next';
 import { getBaseImageUrl } from '@/constants/hooks';
 export async function generateMetadata(): Promise<Metadata> {
@@ -67,13 +67,13 @@ const page = async () => {
         return P6;
       case 'theme 8':
         return P8;
-      case 'theme 10':
-        return P10;
+      case 'theme 9':
+        return P9;
         default:
         return P3;
     }
   }
-  const SelectedPage = selector("theme 10");
+  const SelectedPage = selector("theme 9");
   return (
     <>
       <SelectedPage />

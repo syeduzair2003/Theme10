@@ -31,7 +31,7 @@
       "@theme5/*": ["src/components/Theme-5/*"],
       "@theme6/*": ["src/components/Theme-6/*"],
       "@theme8/*": ["src/components/Theme-8/*"],
-      "@theme10/*": ["src/components/Theme-10/*"],
+      "@theme9/*": ["src/components/Theme-9/*"],
       "@customBuilder/*": ["src/app/(builder)/custom-builder/*"],
       "@services/*": ["src/services/*"],
       "@apis/*": ["src/apis/*"],

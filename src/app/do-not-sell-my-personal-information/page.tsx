@@ -8,7 +8,7 @@ import P4 from '@/components/Theme-4/Pages/Do-Not-Sell-My-Personal-Information/p
 import P5 from '@/components/Theme-5/Pages/do-not-sell-my-personal-information/page';
 import P6 from '@/components/Theme-6/Pages/do-not-sell-my-personal-information/page';
 import P8 from '@/components/Theme-8/Pages/do-not-sell-my-personal-information/page';
-import P10 from '@/components/Theme-10/Pages/do-not-sell-my-personal-information/page';
+import P9 from '@/components/Theme-9/Pages/do-not-sell-my-personal-information/page';
 
 import { Metadata } from 'next';
 import { getBaseImageUrl } from '@/constants/hooks';
@@ -67,13 +67,13 @@ const page = async () => {
                 return P6;
             case 'theme 8':
                 return P8;    
-            case 'theme 10':
-                return P10;    
+            case 'theme 9':
+                return P9;    
             default:
                 return P3;
         }
     }
-    const SelectedPage = selector("theme 10");
+    const SelectedPage = selector("theme 9");
     return (
         <>
             <SelectedPage />

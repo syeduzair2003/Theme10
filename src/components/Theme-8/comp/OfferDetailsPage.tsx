@@ -1,7 +1,7 @@
 import { apiGetProductDetails } from '@/apis/user'
 import OfferOutUrl from '@/components/shared/OfferOutUrl'
 import { calculateDiscountPercent, discardHTMLTags, getBaseImageUrl, getCurrencySymbol, getFinalDiscountTag, getMerchantHref, getProductMerchantHref, getRandomRating, getRandomStoreSeoTitle, splitHeadingFromDetails } from '@/constants/hooks'
-import { faGreaterThan, faChevronRight, faStar, faBagShopping } from '@/constants/icons' 
+import { faGreaterThan, faChevronRight, faStar } from '@/constants/icons' 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import cookieService from '@/services/CookiesService'
 import Image from 'next/image'
@@ -119,10 +119,10 @@ const OfferDetailsPage = async ({ company_id, store_slug, slug_type, product_id,
                                             unique_id={response?.unique_id} 
                                             customClass="group w-full flex items-center justify-center gap-3 bg-blue-600 hover:bg-slate-900 text-white py-5 px-10 rounded-[1.25rem] text-lg font-black transition-all duration-300 hover:shadow-2xl hover:shadow-blue-200 active:scale-95 shadow-lg shadow-blue-100/50"
                                         >
-                                            <FontAwesomeIcon 
+                                            {/* <FontAwesomeIcon 
                                                 icon={faBagShopping} 
                                                 className="text-xl text-white transition-colors duration-300" 
-                                            />
+                                            /> */}
                                             <span className="text-white group-hover:text-white transition-colors duration-300">
                                                 GO TO STORE
                                             </span>

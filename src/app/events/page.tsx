@@ -8,7 +8,7 @@ import P4 from '@theme4/Pages/Events/page';
 import P5 from '@theme5/Pages/Events/page';
 import P6 from '@theme6/Pages/Events/page';
 import P8 from '@theme8/Pages/Events/page';
-import P10 from '@theme10/Pages/Events/page';
+import P9 from '@theme9/Pages/Events/page';
 import { getBaseImageUrl } from '@/constants/hooks';
 import { Metadata } from "next";
 
@@ -86,14 +86,14 @@ const page = async () => {
                 return P6;
             case 'theme 8':
                 return P8;    
-            case 'theme 10':
-                return P10;    
+            case 'theme 9':
+                return P9;    
             default:
                 return P3;
         }
     }
     
-    const SelectedPage = selector("theme 10");
+    const SelectedPage = selector("theme 9");
     return <SelectedPage />
 }
 
