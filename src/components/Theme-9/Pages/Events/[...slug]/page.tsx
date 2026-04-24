@@ -11,12 +11,12 @@ import {
 } from "@/apis/user";
 import Banner from "@/components/shared/Banner/Banners";
 import SpecificEventSchema from "@/components/shared/SchemaScripts/SpecificEventSchema";
-import EventBanner from "@/components/Theme-10/comp/EventBanner";
-import EventOfferCard from "@/components/Theme-10/comp/EventOfferCard";
-import MerchantDetailsFull from "@/components/Theme-10/comp/MerchantDetailsFull";
-import MerchantDetailsShort from "@/components/Theme-10/comp/MerchantDetailsShort";
-import SidebarRoundMerchantCard from "@/components/Theme-10/comp/SidebarRoundMerchantCard";
-import VerticalEventOfferBanner from "@/components/Theme-10/comp/VerticalEventOfferBanner";
+import EventBanner from "@/components/Theme-9/comp/EventBanner";
+import EventOfferCard from "@/components/Theme-9/comp/EventOfferCard";
+import MerchantDetailsFull from "@/components/Theme-9/comp/MerchantDetailsFull";
+import MerchantDetailsShort from "@/components/Theme-9/comp/MerchantDetailsShort";
+import SidebarRoundMerchantCard from "@/components/Theme-9/comp/SidebarRoundMerchantCard";
+import VerticalEventOfferBanner from "@/components/Theme-9/comp/VerticalEventOfferBanner";
 import {
   extractAllOffers,
   filterOfferBanners,

@@ -3,9 +3,9 @@ import cookieService from '@/services/CookiesService'
 import React from 'react'
 import { notFound, redirect } from 'next/navigation';
 import { extractTrailingId } from '@/constants/hooks';
-import MerchantProductsPage from '@/components/Theme-10/comp/MerchantProductsPage';
-import CategoryProductOffers from '@/components/Theme-10/comp/CategoryProductOffers';
-import OfferDetailsPage from '@/components/Theme-10/comp/OfferDetailsPage';
+import MerchantProductsPage from '@/components/Theme-9/comp/MerchantProductsPage';
+import CategoryProductOffers from '@/components/Theme-9/comp/CategoryProductOffers';
+import OfferDetailsPage from '@/components/Theme-9/comp/OfferDetailsPage';
 
 
 type Props = Promise<{ slug: string[] }>;

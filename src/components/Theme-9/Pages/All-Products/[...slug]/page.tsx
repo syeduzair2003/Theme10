@@ -1,5 +1,5 @@
 import { apiCompanyUpdatedData, apiGetCategoryUniqueId } from "@/apis/user";
-import AllProductLayout from "@/components/Theme-10/comp/AllProductLayout";
+import AllProductLayout from "@/components/Theme-9/comp/AllProductLayout";
 import cookieService from "@/services/CookiesService";
 import { notFound, redirect } from "next/navigation";
 import React from "react";

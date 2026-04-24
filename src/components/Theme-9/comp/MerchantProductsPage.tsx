@@ -9,7 +9,7 @@ import {
   getMerchantProductsSeo,
   getProductDetailHref,
 } from "@/constants/hooks";
-import EventOfferCard from "@/components/Theme-10/comp/EventOfferCard";
+import EventOfferCard from "@/components/Theme-9/comp/EventOfferCard";
 import { apiGetMerchantUniqueId } from "@/apis/merchant";
 import ScrollButtonLeft from "./ScrollButtonLeft";
 import ScrollButtonRight from "./ScrollButtonRight";

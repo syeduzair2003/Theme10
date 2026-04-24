@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { getMerchantHref, getProductDetailHref } from "@/constants/hooks";
-import EventOfferCard from "@/components/Theme-10/comp/EventOfferCard";
+import EventOfferCard from "@/components/Theme-9/comp/EventOfferCard";
 import { apiGetMerchantUniqueId } from "@/apis/merchant";
 import ProductCategorySchema from "@/components/shared/SchemaScripts/ProductCategorySchema";
 

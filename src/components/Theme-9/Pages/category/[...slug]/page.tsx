@@ -16,12 +16,12 @@ import {
   apiGetCategoryUniqueId,
   apiSuggestedCategory,
 } from "@/apis/user";
-import ScrollButtonLeft from "@/components/Theme-10/comp/ScrollButtonLeft";
-import StoreCard from "@/components/Theme-10/comp/StoreCard";
-import ScrollButtonRight from "@/components/Theme-10/comp/ScrollButtonRight";
-import CategoryOffers from "@/components/Theme-10/comp/CategoryOffers";
-import CategorySidebar from "@/components/Theme-10/comp/CategorySidebar";
-import VerticalCategoryOfferBanner from "@/components/Theme-10/comp/VerticalCategoryOfferBanner";
+import ScrollButtonLeft from "@/components/Theme-9/comp/ScrollButtonLeft";
+import StoreCard from "@/components/Theme-9/comp/StoreCard";
+import ScrollButtonRight from "@/components/Theme-9/comp/ScrollButtonRight";
+import CategoryOffers from "@/components/Theme-9/comp/CategoryOffers";
+import CategorySidebar from "@/components/Theme-9/comp/CategorySidebar";
+import VerticalCategoryOfferBanner from "@/components/Theme-9/comp/VerticalCategoryOfferBanner";
 import { notFound, redirect } from "next/navigation";
 import CategoryMerchantPageSchema from "@/components/shared/SchemaScripts/CategoryMerchantPageSchema";
 

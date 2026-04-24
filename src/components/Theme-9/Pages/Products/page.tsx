@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { getProductMerchantHref } from "@/constants/hooks";
-import MerchantForProduct from "@/components/Theme-10/comp/MerchantForProduct";
+import MerchantForProduct from "@/components/Theme-9/comp/MerchantForProduct";
 
 const page = async () => {
   const companyDomain = await cookieService.get("domain");

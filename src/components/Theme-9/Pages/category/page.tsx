@@ -2,7 +2,7 @@ import { faGreaterThan, FontAwesomeIcon } from "@/constants/icons";
 import Link from "next/link";
 import React from "react";
 import Image from "next/image";
-import CatPage from "@/components/Theme-10/comp/CatPage";
+import CatPage from "@/components/Theme-9/comp/CatPage";
 import cookieService from "@/services/CookiesService";
 import { apiCompanyUpdatedData } from "@/apis/user";
 import CategoryPageSchema from "@/components/shared/SchemaScripts/CategoryPageSchema";
