@@ -140,12 +140,21 @@ const CouponCard = async ({
           }`}
         >
           {product?.coupon_code ? (
-            <div className="flex items-center gap-3">
-              <span className="bg-blue-500/20 px-3 py-1 rounded-lg">
-                {product.coupon_code.trim().slice(0, 7)}...
-              </span>
-              <span>Copy Code</span>
-            </div>
+            <>
+              <div className="flex items-center gap-2 transition-all duration-300 group-hover/btn:opacity-0 group-hover/btn:-translate-y-2">
+                <span>Get Deal</span>
+                <ArrowRight size={16} className="transition-transform" />
+              </div>
+
+              <div className="absolute inset-0 flex flex-col items-center justify-center translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300">
+                <span className="text-[8px] font-black opacity-60 uppercase tracking-widest mb-0.5">
+                  CODE
+                </span>
+                <span className="font-mono font-black text-sm tracking-[0.25em]">
+                  ********
+                </span>
+              </div>
+            </>
           ) : (
             <div className="flex items-center gap-2">
               <span>

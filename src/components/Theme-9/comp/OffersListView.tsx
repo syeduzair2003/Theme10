@@ -167,38 +167,44 @@ const OffersListView = ({
         {/* Right Part */}
         <div className="lg:w-[25%] p-6 bg-[#FDFCF0]/20 flex items-center justify-center border-t lg:border-t-0 lg:border-l border-[#800000]/5">
           <div className="w-full">
-            {product?.offer?.coupon_code ? (
-              <OfferOutUrl
-                unique_id={product?.offer?.unique_id}
-                outUrl={product?.offer?.url}
-                merchantHref={merchantHref}
-                domain={domain}
-                customClass="relative w-full h-14 bg-white border-2 border-dashed border-[#800000]/20 rounded-xl flex flex-col items-center justify-center group/btn overflow-hidden transition-all hover:border-[#800000]"
-              >
-                <span className="text-[7px] font-black text-[#800000]/60 uppercase tracking-widest mb-0.5 group-hover/btn:opacity-0 transition-opacity">
-                  CODE
-                </span>
-                <span className="text-[#1A1A1A] font-mono font-black text-sm group-hover/btn:opacity-0 transition-opacity tracking-widest">
-                  {product?.offer?.coupon_code.trim().slice(0, 8)}
-                </span>
-                <div className="absolute inset-0 bg-[#800000] flex items-center justify-center text-[#FDFCF0] font-black text-[10px] tracking-widest translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300">
-                  GET CODE
-                </div>
-              </OfferOutUrl>
-            ) : (
-              <OfferOutUrl
-                unique_id={product.offer.unique_id}
-                outUrl={product.offer.url}
-                merchantHref={merchantHref}
-                domain={domain}
-                customClass="no-underline w-full h-12 bg-[#1A1A1A] text-[#FDFCF0] font-black rounded-xl flex items-center justify-center hover:bg-[#800000] shadow-sm transition-all duration-300 text-[10px] tracking-widest uppercase"
-              >
-                {product?.offer?.offer_type?.name === "product"
-                  ? "Buy"
-                  : "Get Deal"}
-              </OfferOutUrl>
-            )}
-          </div>
+  {product?.offer?.coupon_code ? (
+    <OfferOutUrl
+      unique_id={product?.offer?.unique_id}
+      outUrl={product?.offer?.url}
+      merchantHref={merchantHref}
+      domain={domain}
+      customClass="relative w-full h-14 bg-[#1A1A1A] rounded-xl flex items-center justify-center group/btn overflow-hidden transition-all hover:bg-[#800000] shadow-sm"
+    >
+      {/* --- DEFAULT STATE (Bina hover ke ye dikhega) --- */}
+      <span className="text-[#FDFCF0] font-black text-[10px] tracking-widest uppercase transition-all duration-300 group-hover/btn:opacity-0 group-hover/btn:-translate-y-2">
+        Get Deal
+      </span>
+      
+      {/* --- HOVER STATE (Slide up hokar stars dikhayega) --- */}
+      <div className="absolute inset-0 bg-[#800000] flex flex-col items-center justify-center translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300">
+        <span className="text-[7px] font-black text-white/60 uppercase tracking-widest mb-0.5">
+          CODE
+        </span>
+        <span className="text-white font-mono font-black text-sm tracking-[0.2em]">
+          ********
+        </span>
+      </div>
+    </OfferOutUrl>
+  ) : (
+    /* Simple Deal Button (Bina coupon wala) */
+    <OfferOutUrl
+      unique_id={product.offer.unique_id}
+      outUrl={product.offer.url}
+      merchantHref={merchantHref}
+      domain={domain}
+      customClass="no-underline w-full h-12 bg-[#1A1A1A] text-[#FDFCF0] font-black rounded-xl flex items-center justify-center hover:bg-[#800000] shadow-sm transition-all duration-300 text-[10px] tracking-widest uppercase"
+    >
+      {product?.offer?.offer_type?.name === "product"
+        ? "Buy Now"
+        : "Get Deal"}
+    </OfferOutUrl>
+  )}
+</div>
         </div>
       </div>
       {showModal && p_data != null && !ads_campaign && (

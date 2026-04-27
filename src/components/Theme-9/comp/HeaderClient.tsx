@@ -200,7 +200,7 @@ const HeaderClient = ({
           {renderDropdownLabel(
             "Products",
             [{ name: "Branded Products" }],
-            () => "/all-products",
+            () => "/products",
           )}
           {renderDropdownLabel("Events", events, (e) => `/events/${e.slug}`)}
           {renderDropdownLabel("Promotion", promotions, (p) =>
