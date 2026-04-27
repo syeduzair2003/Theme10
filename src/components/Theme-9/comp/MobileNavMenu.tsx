@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { FaBars, FaTimes, FaChevronDown, FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
-import NavSearch from "./NavSearch";
+import MobileNavSearch from "./MobileNavSearch";
 import { getMerchantHref, getPromotionHref } from "@/constants/hooks";
 
 const MobileNavMenu = ({
@@ -102,7 +102,7 @@ const MobileNavMenu = ({
         <div className="flex-1 overflow-y-auto p-5 space-y-6 no-scrollbar">
           {/* Search Box */}
           <div className="bg-white rounded-2xl p-1 shadow-sm border border-[#800000]/5">
-            <NavSearch
+            <MobileNavSearch
               companyId={company_id}
               mer_slug={mer_slug}
               slug_type={slug_type}
