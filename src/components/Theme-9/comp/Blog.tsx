@@ -3,14 +3,29 @@ import { FooterResponse } from "@/services/dataTypes";
 import Link from "next/link";
 import React from "react";
 import { Calendar, ChevronRight } from "lucide-react";
+import Image from "next/image";
 
 interface Props {
   data: FooterResponse;
+  preloadedImage?: string;
 }
 
-const Blog = ({ data }: Props) => {
+const Blog = ({ data, preloadedImage }: Props) => {
   return (
-    <div className="group relative bg-[#FFFDF5] rounded-[2.5rem] p-8 border border-[#800000]/10 hover:border-[#800000]/30 hover:bg-white hover:shadow-[0_20px_50px_rgba(128,0,0,0.06)] transition-all duration-500 flex flex-col h-full overflow-hidden">
+    <div className="group relative bg-[#FFFDF5] rounded-[2.5rem] p-6 md:p-8 border border-[#800000]/10 hover:border-[#800000]/30 hover:bg-white hover:shadow-[0_20px_50px_rgba(128,0,0,0.06)] transition-all duration-500 flex flex-col h-full overflow-hidden">
+      {/* Image Section */}
+      {preloadedImage && (
+        <div className="relative w-full h-52 mb-6 overflow-hidden rounded-[2rem]">
+          <Image
+            src={preloadedImage}
+            alt={data?.title || "Blog Image"}
+            fill
+            className="object-cover transition-transform duration-700 group-hover:scale-110"
+            unoptimized
+          />
+        </div>
+      )}
+
       {/* Date Badge */}
       <div className="flex items-center gap-2 text-[#1A1A1A]/50 mb-6 group-hover:text-[#800000] transition-colors duration-300 ease-in-out font-semibold tracking-wider text-xs uppercase">
         <Calendar size={16} />
