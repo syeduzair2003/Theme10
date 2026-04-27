@@ -141,7 +141,7 @@ const Footer = async ({
         {/* Middle Section*/}
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 border-t border-[#FFFDF5]/10 pt-16 pb-2">
           {/* 1. Trending Categories */}
-          <div className="group/card p-6 rounded-2xl border border-[#FFFDF5]/5 bg-black/40 hover:border-[#FFFDF5]/20 hover:bg-black/60 transition-all duration-700 shadow-xl relative overflow-hidden backdrop-blur-sm">
+          <div className="group/card p-6 rounded-2xl border border-[#FFFDF5]/5 bg-black/70 hover:border-[#FFFDF5]/20 hover:bg-black/60 transition-all duration-700 shadow-xl relative overflow-hidden backdrop-blur-sm">
             <h4 className="text-[#FFFDF5] font-black text-[10px] uppercase tracking-[0.3em] flex items-center gap-3 mb-8 opacity-90">
               <span className="w-1.5 h-1.5 rounded-full bg-[#FFFDF5] shadow-[0_0_10px_#FFFDF5]"></span>
               Trending Categories
@@ -153,7 +153,7 @@ const Footer = async ({
                   <li key={i} className="group/link">
                     <Link
                       href={`/${item?.url}`}
-                      className="text-[#FFFDF5]/50 hover:text-[#FFFDF5] text-[13px] font-medium tracking-wide no-underline flex items-center gap-0 group-hover/link:gap-3 transition-all duration-500"
+                      className="text-[#FFFDF5]/80 hover:text-[#FFFDF5]/50 text-[13px] font-medium tracking-wide no-underline flex items-center gap-0 group-hover/link:gap-3 transition-all duration-500"
                     >
                       <span className="w-0 h-[1px] bg-[#FFFDF5] group-hover/link:w-4 transition-all duration-500"></span>
                       <span className="group-hover/link:translate-x-1 transition-transform duration-500">
@@ -166,7 +166,7 @@ const Footer = async ({
           </div>
 
           {/* 2. Navigation */}
-          <div className="group/card p-6 rounded-2xl border border-[#FFFDF5]/5 bg-black/40 hover:border-[#FFFDF5]/20 hover:bg-black/60 transition-all duration-700 shadow-xl relative overflow-hidden backdrop-blur-sm">
+          <div className="group/card p-6 rounded-2xl border border-[#FFFDF5]/5 bg-black/70 hover:border-[#FFFDF5]/20 hover:bg-black/60 transition-all duration-700 shadow-xl relative overflow-hidden backdrop-blur-sm">
             <h4 className="text-[#FFFDF5] font-black text-[10px] uppercase tracking-[0.3em] flex items-center gap-3 mb-8 opacity-90">
               <span className="w-1.5 h-1.5 rounded-full bg-[#FFFDF5] shadow-[0_0_10px_#FFFDF5]"></span>
               Navigation
@@ -175,7 +175,7 @@ const Footer = async ({
               <li>
                 <Link
                   href="/"
-                  className="text-[#FFFDF5]/50 hover:text-[#FFFDF5] text-[13px] font-medium no-underline hover:translate-x-1 inline-block transition-all duration-500"
+                  className="text-[#FFFDF5]/80 hover:text-[#FFFDF5]/50 text-[13px] font-medium no-underline hover:translate-x-1 inline-block transition-all duration-500"
                 >
                   Home
                 </Link>
@@ -183,7 +183,7 @@ const Footer = async ({
               <li>
                 <Link
                   href="/category"
-                  className="text-[#FFFDF5]/50 hover:text-[#FFFDF5] text-[13px] font-medium no-underline hover:translate-x-1 inline-block transition-all duration-500"
+                  className="text-[#FFFDF5]/80 hover:text-[#FFFDF5]/50 text-[13px] font-medium no-underline hover:translate-x-1 inline-block transition-all duration-500"
                 >
                   Categories
                 </Link>
@@ -192,7 +192,7 @@ const Footer = async ({
                 <li key={i}>
                   <Link
                     href={`/${item?.slug}`}
-                    className="text-[#FFFDF5]/50 hover:text-[#FFFDF5] text-[13px] font-medium no-underline capitalize hover:translate-x-1 inline-block transition-all duration-500"
+                    className="text-[#FFFDF5]/80 hover:text-[#FFFDF5]/50 text-[13px] font-medium no-underline capitalize hover:translate-x-1 inline-block transition-all duration-500"
                   >
                     {item?.page_name}
                   </Link>
@@ -202,7 +202,7 @@ const Footer = async ({
           </div>
 
           {/* 3. Resources */}
-          <div className="group/card p-6 rounded-2xl border border-[#FFFDF5]/5 bg-black/40 hover:border-[#FFFDF5]/20 hover:bg-black/60 transition-all duration-700 shadow-xl relative overflow-hidden backdrop-blur-sm">
+          <div className="group/card p-6 rounded-2xl border border-[#FFFDF5]/5 bg-black/70 hover:border-[#FFFDF5]/20 hover:bg-black/60 transition-all duration-700 shadow-xl relative overflow-hidden backdrop-blur-sm">
             <h4 className="text-[#FFFDF5] font-black text-[10px] uppercase tracking-[0.3em] flex items-center gap-3 mb-8 opacity-90">
               <span className="w-1.5 h-1.5 rounded-full bg-[#FFFDF5] shadow-[0_0_10px_#FFFDF5]"></span>
               Resources
@@ -211,7 +211,7 @@ const Footer = async ({
               <li>
                 <Link
                   href="/all-stores/A"
-                  className="text-[#FFFDF5]/50 hover:text-[#FFFDF5] text-[13px] font-medium no-underline hover:translate-x-1 inline-block transition-all duration-500"
+                  className="text-[#FFFDF5]/80 hover:text-[#FFFDF5]/50 text-[13px] font-medium no-underline hover:translate-x-1 inline-block transition-all duration-500"
                 >
                   All Stores
                 </Link>
@@ -220,7 +220,7 @@ const Footer = async ({
                 <li>
                   <Link
                     href={blog_url}
-                    className="text-[#FFFDF5]/50 hover:text-[#FFFDF5] text-[13px] font-medium no-underline hover:translate-x-1 inline-block transition-all duration-500"
+                    className="text-[#FFFDF5]/80 hover:text-[#FFFDF5]/50 text-[13px] font-medium no-underline hover:translate-x-1 inline-block transition-all duration-500"
                   >
                     {blog_title}
                   </Link>
@@ -229,7 +229,7 @@ const Footer = async ({
               <li>
                 <Link
                   href="/contact-us"
-                  className="text-[#FFFDF5]/50 hover:text-[#FFFDF5] text-[13px] font-medium no-underline hover:translate-x-1 inline-block transition-all duration-500"
+                  className="text-[#FFFDF5]/80 hover:text-[#FFFDF5]/50 text-[13px] font-medium no-underline hover:translate-x-1 inline-block transition-all duration-500"
                 >
                   Contact Us
                 </Link>
@@ -238,7 +238,7 @@ const Footer = async ({
           </div>
 
           {/* 4. Reach Out (Contact Badges) */}
-          <div className="group/card p-6 rounded-2xl border border-[#FFFDF5]/5 bg-black/40 hover:border-[#FFFDF5]/20 hover:bg-black/60 transition-all duration-700 shadow-xl relative overflow-hidden backdrop-blur-sm">
+          <div className="group/card p-6 rounded-2xl border border-[#FFFDF5]/5 bg-black/70 hover:border-[#FFFDF5]/20 hover:bg-black/60 transition-all duration-700 shadow-xl relative overflow-hidden backdrop-blur-sm">
             <h4 className="text-[#FFFDF5] font-black text-[10px] uppercase tracking-[0.3em] flex items-center gap-3 mb-8 opacity-90">
               <span className="w-1.5 h-1.5 rounded-full bg-[#FFFDF5] shadow-[0_0_10px_#FFFDF5]"></span>
               Reach Out
@@ -283,7 +283,7 @@ const Footer = async ({
                     </div>
                     <div className="flex items-center justify-center lg:justify-start gap-2 opacity-60">
                       <span className="w-1.5 h-1.5 rounded-full bg-[#800000]"></span>
-                      <span className="font-extrabold">U.S. REGISTERED</span>
+                      <span className="font-extrabold text-[#FFFDF5]">U.S. REGISTERED</span>
                     </div>
                   </>
                 ) : (
