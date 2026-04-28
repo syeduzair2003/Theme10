@@ -201,6 +201,32 @@ const NavSearch = ({ companyId, mer_slug, slug_type, cat_slug }: Props) => {
           </div>
         )}
 
+      {/* <style jsx global>{`
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #800000;
+    border-radius: 50px; 
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #5a0000;
+  }
+
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: #800000 transparent;
+  }
+`}</style> */}
+
       <style jsx global>{`
         .no-scrollbar::-webkit-scrollbar {
           display: none;
