@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react"; // 1. useRef add kiya
 import { FaBars, FaTimes, FaChevronDown, FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
@@ -20,6 +20,8 @@ const MobileNavMenu = ({
   const [open, setOpen] = useState(false);
   const [activeTab, setActiveTab] = useState<string | null>(null);
 
+  const sidebarRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
@@ -31,13 +33,31 @@ const MobileNavMenu = ({
     };
   }, [open]);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        sidebarRef.current &&
+        !sidebarRef.current.contains(event.target as Node)
+      ) {
+        setOpen(false);
+      }
+    };
+
+    if (open) {
+      document.addEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [open]);
+
   const navGroups = [
     { name: "Categories", data: categories, path: "/category", type: "cat" },
     { name: "Stores", data: merchants, path: "/all-stores/A", type: "mer" },
     {
       name: "Products",
       data: [{ id: "p1", name: "Branded Products", slug: "all-products" }],
-      path: "/all-products",
+      path: "/products",
       type: "prod",
     },
     { name: "Events", data: events, path: "/events", type: "event" },
@@ -69,6 +89,7 @@ const MobileNavMenu = ({
 
       {/* SIDEBAR DRAWER */}
       <div
+        ref={sidebarRef}
         className={`fixed top-0 right-0 h-screen h-[100dvh] w-[80%] max-w-[360px] bg-[#F5F5DC] z-[9999] flex flex-col shadow-2xl transition-transform duration-500 ease-in-out ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
@@ -83,9 +104,9 @@ const MobileNavMenu = ({
             <Image
               src="/logo.png"
               alt="Logo"
-              width={150} // Adjust to your logo's aspect ratio
+              width={150}
               height={40}
-              className="h-8 w-auto object-contain" // Control height via CSS, let width be auto
+              className="h-8 w-auto object-contain"
               priority
             />
           </Link>
@@ -150,7 +171,7 @@ const MobileNavMenu = ({
                       if (group.type === "event") href = `/events/${item.slug}`;
                       if (group.type === "promo")
                         href = getPromotionHref(item, promotion_slug);
-                      if (group.type === "prod") href = `/all-products`;
+                      if (group.type === "prod") href = `/products`;
 
                       return (
                         <Link
