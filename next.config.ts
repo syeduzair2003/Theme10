@@ -5,7 +5,7 @@ import type { NextConfig } from "next";
 //   enabled: process.env.ANALYZE === 'true',
 // });
 const nextConfig: NextConfig = {
-// output: "standalone",
+  // output: "standalone",
   reactStrictMode: false,
   trailingSlash: false,
   allowedDevOrigins: [
@@ -37,7 +37,17 @@ const nextConfig: NextConfig = {
       {
         protocol: 'http',
         hostname: '**',
+        port: '',  // ← allows port 80 (default)
+      },
+      {
+        protocol: 'http',
+        hostname: '**',
         port: '3000',
+      },
+      {
+        protocol: 'http',
+        hostname: '**',
+        port: '8001',  // ← your API port
       },
     ],
   },

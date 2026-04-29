@@ -92,6 +92,8 @@ const themeMap: Record<string, string> = {
   "theme 6": "Theme_6",
   "theme 8": "Theme_8",
   "theme 9": "Theme_9",
+  "theme 11": "Theme_11",
+  "theme 17": "Theme_17",
 };
 export default async function RootLayout({
   children,
@@ -166,7 +168,7 @@ export default async function RootLayout({
     const selectedThemePath = themeMap[themeName] || "Theme_1";
     const selectedTheme = selectedThemePath?.toLowerCase();
     // const themeCSS = `/themes/${selectedThemePath}/${selectowerCase();edTheme}.css`;
-    const themeCSS = `/themes/$theme_9/$theme_9.css`;
+    const themeCSS = `/themes/$theme_17/$theme_17.css`;
     const headerWidgets = widgetsData?.data?.HEADER || [];
     const bodyTopWidgets = widgetsData?.data?.BODY_TOP || [];
     const bodyBottomWidgets = widgetsData?.data?.BODY_BOTTOM || [];

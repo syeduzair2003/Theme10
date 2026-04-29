@@ -9,6 +9,8 @@ import P5 from '@theme5/Pages/category/page';
 import P6 from '@theme6/Pages/category/page';
 import P8 from '@theme8/Pages/category/page';
 import P9 from '@theme9/Pages/category/page';
+import P11 from '@theme11/Pages/category/page';
+import P17 from '@theme17/Pages/category/page';
 import { getBaseImageUrl } from '@/constants/hooks';
 import { Metadata } from "next";
 
@@ -88,11 +90,15 @@ const page = async () => {
         return P8;  
       case 'theme 9':
         return P9;  
+      case 'theme 11':
+        return P11;
+      case 'theme 17':
+        return P17;
       default:
         return P3;
     }
   }
-  const SelectedPage = selector("theme 9");
+  const SelectedPage = selector("theme 17");
   return (
     <>
       <SelectedPage />

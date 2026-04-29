@@ -1,0 +1,48 @@
+@keyframes heroFadeUp {
+    from { 
+        opacity: 0; 
+        transform: translateY(24px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+@keyframes orbFloat {
+    0%, 100% { 
+        transform: translate(0, 0); 
+    }
+    50% { 
+        transform: translate(40px, 25px); 
+    }
+}
+
+@keyframes orbFloatReverse {
+    0%, 100% { 
+        transform: translate(0, 0); 
+    }
+    50% { 
+        transform: translate(-35px, -20px); 
+    }
+}
+.hero-orb-green { 
+    animation: orbFloat 12s ease-in-out infinite; 
+}
+
+.hero-orb-orange { 
+    animation: orbFloatReverse 15s ease-in-out infinite; 
+}
+.hero-fade-in { 
+    animation: heroFadeUp 0.7s ease-out both; 
+}
+
+.hero-fade-in-delay-1 { animation: heroFadeUp 0.7s ease-out 0.15s both; }
+.hero-fade-in-delay-2 { animation: heroFadeUp 0.7s ease-out 0.28s both; }
+.hero-fade-in-delay-3 { animation: heroFadeUp 0.7s ease-out 0.42s both; }
+.hero-fade-in-delay-4 { animation: heroFadeUp 0.7s ease-out 0.55s both; }
+.hero-fade-in-delay-5 { animation: heroFadeUp 0.7s ease-out 0.68s both; }
+
+.hero-tag { 
+    animation: heroFadeUp 0.5s ease-out both; 
+}

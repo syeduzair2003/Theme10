@@ -7,6 +7,8 @@ import theme5Layout from '@theme5/theme5Layout';
 import theme6Layout from '@theme6/theme6Layout';
 import theme8Layout from '@theme8/theme8Layout';
 import theme9Layout from '@theme9/theme9Layout';
+import theme11Layout from '../Theme-11/theme11Layout';
+import theme17Layout from '../Theme-17/theme17Layout';
 import { Template } from '@/services/dataTypes';
 
 interface Props {
@@ -33,14 +35,18 @@ const ThemeSwitcher = async ({ children, template }: Props) => {
             case 'theme 8':
                 return theme8Layout;    
             case 'theme 9':
-                return theme9Layout;    
+                return theme9Layout; 
+            case 'theme 11':
+                return theme11Layout;
+            case 'theme 17':
+                return theme17Layout;   
             default:
                 return Theme3Layout;
         }
     }
     // const SelectedLayout = selector(template?.name);
     //switching theme manually
-    const SelectedLayout = selector('theme 9');
+    const SelectedLayout = selector('theme 17');
     return (
         <SelectedLayout>
             {children}

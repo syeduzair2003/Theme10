@@ -9,6 +9,8 @@ import P5 from '@theme5/Pages/Contact-Us/page';
 import P6 from '@theme6/Pages/Contact-Us/page';
 import P8 from '@theme8/Pages/Contact-Us/page';
 import P9 from '@theme9/Pages/Contact-Us/page';
+import P11 from '@theme11/Pages/Contact-Us/page';
+import P17 from '@theme17/Pages/Contact-Us/page';
 import { Metadata } from 'next';
 import { getBaseImageUrl } from '@/constants/hooks';
 export async function generateMetadata(): Promise<Metadata> {
@@ -69,11 +71,15 @@ const page = async () => {
         return P8;  
       case 'theme 9':
         return P9;  
+      case 'theme 11':
+        return P11;
+      case 'theme 17':
+        return P17;
       default:
         return P3;
     }
   }
-  const SelectedPage = selector("theme 9");
+  const SelectedPage = selector("theme 17");
   return (
     <>
       <SelectedPage />

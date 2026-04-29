@@ -15,7 +15,7 @@ import {
   faStar, faDice, faL, faStore, faStar as filledStar, 
   faChevronDown, faMapPin, faEnvelopeOpen, faPhone, faEarth,
   faCheck, faClock, faFire, faTimes, faCopy, faBolt, faChevronLeft, faChevronRight,
-  faCompass,faTag,faLayerGroup,faTags,faArrowRightLong
+  faCompass,faTag,faLayerGroup,faTags,faArrowRightLong,faChevronUp
 
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -31,5 +31,5 @@ export {
   faStar, faDice, faL, faStore, filledStar, emptyStar, 
   faChevronDown, faMapPin, faEnvelopeOpen, faPhone, faEarth, 
   faXTwitter, faCheck, faClock, faFire, faTimes, faCopy, faBolt, 
-  faChevronLeft, faChevronRight,faCompass,faTag,faLayerGroup,faTags,faArrowRightLong
+  faChevronLeft, faChevronRight,faCompass,faTag,faLayerGroup,faTags,faArrowRightLong,faChevronUp
 };
